@@ -1,0 +1,16 @@
+enum FailureCode {
+  network,
+  unauthorized,
+  forbidden,
+  notFound,
+  validation,
+  server,
+  cache,
+  conflict,
+  sslPinning,
+  internetRequired,
+  timeout,
+  permissionRevoked,
+  businessScopeForbidden,
+  unknown,
+}
