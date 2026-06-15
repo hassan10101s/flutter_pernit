@@ -30,6 +30,17 @@ extension NavigatorExtension on BuildContext {
     ).pushNamedAndRemoveUntil<T>(routeName, predicate, arguments: arguments);
   }
 
+  Future<T?> pushNamedAndRemoveAll<T extends Object?>(
+    String routeName, {
+    Object? arguments,
+  }) {
+    return pushNamedAndRemoveUntil<T>(
+      routeName,
+      arguments: arguments,
+      predicate: (_) => false,
+    );
+  }
+
   bool canPopRoute() {
     return Navigator.of(this).canPop();
   }

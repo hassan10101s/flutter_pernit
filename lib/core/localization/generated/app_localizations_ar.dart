@@ -74,4 +74,121 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get homeEmptySubtitle => 'مساحة العمل جاهزة لإضافة الوحدة التالية.';
+
+  @override
+  String get homeLogoutTooltip => 'تسجيل الخروج';
+
+  @override
+  String homeGreeting(String name) {
+    return 'مرحبًا، $name';
+  }
+
+  @override
+  String homeGroupLabel(String groups) {
+    return 'المجموعات: $groups';
+  }
+
+  @override
+  String get homeNoGroups => 'لا توجد مجموعات';
+
+  @override
+  String get menuOverview => 'الرئيسية';
+
+  @override
+  String get menuInventory => 'المخزن';
+
+  @override
+  String get menuQuality => 'الجودة';
+
+  @override
+  String get menuProduction => 'الإنتاج';
+
+  @override
+  String get menuCommercial => 'الطلبات';
+
+  @override
+  String get menuSettings => 'الإعدادات';
+
+  @override
+  String get overviewTitle => 'مساحة العمل';
+
+  @override
+  String get overviewSubtitle =>
+      'الأقسام المتاحة تعتمد على المجموعات الراجعة من تسجيل الدخول.';
+
+  @override
+  String modulePlaceholder(String module) {
+    return 'واجهة $module التجريبية';
+  }
+
+  @override
+  String get settingsTitle => 'إعدادات المدير';
+
+  @override
+  String get settingsSubtitle =>
+      'العناصر الأساسية مثل الوحدات وSOP تبقى هنا وتظهر للمدير فقط.';
+
+  @override
+  String get settingsUnits => 'الوحدات';
+
+  @override
+  String get settingsSop => 'SOP';
+
+  @override
+  String get settingsSopDetails => 'تفاصيل SOP';
+
+  @override
+  String get settingsWarehouses => 'المخازن';
+
+  @override
+  String get settingsUsers => 'المستخدمون';
+
+  @override
+  String get settingsProfiles => 'الملفات الشخصية';
+
+  @override
+  String get settingsProducts => 'المنتجات';
+
+  @override
+  String get settingsRawMaterials => 'المواد الخام';
+
+  @override
+  String get settingsProductCategories => 'تصنيفات المنتجات';
+
+  @override
+  String get settingsRawMaterialCategories => 'تصنيفات المواد الخام';
+
+  @override
+  String get settingsFormulas => 'التركيبات';
+
+  @override
+  String get settingsFormulaDetails => 'تفاصيل التركيبات';
+
+  @override
+  String get settingsProductionRules => 'قواعد الإنتاج';
+
+  @override
+  String get settingsLabParameters => 'معاملات المختبر';
+
+  @override
+  String get settingsPhysicalLabs => 'المختبرات الفيزيائية';
+
+  @override
+  String get settingsAnalysisParameters => 'معاملات التحليل';
+
+  @override
+  String get settingsReferenceMethods => 'طرق المرجع';
+
+  @override
+  String get settingsPredictiveResults => 'النتائج التنبؤية';
+
+  @override
+  String get settingsSuppliers => 'الموردون';
+
+  @override
+  String get settingsCustomers => 'العملاء';
+
+  @override
+  String get settingsAdminOnlyNote =>
+      'هذه المنطقة تظهر فقط لمجموعات System Admin/Admin.';
 }

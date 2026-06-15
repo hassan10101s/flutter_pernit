@@ -20,6 +20,10 @@ class TokenManager {
     return _storage.read(key: _accessTokenKey);
   }
 
+  Future<String?> readRefreshToken() {
+    return _storage.read(key: _refreshTokenKey);
+  }
+
   Future<void> clearTokens() async {
     await _storage.delete(key: _accessTokenKey);
     await _storage.delete(key: _refreshTokenKey);

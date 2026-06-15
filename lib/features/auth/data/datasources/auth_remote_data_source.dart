@@ -6,6 +6,8 @@ import '../models/login_response_model.dart';
 
 abstract class AuthRemoteDataSource {
   Future<LoginResponseModel> login(LoginRequestModel request);
+
+  Future<void> logout(String refreshToken);
 }
 
 class DioAuthRemoteDataSource implements AuthRemoteDataSource {
@@ -21,5 +23,10 @@ class DioAuthRemoteDataSource implements AuthRemoteDataSource {
     );
 
     return LoginResponseModel.fromJson(response.data ?? const {});
+  }
+
+  @override
+  Future<void> logout(String refreshToken) async {
+    await _dio.post<void>(ApiConstants.logout, data: {'refresh': refreshToken});
   }
 }

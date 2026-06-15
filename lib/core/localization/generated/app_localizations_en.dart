@@ -76,4 +76,121 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeEmptySubtitle => 'The workspace is ready for the next module.';
+
+  @override
+  String get homeLogoutTooltip => 'Log out';
+
+  @override
+  String homeGreeting(String name) {
+    return 'Hello, $name';
+  }
+
+  @override
+  String homeGroupLabel(String groups) {
+    return 'Groups: $groups';
+  }
+
+  @override
+  String get homeNoGroups => 'No groups assigned';
+
+  @override
+  String get menuOverview => 'Overview';
+
+  @override
+  String get menuInventory => 'Inventory';
+
+  @override
+  String get menuQuality => 'Quality';
+
+  @override
+  String get menuProduction => 'Production';
+
+  @override
+  String get menuCommercial => 'Orders';
+
+  @override
+  String get menuSettings => 'Settings';
+
+  @override
+  String get overviewTitle => 'Workspace';
+
+  @override
+  String get overviewSubtitle =>
+      'Available sections are based on the user groups returned by login.';
+
+  @override
+  String modulePlaceholder(String module) {
+    return '$module screen placeholder';
+  }
+
+  @override
+  String get settingsTitle => 'Admin settings';
+
+  @override
+  String get settingsSubtitle =>
+      'Core setup items stay here and are shown only to admin groups.';
+
+  @override
+  String get settingsUnits => 'Units';
+
+  @override
+  String get settingsSop => 'SOP';
+
+  @override
+  String get settingsSopDetails => 'SOP details';
+
+  @override
+  String get settingsWarehouses => 'Warehouses';
+
+  @override
+  String get settingsUsers => 'Users';
+
+  @override
+  String get settingsProfiles => 'Profiles';
+
+  @override
+  String get settingsProducts => 'Products';
+
+  @override
+  String get settingsRawMaterials => 'Raw materials';
+
+  @override
+  String get settingsProductCategories => 'Product categories';
+
+  @override
+  String get settingsRawMaterialCategories => 'Raw material categories';
+
+  @override
+  String get settingsFormulas => 'Formulas';
+
+  @override
+  String get settingsFormulaDetails => 'Formula details';
+
+  @override
+  String get settingsProductionRules => 'Production rules';
+
+  @override
+  String get settingsLabParameters => 'Lab parameters';
+
+  @override
+  String get settingsPhysicalLabs => 'Physical labs';
+
+  @override
+  String get settingsAnalysisParameters => 'Analysis parameters';
+
+  @override
+  String get settingsReferenceMethods => 'Reference methods';
+
+  @override
+  String get settingsPredictiveResults => 'Predictive results';
+
+  @override
+  String get settingsSuppliers => 'Suppliers';
+
+  @override
+  String get settingsCustomers => 'Customers';
+
+  @override
+  String get settingsAdminOnlyNote =>
+      'This area is visible for System Admin/Admin only.';
 }

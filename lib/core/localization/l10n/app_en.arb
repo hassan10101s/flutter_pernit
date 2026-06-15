@@ -21,5 +21,62 @@
   "failureUnknown": "Something went wrong. Please try again.",
   "homeTitle": "Home",
   "homeEmptyTitle": "Pernit ERP",
-  "homeEmptySubtitle": "The workspace is ready for the next module."
+  "homeEmptySubtitle": "The workspace is ready for the next module.",
+  "homeLogoutTooltip": "Log out",
+  "homeGreeting": "Hello, {name}",
+  "@homeGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "homeGroupLabel": "Groups: {groups}",
+  "@homeGroupLabel": {
+    "placeholders": {
+      "groups": {
+        "type": "String"
+      }
+    }
+  },
+  "homeNoGroups": "No groups assigned",
+  "menuOverview": "Overview",
+  "menuInventory": "Inventory",
+  "menuQuality": "Quality",
+  "menuProduction": "Production",
+  "menuCommercial": "Orders",
+  "menuSettings": "Settings",
+  "overviewTitle": "Workspace",
+  "overviewSubtitle": "Available sections are based on the user groups returned by login.",
+  "modulePlaceholder": "{module} screen placeholder",
+  "@modulePlaceholder": {
+    "placeholders": {
+      "module": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsTitle": "Admin settings",
+  "settingsSubtitle": "Core setup items stay here and are shown only to admin groups.",
+  "settingsUnits": "Units",
+  "settingsSop": "SOP",
+  "settingsSopDetails": "SOP details",
+  "settingsWarehouses": "Warehouses",
+  "settingsUsers": "Users",
+  "settingsProfiles": "Profiles",
+  "settingsProducts": "Products",
+  "settingsRawMaterials": "Raw materials",
+  "settingsProductCategories": "Product categories",
+  "settingsRawMaterialCategories": "Raw material categories",
+  "settingsFormulas": "Formulas",
+  "settingsFormulaDetails": "Formula details",
+  "settingsProductionRules": "Production rules",
+  "settingsLabParameters": "Lab parameters",
+  "settingsPhysicalLabs": "Physical labs",
+  "settingsAnalysisParameters": "Analysis parameters",
+  "settingsReferenceMethods": "Reference methods",
+  "settingsPredictiveResults": "Predictive results",
+  "settingsSuppliers": "Suppliers",
+  "settingsCustomers": "Customers",
+  "settingsAdminOnlyNote": "This area is visible for System Admin/Admin only."
 }

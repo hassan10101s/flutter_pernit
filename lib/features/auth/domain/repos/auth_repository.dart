@@ -4,4 +4,6 @@ import '../entities/login_credentials.dart';
 
 abstract class AuthRepository {
   Future<ApiResult<AuthSession>> login(LoginCredentials credentials);
+
+  Future<void> logout();
 }

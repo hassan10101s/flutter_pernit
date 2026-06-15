@@ -68,4 +68,7 @@ class _FakeAuthRepository implements AuthRepository {
   Future<ApiResult<AuthSession>> login(LoginCredentials credentials) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> logout() async {}
 }

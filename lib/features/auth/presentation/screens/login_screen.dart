@@ -41,7 +41,10 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccess) {
-          context.pushReplacementNamed(Routes.home);
+          context.pushReplacementNamed(
+            Routes.home,
+            arguments: state.session.user,
+          );
         }
 
         if (state is LoginFailure) {

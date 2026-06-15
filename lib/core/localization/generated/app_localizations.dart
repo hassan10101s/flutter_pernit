@@ -229,6 +229,222 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The workspace is ready for the next module.'**
   String get homeEmptySubtitle;
+
+  /// No description provided for @homeLogoutTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Log out'**
+  String get homeLogoutTooltip;
+
+  /// No description provided for @homeGreeting.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello, {name}'**
+  String homeGreeting(String name);
+
+  /// No description provided for @homeGroupLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Groups: {groups}'**
+  String homeGroupLabel(String groups);
+
+  /// No description provided for @homeNoGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'No groups assigned'**
+  String get homeNoGroups;
+
+  /// No description provided for @menuOverview.
+  ///
+  /// In en, this message translates to:
+  /// **'Overview'**
+  String get menuOverview;
+
+  /// No description provided for @menuInventory.
+  ///
+  /// In en, this message translates to:
+  /// **'Inventory'**
+  String get menuInventory;
+
+  /// No description provided for @menuQuality.
+  ///
+  /// In en, this message translates to:
+  /// **'Quality'**
+  String get menuQuality;
+
+  /// No description provided for @menuProduction.
+  ///
+  /// In en, this message translates to:
+  /// **'Production'**
+  String get menuProduction;
+
+  /// No description provided for @menuCommercial.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders'**
+  String get menuCommercial;
+
+  /// No description provided for @menuSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get menuSettings;
+
+  /// No description provided for @overviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Workspace'**
+  String get overviewTitle;
+
+  /// No description provided for @overviewSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Available sections are based on the user groups returned by login.'**
+  String get overviewSubtitle;
+
+  /// No description provided for @modulePlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'{module} screen placeholder'**
+  String modulePlaceholder(String module);
+
+  /// No description provided for @settingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin settings'**
+  String get settingsTitle;
+
+  /// No description provided for @settingsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Core setup items stay here and are shown only to admin groups.'**
+  String get settingsSubtitle;
+
+  /// No description provided for @settingsUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'Units'**
+  String get settingsUnits;
+
+  /// No description provided for @settingsSop.
+  ///
+  /// In en, this message translates to:
+  /// **'SOP'**
+  String get settingsSop;
+
+  /// No description provided for @settingsSopDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'SOP details'**
+  String get settingsSopDetails;
+
+  /// No description provided for @settingsWarehouses.
+  ///
+  /// In en, this message translates to:
+  /// **'Warehouses'**
+  String get settingsWarehouses;
+
+  /// No description provided for @settingsUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Users'**
+  String get settingsUsers;
+
+  /// No description provided for @settingsProfiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Profiles'**
+  String get settingsProfiles;
+
+  /// No description provided for @settingsProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'Products'**
+  String get settingsProducts;
+
+  /// No description provided for @settingsRawMaterials.
+  ///
+  /// In en, this message translates to:
+  /// **'Raw materials'**
+  String get settingsRawMaterials;
+
+  /// No description provided for @settingsProductCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Product categories'**
+  String get settingsProductCategories;
+
+  /// No description provided for @settingsRawMaterialCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Raw material categories'**
+  String get settingsRawMaterialCategories;
+
+  /// No description provided for @settingsFormulas.
+  ///
+  /// In en, this message translates to:
+  /// **'Formulas'**
+  String get settingsFormulas;
+
+  /// No description provided for @settingsFormulaDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Formula details'**
+  String get settingsFormulaDetails;
+
+  /// No description provided for @settingsProductionRules.
+  ///
+  /// In en, this message translates to:
+  /// **'Production rules'**
+  String get settingsProductionRules;
+
+  /// No description provided for @settingsLabParameters.
+  ///
+  /// In en, this message translates to:
+  /// **'Lab parameters'**
+  String get settingsLabParameters;
+
+  /// No description provided for @settingsPhysicalLabs.
+  ///
+  /// In en, this message translates to:
+  /// **'Physical labs'**
+  String get settingsPhysicalLabs;
+
+  /// No description provided for @settingsAnalysisParameters.
+  ///
+  /// In en, this message translates to:
+  /// **'Analysis parameters'**
+  String get settingsAnalysisParameters;
+
+  /// No description provided for @settingsReferenceMethods.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference methods'**
+  String get settingsReferenceMethods;
+
+  /// No description provided for @settingsPredictiveResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Predictive results'**
+  String get settingsPredictiveResults;
+
+  /// No description provided for @settingsSuppliers.
+  ///
+  /// In en, this message translates to:
+  /// **'Suppliers'**
+  String get settingsSuppliers;
+
+  /// No description provided for @settingsCustomers.
+  ///
+  /// In en, this message translates to:
+  /// **'Customers'**
+  String get settingsCustomers;
+
+  /// No description provided for @settingsAdminOnlyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This area is visible for System Admin/Admin only.'**
+  String get settingsAdminOnlyNote;
 }
 
 class _AppLocalizationsDelegate

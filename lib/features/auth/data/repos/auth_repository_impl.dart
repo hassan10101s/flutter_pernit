@@ -61,4 +61,25 @@ class AuthRepositoryImpl implements AuthRepository {
       return ApiFailure(_apiErrorHandler.handle(error));
     }
   }
+
+  @override
+  Future<void> logout() async {
+    final refreshToken = await _tokenManager.readRefreshToken();
+
+    try {
+      final canCallLogoutApi =
+          _envConfig.hasApiBaseUrl &&
+          refreshToken != null &&
+          refreshToken.isNotEmpty &&
+          await _connectionChecker.hasConnection;
+
+      if (canCallLogoutApi) {
+        await _remoteDataSource.logout(refreshToken);
+      }
+    } on Object {
+      // Logout must complete locally even when the backend logout call fails.
+    } finally {
+      await _tokenManager.clearTokens();
+    }
+  }
 }

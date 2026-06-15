@@ -21,5 +21,62 @@
   "failureUnknown": "حدث خطأ غير متوقع. حاول مرة أخرى.",
   "homeTitle": "الرئيسية",
   "homeEmptyTitle": "بيرنت ERP",
-  "homeEmptySubtitle": "مساحة العمل جاهزة لإضافة الوحدة التالية."
+  "homeEmptySubtitle": "مساحة العمل جاهزة لإضافة الوحدة التالية.",
+  "homeLogoutTooltip": "تسجيل الخروج",
+  "homeGreeting": "مرحبًا، {name}",
+  "@homeGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "homeGroupLabel": "المجموعات: {groups}",
+  "@homeGroupLabel": {
+    "placeholders": {
+      "groups": {
+        "type": "String"
+      }
+    }
+  },
+  "homeNoGroups": "لا توجد مجموعات",
+  "menuOverview": "الرئيسية",
+  "menuInventory": "المخزن",
+  "menuQuality": "الجودة",
+  "menuProduction": "الإنتاج",
+  "menuCommercial": "الطلبات",
+  "menuSettings": "الإعدادات",
+  "overviewTitle": "مساحة العمل",
+  "overviewSubtitle": "الأقسام المتاحة تعتمد على المجموعات الراجعة من تسجيل الدخول.",
+  "modulePlaceholder": "واجهة {module} التجريبية",
+  "@modulePlaceholder": {
+    "placeholders": {
+      "module": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsTitle": "إعدادات المدير",
+  "settingsSubtitle": "العناصر الأساسية مثل الوحدات وSOP تبقى هنا وتظهر للمدير فقط.",
+  "settingsUnits": "الوحدات",
+  "settingsSop": "SOP",
+  "settingsSopDetails": "تفاصيل SOP",
+  "settingsWarehouses": "المخازن",
+  "settingsUsers": "المستخدمون",
+  "settingsProfiles": "الملفات الشخصية",
+  "settingsProducts": "المنتجات",
+  "settingsRawMaterials": "المواد الخام",
+  "settingsProductCategories": "تصنيفات المنتجات",
+  "settingsRawMaterialCategories": "تصنيفات المواد الخام",
+  "settingsFormulas": "التركيبات",
+  "settingsFormulaDetails": "تفاصيل التركيبات",
+  "settingsProductionRules": "قواعد الإنتاج",
+  "settingsLabParameters": "معاملات المختبر",
+  "settingsPhysicalLabs": "المختبرات الفيزيائية",
+  "settingsAnalysisParameters": "معاملات التحليل",
+  "settingsReferenceMethods": "طرق المرجع",
+  "settingsPredictiveResults": "النتائج التنبؤية",
+  "settingsSuppliers": "الموردون",
+  "settingsCustomers": "العملاء",
+  "settingsAdminOnlyNote": "هذه المنطقة تظهر فقط لمجموعات System Admin/Admin."
 }
