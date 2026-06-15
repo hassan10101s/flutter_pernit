@@ -38,7 +38,7 @@ class PernitApp extends StatelessWidget {
           locale: const Locale('ar'),
           supportedLocales: AppLocalizations.supportedLocales,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
-          initialRoute: Routes.login,
+          initialRoute: Routes.startup,
           onGenerateRoute: sl<AppRouter>().onGenerateRoute,
           builder: (context, materialChild) {
             return MediaQuery(

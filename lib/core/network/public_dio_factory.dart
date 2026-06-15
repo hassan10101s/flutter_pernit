@@ -1,16 +1,14 @@
 import 'package:dio/dio.dart';
 
-import '../auth/auth_interceptor.dart';
 import '../config/env_config.dart';
 
-class SecureDioFactory {
+class PublicDioFactory {
   final EnvConfig _envConfig;
-  final AuthInterceptor _authInterceptor;
 
-  const SecureDioFactory(this._envConfig, this._authInterceptor);
+  const PublicDioFactory(this._envConfig);
 
   Dio create() {
-    final dio = Dio(
+    return Dio(
       BaseOptions(
         baseUrl: _envConfig.apiBaseUrl,
         connectTimeout: const Duration(seconds: 20),
@@ -19,8 +17,5 @@ class SecureDioFactory {
         headers: const {'Accept': 'application/json'},
       ),
     );
-    _authInterceptor.attach(dio);
-    dio.interceptors.add(_authInterceptor);
-    return dio;
   }
 }

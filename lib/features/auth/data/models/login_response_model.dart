@@ -62,6 +62,28 @@ class AuthUserModel {
     );
   }
 
+  factory AuthUserModel.fromEntity(AuthUser user) {
+    return AuthUserModel(
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      groups: user.groups,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'username': username,
+      'email': email,
+      'first_name': firstName,
+      'last_name': lastName,
+      'groups': groups,
+    };
+  }
+
   AuthUser toEntity() {
     return AuthUser(
       id: id,

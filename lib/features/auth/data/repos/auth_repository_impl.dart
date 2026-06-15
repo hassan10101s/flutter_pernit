@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../../../../core/auth/token_manager.dart';
 import '../../../../core/config/env_config.dart';
 import '../../../../core/errors/api_error_handler.dart';
@@ -6,10 +8,12 @@ import '../../../../core/errors/failure.dart';
 import '../../../../core/errors/failure_code.dart';
 import '../../../../core/network/connection_checker.dart';
 import '../../domain/entities/auth_session.dart';
+import '../../domain/entities/auth_user.dart';
 import '../../domain/entities/login_credentials.dart';
 import '../../domain/repos/auth_repository.dart';
 import '../datasources/auth_remote_data_source.dart';
 import '../models/login_request_model.dart';
+import '../models/login_response_model.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource _remoteDataSource;
@@ -52,14 +56,56 @@ class AuthRepositoryImpl implements AuthRepository {
         LoginRequestModel.fromCredentials(credentials),
       );
       final session = response.toEntity();
-      await _tokenManager.saveTokens(
-        accessToken: session.accessToken,
-        refreshToken: session.refreshToken,
-      );
+      await _saveSession(session);
       return ApiSuccess(session);
     } on Object catch (error) {
       return ApiFailure(_apiErrorHandler.handle(error));
     }
+  }
+
+  @override
+  Future<ApiResult<AuthSession>> restoreSession() async {
+    if (!_envConfig.hasApiBaseUrl) {
+      return const ApiFailure(
+        Failure(
+          code: FailureCode.unknown,
+          messageKey: 'failureConfigurationMissing',
+        ),
+      );
+    }
+
+    final refreshToken = await _tokenManager.readRefreshToken();
+    final user = await _readStoredUser();
+    if (refreshToken == null || refreshToken.isEmpty || user == null) {
+      await _tokenManager.clearTokens();
+      return const ApiFailure(
+        Failure(
+          code: FailureCode.unauthorized,
+          messageKey: 'failureUnauthorized',
+        ),
+      );
+    }
+
+    final hasConnection = await _connectionChecker.hasConnection;
+    if (!hasConnection) {
+      return const ApiFailure(
+        Failure(code: FailureCode.internetRequired, messageKey: 'failureNetwork'),
+      );
+    }
+
+    final accessToken = await _tokenManager.readAccessToken();
+    if (accessToken != null && accessToken.isNotEmpty) {
+      final verifiedSession = await _verifyStoredAccessToken(
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+        user: user,
+      );
+      if (verifiedSession != null) {
+        return ApiSuccess(verifiedSession);
+      }
+    }
+
+    return _refreshStoredSession(refreshToken: refreshToken, user: user);
   }
 
   @override
@@ -80,6 +126,90 @@ class AuthRepositoryImpl implements AuthRepository {
       // Logout must complete locally even when the backend logout call fails.
     } finally {
       await _tokenManager.clearTokens();
+    }
+  }
+
+  Future<void> _saveSession(AuthSession session) async {
+    await _tokenManager.saveTokens(
+      accessToken: session.accessToken,
+      refreshToken: session.refreshToken,
+    );
+    await _tokenManager.saveUserJson(
+      jsonEncode(AuthUserModel.fromEntity(session.user).toJson()),
+    );
+  }
+
+  Future<AuthUser?> _readStoredUser() async {
+    final userJson = await _tokenManager.readUserJson();
+    if (userJson == null || userJson.trim().isEmpty) {
+      return null;
+    }
+
+    try {
+      final decoded = jsonDecode(userJson);
+      if (decoded is! Map<String, dynamic>) {
+        return null;
+      }
+
+      return AuthUserModel.fromJson(decoded).toEntity();
+    } on FormatException {
+      return null;
+    }
+  }
+
+  Future<AuthSession?> _verifyStoredAccessToken({
+    required String accessToken,
+    required String refreshToken,
+    required AuthUser user,
+  }) async {
+    try {
+      await _remoteDataSource.verifyToken(accessToken);
+      return AuthSession(
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+        user: user,
+      );
+    } on Object catch (error) {
+      final failure = _apiErrorHandler.handle(error);
+      if (failure.code != FailureCode.unauthorized) {
+        rethrow;
+      }
+      return null;
+    }
+  }
+
+  Future<ApiResult<AuthSession>> _refreshStoredSession({
+    required String refreshToken,
+    required AuthUser user,
+  }) async {
+    try {
+      final tokenPair = await _remoteDataSource.refreshToken(refreshToken);
+      if (!tokenPair.isComplete) {
+        await _tokenManager.clearTokens();
+        return const ApiFailure(
+          Failure(
+            code: FailureCode.unauthorized,
+            messageKey: 'failureUnauthorized',
+          ),
+        );
+      }
+
+      final session = AuthSession(
+        accessToken: tokenPair.accessToken,
+        refreshToken: tokenPair.refreshToken,
+        user: user,
+      );
+      await _tokenManager.saveTokens(
+        accessToken: session.accessToken,
+        refreshToken: session.refreshToken,
+      );
+      return ApiSuccess(session);
+    } on Object catch (error) {
+      final failure = _apiErrorHandler.handle(error);
+      if (failure.code == FailureCode.unauthorized) {
+        await _tokenManager.clearTokens();
+      }
+      return ApiFailure(failure);
     }
   }
 }
