@@ -1,16 +1,37 @@
-# flutter_pernit
+# Pernit ERP
 
-A new Flutter project.
+Pernit ERP mobile frontend built with Flutter for Android and iOS.
 
-## Getting Started
+## Architecture
 
-This project is a starting point for a Flutter application.
+This project follows the rules in `skill-addnewfeature/SKILL.md`:
 
-A few resources to get you started if this is your first Flutter project:
+- Clean Architecture: Domain -> Data -> Presentation.
+- Cubit-only state management with sealed states and Equatable.
+- Dio is used only inside remote data sources.
+- Tokens are stored only in FlutterSecureStorage.
+- Official Flutter localization is used for Arabic and English.
+- No Freezed, Retrofit, easy_localization, or generated Cubits/UI.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Run
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Provide environment values at build/run time:
+
+```powershell
+flutter run --dart-define=API_BASE_URL=https://your-api-domain.com
+```
+
+Optional values:
+
+```powershell
+--dart-define=ENV_NAME=dev
+--dart-define=WS_BASE_URL=wss://your-ws-domain.com
+--dart-define=ENABLE_LOGGING=true
+```
+
+## Verify
+
+```powershell
+flutter analyze
+flutter test
+```
