@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_pernit/core/errors/api_result.dart';
@@ -16,15 +17,19 @@ import 'package:flutter_pernit/features/auth/presentation/screens/login_screen.d
 void main() {
   testWidgets('login screen renders required inputs', (tester) async {
     await tester.pumpWidget(
-      MaterialApp(
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        locale: const Locale('en'),
-        home: BlocProvider(
-          create: (_) => LoginCubit(
-            LoginUseCase(_FakeAuthRepository(), const LoginValidator()),
+      ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: false,
+        builder: (context, child) => MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: const Locale('en'),
+          home: BlocProvider(
+            create: (_) => LoginCubit(
+              LoginUseCase(_FakeAuthRepository(), const LoginValidator()),
+            ),
+            child: const LoginScreen(),
           ),
-          child: const LoginScreen(),
         ),
       ),
     );

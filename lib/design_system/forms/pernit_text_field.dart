@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PernitTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -36,7 +37,8 @@ class PernitTextField extends StatelessWidget {
         labelText: label,
         hintText: hint,
         errorText: errorText,
-        prefixIcon: Icon(prefixIcon),
+        prefixIcon: Icon(prefixIcon, size: 22.r),
+        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       ),
     );
   }

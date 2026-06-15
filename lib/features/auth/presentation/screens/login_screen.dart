@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/extensions/navigation_extensions.dart';
 import '../../../../core/errors/failure.dart';
@@ -64,12 +65,9 @@ class _LoginScreenState extends State<LoginScreen> {
           body: SafeArea(
             child: Center(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 32,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 32.h),
                 child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 420),
+                  constraints: BoxConstraints(maxWidth: 420.w),
                   child: Form(
                     key: _formKey,
                     child: Column(
@@ -182,17 +180,13 @@ class _PernitMark extends StatelessWidget {
     return Align(
       alignment: AlignmentDirectional.centerStart,
       child: Container(
-        width: 56,
-        height: 56,
+        width: 56.r,
+        height: 56.r,
         decoration: BoxDecoration(
           color: PernitColors.primary,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(8.r),
         ),
-        child: const Icon(
-          Icons.factory_outlined,
-          color: Colors.white,
-          size: 30,
-        ),
+        child: Icon(Icons.factory_outlined, color: Colors.white, size: 30.r),
       ),
     );
   }

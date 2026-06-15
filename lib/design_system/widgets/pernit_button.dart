@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PernitButton extends StatelessWidget {
   final String label;
@@ -18,18 +19,20 @@ class PernitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 52,
+      height: 52.h,
       child: FilledButton.icon(
         onPressed: isLoading ? null : onPressed,
         icon: isLoading
-            ? const SizedBox.square(
-                dimension: 18,
+            ? SizedBox.square(
+                dimension: 18.r,
                 child: CircularProgressIndicator(strokeWidth: 2),
               )
             : Icon(icon ?? Icons.login_rounded),
         label: Text(label),
         style: FilledButton.styleFrom(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.r),
+          ),
         ),
       ),
     );
