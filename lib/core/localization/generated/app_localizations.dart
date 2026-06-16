@@ -446,70 +446,202 @@ abstract class AppLocalizations {
   /// **'This area is visible for System Admin/Admin only.'**
   String get settingsAdminOnlyNote;
 
+  /// No description provided for @settingsBasicsSectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Core setup'**
   String get settingsBasicsSectionTitle;
 
+  /// No description provided for @settingsBasicsSectionSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Foundational setup screens that define reusable ERP reference data.'**
   String get settingsBasicsSectionSubtitle;
 
+  /// No description provided for @settingsUnitsSectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Units'**
   String get settingsUnitsSectionTitle;
 
+  /// No description provided for @settingsUnitsSectionSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Measurement units used by products, raw materials, lab ranges, and formulas.'**
   String get settingsUnitsSectionSubtitle;
 
+  /// No description provided for @screenRecordsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Current records'**
   String get screenRecordsTitle;
 
+  /// No description provided for @screenActionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Actions'**
   String get screenActionsTitle;
 
+  /// No description provided for @screenAddAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
   String get screenAddAction;
 
+  /// No description provided for @screenEditAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
   String get screenEditAction;
 
+  /// No description provided for @screenDeleteAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
   String get screenDeleteAction;
 
+  /// No description provided for @screenCloseAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
   String get screenCloseAction;
 
+  /// No description provided for @screenCancelAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
   String get screenCancelAction;
 
+  /// No description provided for @screenSaveAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
   String get screenSaveAction;
 
+  /// No description provided for @screenNameField.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
   String get screenNameField;
 
+  /// No description provided for @screenCodeField.
+  ///
+  /// In en, this message translates to:
+  /// **'Code'**
   String get screenCodeField;
 
+  /// No description provided for @screenDetailsField.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
   String get screenDetailsField;
 
+  /// No description provided for @screenNoRecords.
+  ///
+  /// In en, this message translates to:
+  /// **'No records are available yet.'**
   String get screenNoRecords;
 
+  /// No description provided for @screenDialogSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Review the current {screen} records, then add, edit, or delete from the action column.'**
   String screenDialogSubtitle(String screen);
 
+  /// No description provided for @screenAddDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add {screen}'**
   String screenAddDialogTitle(String screen);
 
+  /// No description provided for @screenEditDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit {screen}'**
   String screenEditDialogTitle(String screen);
 
+  /// No description provided for @screenDeleteConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete record'**
   String get screenDeleteConfirmTitle;
 
+  /// No description provided for @screenDeleteConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete {record}? This action requires confirmation.'**
   String screenDeleteConfirmMessage(String record);
 
+  /// No description provided for @qualityScreensSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quality screens are separated so each inspection, sample, and result flow can be reviewed alone.'**
   String get qualityScreensSubtitle;
 
+  /// No description provided for @qualityLabSamplesRawMaterials.
+  ///
+  /// In en, this message translates to:
+  /// **'Raw material lab samples'**
   String get qualityLabSamplesRawMaterials;
 
+  /// No description provided for @qualityLabResultsRawMaterials.
+  ///
+  /// In en, this message translates to:
+  /// **'Raw material lab results'**
   String get qualityLabResultsRawMaterials;
 
+  /// No description provided for @qualityPhysicalLabResultsRawMaterials.
+  ///
+  /// In en, this message translates to:
+  /// **'Raw material physical lab results'**
   String get qualityPhysicalLabResultsRawMaterials;
 
+  /// No description provided for @qualityChecksRawMaterials.
+  ///
+  /// In en, this message translates to:
+  /// **'Raw material quality checks'**
   String get qualityChecksRawMaterials;
 
+  /// No description provided for @qualityChecksProduction.
+  ///
+  /// In en, this message translates to:
+  /// **'Production quality checks'**
   String get qualityChecksProduction;
 
+  /// No description provided for @productionScreensSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Production screens are separated so orders, details, and lab follow-up stay clear.'**
   String get productionScreensSubtitle;
 
+  /// No description provided for @productionOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'Production orders'**
   String get productionOrders;
 
+  /// No description provided for @productionOrderDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Production order details'**
   String get productionOrderDetails;
 
+  /// No description provided for @productionLabSamples.
+  ///
+  /// In en, this message translates to:
+  /// **'Production lab samples'**
   String get productionLabSamples;
 
+  /// No description provided for @productionLabResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Production lab results'**
   String get productionLabResults;
 
+  /// No description provided for @productionReserveMaterials.
+  ///
+  /// In en, this message translates to:
+  /// **'Reserve materials'**
   String get productionReserveMaterials;
 }
 

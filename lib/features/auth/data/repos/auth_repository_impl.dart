@@ -17,7 +17,7 @@ import '../models/login_response_model.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource _remoteDataSource;
-  final TokenManager _tokenManager;
+  final TokenStore _tokenManager;
   final ConnectionChecker _connectionChecker;
   final ApiErrorHandler _apiErrorHandler;
   final EnvConfig _envConfig;
@@ -65,17 +65,15 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<ApiResult<AuthSession>> restoreSession() async {
-    if (!_envConfig.hasApiBaseUrl) {
-      return const ApiFailure(
-        Failure(
-          code: FailureCode.unknown,
-          messageKey: 'failureConfigurationMissing',
-        ),
-      );
-    }
+    final storedValues = await Future.wait<String?>([
+      _tokenManager.readRefreshToken(),
+      _tokenManager.readAccessToken(),
+      _tokenManager.readUserJson(),
+    ]);
+    final refreshToken = storedValues[0];
+    final accessToken = storedValues[1];
+    final user = _readStoredUser(storedValues[2]);
 
-    final refreshToken = await _tokenManager.readRefreshToken();
-    final user = await _readStoredUser();
     if (refreshToken == null || refreshToken.isEmpty || user == null) {
       await _tokenManager.clearTokens();
       return const ApiFailure(
@@ -86,23 +84,33 @@ class AuthRepositoryImpl implements AuthRepository {
       );
     }
 
-    final hasConnection = await _connectionChecker.hasConnection;
-    if (!hasConnection) {
-      return const ApiFailure(
-        Failure(code: FailureCode.internetRequired, messageKey: 'failureNetwork'),
+    if (accessToken != null && accessToken.isNotEmpty) {
+      return ApiSuccess(
+        AuthSession(
+          accessToken: accessToken,
+          refreshToken: refreshToken,
+          user: user,
+        ),
       );
     }
 
-    final accessToken = await _tokenManager.readAccessToken();
-    if (accessToken != null && accessToken.isNotEmpty) {
-      final verifiedSession = await _verifyStoredAccessToken(
-        accessToken: accessToken,
-        refreshToken: refreshToken,
-        user: user,
+    if (!_envConfig.hasApiBaseUrl) {
+      return const ApiFailure(
+        Failure(
+          code: FailureCode.unknown,
+          messageKey: 'failureConfigurationMissing',
+        ),
       );
-      if (verifiedSession != null) {
-        return ApiSuccess(verifiedSession);
-      }
+    }
+
+    final hasConnection = await _connectionChecker.hasConnection;
+    if (!hasConnection) {
+      return const ApiFailure(
+        Failure(
+          code: FailureCode.internetRequired,
+          messageKey: 'failureNetwork',
+        ),
+      );
     }
 
     return _refreshStoredSession(refreshToken: refreshToken, user: user);
@@ -139,8 +147,7 @@ class AuthRepositoryImpl implements AuthRepository {
     );
   }
 
-  Future<AuthUser?> _readStoredUser() async {
-    final userJson = await _tokenManager.readUserJson();
+  AuthUser? _readStoredUser(String? userJson) {
     if (userJson == null || userJson.trim().isEmpty) {
       return null;
     }
@@ -153,27 +160,6 @@ class AuthRepositoryImpl implements AuthRepository {
 
       return AuthUserModel.fromJson(decoded).toEntity();
     } on FormatException {
-      return null;
-    }
-  }
-
-  Future<AuthSession?> _verifyStoredAccessToken({
-    required String accessToken,
-    required String refreshToken,
-    required AuthUser user,
-  }) async {
-    try {
-      await _remoteDataSource.verifyToken(accessToken);
-      return AuthSession(
-        accessToken: accessToken,
-        refreshToken: refreshToken,
-        user: user,
-      );
-    } on Object catch (error) {
-      final failure = _apiErrorHandler.handle(error);
-      if (failure.code != FailureCode.unauthorized) {
-        rethrow;
-      }
       return null;
     }
   }
