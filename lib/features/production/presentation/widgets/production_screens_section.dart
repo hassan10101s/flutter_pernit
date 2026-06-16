@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/localization/generated/app_localizations.dart';
 import '../../../../design_system/dialogs/pernit_screen_detail_dialog.dart';
+import '../../../screen_records/data/repos/screen_record_repository_dependencies.dart';
 import '../../../screen_records/presentation/bloc/screen_records_cubit.dart';
 import '../../../screen_records/presentation/widgets/screen_record_feature_section.dart';
 import '../bloc/production_record_cubits.dart';
@@ -106,25 +108,27 @@ class ProductionScreensSection extends StatelessWidget {
     PernitScreenDetailItem item,
     List<PernitScreenRecord> records,
   ) {
+    final dependencies = sl<ScreenRecordRepositoryDependencies>();
+
     return switch (item.endpoint) {
       '/v1/auth/erp/production-orders/' => ProductionOrdersRecordsCubit(
-        ProductionOrdersRecordsRepository(records),
+        ProductionOrdersRecordsRepository(records, dependencies),
       ),
       '/v1/auth/erp/production-order-details/' =>
         ProductionOrderDetailsRecordsCubit(
-          ProductionOrderDetailsRecordsRepository(records),
+          ProductionOrderDetailsRecordsRepository(records, dependencies),
         ),
       '/v1/auth/erp/lab-samples-of-production/' =>
         ProductionLabSamplesRecordsCubit(
-          ProductionLabSamplesRecordsRepository(records),
+          ProductionLabSamplesRecordsRepository(records, dependencies),
         ),
       '/v1/auth/erp/lab-results-production/' =>
         ProductionLabResultsRecordsCubit(
-          ProductionLabResultsRecordsRepository(records),
+          ProductionLabResultsRecordsRepository(records, dependencies),
         ),
       '/v1/auth/erp/production-orders/{id}/reserve_materials/' =>
         ProductionReserveMaterialsRecordsCubit(
-          ProductionReserveMaterialsRecordsRepository(records),
+          ProductionReserveMaterialsRecordsRepository(records, dependencies),
         ),
       _ => throw UnsupportedError('Unsupported production screen endpoint'),
     };

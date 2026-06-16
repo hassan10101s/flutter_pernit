@@ -23,47 +23,6 @@ class PernitScreenDetailItem {
   });
 }
 
-class PernitScreenListSection extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final List<PernitScreenDetailItem> screens;
-
-  const PernitScreenListSection({
-    super.key,
-    required this.title,
-    required this.subtitle,
-    required this.screens,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text(
-          title,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-            color: PernitColors.textStrong,
-            fontWeight: PernitFontWeights.bold,
-          ),
-        ),
-        verticalSpace(4),
-        Text(
-          subtitle,
-          style: Theme.of(
-            context,
-          ).textTheme.bodySmall?.copyWith(color: PernitColors.textMuted),
-        ),
-        verticalSpace(10),
-        for (final screen in screens) ...[
-          _ScreenListItem(item: screen),
-          verticalSpace(8),
-        ],
-      ],
-    );
-  }
-}
-
 class PernitScreenDetailDialog extends StatefulWidget {
   final PernitScreenDetailItem item;
   final List<PernitScreenRecord> records;
@@ -122,17 +81,6 @@ class _PernitScreenDetailDialogState extends State<PernitScreenDetailDialog> {
               style: Theme.of(
                 context,
               ).textTheme.bodySmall?.copyWith(color: PernitColors.textMuted),
-            ),
-            verticalSpace(6),
-            Directionality(
-              textDirection: TextDirection.ltr,
-              child: Text(
-                widget.item.endpoint,
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: PernitColors.primaryDark,
-                  fontWeight: PernitFontWeights.medium,
-                ),
-              ),
             ),
             verticalSpace(14),
             Row(
@@ -282,13 +230,11 @@ class _PernitScreenDetailDialogState extends State<PernitScreenDetailDialog> {
       return;
     }
 
-    setState(() {
-      if (index == null) {
-        widget.onAdd(saved);
-      } else {
-        widget.onEdit(index, saved);
-      }
-    });
+    if (index == null) {
+      widget.onAdd(saved);
+    } else {
+      widget.onEdit(index, saved);
+    }
   }
 
   List<String> _formFieldKeys(PernitScreenRecord? record) {
@@ -341,74 +287,6 @@ class _PernitScreenDetailDialogState extends State<PernitScreenDetailDialog> {
     }
 
     widget.onDelete(index);
-  }
-}
-
-class _ScreenListItem extends StatelessWidget {
-  final PernitScreenDetailItem item;
-
-  const _ScreenListItem({required this.item});
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: PernitColors.surface,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.r),
-        side: const BorderSide(color: PernitColors.border),
-      ),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(8.r),
-        onTap: () => showDialog<void>(
-          context: context,
-          builder: (_) => PernitScreenDetailDialog(
-            item: item,
-            records: item.records,
-            onAdd: (_) {},
-            onEdit: (_, _) {},
-            onDelete: (_) {},
-          ),
-        ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
-          child: Row(
-            children: [
-              Icon(item.icon, color: PernitColors.primary, size: 22.r),
-              horizontalSpace(12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      item.label,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: PernitColors.textStrong,
-                        fontWeight: PernitFontWeights.medium,
-                      ),
-                    ),
-                    verticalSpace(3),
-                    Directionality(
-                      textDirection: TextDirection.ltr,
-                      child: Text(
-                        item.endpoint,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: PernitColors.textMuted,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Icon(
-                Icons.chevron_right_rounded,
-                color: PernitColors.textMuted,
-                size: 22.r,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }
 

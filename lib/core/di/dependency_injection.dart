@@ -12,6 +12,8 @@ import '../../features/auth/domain/validators/login_validator.dart';
 import '../../features/auth/presentation/bloc/auth_session_cubit.dart';
 import '../../features/auth/presentation/bloc/login_cubit.dart';
 import '../../features/auth/presentation/bloc/logout_cubit.dart';
+import '../../features/screen_records/data/datasources/screen_record_remote_data_source.dart';
+import '../../features/screen_records/data/repos/screen_record_repository_dependencies.dart';
 import '../auth/auth_interceptor.dart';
 import '../auth/refresh_mutex.dart';
 import '../auth/token_manager.dart';
@@ -32,6 +34,7 @@ void configureDependencies() {
       () => const FlutterSecureStorage(),
     )
     ..registerLazySingleton<TokenManager>(() => TokenManager(sl()))
+    ..registerLazySingleton<TokenStore>(() => sl<TokenManager>())
     ..registerLazySingleton<RefreshMutex>(() => RefreshMutex())
     ..registerLazySingleton<PublicDioFactory>(() => PublicDioFactory(sl()))
     ..registerLazySingleton<DioAuthRemoteDataSource>(
@@ -54,6 +57,16 @@ void configureDependencies() {
       () => const RemoteConnectionChecker(),
     )
     ..registerLazySingleton<ApiErrorHandler>(() => const ApiErrorHandler())
+    ..registerLazySingleton<ScreenRecordRemoteDataSource>(
+      () => DioScreenRecordRemoteDataSource(sl()),
+    )
+    ..registerLazySingleton<ScreenRecordRepositoryDependencies>(
+      () => ScreenRecordRepositoryDependencies(
+        remoteDataSource: sl(),
+        apiErrorHandler: sl(),
+        envConfig: sl(),
+      ),
+    )
     ..registerLazySingleton<AuthRepository>(
       () => AuthRepositoryImpl(sl(), sl(), sl(), sl(), sl()),
     )

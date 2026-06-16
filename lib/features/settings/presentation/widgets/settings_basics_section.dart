@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/localization/generated/app_localizations.dart';
 import '../../../../design_system/dialogs/pernit_screen_detail_dialog.dart';
+import '../../../screen_records/data/repos/screen_record_repository_dependencies.dart';
 import '../../../screen_records/presentation/bloc/screen_records_cubit.dart';
 import '../../../screen_records/presentation/widgets/screen_record_feature_section.dart';
 import '../bloc/settings_record_cubits.dart';
@@ -283,59 +285,61 @@ class SettingsBasicsSection extends StatelessWidget {
     PernitScreenDetailItem item,
     List<PernitScreenRecord> records,
   ) {
+    final dependencies = sl<ScreenRecordRepositoryDependencies>();
+
     return switch (item.endpoint) {
       '/v1/auth/erp/sops-lab/' => SopRecordsCubit(
-        SopRecordsRepository(records),
+        SopRecordsRepository(records, dependencies),
       ),
       '/v1/auth/erp/sop-details-lab/' => SopDetailsRecordsCubit(
-        SopDetailsRecordsRepository(records),
+        SopDetailsRecordsRepository(records, dependencies),
       ),
       '/v1/auth/erp/warehouses/' => WarehousesRecordsCubit(
-        WarehousesRecordsRepository(records),
+        WarehousesRecordsRepository(records, dependencies),
       ),
       '/v1/auth/erp/products/' => ProductsRecordsCubit(
-        ProductsRecordsRepository(records),
+        ProductsRecordsRepository(records, dependencies),
       ),
       '/v1/auth/erp/raw-materials/' => RawMaterialsRecordsCubit(
-        RawMaterialsRecordsRepository(records),
+        RawMaterialsRecordsRepository(records, dependencies),
       ),
       '/v1/auth/erp/category-products/' => ProductCategoriesRecordsCubit(
-        ProductCategoriesRecordsRepository(records),
+        ProductCategoriesRecordsRepository(records, dependencies),
       ),
       '/v1/auth/erp/category-raw-materials/' =>
         RawMaterialCategoriesRecordsCubit(
-          RawMaterialCategoriesRecordsRepository(records),
+          RawMaterialCategoriesRecordsRepository(records, dependencies),
         ),
       '/v1/auth/erp/formulas/' => FormulasRecordsCubit(
-        FormulasRecordsRepository(records),
+        FormulasRecordsRepository(records, dependencies),
       ),
       '/v1/auth/erp/formula-details/' => FormulaDetailsRecordsCubit(
-        FormulaDetailsRecordsRepository(records),
+        FormulaDetailsRecordsRepository(records, dependencies),
       ),
       '/v1/auth/erp/production-rules/' => ProductionRulesRecordsCubit(
-        ProductionRulesRecordsRepository(records),
+        ProductionRulesRecordsRepository(records, dependencies),
       ),
       '/v1/auth/erp/parameter-labs/' => LabParametersRecordsCubit(
-        LabParametersRecordsRepository(records),
+        LabParametersRecordsRepository(records, dependencies),
       ),
       '/v1/auth/erp/physical-labs/' => PhysicalLabsRecordsCubit(
-        PhysicalLabsRecordsRepository(records),
+        PhysicalLabsRecordsRepository(records, dependencies),
       ),
       '/v1/auth/erp/analysis-parameters-raw-materials/' =>
         AnalysisParametersRecordsCubit(
-          AnalysisParametersRecordsRepository(records),
+          AnalysisParametersRecordsRepository(records, dependencies),
         ),
       '/v1/auth/erp/reference-methods/' => ReferenceMethodsRecordsCubit(
-        ReferenceMethodsRecordsRepository(records),
+        ReferenceMethodsRecordsRepository(records, dependencies),
       ),
       '/v1/auth/erp/predictive-results/' => PredictiveResultsRecordsCubit(
-        PredictiveResultsRecordsRepository(records),
+        PredictiveResultsRecordsRepository(records, dependencies),
       ),
       '/v1/auth/erp/suppliers/' => SuppliersRecordsCubit(
-        SuppliersRecordsRepository(records),
+        SuppliersRecordsRepository(records, dependencies),
       ),
       '/v1/auth/erp/customers/' => CustomersRecordsCubit(
-        CustomersRecordsRepository(records),
+        CustomersRecordsRepository(records, dependencies),
       ),
       _ => throw UnsupportedError('Unsupported settings screen endpoint'),
     };

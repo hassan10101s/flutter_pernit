@@ -3,41 +3,34 @@ import '../../../../core/errors/api_error_handler.dart';
 import '../../../../core/errors/api_result.dart';
 import '../../../../core/errors/failure.dart';
 import '../../../../core/errors/failure_code.dart';
-import '../../../../core/network/connection_checker.dart';
 import '../../../../core/screen_records/pernit_screen_record.dart';
 import '../../domain/repos/screen_record_repository.dart';
 import '../datasources/screen_record_remote_data_source.dart';
+import 'screen_record_repository_dependencies.dart';
 
 class EndpointScreenRecordRepository implements ScreenRecordRepository {
   final String endpoint;
   final ScreenRecordRemoteDataSource? _remoteDataSource;
   final ApiErrorHandler? _apiErrorHandler;
-  final ConnectionChecker? _connectionChecker;
   final EnvConfig? _envConfig;
   final List<PernitScreenRecord> _records;
 
   EndpointScreenRecordRepository({
     required this.endpoint,
     required List<PernitScreenRecord> initialRecords,
+    ScreenRecordRepositoryDependencies? dependencies,
     ScreenRecordRemoteDataSource? remoteDataSource,
     ApiErrorHandler? apiErrorHandler,
-    ConnectionChecker? connectionChecker,
     EnvConfig? envConfig,
-  }) : _remoteDataSource = remoteDataSource,
-       _apiErrorHandler = apiErrorHandler,
-       _connectionChecker = connectionChecker,
-       _envConfig = envConfig,
+  }) : _remoteDataSource = remoteDataSource ?? dependencies?.remoteDataSource,
+       _apiErrorHandler = apiErrorHandler ?? dependencies?.apiErrorHandler,
+       _envConfig = envConfig ?? dependencies?.envConfig,
        _records = [...initialRecords];
 
   @override
   Future<ApiResult<List<PernitScreenRecord>>> fetchRecords() async {
     if (!_canUseRemote) {
       return ApiSuccess([..._records]);
-    }
-
-    final connectionResult = await _ensureConnection();
-    if (connectionResult != null) {
-      return connectionResult;
     }
 
     try {
@@ -58,11 +51,6 @@ class EndpointScreenRecordRepository implements ScreenRecordRepository {
     if (!_canUseRemote) {
       _records.add(record);
       return ApiSuccess([..._records]);
-    }
-
-    final connectionResult = await _ensureConnection();
-    if (connectionResult != null) {
-      return connectionResult;
     }
 
     try {
@@ -98,11 +86,6 @@ class EndpointScreenRecordRepository implements ScreenRecordRepository {
       );
     }
 
-    final connectionResult = await _ensureConnection();
-    if (connectionResult != null) {
-      return connectionResult;
-    }
-
     try {
       final updated = await _remoteDataSource!.updateRecord(
         endpoint,
@@ -134,11 +117,6 @@ class EndpointScreenRecordRepository implements ScreenRecordRepository {
       );
     }
 
-    final connectionResult = await _ensureConnection();
-    if (connectionResult != null) {
-      return connectionResult;
-    }
-
     try {
       await _remoteDataSource!.deleteRecord(endpoint, id);
       _records.removeAt(index);
@@ -151,19 +129,7 @@ class EndpointScreenRecordRepository implements ScreenRecordRepository {
   bool get _canUseRemote {
     return _remoteDataSource != null &&
         _apiErrorHandler != null &&
-        _connectionChecker != null &&
         (_envConfig?.hasApiBaseUrl ?? false);
-  }
-
-  Future<ApiFailure<List<PernitScreenRecord>>?> _ensureConnection() async {
-    final hasConnection = await _connectionChecker!.hasConnection;
-    if (hasConnection) {
-      return null;
-    }
-
-    return const ApiFailure(
-      Failure(code: FailureCode.internetRequired, messageKey: 'failureNetwork'),
-    );
   }
 
   PernitScreenRecord _recordFromJson(Map<String, dynamic> json) {

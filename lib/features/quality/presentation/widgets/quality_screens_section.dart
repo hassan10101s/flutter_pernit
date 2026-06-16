@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/localization/generated/app_localizations.dart';
 import '../../../../design_system/dialogs/pernit_screen_detail_dialog.dart';
+import '../../../screen_records/data/repos/screen_record_repository_dependencies.dart';
 import '../../../screen_records/presentation/bloc/screen_records_cubit.dart';
 import '../../../screen_records/presentation/widgets/screen_record_feature_section.dart';
 import '../bloc/quality_record_cubits.dart';
@@ -106,26 +108,28 @@ class QualityScreensSection extends StatelessWidget {
     PernitScreenDetailItem item,
     List<PernitScreenRecord> records,
   ) {
+    final dependencies = sl<ScreenRecordRepositoryDependencies>();
+
     return switch (item.endpoint) {
       '/v1/auth/erp/lab-samples-of-received-raw-materials/' =>
         RawMaterialLabSamplesRecordsCubit(
-          RawMaterialLabSamplesRecordsRepository(records),
+          RawMaterialLabSamplesRecordsRepository(records, dependencies),
         ),
       '/v1/auth/erp/lab-results-raw-materials/' =>
         RawMaterialLabResultsRecordsCubit(
-          RawMaterialLabResultsRecordsRepository(records),
+          RawMaterialLabResultsRecordsRepository(records, dependencies),
         ),
       '/v1/auth/erp/physical-lab-results-raw-materials/' =>
         RawMaterialPhysicalLabResultsRecordsCubit(
-          RawMaterialPhysicalLabResultsRecordsRepository(records),
+          RawMaterialPhysicalLabResultsRecordsRepository(records, dependencies),
         ),
       '/v1/auth/erp/quality-checks-raw-materials/' =>
         RawMaterialQualityChecksRecordsCubit(
-          RawMaterialQualityChecksRecordsRepository(records),
+          RawMaterialQualityChecksRecordsRepository(records, dependencies),
         ),
       '/v1/auth/erp/quality-checks-production/' =>
         ProductionQualityChecksRecordsCubit(
-          ProductionQualityChecksRecordsRepository(records),
+          ProductionQualityChecksRecordsRepository(records, dependencies),
         ),
       _ => throw UnsupportedError('Unsupported quality screen endpoint'),
     };

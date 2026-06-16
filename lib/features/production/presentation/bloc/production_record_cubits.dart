@@ -1,12 +1,14 @@
 import '../../../../core/screen_records/pernit_screen_record.dart';
 import '../../../screen_records/data/repos/endpoint_screen_record_repository.dart';
+import '../../../screen_records/data/repos/screen_record_repository_dependencies.dart';
 import '../../../screen_records/presentation/bloc/screen_records_cubit.dart';
 
 class ProductionOrdersRecordsRepository extends EndpointScreenRecordRepository {
-  ProductionOrdersRecordsRepository(List<PernitScreenRecord> records)
+  ProductionOrdersRecordsRepository(List<PernitScreenRecord> records, [ScreenRecordRepositoryDependencies? dependencies])
     : super(
         endpoint: '/v1/auth/erp/production-orders/',
         initialRecords: records,
+        dependencies: dependencies,
       );
 }
 
@@ -18,10 +20,11 @@ class ProductionOrdersRecordsCubit extends ScreenRecordsCubit {
 
 class ProductionOrderDetailsRecordsRepository
     extends EndpointScreenRecordRepository {
-  ProductionOrderDetailsRecordsRepository(List<PernitScreenRecord> records)
+  ProductionOrderDetailsRecordsRepository(List<PernitScreenRecord> records, [ScreenRecordRepositoryDependencies? dependencies])
     : super(
         endpoint: '/v1/auth/erp/production-order-details/',
         initialRecords: records,
+        dependencies: dependencies,
       );
 }
 
@@ -33,10 +36,11 @@ class ProductionOrderDetailsRecordsCubit extends ScreenRecordsCubit {
 
 class ProductionLabSamplesRecordsRepository
     extends EndpointScreenRecordRepository {
-  ProductionLabSamplesRecordsRepository(List<PernitScreenRecord> records)
+  ProductionLabSamplesRecordsRepository(List<PernitScreenRecord> records, [ScreenRecordRepositoryDependencies? dependencies])
     : super(
         endpoint: '/v1/auth/erp/lab-samples-of-production/',
         initialRecords: records,
+        dependencies: dependencies,
       );
 }
 
@@ -48,10 +52,11 @@ class ProductionLabSamplesRecordsCubit extends ScreenRecordsCubit {
 
 class ProductionLabResultsRecordsRepository
     extends EndpointScreenRecordRepository {
-  ProductionLabResultsRecordsRepository(List<PernitScreenRecord> records)
+  ProductionLabResultsRecordsRepository(List<PernitScreenRecord> records, [ScreenRecordRepositoryDependencies? dependencies])
     : super(
         endpoint: '/v1/auth/erp/lab-results-production/',
         initialRecords: records,
+        dependencies: dependencies,
       );
 }
 
@@ -63,10 +68,11 @@ class ProductionLabResultsRecordsCubit extends ScreenRecordsCubit {
 
 class ProductionReserveMaterialsRecordsRepository
     extends EndpointScreenRecordRepository {
-  ProductionReserveMaterialsRecordsRepository(List<PernitScreenRecord> records)
+  ProductionReserveMaterialsRecordsRepository(List<PernitScreenRecord> records, [ScreenRecordRepositoryDependencies? dependencies])
     : super(
         endpoint: '/v1/auth/erp/production-orders/{id}/reserve_materials/',
         initialRecords: records,
+        dependencies: dependencies,
       );
 }
 

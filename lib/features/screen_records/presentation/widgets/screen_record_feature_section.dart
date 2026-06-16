@@ -73,10 +73,7 @@ class _ScreenRecordFeatureTile extends StatelessWidget {
       create: (_) => createCubit(item, item.records)..load(),
       child: BlocBuilder<ScreenRecordsCubit, ScreenRecordsState>(
         builder: (context, state) {
-          return _ScreenTile(
-            item: item,
-            records: _recordsForState(state, item.records),
-          );
+          return _ScreenTile(item: item);
         },
       ),
     );
@@ -85,12 +82,13 @@ class _ScreenRecordFeatureTile extends StatelessWidget {
 
 class _ScreenTile extends StatelessWidget {
   final PernitScreenDetailItem item;
-  final List<PernitScreenRecord> records;
 
-  const _ScreenTile({required this.item, required this.records});
+  const _ScreenTile({required this.item});
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ScreenRecordsCubit>();
+
     return Material(
       color: PernitColors.surface,
       shape: RoundedRectangleBorder(
@@ -101,19 +99,17 @@ class _ScreenTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.r),
         onTap: () => showDialog<void>(
           context: context,
-          builder: (_) => BlocProvider.value(
-            value: context.read<ScreenRecordsCubit>(),
-            child: BlocBuilder<ScreenRecordsCubit, ScreenRecordsState>(
-              builder: (context, state) {
-                return PernitScreenDetailDialog(
-                  item: item,
-                  records: _recordsForState(state, records),
-                  onAdd: context.read<ScreenRecordsCubit>().addRecord,
-                  onEdit: context.read<ScreenRecordsCubit>().updateRecord,
-                  onDelete: context.read<ScreenRecordsCubit>().deleteRecord,
-                );
-              },
-            ),
+          builder: (_) => BlocBuilder<ScreenRecordsCubit, ScreenRecordsState>(
+            bloc: cubit,
+            builder: (context, state) {
+              return PernitScreenDetailDialog(
+                item: item,
+                records: _recordsForState(state),
+                onAdd: cubit.addRecord,
+                onEdit: cubit.updateRecord,
+                onDelete: cubit.deleteRecord,
+              );
+            },
           ),
         ),
         child: Padding(
@@ -131,16 +127,6 @@ class _ScreenTile extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: PernitColors.textStrong,
                         fontWeight: PernitFontWeights.medium,
-                      ),
-                    ),
-                    verticalSpace(3),
-                    Directionality(
-                      textDirection: TextDirection.ltr,
-                      child: Text(
-                        item.endpoint,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: PernitColors.textMuted,
-                        ),
                       ),
                     ),
                   ],
@@ -161,11 +147,6 @@ class _ScreenTile extends StatelessWidget {
 
 List<PernitScreenRecord> _recordsForState(
   ScreenRecordsState state,
-  List<PernitScreenRecord> fallback,
 ) {
-  return switch (state) {
-    ScreenRecordsInitial() ||
-    ScreenRecordsLoading() when state.records.isEmpty => fallback,
-    _ => state.records,
-  };
+  return state.records;
 }
