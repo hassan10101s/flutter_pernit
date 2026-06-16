@@ -445,6 +445,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This area is visible for System Admin/Admin only.'**
   String get settingsAdminOnlyNote;
+
+  String get settingsBasicsSectionTitle;
+
+  String get settingsBasicsSectionSubtitle;
+
+  String get settingsUnitsSectionTitle;
+
+  String get settingsUnitsSectionSubtitle;
+
+  String get screenRecordsTitle;
+
+  String get screenActionsTitle;
+
+  String get screenAddAction;
+
+  String get screenEditAction;
+
+  String get screenDeleteAction;
+
+  String get screenCloseAction;
+
+  String get screenCancelAction;
+
+  String get screenSaveAction;
+
+  String get screenNameField;
+
+  String get screenCodeField;
+
+  String get screenDetailsField;
+
+  String get screenNoRecords;
+
+  String screenDialogSubtitle(String screen);
+
+  String screenAddDialogTitle(String screen);
+
+  String screenEditDialogTitle(String screen);
+
+  String get screenDeleteConfirmTitle;
+
+  String screenDeleteConfirmMessage(String record);
+
+  String get qualityScreensSubtitle;
+
+  String get qualityLabSamplesRawMaterials;
+
+  String get qualityLabResultsRawMaterials;
+
+  String get qualityPhysicalLabResultsRawMaterials;
+
+  String get qualityChecksRawMaterials;
+
+  String get qualityChecksProduction;
+
+  String get productionScreensSubtitle;
+
+  String get productionOrders;
+
+  String get productionOrderDetails;
+
+  String get productionLabSamples;
+
+  String get productionLabResults;
+
+  String get productionReserveMaterials;
 }
 
 class _AppLocalizationsDelegate

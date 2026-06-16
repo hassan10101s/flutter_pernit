@@ -78,5 +78,66 @@
   "settingsPredictiveResults": "Predictive results",
   "settingsSuppliers": "Suppliers",
   "settingsCustomers": "Customers",
-  "settingsAdminOnlyNote": "This area is visible for System Admin/Admin only."
+  "settingsAdminOnlyNote": "This area is visible for System Admin/Admin only.",
+  "settingsBasicsSectionTitle": "Core setup",
+  "settingsBasicsSectionSubtitle": "Foundational setup screens that define reusable ERP reference data.",
+  "settingsUnitsSectionTitle": "Units",
+  "settingsUnitsSectionSubtitle": "Measurement units used by products, raw materials, lab ranges, and formulas.",
+  "screenRecordsTitle": "Current records",
+  "screenActionsTitle": "Actions",
+  "screenAddAction": "Add",
+  "screenEditAction": "Edit",
+  "screenDeleteAction": "Delete",
+  "screenCloseAction": "Close",
+  "screenCancelAction": "Cancel",
+  "screenSaveAction": "Save",
+  "screenNameField": "Name",
+  "screenCodeField": "Code",
+  "screenDetailsField": "Details",
+  "screenNoRecords": "No records are available yet.",
+  "screenDialogSubtitle": "Review the current {screen} records, then add, edit, or delete from the action column.",
+  "@screenDialogSubtitle": {
+    "placeholders": {
+      "screen": {
+        "type": "String"
+      }
+    }
+  },
+  "screenAddDialogTitle": "Add {screen}",
+  "@screenAddDialogTitle": {
+    "placeholders": {
+      "screen": {
+        "type": "String"
+      }
+    }
+  },
+  "screenEditDialogTitle": "Edit {screen}",
+  "@screenEditDialogTitle": {
+    "placeholders": {
+      "screen": {
+        "type": "String"
+      }
+    }
+  },
+  "screenDeleteConfirmTitle": "Delete record",
+  "screenDeleteConfirmMessage": "Delete {record}? This action requires confirmation.",
+  "@screenDeleteConfirmMessage": {
+    "placeholders": {
+      "record": {
+        "type": "String"
+      }
+    }
+  },
+  "qualityScreensSubtitle": "Quality screens are separated so each inspection, sample, and result flow can be reviewed alone.",
+  "qualityLabSamplesRawMaterials": "Raw material lab samples",
+  "qualityLabResultsRawMaterials": "Raw material lab results",
+  "qualityPhysicalLabResultsRawMaterials": "Raw material physical lab results",
+  "qualityChecksRawMaterials": "Raw material quality checks",
+  "qualityChecksProduction": "Production quality checks",
+  "productionScreensSubtitle": "Production screens are separated so orders, details, and lab follow-up stay clear.",
+  "productionOrders": "Production orders",
+  "productionOrderDetails": "Production order details",
+  "productionLabSamples": "Production lab samples",
+  "productionLabResults": "Production lab results",
+  "productionReserveMaterials": "Reserve materials"
 }

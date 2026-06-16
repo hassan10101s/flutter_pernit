@@ -33,6 +33,7 @@ void main() {
     final subscription = cubit.stream.listen(states.add);
 
     await cubit.checkSession();
+    await Future<void>.delayed(Duration.zero);
 
     expect(states, const [
       AuthSessionChecking(),
@@ -55,11 +56,9 @@ void main() {
     final subscription = cubit.stream.listen(states.add);
 
     await cubit.checkSession();
+    await Future<void>.delayed(Duration.zero);
 
-    expect(states, const [
-      AuthSessionChecking(),
-      AuthSessionUnauthenticated(),
-    ]);
+    expect(states, const [AuthSessionChecking(), AuthSessionUnauthenticated()]);
 
     await subscription.cancel();
     await cubit.close();

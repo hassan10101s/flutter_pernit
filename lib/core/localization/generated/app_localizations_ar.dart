@@ -191,4 +191,116 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get settingsAdminOnlyNote =>
       'هذه المنطقة تظهر فقط لمجموعات System Admin/Admin.';
+
+  @override
+  String get settingsBasicsSectionTitle => 'الإعدادات الأساسية';
+
+  @override
+  String get settingsBasicsSectionSubtitle =>
+      'شاشات الإعداد التي تحدد بيانات ERP المرجعية القابلة لإعادة الاستخدام.';
+
+  @override
+  String get settingsUnitsSectionTitle => 'الوحدات';
+
+  @override
+  String get settingsUnitsSectionSubtitle =>
+      'وحدات القياس المستخدمة في المنتجات والمواد الخام ونطاقات المختبر والتركيبات.';
+
+  @override
+  String get screenRecordsTitle => 'السجلات الحالية';
+
+  @override
+  String get screenActionsTitle => 'الإجراءات';
+
+  @override
+  String get screenAddAction => 'إضافة';
+
+  @override
+  String get screenEditAction => 'تعديل';
+
+  @override
+  String get screenDeleteAction => 'حذف';
+
+  @override
+  String get screenCloseAction => 'إغلاق';
+
+  @override
+  String get screenCancelAction => 'إلغاء';
+
+  @override
+  String get screenSaveAction => 'حفظ';
+
+  @override
+  String get screenNameField => 'الاسم';
+
+  @override
+  String get screenCodeField => 'الكود';
+
+  @override
+  String get screenDetailsField => 'التفاصيل';
+
+  @override
+  String get screenNoRecords => 'لا توجد سجلات متاحة بعد.';
+
+  @override
+  String screenDialogSubtitle(String screen) {
+    return 'راجع سجلات $screen الحالية ثم أضف أو عدل أو احذف من عمود الإجراءات.';
+  }
+
+  @override
+  String screenAddDialogTitle(String screen) {
+    return 'إضافة $screen';
+  }
+
+  @override
+  String screenEditDialogTitle(String screen) {
+    return 'تعديل $screen';
+  }
+
+  @override
+  String get screenDeleteConfirmTitle => 'حذف السجل';
+
+  @override
+  String screenDeleteConfirmMessage(String record) {
+    return 'حذف $record؟ هذا الإجراء يحتاج تأكيد.';
+  }
+
+  @override
+  String get qualityScreensSubtitle =>
+      'شاشات الجودة مفصولة لمراجعة كل تدفق فحص وعينة ونتيجة على حدة.';
+
+  @override
+  String get qualityLabSamplesRawMaterials => 'عينات مختبر المواد الخام';
+
+  @override
+  String get qualityLabResultsRawMaterials => 'نتائج مختبر المواد الخام';
+
+  @override
+  String get qualityPhysicalLabResultsRawMaterials =>
+      'نتائج المختبر الفيزيائي للمواد الخام';
+
+  @override
+  String get qualityChecksRawMaterials => 'قرارات جودة المواد الخام';
+
+  @override
+  String get qualityChecksProduction => 'قرارات جودة الإنتاج';
+
+  @override
+  String get productionScreensSubtitle =>
+      'شاشات الإنتاج مفصولة لبقاء الأوامر والتفاصيل ومتابعة المختبر واضحة.';
+
+  @override
+  String get productionOrders => 'أوامر الإنتاج';
+
+  @override
+  String get productionOrderDetails => 'تفاصيل أوامر الإنتاج';
+
+  @override
+  String get productionLabSamples => 'عينات مختبر الإنتاج';
+
+  @override
+  String get productionLabResults => 'نتائج مختبر الإنتاج';
+
+  @override
+  String get productionReserveMaterials => 'حجز المواد';
 }

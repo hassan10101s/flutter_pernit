@@ -78,5 +78,66 @@
   "settingsPredictiveResults": "النتائج التنبؤية",
   "settingsSuppliers": "الموردون",
   "settingsCustomers": "العملاء",
-  "settingsAdminOnlyNote": "هذه المنطقة تظهر فقط لمجموعات System Admin/Admin."
+  "settingsAdminOnlyNote": "هذه المنطقة تظهر فقط لمجموعات System Admin/Admin.",
+  "settingsBasicsSectionTitle": "الإعدادات الأساسية",
+  "settingsBasicsSectionSubtitle": "شاشات الإعداد التي تحدد بيانات ERP المرجعية القابلة لإعادة الاستخدام.",
+  "settingsUnitsSectionTitle": "الوحدات",
+  "settingsUnitsSectionSubtitle": "وحدات القياس المستخدمة في المنتجات والمواد الخام ونطاقات المختبر والتركيبات.",
+  "screenRecordsTitle": "السجلات الحالية",
+  "screenActionsTitle": "الإجراءات",
+  "screenAddAction": "إضافة",
+  "screenEditAction": "تعديل",
+  "screenDeleteAction": "حذف",
+  "screenCloseAction": "إغلاق",
+  "screenCancelAction": "إلغاء",
+  "screenSaveAction": "حفظ",
+  "screenNameField": "الاسم",
+  "screenCodeField": "الكود",
+  "screenDetailsField": "التفاصيل",
+  "screenNoRecords": "لا توجد سجلات متاحة بعد.",
+  "screenDialogSubtitle": "راجع سجلات {screen} الحالية ثم أضف أو عدل أو احذف من عمود الإجراءات.",
+  "@screenDialogSubtitle": {
+    "placeholders": {
+      "screen": {
+        "type": "String"
+      }
+    }
+  },
+  "screenAddDialogTitle": "إضافة {screen}",
+  "@screenAddDialogTitle": {
+    "placeholders": {
+      "screen": {
+        "type": "String"
+      }
+    }
+  },
+  "screenEditDialogTitle": "تعديل {screen}",
+  "@screenEditDialogTitle": {
+    "placeholders": {
+      "screen": {
+        "type": "String"
+      }
+    }
+  },
+  "screenDeleteConfirmTitle": "حذف السجل",
+  "screenDeleteConfirmMessage": "حذف {record}؟ هذا الإجراء يحتاج تأكيد.",
+  "@screenDeleteConfirmMessage": {
+    "placeholders": {
+      "record": {
+        "type": "String"
+      }
+    }
+  },
+  "qualityScreensSubtitle": "شاشات الجودة مفصولة لمراجعة كل تدفق فحص وعينة ونتيجة على حدة.",
+  "qualityLabSamplesRawMaterials": "عينات مختبر المواد الخام",
+  "qualityLabResultsRawMaterials": "نتائج مختبر المواد الخام",
+  "qualityPhysicalLabResultsRawMaterials": "نتائج المختبر الفيزيائي للمواد الخام",
+  "qualityChecksRawMaterials": "قرارات جودة المواد الخام",
+  "qualityChecksProduction": "قرارات جودة الإنتاج",
+  "productionScreensSubtitle": "شاشات الإنتاج مفصولة لبقاء الأوامر والتفاصيل ومتابعة المختبر واضحة.",
+  "productionOrders": "أوامر الإنتاج",
+  "productionOrderDetails": "تفاصيل أوامر الإنتاج",
+  "productionLabSamples": "عينات مختبر الإنتاج",
+  "productionLabResults": "نتائج مختبر الإنتاج",
+  "productionReserveMaterials": "حجز المواد"
 }

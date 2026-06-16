@@ -193,4 +193,116 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get settingsAdminOnlyNote =>
       'This area is visible for System Admin/Admin only.';
+
+  @override
+  String get settingsBasicsSectionTitle => 'Core setup';
+
+  @override
+  String get settingsBasicsSectionSubtitle =>
+      'Foundational setup screens that define reusable ERP reference data.';
+
+  @override
+  String get settingsUnitsSectionTitle => 'Units';
+
+  @override
+  String get settingsUnitsSectionSubtitle =>
+      'Measurement units used by products, raw materials, lab ranges, and formulas.';
+
+  @override
+  String get screenRecordsTitle => 'Current records';
+
+  @override
+  String get screenActionsTitle => 'Actions';
+
+  @override
+  String get screenAddAction => 'Add';
+
+  @override
+  String get screenEditAction => 'Edit';
+
+  @override
+  String get screenDeleteAction => 'Delete';
+
+  @override
+  String get screenCloseAction => 'Close';
+
+  @override
+  String get screenCancelAction => 'Cancel';
+
+  @override
+  String get screenSaveAction => 'Save';
+
+  @override
+  String get screenNameField => 'Name';
+
+  @override
+  String get screenCodeField => 'Code';
+
+  @override
+  String get screenDetailsField => 'Details';
+
+  @override
+  String get screenNoRecords => 'No records are available yet.';
+
+  @override
+  String screenDialogSubtitle(String screen) {
+    return 'Review the current $screen records, then add, edit, or delete from the action column.';
+  }
+
+  @override
+  String screenAddDialogTitle(String screen) {
+    return 'Add $screen';
+  }
+
+  @override
+  String screenEditDialogTitle(String screen) {
+    return 'Edit $screen';
+  }
+
+  @override
+  String get screenDeleteConfirmTitle => 'Delete record';
+
+  @override
+  String screenDeleteConfirmMessage(String record) {
+    return 'Delete $record? This action requires confirmation.';
+  }
+
+  @override
+  String get qualityScreensSubtitle =>
+      'Quality screens are separated so each inspection, sample, and result flow can be reviewed alone.';
+
+  @override
+  String get qualityLabSamplesRawMaterials => 'Raw material lab samples';
+
+  @override
+  String get qualityLabResultsRawMaterials => 'Raw material lab results';
+
+  @override
+  String get qualityPhysicalLabResultsRawMaterials =>
+      'Raw material physical lab results';
+
+  @override
+  String get qualityChecksRawMaterials => 'Raw material quality checks';
+
+  @override
+  String get qualityChecksProduction => 'Production quality checks';
+
+  @override
+  String get productionScreensSubtitle =>
+      'Production screens are separated so orders, details, and lab follow-up stay clear.';
+
+  @override
+  String get productionOrders => 'Production orders';
+
+  @override
+  String get productionOrderDetails => 'Production order details';
+
+  @override
+  String get productionLabSamples => 'Production lab samples';
+
+  @override
+  String get productionLabResults => 'Production lab results';
+
+  @override
+  String get productionReserveMaterials => 'Reserve materials';
 }
