@@ -145,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
       HomeMenuSection.inventory => Icons.inventory_2_outlined,
       HomeMenuSection.quality => Icons.verified_outlined,
       HomeMenuSection.production => Icons.factory_outlined,
-      HomeMenuSection.commercial => Icons.receipt_long_outlined,
+      HomeMenuSection.commercial => Icons.move_to_inbox_outlined,
       HomeMenuSection.settings => Icons.settings_outlined,
     };
   }

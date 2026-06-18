@@ -36,13 +36,10 @@ void main() {
     expect(sections, isNot(contains(HomeMenuSection.settings)));
   });
 
-  test('sales and purchase groups map to commercial orders menu', () {
-    final sections = HomeMenuPolicy(const ['Sales']).visibleSections();
-    final purchaseSections = HomeMenuPolicy(const [
-      'Purchases',
-    ]).visibleSections();
+  test('inventory group can access raw material entry menu', () {
+    final sections = HomeMenuPolicy(const ['Inventory']).visibleSections();
 
     expect(sections, contains(HomeMenuSection.commercial));
-    expect(purchaseSections, contains(HomeMenuSection.commercial));
+    expect(sections, contains(HomeMenuSection.inventory));
   });
 }

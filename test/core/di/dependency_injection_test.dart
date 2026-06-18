@@ -5,6 +5,8 @@ import 'package:flutter_pernit/core/di/dependency_injection.dart';
 import 'package:flutter_pernit/features/auth/domain/repos/auth_repository.dart';
 import 'package:flutter_pernit/features/auth/presentation/bloc/auth_session_cubit.dart';
 import 'package:flutter_pernit/features/auth/presentation/bloc/login_cubit.dart';
+import 'package:flutter_pernit/features/raw_material_entry/domain/repos/raw_material_entry_repository.dart';
+import 'package:flutter_pernit/features/raw_material_entry/presentation/bloc/raw_material_entry_cubit.dart';
 
 void main() {
   tearDown(() async {
@@ -16,7 +18,9 @@ void main() {
 
     expect(sl<TokenStore>(), same(sl<TokenManager>()));
     expect(sl<AuthRepository>(), isA<AuthRepository>());
+    expect(sl<RawMaterialEntryRepository>(), isA<RawMaterialEntryRepository>());
     expect(sl<LoginCubit>(), isA<LoginCubit>());
     expect(sl<AuthSessionCubit>(), isA<AuthSessionCubit>());
+    expect(sl<RawMaterialEntryCubit>(), isA<RawMaterialEntryCubit>());
   });
 }

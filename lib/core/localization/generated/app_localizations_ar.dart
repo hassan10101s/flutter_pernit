@@ -104,7 +104,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get menuProduction => 'الإنتاج';
 
   @override
-  String get menuCommercial => 'الطلبات';
+  String get menuCommercial => 'دخول الخامات';
 
   @override
   String get menuSettings => 'الإعدادات';

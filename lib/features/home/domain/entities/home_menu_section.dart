@@ -37,6 +37,7 @@ class HomeMenuPolicy extends Equatable {
 
     if (groups.contains('inventory')) {
       sections.add(HomeMenuSection.inventory);
+      sections.add(HomeMenuSection.commercial);
     }
 
     if (groups.contains('quality')) {
@@ -45,12 +46,6 @@ class HomeMenuPolicy extends Equatable {
 
     if (groups.contains('production')) {
       sections.add(HomeMenuSection.production);
-    }
-
-    if (groups.contains('sales') ||
-        groups.contains('purchase') ||
-        groups.contains('purchases')) {
-      sections.add(HomeMenuSection.commercial);
     }
 
     if (groups.contains('standard user')) {

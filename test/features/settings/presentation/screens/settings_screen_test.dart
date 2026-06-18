@@ -2,11 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:flutter_pernit/core/di/dependency_injection.dart';
 import 'package:flutter_pernit/core/localization/generated/app_localizations.dart';
 import 'package:flutter_pernit/features/settings/presentation/screens/settings_screen.dart';
 
 void main() {
+  tearDown(() async {
+    await sl.reset();
+  });
+
   testWidgets('settings units item opens records dialog', (tester) async {
+    configureDependencies();
+
     await tester.pumpWidget(
       ScreenUtilInit(
         designSize: const Size(375, 812),
@@ -23,9 +30,9 @@ void main() {
     );
 
     expect(find.text('Core setup'), findsOneWidget);
-    expect(find.text('/v1/auth/erp/units/'), findsOneWidget);
+    expect(find.text('Units'), findsWidgets);
 
-    await tester.tap(find.text('/v1/auth/erp/units/'));
+    await tester.tap(find.text('Units').last);
     await tester.pumpAndSettle();
 
     expect(find.text('Current records'), findsOneWidget);

@@ -1,0 +1,1381 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "PernitApp",
+      "type": "application",
+      "source_location": "lib/app/app.dart",
+      "summary": "Flutter MaterialApp with Cairo font, ScreenUtil, Material 3 theme, Arabic default locale, AppRouter for routing",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "app",
+      "community": 1,
+      "norm_label": "pernitapp"
+    },
+    {
+      "label": "main()",
+      "type": "entrypoint",
+      "source_location": "lib/main.dart",
+      "summary": "App entry: WidgetsFlutterBinding.ensureInitialized, configureDependencies, runApp(PernitApp)",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "main",
+      "community": 1,
+      "norm_label": "main()"
+    },
+    {
+      "label": "Dependency Injection",
+      "type": "module",
+      "source_location": "lib/core/di/dependency_injection.dart",
+      "summary": "get_it: registers all LazySingleton/Factory dependencies",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "di",
+      "community": 2,
+      "norm_label": "dependency injection"
+    },
+    {
+      "label": "EnvConfig",
+      "type": "config",
+      "source_location": "lib/core/config/env_config.dart",
+      "summary": "Compile-time dart-define environment variables: API_BASE_URL, ENV_NAME, WS_BASE_URL, ENABLE_LOGGING",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "env_config",
+      "community": 1,
+      "norm_label": "envconfig"
+    },
+    {
+      "label": "AppRouter",
+      "type": "routing",
+      "source_location": "lib/core/routing/app_router.dart",
+      "summary": "onGenerateRoute: startup -> login -> home, injects Cubits per route",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "routing",
+      "community": 0,
+      "norm_label": "approuter"
+    },
+    {
+      "label": "Routes",
+      "type": "routing",
+      "source_location": "lib/core/routing/routes.dart",
+      "summary": "Route path constants: /startup, /login, /home",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "routes",
+      "community": 0,
+      "norm_label": "routes"
+    },
+    {
+      "label": "RouteRequirements",
+      "type": "routing",
+      "source_location": "lib/core/routing/route_requirements.dart",
+      "summary": "Defines permissions/groups required per route",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "route_reqs",
+      "community": 0,
+      "norm_label": "routerequirements"
+    },
+    {
+      "label": "Auth Feature",
+      "type": "feature",
+      "source_location": "lib/features/auth/",
+      "summary": "Authentication: login, logout, session restore",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "auth_feature",
+      "community": 0,
+      "norm_label": "auth feature"
+    },
+    {
+      "label": "AuthRemoteDataSource",
+      "type": "datasource",
+      "source_location": "lib/features/auth/data/datasources/auth_remote_data_source.dart",
+      "summary": "Dio-based auth API calls (login, logout, refresh, restore)",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "auth_datasource",
+      "community": 2,
+      "norm_label": "authremotedatasource"
+    },
+    {
+      "label": "AuthRepositoryImpl",
+      "type": "repository",
+      "source_location": "lib/features/auth/data/repos/auth_repository_impl.dart",
+      "summary": "Implements AuthRepository, maps Dio exceptions to Failure",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "auth_repo_impl",
+      "community": 2,
+      "norm_label": "authrepositoryimpl"
+    },
+    {
+      "label": "AuthRepository",
+      "type": "abstract",
+      "source_location": "lib/features/auth/domain/repos/auth_repository.dart",
+      "summary": "Abstract repository: login, logout, restoreSession",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "auth_repo_abstract",
+      "community": 2,
+      "norm_label": "authrepository"
+    },
+    {
+      "label": "LoginUseCase",
+      "type": "usecase",
+      "source_location": "lib/features/auth/domain/usecases/login_use_case.dart",
+      "summary": "Validates credentials, calls repository.login, returns ApiResult<AuthSession>",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "login_usecase",
+      "community": 2,
+      "norm_label": "loginusecase"
+    },
+    {
+      "label": "LogoutUseCase",
+      "type": "usecase",
+      "source_location": "lib/features/auth/domain/usecases/logout_use_case.dart",
+      "summary": "Calls repository.logout",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "logout_usecase",
+      "community": 16,
+      "norm_label": "logoutusecase"
+    },
+    {
+      "label": "RestoreSessionUseCase",
+      "type": "usecase",
+      "source_location": "lib/features/auth/domain/usecases/restore_session_use_case.dart",
+      "summary": "Restores session from stored tokens",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "restore_usecase",
+      "community": 22,
+      "norm_label": "restoresessionusecase"
+    },
+    {
+      "label": "LoginValidator",
+      "type": "validator",
+      "source_location": "lib/features/auth/domain/validators/login_validator.dart",
+      "summary": "Validates username/password input",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "login_validator",
+      "community": 2,
+      "norm_label": "loginvalidator"
+    },
+    {
+      "label": "AuthSession",
+      "type": "entity",
+      "source_location": "lib/features/auth/domain/entities/auth_session.dart",
+      "summary": "Session: accessToken, refreshToken, user (AuthUser)",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "auth_session_entity",
+      "community": 0,
+      "norm_label": "authsession"
+    },
+    {
+      "label": "AuthUser",
+      "type": "entity",
+      "source_location": "lib/features/auth/domain/entities/auth_user.dart",
+      "summary": "User: id, username, email, displayName, groups",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "auth_user_entity",
+      "community": 0,
+      "norm_label": "authuser"
+    },
+    {
+      "label": "LoginCredentials",
+      "type": "entity",
+      "source_location": "lib/features/auth/domain/entities/login_credentials.dart",
+      "summary": "Credentials: username, password",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "login_credentials",
+      "community": 0,
+      "norm_label": "logincredentials"
+    },
+    {
+      "label": "LoginCubit",
+      "type": "cubit",
+      "source_location": "lib/features/auth/presentation/bloc/login_cubit.dart",
+      "summary": "Handles login flow: submit -> useCase -> emit success/failure",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "login_cubit",
+      "community": 0,
+      "norm_label": "logincubit"
+    },
+    {
+      "label": "LoginState",
+      "type": "state",
+      "source_location": "lib/features/auth/presentation/bloc/login_state.dart",
+      "summary": "Sealed: LoginInitial, LoginSubmitting, LoginSuccess, LoginFailure",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "login_state",
+      "community": 0,
+      "norm_label": "loginstate"
+    },
+    {
+      "label": "AuthSessionCubit",
+      "type": "cubit",
+      "source_location": "lib/features/auth/presentation/bloc/auth_session_cubit.dart",
+      "summary": "Tracks auth session state across app lifecycle",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "auth_session_cubit",
+      "community": 2,
+      "norm_label": "authsessioncubit"
+    },
+    {
+      "label": "LogoutCubit",
+      "type": "cubit",
+      "source_location": "lib/features/auth/presentation/bloc/logout_cubit.dart",
+      "summary": "Handles logout flow",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "logout_cubit",
+      "community": 15,
+      "norm_label": "logoutcubit"
+    },
+    {
+      "label": "LoginScreen",
+      "type": "screen",
+      "source_location": "lib/features/auth/presentation/screens/login_screen.dart",
+      "summary": "Login UI: username, password fields, validation, submit button",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "login_screen",
+      "community": 0,
+      "norm_label": "loginscreen"
+    },
+    {
+      "label": "StartupScreen",
+      "type": "screen",
+      "source_location": "lib/features/auth/presentation/screens/startup_screen.dart",
+      "summary": "Initial splash/check screen",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "startup_screen",
+      "community": 0,
+      "norm_label": "startupscreen"
+    },
+    {
+      "label": "Home Feature",
+      "type": "feature",
+      "source_location": "lib/features/home/",
+      "summary": "Home/workspace screen with desktop and mobile layouts",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "home_feature",
+      "community": 4,
+      "norm_label": "home feature"
+    },
+    {
+      "label": "HomeScreen",
+      "type": "screen",
+      "source_location": "lib/features/home/presentation/screens/home_screen.dart",
+      "summary": "Home layout with responsive desktop/mobile menu",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "home_screen",
+      "community": 4,
+      "norm_label": "homescreen"
+    },
+    {
+      "label": "HomeMenuSection",
+      "type": "entity",
+      "source_location": "lib/features/home/domain/entities/home_menu_section.dart",
+      "summary": "Menu sections model: title, items, groups",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "home_menu_section",
+      "community": 4,
+      "norm_label": "homemenusection"
+    },
+    {
+      "label": "HomeDesktopMenu",
+      "type": "widget",
+      "source_location": "lib/features/home/presentation/widgets/home_desktop_menu.dart",
+      "summary": "Desktop sidebar menu",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "home_desktop_menu",
+      "community": 4,
+      "norm_label": "homedesktopmenu"
+    },
+    {
+      "label": "HomeMobileMenu",
+      "type": "widget",
+      "source_location": "lib/features/home/presentation/widgets/home_mobile_menu.dart",
+      "summary": "Mobile bottom navigation bar",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "home_mobile_menu",
+      "community": 4,
+      "norm_label": "homemobilemenu"
+    },
+    {
+      "label": "Raw Material Entry",
+      "type": "feature",
+      "source_location": "lib/features/raw_material_entry/",
+      "summary": "Raw material receiving, entry forms, status tracking",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "raw_feature",
+      "community": 3,
+      "norm_label": "raw material entry"
+    },
+    {
+      "label": "RawMaterialEntryRemoteDataSource",
+      "type": "datasource",
+      "source_location": "lib/features/raw_material_entry/data/datasources/raw_material_entry_remote_data_source.dart",
+      "summary": "Dio calls for raw material entry API",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "raw_datasource",
+      "community": 3,
+      "norm_label": "rawmaterialentryremotedatasource"
+    },
+    {
+      "label": "RawMaterialEntryRepositoryImpl",
+      "type": "repository",
+      "source_location": "lib/features/raw_material_entry/data/repos/raw_material_entry_repository_impl.dart",
+      "summary": "Implements RawMaterialEntryRepository",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "raw_repo_impl",
+      "community": 3,
+      "norm_label": "rawmaterialentryrepositoryimpl"
+    },
+    {
+      "label": "RawMaterialEntryRepository",
+      "type": "abstract",
+      "source_location": "lib/features/raw_material_entry/domain/repos/raw_material_entry_repository.dart",
+      "summary": "Abstract: CRUD for raw material entries",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "raw_repo_abstract",
+      "community": 3,
+      "norm_label": "rawmaterialentryrepository"
+    },
+    {
+      "label": "RawMaterialEntryCubit",
+      "type": "cubit",
+      "source_location": "lib/features/raw_material_entry/presentation/bloc/raw_material_entry_cubit.dart",
+      "summary": "State management for raw material entry screen",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "raw_cubit",
+      "community": 3,
+      "norm_label": "rawmaterialentrycubit"
+    },
+    {
+      "label": "RawMaterialEntryState",
+      "type": "state",
+      "source_location": "lib/features/raw_material_entry/presentation/bloc/raw_material_entry_state.dart",
+      "summary": "Sealed state for raw material entry",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "raw_state",
+      "community": 21,
+      "norm_label": "rawmaterialentrystate"
+    },
+    {
+      "label": "RawMaterialEntryScreen",
+      "type": "screen",
+      "source_location": "lib/features/raw_material_entry/presentation/screens/raw_material_entry_screen.dart",
+      "summary": "Main screen for raw material entry operations",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "raw_screen",
+      "community": 3,
+      "norm_label": "rawmaterialentryscreen"
+    },
+    {
+      "label": "Screen Records Feature",
+      "type": "feature",
+      "source_location": "lib/features/screen_records/",
+      "summary": "Generic screen record CRUD (add/edit/delete list records)",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "screen_records_feature",
+      "community": 23,
+      "norm_label": "screen records feature"
+    },
+    {
+      "label": "ScreenRecordRemoteDataSource",
+      "type": "datasource",
+      "source_location": "lib/features/screen_records/data/datasources/screen_record_remote_data_source.dart",
+      "summary": "Dio-based CRUD for screen records",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "screen_records_datasource",
+      "community": 12,
+      "norm_label": "screenrecordremotedatasource"
+    },
+    {
+      "label": "ScreenRecordsCubit",
+      "type": "cubit",
+      "source_location": "lib/features/screen_records/presentation/bloc/screen_records_cubit.dart",
+      "summary": "Generic CRUD cubit for screen record lists",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "screen_records_cubit",
+      "community": 12,
+      "norm_label": "screenrecordscubit"
+    },
+    {
+      "label": "ScreenRecordsState",
+      "type": "state",
+      "source_location": "lib/features/screen_records/presentation/bloc/screen_records_state.dart",
+      "summary": "Sealed state for screen records",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "screen_records_state",
+      "community": 24,
+      "norm_label": "screenrecordsstate"
+    },
+    {
+      "label": "Settings Feature",
+      "type": "feature",
+      "source_location": "lib/features/settings/",
+      "summary": "Admin settings: units, products, raw materials, warehouses, users, formulas",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "settings_feature",
+      "community": 8,
+      "norm_label": "settings feature"
+    },
+    {
+      "label": "SettingsScreen",
+      "type": "screen",
+      "source_location": "lib/features/settings/presentation/screens/settings_screen.dart",
+      "summary": "Settings sections grouped by admin scope",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "settings_screen",
+      "community": 8,
+      "norm_label": "settingsscreen"
+    },
+    {
+      "label": "SettingsRecordCubits",
+      "type": "cubit",
+      "source_location": "lib/features/settings/presentation/bloc/settings_record_cubits.dart",
+      "summary": "Cubits for settings screen record operations",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "settings_records_cubit",
+      "community": 8,
+      "norm_label": "settingsrecordcubits"
+    },
+    {
+      "label": "Production Feature",
+      "type": "feature",
+      "source_location": "lib/features/production/",
+      "summary": "Production orders, order details, lab samples, results, reserve materials",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "production_feature",
+      "community": 9,
+      "norm_label": "production feature"
+    },
+    {
+      "label": "ProductionScreen",
+      "type": "screen",
+      "source_location": "lib/features/production/presentation/screens/production_screen.dart",
+      "summary": "Production management screen",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "production_screen",
+      "community": 9,
+      "norm_label": "productionscreen"
+    },
+    {
+      "label": "ProductionRecordCubits",
+      "type": "cubit",
+      "source_location": "lib/features/production/presentation/bloc/production_record_cubits.dart",
+      "summary": "Cubits for production record operations",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "production_cubits",
+      "community": 9,
+      "norm_label": "productionrecordcubits"
+    },
+    {
+      "label": "Quality Feature",
+      "type": "feature",
+      "source_location": "lib/features/quality/",
+      "summary": "Quality: lab samples, lab results, physical lab results, quality checks",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "quality_feature",
+      "community": 10,
+      "norm_label": "quality feature"
+    },
+    {
+      "label": "QualityScreen",
+      "type": "screen",
+      "source_location": "lib/features/quality/presentation/screens/quality_screen.dart",
+      "summary": "Quality management screen",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "quality_screen",
+      "community": 10,
+      "norm_label": "qualityscreen"
+    },
+    {
+      "label": "QualityRecordCubits",
+      "type": "cubit",
+      "source_location": "lib/features/quality/presentation/bloc/quality_record_cubits.dart",
+      "summary": "Cubits for quality record operations",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "quality_cubits",
+      "community": 10,
+      "norm_label": "qualityrecordcubits"
+    },
+    {
+      "label": "AuthInterceptor",
+      "type": "service",
+      "source_location": "lib/core/auth/auth_interceptor.dart",
+      "summary": "Dio interceptor: attaches tokens, handles 401 -> refresh -> retry",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "auth_interceptor",
+      "community": 6,
+      "norm_label": "authinterceptor"
+    },
+    {
+      "label": "RefreshMutex",
+      "type": "service",
+      "source_location": "lib/core/auth/refresh_mutex.dart",
+      "summary": "Async lock: ensures only one refresh at a time, queue waiters",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "refresh_mutex",
+      "community": 6,
+      "norm_label": "refreshmutex"
+    },
+    {
+      "label": "TokenManager",
+      "type": "service",
+      "source_location": "lib/core/auth/token_manager.dart",
+      "summary": "FlutterSecureStorage wrapper: read/write/clear access & refresh tokens",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "token_manager",
+      "community": 6,
+      "norm_label": "tokenmanager"
+    },
+    {
+      "label": "TokenRefreshGateway",
+      "type": "service",
+      "source_location": "lib/core/auth/token_refresh_gateway.dart",
+      "summary": "Interface for token refresh operation",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "token_refresh_gateway",
+      "community": 6,
+      "norm_label": "tokenrefreshgateway"
+    },
+    {
+      "label": "ApiConstants",
+      "type": "config",
+      "source_location": "lib/core/network/api_constants.dart",
+      "summary": "API base URL and endpoint paths",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "api_constants",
+      "community": 11,
+      "norm_label": "apiconstants"
+    },
+    {
+      "label": "ConnectionChecker",
+      "type": "service",
+      "source_location": "lib/core/network/connection_checker.dart",
+      "summary": "Internet connectivity checker",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "connection_checker",
+      "community": 14,
+      "norm_label": "connectionchecker"
+    },
+    {
+      "label": "PublicDioFactory",
+      "type": "service",
+      "source_location": "lib/core/network/public_dio_factory.dart",
+      "summary": "Creates Dio instance with base config (no auth)",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "public_dio",
+      "community": 11,
+      "norm_label": "publicdiofactory"
+    },
+    {
+      "label": "SecureDioFactory",
+      "type": "service",
+      "source_location": "lib/core/network/secure_dio_factory.dart",
+      "summary": "Creates Dio instance with AuthInterceptor, auth-aware",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "secure_dio",
+      "community": 6,
+      "norm_label": "securediofactory"
+    },
+    {
+      "label": "ApiResult<T>",
+      "type": "sealed",
+      "source_location": "lib/core/errors/api_result.dart",
+      "summary": "Sealed: ApiSuccess<T> | ApiFailure<T>",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "api_result",
+      "community": 7,
+      "norm_label": "apiresult<t>"
+    },
+    {
+      "label": "ApiErrorHandler",
+      "type": "service",
+      "source_location": "lib/core/errors/api_error_handler.dart",
+      "summary": "Central mapping: DioException -> Failure with FailureCode",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "api_error_handler",
+      "community": 7,
+      "norm_label": "apierrorhandler"
+    },
+    {
+      "label": "Failure",
+      "type": "model",
+      "source_location": "lib/core/errors/failure.dart",
+      "summary": "Failure: code, messageKey, fieldErrors, nonFieldErrors",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "failure",
+      "community": 7,
+      "norm_label": "failure"
+    },
+    {
+      "label": "FailureCode",
+      "type": "enum",
+      "source_location": "lib/core/errors/failure_code.dart",
+      "summary": "Enum: network, unauthorized, forbidden, notFound, validation, server, cache, conflict, sslPinning, timeout, unknown",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "failure_code",
+      "community": 7,
+      "norm_label": "failurecode"
+    },
+    {
+      "label": "AppLocalizations",
+      "type": "localization",
+      "source_location": "lib/core/localization/generated/",
+      "summary": "Generated Flutter l10n: Arabic + English, ARB source in lib/core/localization/l10n/",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "localization",
+      "community": 1,
+      "norm_label": "applocalizations"
+    },
+    {
+      "label": "FailureMessageLocalizer",
+      "type": "localization",
+      "source_location": "lib/core/localization/failure_message_localizer.dart",
+      "summary": "Maps Failure.messageKey -> AppLocalizations string",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "failure_localizer",
+      "community": 1,
+      "norm_label": "failuremessagelocalizer"
+    },
+    {
+      "label": "Design System",
+      "type": "module",
+      "source_location": "lib/design_system/",
+      "summary": "Tokens, widgets, forms, dialogs",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "design_system",
+      "community": 1,
+      "norm_label": "design system"
+    },
+    {
+      "label": "PernitColors",
+      "type": "tokens",
+      "source_location": "lib/design_system/tokens/pernit_colors.dart",
+      "summary": "App color palette tokens",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "colors",
+      "community": 1,
+      "norm_label": "pernitcolors"
+    },
+    {
+      "label": "PernitFontWeights",
+      "type": "tokens",
+      "source_location": "lib/design_system/tokens/pernit_font_weights.dart",
+      "summary": "Font weight constants (bold=700)",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "font_weights",
+      "community": 1,
+      "norm_label": "pernitfontweights"
+    },
+    {
+      "label": "PernitTextTheme",
+      "type": "tokens",
+      "source_location": "lib/design_system/tokens/pernit_text_theme.dart",
+      "summary": "Text theme builder with Cairo font",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "text_theme",
+      "community": 1,
+      "norm_label": "pernittexttheme"
+    },
+    {
+      "label": "PernitButton",
+      "type": "widget",
+      "source_location": "lib/design_system/widgets/pernit_button.dart",
+      "summary": "Styled button widget",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "pernit_button",
+      "community": 18,
+      "norm_label": "pernitbutton"
+    },
+    {
+      "label": "PernitTextField",
+      "type": "widget",
+      "source_location": "lib/design_system/forms/pernit_text_field.dart",
+      "summary": "Styled text field widget",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "pernit_text_field",
+      "community": 20,
+      "norm_label": "pernittextfield"
+    },
+    {
+      "label": "PernitScreenDetailDialog",
+      "type": "widget",
+      "source_location": "lib/design_system/dialogs/pernit_screen_detail_dialog.dart",
+      "summary": "Screen record detail dialog",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "pernit_dialog",
+      "community": 19,
+      "norm_label": "pernitscreendetaildialog"
+    },
+    {
+      "label": "SKILL.md Rules",
+      "type": "documentation",
+      "source_location": "skill-addnewfeature/SKILL.md",
+      "summary": "3110-line architecture rulebook: Clean Architecture, Cubit-only, pessimistic ERP updates, no duplication, feature classification",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "skill",
+      "community": 5,
+      "norm_label": "skill.md rules"
+    },
+    {
+      "label": "Auth Tests",
+      "type": "tests",
+      "source_location": "test/features/auth/",
+      "summary": "Auth repository impl tests, login validator tests, session cubit tests",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "tests_auth",
+      "community": 2,
+      "norm_label": "auth tests"
+    },
+    {
+      "label": "Raw Material Tests",
+      "type": "tests",
+      "source_location": "test/features/raw_material_entry/",
+      "summary": "DS tests, model tests, cubit tests, screen tests",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "tests_raw",
+      "community": 3,
+      "norm_label": "raw material tests"
+    },
+    {
+      "label": "Home Tests",
+      "type": "tests",
+      "source_location": "test/features/home/",
+      "summary": "Home menu section tests, home screen tests",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "tests_home",
+      "community": 4,
+      "norm_label": "home tests"
+    },
+    {
+      "label": "Settings Tests",
+      "type": "tests",
+      "source_location": "test/features/settings/",
+      "summary": "Settings record cubit tests, screen tests",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "tests_settings",
+      "community": 8,
+      "norm_label": "settings tests"
+    },
+    {
+      "label": "Core Tests",
+      "type": "tests",
+      "source_location": "test/core/",
+      "summary": "DI tests, extension tests, regex tests",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "tests_core",
+      "community": 2,
+      "norm_label": "core tests"
+    },
+    {
+      "label": "Cairo Bold Font",
+      "type": "asset",
+      "source_location": "assets/fonts/Cairo-Bold.ttf",
+      "summary": "App font family (700 bold weight)",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "cairo_font",
+      "community": 13,
+      "norm_label": "cairo bold font"
+    },
+    {
+      "label": "README.md",
+      "type": "document",
+      "source_location": "README.md",
+      "summary": "Project: Pernit ERP Flutter frontend. Clean Architecture, Cubit/Equatable, Dio, FlutterSecureStorage, l10n Arabic+English",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "readme",
+      "community": 5,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "pubspec.yaml",
+      "type": "config",
+      "source_location": "pubspec.yaml",
+      "summary": "SDK ^3.10.4. Dependencies: dio, equatable, flutter_bloc, flutter_screenutil, flutter_secure_storage, get_it, intl, cupertino_icons",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "pubspec",
+      "community": 5,
+      "norm_label": "pubspec.yaml"
+    },
+    {
+      "label": "l10n.yaml",
+      "type": "config",
+      "source_location": "l10n.yaml",
+      "summary": "Localization config: arb-dir, template-arb-file app_en.arb, output-dir lib/core/localization/generated/",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "l10n_yaml",
+      "community": 5,
+      "norm_label": "l10n.yaml"
+    },
+    {
+      "label": "analysis_options.yaml",
+      "type": "config",
+      "source_location": "analysis_options.yaml",
+      "summary": "Includes package:flutter_lints/flutter.yaml, no custom rules",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "analysis_options",
+      "community": 5,
+      "norm_label": "analysis_options.yaml"
+    },
+    {
+      "label": "PernitAPI.yaml",
+      "type": "document",
+      "source_location": "PernitAPI.yaml",
+      "summary": "OpenAPI 3.0.3 spec, ERP API endpoints",
+      "metadata": {},
+      "file_type": "concept",
+      "id": "pernit_api",
+      "community": 17,
+      "norm_label": "pernitapi.yaml"
+    }
+  ],
+  "links": [
+    {
+      "relationship": "themes",
+      "source": "app",
+      "target": "colors",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "configures",
+      "source": "app",
+      "target": "di",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "reads",
+      "source": "app",
+      "target": "env_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "uses",
+      "source": "app",
+      "target": "localization",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "uses",
+      "source": "app",
+      "target": "routing",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "themes",
+      "source": "app",
+      "target": "text_theme",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "starts",
+      "source": "main",
+      "target": "app",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "registered",
+      "source": "auth_repo_impl",
+      "target": "di",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "registers",
+      "source": "di",
+      "target": "auth_session_cubit",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "registers",
+      "source": "di",
+      "target": "login_cubit",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "registers",
+      "source": "di",
+      "target": "raw_cubit",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "registered",
+      "source": "login_usecase",
+      "target": "di",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "tests",
+      "source": "tests_core",
+      "target": "di",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "routes_to",
+      "source": "routing",
+      "target": "home_screen",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "routes_to",
+      "source": "routing",
+      "target": "login_screen",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "validates",
+      "source": "routing",
+      "target": "route_reqs",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "defines",
+      "source": "routing",
+      "target": "routes",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "routes_to",
+      "source": "routing",
+      "target": "startup_screen",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "defines",
+      "source": "auth_feature",
+      "target": "auth_session_entity",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "defines",
+      "source": "auth_feature",
+      "target": "auth_user_entity",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "defines",
+      "source": "auth_feature",
+      "target": "login_credentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "contains",
+      "source": "auth_feature",
+      "target": "login_screen",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "contains",
+      "source": "auth_feature",
+      "target": "startup_screen",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "uses",
+      "source": "auth_repo_impl",
+      "target": "auth_datasource",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "implements",
+      "source": "auth_repo_impl",
+      "target": "auth_repo_abstract",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "maps_errors_to",
+      "source": "auth_repo_impl",
+      "target": "failure",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "tests",
+      "source": "tests_auth",
+      "target": "auth_repo_impl",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "calls",
+      "source": "login_usecase",
+      "target": "auth_repo_abstract",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "calls",
+      "source": "login_cubit",
+      "target": "login_usecase",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "validates",
+      "source": "login_usecase",
+      "target": "login_validator",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "tests",
+      "source": "tests_auth",
+      "target": "login_validator",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "returned_by",
+      "source": "auth_session_entity",
+      "target": "login_cubit",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "contains",
+      "source": "auth_user_entity",
+      "target": "auth_session_entity",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "emits",
+      "source": "login_cubit",
+      "target": "login_state",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "renders",
+      "source": "login_screen",
+      "target": "login_cubit",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "tests",
+      "source": "tests_auth",
+      "target": "auth_session_cubit",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "defines",
+      "source": "home_feature",
+      "target": "home_menu_section",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "contains",
+      "source": "home_feature",
+      "target": "home_screen",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "includes",
+      "source": "home_screen",
+      "target": "home_desktop_menu",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "uses",
+      "source": "home_screen",
+      "target": "home_menu_section",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "includes",
+      "source": "home_screen",
+      "target": "home_mobile_menu",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "tests",
+      "source": "tests_home",
+      "target": "home_screen",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "tests",
+      "source": "tests_home",
+      "target": "home_menu_section",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "defines",
+      "source": "raw_feature",
+      "target": "raw_repo_abstract",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "contains",
+      "source": "raw_feature",
+      "target": "raw_screen",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "uses",
+      "source": "raw_repo_impl",
+      "target": "raw_datasource",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "tests",
+      "source": "tests_raw",
+      "target": "raw_datasource",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "maps_errors_to",
+      "source": "raw_repo_impl",
+      "target": "failure",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "implements",
+      "source": "raw_repo_impl",
+      "target": "raw_repo_abstract",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "calls",
+      "source": "raw_cubit",
+      "target": "raw_repo_abstract",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "renders",
+      "source": "raw_screen",
+      "target": "raw_cubit",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "tests",
+      "source": "tests_raw",
+      "target": "raw_cubit",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "tests",
+      "source": "tests_raw",
+      "target": "raw_screen",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "uses",
+      "source": "screen_records_cubit",
+      "target": "screen_records_datasource",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "contains",
+      "source": "settings_feature",
+      "target": "settings_screen",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "uses",
+      "source": "settings_screen",
+      "target": "settings_records_cubit",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "tests",
+      "source": "tests_settings",
+      "target": "settings_screen",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "tests",
+      "source": "tests_settings",
+      "target": "settings_records_cubit",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "contains",
+      "source": "production_feature",
+      "target": "production_screen",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "uses",
+      "source": "production_screen",
+      "target": "production_cubits",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "contains",
+      "source": "quality_feature",
+      "target": "quality_screen",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "uses",
+      "source": "quality_screen",
+      "target": "quality_cubits",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "coordinates",
+      "source": "auth_interceptor",
+      "target": "refresh_mutex",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "reads_tokens",
+      "source": "auth_interceptor",
+      "target": "token_manager",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "triggers",
+      "source": "auth_interceptor",
+      "target": "token_refresh_gateway",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "attaches",
+      "source": "secure_dio",
+      "target": "auth_interceptor",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "configures",
+      "source": "public_dio",
+      "target": "api_constants",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "carries",
+      "source": "api_result",
+      "target": "failure",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "produces",
+      "source": "api_error_handler",
+      "target": "failure",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "maps_to",
+      "source": "api_error_handler",
+      "target": "failure_code",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "used_by",
+      "source": "localization",
+      "target": "failure_localizer",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "contains",
+      "source": "design_system",
+      "target": "colors",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "contains",
+      "source": "design_system",
+      "target": "font_weights",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "contains",
+      "source": "design_system",
+      "target": "text_theme",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "references",
+      "source": "skill",
+      "target": "analysis_options",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "references",
+      "source": "skill",
+      "target": "l10n_yaml",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "references",
+      "source": "skill",
+      "target": "pubspec",
+      "confidence_score": 1.0
+    },
+    {
+      "relationship": "documents",
+      "source": "skill",
+      "target": "readme",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "79518b5e7b8b8dd95d66093d592342bbc1a29cb8"
+}

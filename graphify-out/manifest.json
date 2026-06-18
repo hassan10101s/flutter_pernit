@@ -1,0 +1,792 @@
+{
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\android\\app\\build.gradle.kts": {
+    "mtime": 1781508221.3850079,
+    "ast_hash": "62254993b40b7a09f85de413201223bf",
+    "semantic_hash": "62254993b40b7a09f85de413201223bf"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\android\\app\\src\\main\\java\\io\\flutter\\plugins\\GeneratedPluginRegistrant.java": {
+    "mtime": 1781508618.5006049,
+    "ast_hash": "d88d6e421e5e87d61913253cd55ac36d",
+    "semantic_hash": "d88d6e421e5e87d61913253cd55ac36d"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\android\\app\\src\\main\\kotlin\\com\\example\\flutter_pernit\\MainActivity.kt": {
+    "mtime": 1781508221.421636,
+    "ast_hash": "160de9057a6eb1da32fa53a8a32219f4",
+    "semantic_hash": "160de9057a6eb1da32fa53a8a32219f4"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\android\\build.gradle.kts": {
+    "mtime": 1781508221.4616392,
+    "ast_hash": "803fe22651fbe96ed401eb0b66a492d1",
+    "semantic_hash": "803fe22651fbe96ed401eb0b66a492d1"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\android\\gradlew": {
+    "mtime": 1781591104.4465559,
+    "ast_hash": "7f1cd7eb3f75a1dc85cd37753972a6e2",
+    "semantic_hash": "7f1cd7eb3f75a1dc85cd37753972a6e2"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\android\\settings.gradle.kts": {
+    "mtime": 1781508221.9741714,
+    "ast_hash": "f276a44edd917afd836899357fdae60e",
+    "semantic_hash": "f276a44edd917afd836899357fdae60e"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Flutter\\ephemeral\\flutter_lldb_helper.py": {
+    "mtime": 1781591552.0777001,
+    "ast_hash": "98fc75412162af387e2e3461e4e58094",
+    "semantic_hash": "98fc75412162af387e2e3461e4e58094"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Flutter\\flutter_export_environment.sh": {
+    "mtime": 1781591552.0938473,
+    "ast_hash": "3273f8230dc83b4b331fccdd17ba2703",
+    "semantic_hash": "3273f8230dc83b4b331fccdd17ba2703"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\RunnerTests\\RunnerTests.swift": {
+    "mtime": 1781508223.0831356,
+    "ast_hash": "24e5d095048eb86c30423f4e04b6e57b",
+    "semantic_hash": "24e5d095048eb86c30423f4e04b6e57b"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\AppDelegate.swift": {
+    "mtime": 1765972559.595283,
+    "ast_hash": "e277c49e98c9f80e9e71c0524a5cb60f",
+    "semantic_hash": "e277c49e98c9f80e9e71c0524a5cb60f"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Contents.json": {
+    "mtime": 1752262772.3991642,
+    "ast_hash": "31a08e429403e265cabfb31b3d65f049",
+    "semantic_hash": "31a08e429403e265cabfb31b3d65f049"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\LaunchImage.imageset\\Contents.json": {
+    "mtime": 1752262772.3991642,
+    "ast_hash": "b9e927ac17345f2d5f052fe68a3487f9",
+    "semantic_hash": "b9e927ac17345f2d5f052fe68a3487f9"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\GeneratedPluginRegistrant.h": {
+    "mtime": 1781508239.7442248,
+    "ast_hash": "decb9041b5e91a07e66f4664e5dac408",
+    "semantic_hash": "decb9041b5e91a07e66f4664e5dac408"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\GeneratedPluginRegistrant.m": {
+    "mtime": 1781508618.5152678,
+    "ast_hash": "983cf3e274c14ef02ac62163f460ea17",
+    "semantic_hash": "983cf3e274c14ef02ac62163f460ea17"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Runner-Bridging-Header.h": {
+    "mtime": 1765972559.595283,
+    "ast_hash": "7ad7b5cea096132de13ba526b2b9efbe",
+    "semantic_hash": "7ad7b5cea096132de13ba526b2b9efbe"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\app\\app.dart": {
+    "mtime": 1781589588.0001893,
+    "ast_hash": "770a1e2539c6847ab454cd96c9a8d481",
+    "semantic_hash": "770a1e2539c6847ab454cd96c9a8d481"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\auth\\auth_interceptor.dart": {
+    "mtime": 1781523725.9319515,
+    "ast_hash": "41797e176b55275d4d16ed7ca7fbd34b",
+    "semantic_hash": "41797e176b55275d4d16ed7ca7fbd34b"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\auth\\refresh_mutex.dart": {
+    "mtime": 1781523645.8320994,
+    "ast_hash": "e07abcdd730b494ed7d4101a0d1a477a",
+    "semantic_hash": "e07abcdd730b494ed7d4101a0d1a477a"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\bloc\\safe_cubit.dart": {
+    "mtime": 1781508420.4646156,
+    "ast_hash": "ce8bf735f9f4ff307ef25693d60c53c0",
+    "semantic_hash": "ce8bf735f9f4ff307ef25693d60c53c0"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\config\\env_config.dart": {
+    "mtime": 1781508417.0603507,
+    "ast_hash": "955f5e6c85ef06193765f51142d9157c",
+    "semantic_hash": "955f5e6c85ef06193765f51142d9157c"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\di\\dependency_injection.dart": {
+    "mtime": 1781614480.1207962,
+    "ast_hash": "93372c97ad0ffdc558363ec36b25a098",
+    "semantic_hash": "93372c97ad0ffdc558363ec36b25a098"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\errors\\api_error_handler.dart": {
+    "mtime": 1781512684.3363187,
+    "ast_hash": "453e3b956ef14f59328e0f1d5d24e484",
+    "semantic_hash": "453e3b956ef14f59328e0f1d5d24e484"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\errors\\api_result.dart": {
+    "mtime": 1781508548.9025488,
+    "ast_hash": "5afdaeb832852590322a289d65b057fc",
+    "semantic_hash": "5afdaeb832852590322a289d65b057fc"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\errors\\failure.dart": {
+    "mtime": 1781512684.7101636,
+    "ast_hash": "1dc9ccabcb893b98d318cc43000367c5",
+    "semantic_hash": "1dc9ccabcb893b98d318cc43000367c5"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\errors\\failure_code.dart": {
+    "mtime": 1781508417.6646514,
+    "ast_hash": "396adb56e6a0a80b4fef4dd5281bd0c1",
+    "semantic_hash": "396adb56e6a0a80b4fef4dd5281bd0c1"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\extensions\\navigation_extensions.dart": {
+    "mtime": 1781521223.1878974,
+    "ast_hash": "e1efb846ef13ba7f4b0bc31faec8cd88",
+    "semantic_hash": "e1efb846ef13ba7f4b0bc31faec8cd88"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\extensions\\nullable_extensions.dart": {
+    "mtime": 1781512627.1497154,
+    "ast_hash": "e11b6e5289482163050873501bf0925a",
+    "semantic_hash": "e11b6e5289482163050873501bf0925a"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\helpers\\spacing.dart": {
+    "mtime": 1781513999.4402452,
+    "ast_hash": "d20f9fd4721e03f5612c071f82179122",
+    "semantic_hash": "d20f9fd4721e03f5612c071f82179122"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\localization\\failure_message_localizer.dart": {
+    "mtime": 1781508418.6924822,
+    "ast_hash": "b5a053a592dacaa896fabc35899f291e",
+    "semantic_hash": "b5a053a592dacaa896fabc35899f291e"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\localization\\generated\\app_localizations.dart": {
+    "mtime": 1781616648.1870687,
+    "ast_hash": "0636dddbbed7dc1e602284b57f6469c8",
+    "semantic_hash": "0636dddbbed7dc1e602284b57f6469c8"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\localization\\generated\\app_localizations_ar.dart": {
+    "mtime": 1781616648.1499352,
+    "ast_hash": "b58f3f5119b166beefd648b3e27b8bd2",
+    "semantic_hash": "b58f3f5119b166beefd648b3e27b8bd2"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\localization\\generated\\app_localizations_en.dart": {
+    "mtime": 1781616648.1601343,
+    "ast_hash": "63513c2b6d09d039468db0d7c7e73b29",
+    "semantic_hash": "63513c2b6d09d039468db0d7c7e73b29"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\network\\api_constants.dart": {
+    "mtime": 1781614480.2444928,
+    "ast_hash": "5981d150ff29c21339356f162cd6ddfe",
+    "semantic_hash": "5981d150ff29c21339356f162cd6ddfe"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\network\\connection_checker.dart": {
+    "mtime": 1781508419.2584019,
+    "ast_hash": "cb533cb0998ca7156a638b5d1065e3a7",
+    "semantic_hash": "cb533cb0998ca7156a638b5d1065e3a7"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\network\\public_dio_factory.dart": {
+    "mtime": 1781523646.0032153,
+    "ast_hash": "2b56a4a481c49e139bd3728e7b466ba2",
+    "semantic_hash": "2b56a4a481c49e139bd3728e7b466ba2"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\network\\secure_dio_factory.dart": {
+    "mtime": 1781523726.4659774,
+    "ast_hash": "a51cafef4d7edeb53a258c2a96a6228c",
+    "semantic_hash": "a51cafef4d7edeb53a258c2a96a6228c"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\routing\\app_router.dart": {
+    "mtime": 1781523732.1332817,
+    "ast_hash": "7d308ccae1d3750ecd87d4b78a1f7fd4",
+    "semantic_hash": "7d308ccae1d3750ecd87d4b78a1f7fd4"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\routing\\route_requirements.dart": {
+    "mtime": 1781512685.2870831,
+    "ast_hash": "1b8673746088a5a0c4395c349e288e1f",
+    "semantic_hash": "1b8673746088a5a0c4395c349e288e1f"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\routing\\routes.dart": {
+    "mtime": 1781523730.5768588,
+    "ast_hash": "35f8477c1c200ead9477f57c49e1d913",
+    "semantic_hash": "35f8477c1c200ead9477f57c49e1d913"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\screen_records\\pernit_screen_record.dart": {
+    "mtime": 1781537503.2472003,
+    "ast_hash": "f8c0e0b8f1c681268b6b2e0ba26e31bc",
+    "semantic_hash": "f8c0e0b8f1c681268b6b2e0ba26e31bc"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\core\\utils\\app_regex.dart": {
+    "mtime": 1781512627.9355798,
+    "ast_hash": "e528f2677b5c6c8ceb61f5197d8bab4c",
+    "semantic_hash": "e528f2677b5c6c8ceb61f5197d8bab4c"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\design_system\\dialogs\\pernit_screen_detail_dialog.dart": {
+    "mtime": 1781593558.6344783,
+    "ast_hash": "fc468497205a269a5f13182dcb16f491",
+    "semantic_hash": "fc468497205a269a5f13182dcb16f491"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\design_system\\forms\\pernit_text_field.dart": {
+    "mtime": 1781514104.7191749,
+    "ast_hash": "aac40cd51ef3280e1c4fe0ed43448e62",
+    "semantic_hash": "aac40cd51ef3280e1c4fe0ed43448e62"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\design_system\\tokens\\pernit_colors.dart": {
+    "mtime": 1781508489.1946125,
+    "ast_hash": "afd9fb31fbac4c47b3fd9357cd27391d",
+    "semantic_hash": "afd9fb31fbac4c47b3fd9357cd27391d"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\design_system\\tokens\\pernit_font_weights.dart": {
+    "mtime": 1781512628.1671505,
+    "ast_hash": "e90e5025a00195cee6d4c2af5d26711d",
+    "semantic_hash": "e90e5025a00195cee6d4c2af5d26711d"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\design_system\\tokens\\pernit_text_theme.dart": {
+    "mtime": 1781589571.3978364,
+    "ast_hash": "1de9f08535c1556aa666e71a9a3cec6f",
+    "semantic_hash": "1de9f08535c1556aa666e71a9a3cec6f"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\design_system\\widgets\\pernit_button.dart": {
+    "mtime": 1781514104.7404163,
+    "ast_hash": "06e1e9b8dc5bf09de598a5be2e7e4c06",
+    "semantic_hash": "06e1e9b8dc5bf09de598a5be2e7e4c06"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\design_system\\widgets\\pernit_panel_header.dart": {
+    "mtime": 1781534680.1246128,
+    "ast_hash": "893702ca628840e59227eed390740804",
+    "semantic_hash": "893702ca628840e59227eed390740804"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\data\\datasources\\auth_remote_data_source.dart": {
+    "mtime": 1781523727.7096524,
+    "ast_hash": "8751893640c586617e5bbbe580fdb585",
+    "semantic_hash": "8751893640c586617e5bbbe580fdb585"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\data\\models\\login_request_model.dart": {
+    "mtime": 1781512685.5771346,
+    "ast_hash": "a36415bd19c011c47999d4ec2a8d28db",
+    "semantic_hash": "a36415bd19c011c47999d4ec2a8d28db"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\data\\models\\login_response_model.dart": {
+    "mtime": 1781523727.1865587,
+    "ast_hash": "7d23e7c3dccc6ad64281067e6a129e06",
+    "semantic_hash": "7d23e7c3dccc6ad64281067e6a129e06"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\data\\repos\\auth_repository_impl.dart": {
+    "mtime": 1781588986.9887016,
+    "ast_hash": "9554544f07cb902d5566349beca26284",
+    "semantic_hash": "9554544f07cb902d5566349beca26284"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\domain\\entities\\auth_session.dart": {
+    "mtime": 1781508490.726866,
+    "ast_hash": "1140b4a6a0dd6f97e4417a1746dc1de9",
+    "semantic_hash": "1140b4a6a0dd6f97e4417a1746dc1de9"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\domain\\entities\\auth_user.dart": {
+    "mtime": 1781512686.0496082,
+    "ast_hash": "13715e5881e6610cd44816facc133ac0",
+    "semantic_hash": "13715e5881e6610cd44816facc133ac0"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\domain\\repos\\auth_repository.dart": {
+    "mtime": 1781523728.1419027,
+    "ast_hash": "33241cc9ee665fc8b119309d4bf9ebd7",
+    "semantic_hash": "33241cc9ee665fc8b119309d4bf9ebd7"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\domain\\usecases\\login_use_case.dart": {
+    "mtime": 1781508491.7542994,
+    "ast_hash": "45305aed4a96083da7d67f48d7cc7dd4",
+    "semantic_hash": "45305aed4a96083da7d67f48d7cc7dd4"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\domain\\usecases\\logout_use_case.dart": {
+    "mtime": 1781521136.3346612,
+    "ast_hash": "d28110765092a0a424f2b56be2ad0eb6",
+    "semantic_hash": "d28110765092a0a424f2b56be2ad0eb6"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\domain\\usecases\\restore_session_use_case.dart": {
+    "mtime": 1781523646.358999,
+    "ast_hash": "fa0c1210b69697cc92f91e1104aa388e",
+    "semantic_hash": "fa0c1210b69697cc92f91e1104aa388e"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\domain\\validators\\login_validator.dart": {
+    "mtime": 1781508491.4015882,
+    "ast_hash": "6b04a881c8337ca9ede0f5905a6af194",
+    "semantic_hash": "6b04a881c8337ca9ede0f5905a6af194"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\presentation\\bloc\\auth_session_cubit.dart": {
+    "mtime": 1781523646.7857592,
+    "ast_hash": "9cbc67b85ede6fb95d4bae52ee70818b",
+    "semantic_hash": "9cbc67b85ede6fb95d4bae52ee70818b"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\presentation\\bloc\\auth_session_state.dart": {
+    "mtime": 1781523646.5764527,
+    "ast_hash": "9972772da60c66a806a509a8370489ed",
+    "semantic_hash": "9972772da60c66a806a509a8370489ed"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\presentation\\bloc\\login_cubit.dart": {
+    "mtime": 1781508493.6366248,
+    "ast_hash": "4a288b2216bc739279de1ea5f3b6f343",
+    "semantic_hash": "4a288b2216bc739279de1ea5f3b6f343"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\presentation\\bloc\\login_state.dart": {
+    "mtime": 1781508493.4394653,
+    "ast_hash": "2fc51bd2518c37ee1d06f2f10a023541",
+    "semantic_hash": "2fc51bd2518c37ee1d06f2f10a023541"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\presentation\\bloc\\logout_cubit.dart": {
+    "mtime": 1781521136.8391178,
+    "ast_hash": "95d9921faf1a8b893b55b116ebbafcff",
+    "semantic_hash": "95d9921faf1a8b893b55b116ebbafcff"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\presentation\\bloc\\logout_state.dart": {
+    "mtime": 1781521136.5953152,
+    "ast_hash": "a37502134523128c9062073ba95ed9f1",
+    "semantic_hash": "a37502134523128c9062073ba95ed9f1"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\presentation\\screens\\login_screen.dart": {
+    "mtime": 1781521488.9178665,
+    "ast_hash": "e22080708cc0f3ec04b8fad219454545",
+    "semantic_hash": "e22080708cc0f3ec04b8fad219454545"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\auth\\presentation\\screens\\startup_screen.dart": {
+    "mtime": 1781588987.0077467,
+    "ast_hash": "253c2c66273326cf21e7b836d86ef1e9",
+    "semantic_hash": "253c2c66273326cf21e7b836d86ef1e9"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\home\\domain\\entities\\home_menu_section.dart": {
+    "mtime": 1781614204.7259016,
+    "ast_hash": "4514571d5027da94732a41de6e618d3e",
+    "semantic_hash": "4514571d5027da94732a41de6e618d3e"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\home\\presentation\\screens\\home_screen.dart": {
+    "mtime": 1781614204.9477806,
+    "ast_hash": "1b492b506804acdd287ba022e90b8e7c",
+    "semantic_hash": "1b492b506804acdd287ba022e90b8e7c"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\home\\presentation\\widgets\\home_desktop_menu.dart": {
+    "mtime": 1781590478.0404503,
+    "ast_hash": "e0dfee638f4ed8f1755833fa273dcfaf",
+    "semantic_hash": "e0dfee638f4ed8f1755833fa273dcfaf"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\home\\presentation\\widgets\\home_desktop_section_header.dart": {
+    "mtime": 1781590490.2299228,
+    "ast_hash": "7ecb2038add213f50b3ea1b8ecb836a6",
+    "semantic_hash": "7ecb2038add213f50b3ea1b8ecb836a6"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\home\\presentation\\widgets\\home_mobile_menu.dart": {
+    "mtime": 1781590512.9317358,
+    "ast_hash": "29e8a5a93b3e8a04c43636f7725bf720",
+    "semantic_hash": "29e8a5a93b3e8a04c43636f7725bf720"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\home\\presentation\\widgets\\home_section_body.dart": {
+    "mtime": 1781615517.147802,
+    "ast_hash": "16c50c20e1e30aa2142a68fdecac4af2",
+    "semantic_hash": "16c50c20e1e30aa2142a68fdecac4af2"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\production\\presentation\\bloc\\production_record_cubits.dart": {
+    "mtime": 1781614540.185014,
+    "ast_hash": "54d1cdccad213dbe42931348f1b980cf",
+    "semantic_hash": "54d1cdccad213dbe42931348f1b980cf"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\production\\presentation\\screens\\production_screen.dart": {
+    "mtime": 1781536397.2226388,
+    "ast_hash": "743123551d750e5af11f60ce2c702890",
+    "semantic_hash": "743123551d750e5af11f60ce2c702890"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\production\\presentation\\widgets\\production_screens_section.dart": {
+    "mtime": 1781593497.124856,
+    "ast_hash": "aa552c56ee1fc50c6996819aebc2623e",
+    "semantic_hash": "aa552c56ee1fc50c6996819aebc2623e"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\quality\\presentation\\bloc\\quality_record_cubits.dart": {
+    "mtime": 1781614540.185014,
+    "ast_hash": "f8fd1a0f430733ba1d51eef658a7b9da",
+    "semantic_hash": "f8fd1a0f430733ba1d51eef658a7b9da"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\quality\\presentation\\screens\\quality_screen.dart": {
+    "mtime": 1781536356.8437276,
+    "ast_hash": "41fd0f38ca5e78d725a3617de8c087c0",
+    "semantic_hash": "41fd0f38ca5e78d725a3617de8c087c0"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\quality\\presentation\\widgets\\quality_screens_section.dart": {
+    "mtime": 1781593483.1965978,
+    "ast_hash": "5c66230c942e5d48503864966d9d007c",
+    "semantic_hash": "5c66230c942e5d48503864966d9d007c"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\raw_material_entry\\data\\datasources\\raw_material_entry_remote_data_source.dart": {
+    "mtime": 1781614799.4545972,
+    "ast_hash": "6997335b5d4727f06f8e32d1386c81f9",
+    "semantic_hash": "6997335b5d4727f06f8e32d1386c81f9"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\raw_material_entry\\data\\models\\raw_material_entry_lookup_model.dart": {
+    "mtime": 1781614480.6573744,
+    "ast_hash": "f1dafb83730e15232a3d8763463e7871",
+    "semantic_hash": "f1dafb83730e15232a3d8763463e7871"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\raw_material_entry\\data\\models\\raw_material_entry_model.dart": {
+    "mtime": 1781614480.6643646,
+    "ast_hash": "c93208ce398f15e24f310b2cfef48063",
+    "semantic_hash": "c93208ce398f15e24f310b2cfef48063"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\raw_material_entry\\data\\repos\\raw_material_entry_repository_impl.dart": {
+    "mtime": 1781614480.681897,
+    "ast_hash": "e478a1c21602e00fa37e1739130d312c",
+    "semantic_hash": "e478a1c21602e00fa37e1739130d312c"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\raw_material_entry\\domain\\entities\\raw_material_entry.dart": {
+    "mtime": 1781614480.7009015,
+    "ast_hash": "64bd097985d69a33fd7c5bfea03d27b6",
+    "semantic_hash": "64bd097985d69a33fd7c5bfea03d27b6"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\raw_material_entry\\domain\\entities\\raw_material_entry_lookup.dart": {
+    "mtime": 1781614480.7038982,
+    "ast_hash": "ba1ba1218bf0eb3bd5f71e481f7f7beb",
+    "semantic_hash": "ba1ba1218bf0eb3bd5f71e481f7f7beb"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\raw_material_entry\\domain\\repos\\raw_material_entry_repository.dart": {
+    "mtime": 1781614480.7188928,
+    "ast_hash": "affa410843122fc8dc2043db140f9110",
+    "semantic_hash": "affa410843122fc8dc2043db140f9110"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\raw_material_entry\\presentation\\bloc\\raw_material_entry_cubit.dart": {
+    "mtime": 1781614480.73459,
+    "ast_hash": "4c93b443fa81aac7a399e800302c6686",
+    "semantic_hash": "4c93b443fa81aac7a399e800302c6686"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\raw_material_entry\\presentation\\bloc\\raw_material_entry_state.dart": {
+    "mtime": 1781614480.7385902,
+    "ast_hash": "63aef3bca61ac509dc8c7792a1532c91",
+    "semantic_hash": "63aef3bca61ac509dc8c7792a1532c91"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\raw_material_entry\\presentation\\screens\\raw_material_entry_screen.dart": {
+    "mtime": 1781615807.5937908,
+    "ast_hash": "5be40d350931fe6270f267df1f37b72f",
+    "semantic_hash": "5be40d350931fe6270f267df1f37b72f"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\raw_material_entry\\presentation\\widgets\\raw_material_entry_card.dart": {
+    "mtime": 1781615807.7872348,
+    "ast_hash": "bb6fcc798e648ba8ff846a57f1e0f803",
+    "semantic_hash": "bb6fcc798e648ba8ff846a57f1e0f803"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\raw_material_entry\\presentation\\widgets\\raw_material_entry_content.dart": {
+    "mtime": 1781615646.5731988,
+    "ast_hash": "357261b79a5c9eff210bf1383fe67f38",
+    "semantic_hash": "357261b79a5c9eff210bf1383fe67f38"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\raw_material_entry\\presentation\\widgets\\raw_material_entry_copy.dart": {
+    "mtime": 1781615517.44144,
+    "ast_hash": "37486bcd7191ea8461bc8e11edeb8d66",
+    "semantic_hash": "37486bcd7191ea8461bc8e11edeb8d66"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\raw_material_entry\\presentation\\widgets\\raw_material_entry_form.dart": {
+    "mtime": 1781614480.8290892,
+    "ast_hash": "2c19ff85e8112c12b089e916dcbb6929",
+    "semantic_hash": "2c19ff85e8112c12b089e916dcbb6929"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\raw_material_entry\\presentation\\widgets\\raw_material_entry_status_filter_bar.dart": {
+    "mtime": 1781615629.8530202,
+    "ast_hash": "b32bb508d03b681e00db0f17dc7271cd",
+    "semantic_hash": "b32bb508d03b681e00db0f17dc7271cd"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\raw_material_entry\\presentation\\widgets\\raw_material_entry_summary_strip.dart": {
+    "mtime": 1781614480.8410847,
+    "ast_hash": "c45cbc75412ba972b7e95102cf030f44",
+    "semantic_hash": "c45cbc75412ba972b7e95102cf030f44"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\screen_records\\data\\datasources\\screen_record_remote_data_source.dart": {
+    "mtime": 1781539666.665061,
+    "ast_hash": "1378696c47a0880fb758a0d1e9f70328",
+    "semantic_hash": "1378696c47a0880fb758a0d1e9f70328"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\screen_records\\data\\repos\\endpoint_screen_record_repository.dart": {
+    "mtime": 1781593354.7146888,
+    "ast_hash": "8b45c5bec410fc0ecd7d1eb855dcec28",
+    "semantic_hash": "8b45c5bec410fc0ecd7d1eb855dcec28"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\screen_records\\data\\repos\\screen_record_repository_dependencies.dart": {
+    "mtime": 1781593245.6828518,
+    "ast_hash": "a4a903e7d52d0911c6ffb654c664838d",
+    "semantic_hash": "a4a903e7d52d0911c6ffb654c664838d"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\screen_records\\data\\repos\\static_screen_record_repository.dart": {
+    "mtime": 1781539354.1433842,
+    "ast_hash": "1296762569dbe1a2bf6f451286ea1a48",
+    "semantic_hash": "1296762569dbe1a2bf6f451286ea1a48"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\screen_records\\domain\\repos\\screen_record_repository.dart": {
+    "mtime": 1781539342.8023891,
+    "ast_hash": "edbe14c41d308ff6f37f884f78b7eeac",
+    "semantic_hash": "edbe14c41d308ff6f37f884f78b7eeac"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\screen_records\\domain\\usecases\\add_screen_record_use_case.dart": {
+    "mtime": 1781539369.3777733,
+    "ast_hash": "00858154d7643123923a62cb0d5ff3a1",
+    "semantic_hash": "00858154d7643123923a62cb0d5ff3a1"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\screen_records\\domain\\usecases\\delete_screen_record_use_case.dart": {
+    "mtime": 1781539381.025913,
+    "ast_hash": "b558a641d4f92604ff0d5b59795c74f3",
+    "semantic_hash": "b558a641d4f92604ff0d5b59795c74f3"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\screen_records\\domain\\usecases\\load_screen_records_use_case.dart": {
+    "mtime": 1781539362.1551397,
+    "ast_hash": "212a74496c19a4f745b43a07300c43ad",
+    "semantic_hash": "212a74496c19a4f745b43a07300c43ad"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\screen_records\\domain\\usecases\\update_screen_record_use_case.dart": {
+    "mtime": 1781539375.5311227,
+    "ast_hash": "fcee6bdfad2f1dcdd6f2f361d5e3a4e5",
+    "semantic_hash": "fcee6bdfad2f1dcdd6f2f361d5e3a4e5"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\screen_records\\presentation\\bloc\\screen_records_cubit.dart": {
+    "mtime": 1781587814.4734826,
+    "ast_hash": "01f160a2351ec245365ea9108c1f8a0a",
+    "semantic_hash": "01f160a2351ec245365ea9108c1f8a0a"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\screen_records\\presentation\\bloc\\screen_records_state.dart": {
+    "mtime": 1781539608.4793615,
+    "ast_hash": "b567f5e0a40fd4773451b1bbe83a2008",
+    "semantic_hash": "b567f5e0a40fd4773451b1bbe83a2008"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\screen_records\\presentation\\widgets\\screen_record_feature_section.dart": {
+    "mtime": 1781614540.1840148,
+    "ast_hash": "3415881f09611e6b62c66654408910cd",
+    "semantic_hash": "3415881f09611e6b62c66654408910cd"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\settings\\presentation\\bloc\\settings_record_cubits.dart": {
+    "mtime": 1781614540.1840148,
+    "ast_hash": "d0d00a93c38ee9106764e63b6651a282",
+    "semantic_hash": "d0d00a93c38ee9106764e63b6651a282"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\settings\\presentation\\screens\\settings_screen.dart": {
+    "mtime": 1781536319.7220426,
+    "ast_hash": "5227f58a53c9917b1686519ec2ba1c23",
+    "semantic_hash": "5227f58a53c9917b1686519ec2ba1c23"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\settings\\presentation\\widgets\\settings_basics_section.dart": {
+    "mtime": 1781593469.5653684,
+    "ast_hash": "42b7e6a9c6a67f65cacdcb8a5af3e0bb",
+    "semantic_hash": "42b7e6a9c6a67f65cacdcb8a5af3e0bb"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\features\\settings\\presentation\\widgets\\settings_units_section.dart": {
+    "mtime": 1781593447.038703,
+    "ast_hash": "5bc7a271bd133547f36e4fc6a515d476",
+    "semantic_hash": "5bc7a271bd133547f36e4fc6a515d476"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\lib\\main.dart": {
+    "mtime": 1781508416.364699,
+    "ast_hash": "83152fcf6966e634178434745be16475",
+    "semantic_hash": "83152fcf6966e634178434745be16475"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\test\\core\\di\\dependency_injection_test.dart": {
+    "mtime": 1781614399.18582,
+    "ast_hash": "3b9ed96079cb84c97796637562f1c345",
+    "semantic_hash": "3b9ed96079cb84c97796637562f1c345"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\test\\core\\extensions\\nullable_extensions_test.dart": {
+    "mtime": 1781512650.9575918,
+    "ast_hash": "b59d1cfc769a2c3702be1e665ccfab81",
+    "semantic_hash": "b59d1cfc769a2c3702be1e665ccfab81"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\test\\core\\utils\\app_regex_test.dart": {
+    "mtime": 1781512651.2624552,
+    "ast_hash": "7b843cae2e00a4907b6f529c9012e458",
+    "semantic_hash": "7b843cae2e00a4907b6f529c9012e458"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\test\\features\\auth\\data\\repos\\auth_repository_impl_test.dart": {
+    "mtime": 1781588987.0416565,
+    "ast_hash": "cf7f88c6cec74a9f208f0389720f491c",
+    "semantic_hash": "cf7f88c6cec74a9f208f0389720f491c"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\test\\features\\auth\\domain\\validators\\login_validator_test.dart": {
+    "mtime": 1781508569.6420522,
+    "ast_hash": "66cdce3382f657382692c18baf05b3dc",
+    "semantic_hash": "66cdce3382f657382692c18baf05b3dc"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\test\\features\\auth\\presentation\\bloc\\auth_session_cubit_test.dart": {
+    "mtime": 1781538804.0722823,
+    "ast_hash": "3e8dc1ac52a66e7e74718567ad3761a9",
+    "semantic_hash": "3e8dc1ac52a66e7e74718567ad3761a9"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\test\\features\\home\\domain\\entities\\home_menu_section_test.dart": {
+    "mtime": 1781614399.3692062,
+    "ast_hash": "72f2864e5c13c89831d2677caa21ef11",
+    "semantic_hash": "72f2864e5c13c89831d2677caa21ef11"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\test\\features\\home\\presentation\\screens\\home_screen_test.dart": {
+    "mtime": 1781614924.0911582,
+    "ast_hash": "5f47391c3bdd99ad7e37a2a271c4f747",
+    "semantic_hash": "5f47391c3bdd99ad7e37a2a271c4f747"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\test\\features\\raw_material_entry\\data\\datasources\\raw_material_entry_remote_data_source_test.dart": {
+    "mtime": 1781614481.07647,
+    "ast_hash": "23c9fc056c3314b6009f794359423f45",
+    "semantic_hash": "23c9fc056c3314b6009f794359423f45"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\test\\features\\raw_material_entry\\data\\models\\raw_material_entry_model_test.dart": {
+    "mtime": 1781614481.0864735,
+    "ast_hash": "69e3780eaa25cbcfeef02b17604ea41d",
+    "semantic_hash": "69e3780eaa25cbcfeef02b17604ea41d"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\test\\features\\raw_material_entry\\presentation\\bloc\\raw_material_entry_cubit_test.dart": {
+    "mtime": 1781614481.1011302,
+    "ast_hash": "92809cc8bc267b1c0911e4f39bc767bb",
+    "semantic_hash": "92809cc8bc267b1c0911e4f39bc767bb"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\test\\features\\raw_material_entry\\presentation\\screens\\raw_material_entry_screen_test.dart": {
+    "mtime": 1781615784.8931308,
+    "ast_hash": "26764d6099de4268787c1d449571e636",
+    "semantic_hash": "26764d6099de4268787c1d449571e636"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\test\\features\\settings\\presentation\\bloc\\settings_records_cubit_test.dart": {
+    "mtime": 1781538169.580454,
+    "ast_hash": "ebf2257ec491c869d7b7be576d77d4a8",
+    "semantic_hash": "ebf2257ec491c869d7b7be576d77d4a8"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\test\\features\\settings\\presentation\\screens\\settings_screen_test.dart": {
+    "mtime": 1781609699.743085,
+    "ast_hash": "4ce7ec97b9b895444a193fe9579e05bd",
+    "semantic_hash": "4ce7ec97b9b895444a193fe9579e05bd"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\test\\widget_test.dart": {
+    "mtime": 1781523733.1786852,
+    "ast_hash": "27b404cab6b18d702204bf19ca6d6614",
+    "semantic_hash": "27b404cab6b18d702204bf19ca6d6614"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\AGENTS.md": {
+    "mtime": 1781617746.6908195,
+    "ast_hash": "03d4339bf9aa30f302ee5807123e5138",
+    "semantic_hash": "03d4339bf9aa30f302ee5807123e5138"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\PernitAPI.yaml": {
+    "mtime": 1781463372.6068382,
+    "ast_hash": "33407c8ade749efe15293701f661115a",
+    "semantic_hash": "33407c8ade749efe15293701f661115a"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\README.md": {
+    "mtime": 1781513103.2774737,
+    "ast_hash": "4ef27dca696155c6e249c53b384e6030",
+    "semantic_hash": "4ef27dca696155c6e249c53b384e6030"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\analysis_options.yaml": {
+    "mtime": 1781508221.3179553,
+    "ast_hash": "9e65f4b9beebb674c0dc252f70a5c177",
+    "semantic_hash": "9e65f4b9beebb674c0dc252f70a5c177"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\LaunchImage.imageset\\README.md": {
+    "mtime": 1752262772.3991642,
+    "ast_hash": "f7ee1b402881509d197f34963e569927",
+    "semantic_hash": "f7ee1b402881509d197f34963e569927"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\l10n.yaml": {
+    "mtime": 1781508624.695565,
+    "ast_hash": "1371ee8fe43c7d56715be5179ff981bb",
+    "semantic_hash": "1371ee8fe43c7d56715be5179ff981bb"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\pubspec.yaml": {
+    "mtime": 1781589548.4179342,
+    "ast_hash": "3d781859c9df99feef4445db5c1c4e4a",
+    "semantic_hash": "3d781859c9df99feef4445db5c1c4e4a"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\skill-addnewfeature\\SKILL.md": {
+    "mtime": 1781507683.717475,
+    "ast_hash": "5472cf952e45aeeb40ae1d35af658887",
+    "semantic_hash": "5472cf952e45aeeb40ae1d35af658887"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png": {
+    "mtime": 1752262772.3834589,
+    "ast_hash": "13e9c72ec37fac220397aa819fa1ef2d",
+    "semantic_hash": "13e9c72ec37fac220397aa819fa1ef2d"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png": {
+    "mtime": 1752262772.3834589,
+    "ast_hash": "6270344430679711b81476e29878caa7",
+    "semantic_hash": "6270344430679711b81476e29878caa7"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png": {
+    "mtime": 1752262772.3834589,
+    "ast_hash": "a0a8db5985280b3679d99a820ae2db79",
+    "semantic_hash": "a0a8db5985280b3679d99a820ae2db79"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png": {
+    "mtime": 1752262772.3834589,
+    "ast_hash": "afe1b655b9f32da22f9a4301bb8e6ba8",
+    "semantic_hash": "afe1b655b9f32da22f9a4301bb8e6ba8"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png": {
+    "mtime": 1752262772.3834589,
+    "ast_hash": "57838d52c318faff743130c3fcfae0c6",
+    "semantic_hash": "57838d52c318faff743130c3fcfae0c6"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-1024x1024@1x.png": {
+    "mtime": 1752352233.9376884,
+    "ast_hash": "c785f8932297af4acd5f5ccb7630f01c",
+    "semantic_hash": "c785f8932297af4acd5f5ccb7630f01c"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-20x20@1x.png": {
+    "mtime": 1752352234.0389867,
+    "ast_hash": "a2f8558fb1d42514111fbbb19fb67314",
+    "semantic_hash": "a2f8558fb1d42514111fbbb19fb67314"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-20x20@2x.png": {
+    "mtime": 1752352233.749963,
+    "ast_hash": "2247a840b6ee72b8a069208af170e5b1",
+    "semantic_hash": "2247a840b6ee72b8a069208af170e5b1"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-20x20@3x.png": {
+    "mtime": 1752352234.248608,
+    "ast_hash": "1b3b1538136316263c7092951e923e9d",
+    "semantic_hash": "1b3b1538136316263c7092951e923e9d"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-29x29@1x.png": {
+    "mtime": 1752352234.4800632,
+    "ast_hash": "be8887071dd7ec39cb754d236aa9584f",
+    "semantic_hash": "be8887071dd7ec39cb754d236aa9584f"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-29x29@2x.png": {
+    "mtime": 1752352232.9578347,
+    "ast_hash": "043119ef4faa026ff82bd03f241e5338",
+    "semantic_hash": "043119ef4faa026ff82bd03f241e5338"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-29x29@3x.png": {
+    "mtime": 1752352234.1712034,
+    "ast_hash": "2b1452c4c1bda6177b4fbbb832df217f",
+    "semantic_hash": "2b1452c4c1bda6177b4fbbb832df217f"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-40x40@1x.png": {
+    "mtime": 1752352233.1839995,
+    "ast_hash": "2247a840b6ee72b8a069208af170e5b1",
+    "semantic_hash": "2247a840b6ee72b8a069208af170e5b1"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-40x40@2x.png": {
+    "mtime": 1752352234.3953493,
+    "ast_hash": "8245359312aea1b0d2412f79a07b0ca5",
+    "semantic_hash": "8245359312aea1b0d2412f79a07b0ca5"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-40x40@3x.png": {
+    "mtime": 1752352233.3918612,
+    "ast_hash": "5b3c0902200ce596e9848f22e1f0fe0e",
+    "semantic_hash": "5b3c0902200ce596e9848f22e1f0fe0e"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-60x60@2x.png": {
+    "mtime": 1752352233.8311417,
+    "ast_hash": "5b3c0902200ce596e9848f22e1f0fe0e",
+    "semantic_hash": "5b3c0902200ce596e9848f22e1f0fe0e"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-60x60@3x.png": {
+    "mtime": 1752352232.7626977,
+    "ast_hash": "e419d22a37bc40ba185aca1acb6d4ac6",
+    "semantic_hash": "e419d22a37bc40ba185aca1acb6d4ac6"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-76x76@1x.png": {
+    "mtime": 1752352233.5124714,
+    "ast_hash": "36c0d7a7132bdde18898ffdfcfcdc4d2",
+    "semantic_hash": "36c0d7a7132bdde18898ffdfcfcdc4d2"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-76x76@2x.png": {
+    "mtime": 1752352234.5235379,
+    "ast_hash": "643842917530acf4c5159ae851b0baf2",
+    "semantic_hash": "643842917530acf4c5159ae851b0baf2"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-83.5x83.5@2x.png": {
+    "mtime": 1752352234.314247,
+    "ast_hash": "665cb5e3c5729da6d639d26eff47a503",
+    "semantic_hash": "665cb5e3c5729da6d639d26eff47a503"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\LaunchImage.imageset\\LaunchImage.png": {
+    "mtime": 1752352232.5896323,
+    "ast_hash": "978c1bee49d7ad5fc1a4d81099b13e18",
+    "semantic_hash": "978c1bee49d7ad5fc1a4d81099b13e18"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\LaunchImage.imageset\\LaunchImage@2x.png": {
+    "mtime": 1752352232.4305644,
+    "ast_hash": "978c1bee49d7ad5fc1a4d81099b13e18",
+    "semantic_hash": "978c1bee49d7ad5fc1a4d81099b13e18"
+  },
+  "C:\\Users\\hassa\\PycharmProjects\\flutter_pernit\\ios\\Runner\\Assets.xcassets\\LaunchImage.imageset\\LaunchImage@3x.png": {
+    "mtime": 1752352232.1695075,
+    "ast_hash": "978c1bee49d7ad5fc1a4d81099b13e18",
+    "semantic_hash": "978c1bee49d7ad5fc1a4d81099b13e18"
+  }
+}

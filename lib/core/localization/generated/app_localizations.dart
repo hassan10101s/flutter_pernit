@@ -281,7 +281,7 @@ abstract class AppLocalizations {
   /// No description provided for @menuCommercial.
   ///
   /// In en, this message translates to:
-  /// **'Orders'**
+  /// **'Raw entry'**
   String get menuCommercial;
 
   /// No description provided for @menuSettings.

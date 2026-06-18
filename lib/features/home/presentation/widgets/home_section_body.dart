@@ -9,6 +9,7 @@ import '../../../../design_system/widgets/pernit_panel_header.dart';
 import '../../../auth/domain/entities/auth_user.dart';
 import '../../../production/presentation/screens/production_screen.dart';
 import '../../../quality/presentation/screens/quality_screen.dart';
+import '../../../raw_material_entry/presentation/screens/raw_material_entry_screen.dart';
 import '../../../settings/presentation/screens/settings_screen.dart';
 import '../../domain/entities/home_menu_section.dart';
 
@@ -21,6 +22,10 @@ class HomeSectionBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+
+    if (section == HomeMenuSection.commercial) {
+      return const SafeArea(child: RawMaterialEntryScreen());
+    }
 
     return SafeArea(
       child: Padding(
@@ -46,7 +51,7 @@ class HomeSectionBody extends StatelessWidget {
       HomeMenuSection.inventory => Icons.inventory_2_outlined,
       HomeMenuSection.quality => Icons.verified_outlined,
       HomeMenuSection.production => Icons.factory_outlined,
-      HomeMenuSection.commercial => Icons.receipt_long_outlined,
+      HomeMenuSection.commercial => Icons.move_to_inbox_outlined,
       HomeMenuSection.overview ||
       HomeMenuSection.settings => Icons.apps_outlined,
     };

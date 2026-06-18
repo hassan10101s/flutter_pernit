@@ -106,7 +106,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get menuProduction => 'Production';
 
   @override
-  String get menuCommercial => 'Orders';
+  String get menuCommercial => 'Raw entry';
 
   @override
   String get menuSettings => 'Settings';

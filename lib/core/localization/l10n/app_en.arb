@@ -44,7 +44,7 @@
   "menuInventory": "Inventory",
   "menuQuality": "Quality",
   "menuProduction": "Production",
-  "menuCommercial": "Orders",
+  "menuCommercial": "Raw entry",
   "menuSettings": "Settings",
   "overviewTitle": "Workspace",
   "overviewSubtitle": "Available sections are based on the user groups returned by login.",

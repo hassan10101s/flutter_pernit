@@ -12,6 +12,10 @@ import '../../features/auth/domain/validators/login_validator.dart';
 import '../../features/auth/presentation/bloc/auth_session_cubit.dart';
 import '../../features/auth/presentation/bloc/login_cubit.dart';
 import '../../features/auth/presentation/bloc/logout_cubit.dart';
+import '../../features/raw_material_entry/data/datasources/raw_material_entry_remote_data_source.dart';
+import '../../features/raw_material_entry/data/repos/raw_material_entry_repository_impl.dart';
+import '../../features/raw_material_entry/domain/repos/raw_material_entry_repository.dart';
+import '../../features/raw_material_entry/presentation/bloc/raw_material_entry_cubit.dart';
 import '../../features/screen_records/data/datasources/screen_record_remote_data_source.dart';
 import '../../features/screen_records/data/repos/screen_record_repository_dependencies.dart';
 import '../auth/auth_interceptor.dart';
@@ -67,6 +71,12 @@ void configureDependencies() {
         envConfig: sl(),
       ),
     )
+    ..registerLazySingleton<RawMaterialEntryRemoteDataSource>(
+      () => DioRawMaterialEntryRemoteDataSource(sl()),
+    )
+    ..registerLazySingleton<RawMaterialEntryRepository>(
+      () => RawMaterialEntryRepositoryImpl(sl(), sl(), sl(), sl()),
+    )
     ..registerLazySingleton<AuthRepository>(
       () => AuthRepositoryImpl(sl(), sl(), sl(), sl(), sl()),
     )
@@ -79,5 +89,6 @@ void configureDependencies() {
     ..registerFactory<AuthSessionCubit>(() => AuthSessionCubit(sl()))
     ..registerFactory<LoginCubit>(() => LoginCubit(sl()))
     ..registerFactory<LogoutCubit>(() => LogoutCubit(sl()))
+    ..registerFactory<RawMaterialEntryCubit>(() => RawMaterialEntryCubit(sl()))
     ..registerLazySingleton<AppRouter>(() => AppRouter());
 }
