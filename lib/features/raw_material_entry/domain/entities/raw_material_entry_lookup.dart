@@ -15,6 +15,8 @@ class LookupOption extends Equatable {
 
   String? get rawMaterialName => metadata['rawMaterialName'];
 
+  int? get rawMaterialId => int.tryParse(metadata['rawMaterialId'] ?? '');
+
   String? get supplierName => metadata['supplierName'];
 
   String? get unitName => metadata['unitName'];
@@ -75,7 +77,10 @@ class RawMaterialEntryDraft extends Equatable {
   });
 
   bool get isValid {
-    return rawMaterialId > 0 && quantityFromSupplier > 0;
+    return rawMaterialId > 0 &&
+        purchaseOrderDetailId != null &&
+        warehouseId != null &&
+        quantityFromSupplier > 0;
   }
 
   @override

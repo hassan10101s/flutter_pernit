@@ -303,4 +303,302 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get productionReserveMaterials => 'حجز المواد';
+
+  @override
+  String rawWorkflowBatch(int id) {
+    return 'دفعة #$id';
+  }
+
+  @override
+  String get rawWorkflowSupplierWeight => 'وزن المورد';
+
+  @override
+  String get rawWorkflowWarehouse => 'المخزن';
+
+  @override
+  String get rawWorkflowLoadMore => 'تحميل المزيد';
+
+  @override
+  String get rawWorkflowRefresh => 'تحديث';
+
+  @override
+  String get rawQualityTitle => 'جودة الخامات';
+
+  @override
+  String get rawQualitySubtitle =>
+      'تابع كل دفعة مستلمة من أخذ العينة حتى قرار الجودة النهائي.';
+
+  @override
+  String rawQualityQueueCount(int count) {
+    return '$count دفعة داخل مسار الجودة';
+  }
+
+  @override
+  String get rawQualityEmpty => 'لا توجد دفعات تحتاج إجراء من الجودة حاليًا.';
+
+  @override
+  String get rawQualityTakeSample => 'أخذ عينة';
+
+  @override
+  String get rawQualityEnterAnalysis => 'إدخال التحاليل';
+
+  @override
+  String get rawQualityReviewAnalysis => 'مراجعة التحاليل';
+
+  @override
+  String get rawQualityAwaitingInventory => 'مقبولة — بانتظار المخزن';
+
+  @override
+  String get rawQualityRejected => 'مرفوضة';
+
+  @override
+  String get rawQualityTakingSample => 'جارٍ أخذ العينة…';
+
+  @override
+  String get rawQualitySampleSuccess => 'تم إنشاء العينة بنجاح.';
+
+  @override
+  String get rawQualitySamplingTab => 'أخذ العينات';
+
+  @override
+  String get rawQualityAnalysisTab => 'إدخال التحاليل';
+
+  @override
+  String get rawQualityDecisionTab => 'قرار الجودة';
+
+  @override
+  String rawQualitySamplingCount(int count) {
+    return '$count دفعة متاحة لأخذ العينات';
+  }
+
+  @override
+  String rawQualitySamplesCount(int count) {
+    return '$count عينة';
+  }
+
+  @override
+  String rawQualityDecisionCount(int count) {
+    return '$count دفعة جاهزة للقرار';
+  }
+
+  @override
+  String get rawQualitySamplingEmpty =>
+      'لا توجد دفعات مستلمة متاحة لأخذ العينات.';
+
+  @override
+  String get rawQualityAnalysisEmpty => 'لا توجد عينات متاحة لإدخال التحاليل.';
+
+  @override
+  String get rawQualityDecisionEmpty => 'لا توجد دفعات جاهزة لقرار الجودة.';
+
+  @override
+  String rawQualitySampleCount(int count) {
+    return 'تم أخذ $count عينة';
+  }
+
+  @override
+  String get rawQualityTakeAnotherSample => 'أخذ عينة';
+
+  @override
+  String get rawQualityEditAnalysis => 'تعديل التحليل';
+
+  @override
+  String get rawAnalysisTitle => 'استكمال تحاليل العينة';
+
+  @override
+  String rawAnalysisSampleNumber(String number) {
+    return 'العينة $number';
+  }
+
+  @override
+  String get rawAnalysisChemical => 'التحاليل الكيميائية';
+
+  @override
+  String get rawAnalysisPhysical => 'التحاليل الفيزيائية';
+
+  @override
+  String get rawAnalysisValue => 'القيمة المقاسة';
+
+  @override
+  String get rawAnalysisSop => 'إجراء التشغيل SOP';
+
+  @override
+  String get rawAnalysisSelectSop => 'اختر SOP';
+
+  @override
+  String rawAnalysisNormalRange(String min, String max) {
+    return 'الطبيعي: $min – $max';
+  }
+
+  @override
+  String rawAnalysisReference(String value) {
+    return 'المرجع: $value';
+  }
+
+  @override
+  String rawAnalysisRejectReference(String value) {
+    return 'الرفض عند: $value';
+  }
+
+  @override
+  String get rawAnalysisRequired => 'أدخل نتيجة تحليل واحدة على الأقل.';
+
+  @override
+  String get rawAnalysisInvalidValue => 'أدخل قيمة رقمية صحيحة.';
+
+  @override
+  String get rawAnalysisAtLeastOne => 'أدخل نتيجة واحدة على الأقل قبل الحفظ.';
+
+  @override
+  String get rawAnalysisSopNotConfigured => 'لم يتم تحديد SOP لهذا البرامتر';
+
+  @override
+  String get rawAnalysisSaveAll => 'حفظ التحاليل';
+
+  @override
+  String get rawAnalysisSaveSuccess => 'تم حفظ تحاليل العينة.';
+
+  @override
+  String rawAnalysisResultsSummary(int count) {
+    return '$count نتيجة تحليل';
+  }
+
+  @override
+  String get rawQualityDecisionTitle => 'قرار الجودة';
+
+  @override
+  String get rawQualityDecisionHint => 'ملاحظات القرار — اختياري';
+
+  @override
+  String get rawQualityAccept => 'قبول الدفعة';
+
+  @override
+  String get rawQualityReject => 'رفض الدفعة';
+
+  @override
+  String get rawQualityAcceptConfirm =>
+      'قبول هذه الدفعة وإرسالها للمخزن لتسجيل الوزن النهائي؟';
+
+  @override
+  String get rawQualityRejectConfirm =>
+      'رفض هذه الدفعة؟ لن تظهر ضمن الدفعات المتاحة للإدخال بالمخزن.';
+
+  @override
+  String get rawQualityDecisionSuccess => 'تم حفظ قرار الجودة.';
+
+  @override
+  String get rawInventoryTitle => 'إدخال الخامات المقبولة';
+
+  @override
+  String get rawInventorySubtitle =>
+      'تظهر هنا الدفعات المعتمدة من الجودة فقط. أدخل وزن الميزان الفعلي لإغلاق الاستلام.';
+
+  @override
+  String rawInventoryQueueCount(int count) {
+    return '$count دفعة مقبولة بانتظار الوزن النهائي';
+  }
+
+  @override
+  String get rawInventoryEmpty =>
+      'لا توجد دفعات مقبولة بانتظار الإدخال إلى المخزن.';
+
+  @override
+  String get rawInventoryEnterStock => 'إدخال المخزن';
+
+  @override
+  String get rawInventoryActualWeight => 'وزن الميزان الفعلي';
+
+  @override
+  String get rawInventoryWeightRequired => 'أدخل وزنًا فعليًا أكبر من صفر.';
+
+  @override
+  String rawInventoryVariance(String value) {
+    return 'الفرق عن وزن المورد: $value';
+  }
+
+  @override
+  String get rawInventoryConfirm =>
+      'تأكيد الوزن الفعلي وإضافة هذه الدفعة إلى المخزون؟';
+
+  @override
+  String get rawInventorySuccess =>
+      'تم إغلاق الدفعة وإضافتها للمخزون باستخدام وزن الميزان الفعلي.';
+
+  @override
+  String get rawInventoryCurrentTab => 'المخزون الحالي';
+
+  @override
+  String get rawInventoryReceivingTab => 'استقبال الخام';
+
+  @override
+  String get rawInventoryFinishedProductTab => 'منتج نهائي';
+
+  @override
+  String rawInventoryCurrentCount(int count) {
+    return '$count سجل مخزون خامات';
+  }
+
+  @override
+  String rawInventoryProductCount(int count) {
+    return '$count سجل مخزون منتج نهائي';
+  }
+
+  @override
+  String get rawInventoryCurrentEmpty => 'لا يوجد مخزون خامات مسجل حاليًا.';
+
+  @override
+  String rawInventoryItemsCount(int count) {
+    return '$count صنف';
+  }
+
+  @override
+  String rawInventoryReserved(String value) {
+    return 'المحجوز: $value';
+  }
+
+  @override
+  String get rawInventoryScaleImage => 'صورة الميزان (إجباري)';
+
+  @override
+  String get rawInventoryScaleImageHint => 'أضف صورة واضحة للوزن المقاس';
+
+  @override
+  String get rawInventoryImageRequired =>
+      'صورة الميزان مطلوبة قبل إدخال الخام إلى المخزن.';
+
+  @override
+  String get rawInventoryTakePhoto => 'التقاط صورة';
+
+  @override
+  String get rawInventoryChoosePhoto => 'اختيار من المعرض';
+
+  @override
+  String get rawInventoryAddProductTitle => 'إضافة مخزون منتج نهائي';
+
+  @override
+  String get rawInventoryProduct => 'المنتج النهائي';
+
+  @override
+  String get rawInventoryProductQuantity => 'الكمية المضافة';
+
+  @override
+  String get rawInventoryAddProduct => 'إضافة للمخزون';
+
+  @override
+  String get rawInventoryProductRequired =>
+      'اختر المنتج والمخزن ثم أدخل كمية أكبر من صفر.';
+
+  @override
+  String get rawInventoryAddProductConfirm =>
+      'تأكيد إضافة كمية المنتج النهائي إلى المخزن المحدد؟';
+
+  @override
+  String get rawInventoryProductSuccess => 'تمت إضافة مخزون المنتج النهائي.';
+
+  @override
+  String get rawInventoryProductEmpty =>
+      'لا يوجد مخزون منتجات نهائية مسجل حاليًا.';
+
+  @override
+  String get commonConfirm => 'تأكيد';
 }

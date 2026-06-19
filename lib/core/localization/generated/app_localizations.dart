@@ -643,6 +643,510 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Reserve materials'**
   String get productionReserveMaterials;
+
+  /// No description provided for @rawWorkflowBatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Batch #{id}'**
+  String rawWorkflowBatch(int id);
+
+  /// No description provided for @rawWorkflowSupplierWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Supplier weight'**
+  String get rawWorkflowSupplierWeight;
+
+  /// No description provided for @rawWorkflowWarehouse.
+  ///
+  /// In en, this message translates to:
+  /// **'Warehouse'**
+  String get rawWorkflowWarehouse;
+
+  /// No description provided for @rawWorkflowLoadMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Load more'**
+  String get rawWorkflowLoadMore;
+
+  /// No description provided for @rawWorkflowRefresh.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh'**
+  String get rawWorkflowRefresh;
+
+  /// No description provided for @rawQualityTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Raw material quality'**
+  String get rawQualityTitle;
+
+  /// No description provided for @rawQualitySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow each received batch from sampling through the final quality decision.'**
+  String get rawQualitySubtitle;
+
+  /// No description provided for @rawQualityQueueCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} batches in the quality workflow'**
+  String rawQualityQueueCount(int count);
+
+  /// No description provided for @rawQualityEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No batches currently require quality work.'**
+  String get rawQualityEmpty;
+
+  /// No description provided for @rawQualityTakeSample.
+  ///
+  /// In en, this message translates to:
+  /// **'Take sample'**
+  String get rawQualityTakeSample;
+
+  /// No description provided for @rawQualityEnterAnalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter analyses'**
+  String get rawQualityEnterAnalysis;
+
+  /// No description provided for @rawQualityReviewAnalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Review analyses'**
+  String get rawQualityReviewAnalysis;
+
+  /// No description provided for @rawQualityAwaitingInventory.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved — awaiting inventory'**
+  String get rawQualityAwaitingInventory;
+
+  /// No description provided for @rawQualityRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get rawQualityRejected;
+
+  /// No description provided for @rawQualityTakingSample.
+  ///
+  /// In en, this message translates to:
+  /// **'Taking sample…'**
+  String get rawQualityTakingSample;
+
+  /// No description provided for @rawQualitySampleSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'The sample was created successfully.'**
+  String get rawQualitySampleSuccess;
+
+  /// No description provided for @rawQualitySamplingTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Sampling'**
+  String get rawQualitySamplingTab;
+
+  /// No description provided for @rawQualityAnalysisTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Analyses'**
+  String get rawQualityAnalysisTab;
+
+  /// No description provided for @rawQualityDecisionTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Decision'**
+  String get rawQualityDecisionTab;
+
+  /// No description provided for @rawQualitySamplingCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} batches available for sampling'**
+  String rawQualitySamplingCount(int count);
+
+  /// No description provided for @rawQualitySamplesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} samples'**
+  String rawQualitySamplesCount(int count);
+
+  /// No description provided for @rawQualityDecisionCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} batches ready for a decision'**
+  String rawQualityDecisionCount(int count);
+
+  /// No description provided for @rawQualitySamplingEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No received batches are available for sampling.'**
+  String get rawQualitySamplingEmpty;
+
+  /// No description provided for @rawQualityAnalysisEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No samples are available for analysis.'**
+  String get rawQualityAnalysisEmpty;
+
+  /// No description provided for @rawQualityDecisionEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No batches are ready for a quality decision.'**
+  String get rawQualityDecisionEmpty;
+
+  /// No description provided for @rawQualitySampleCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} samples taken'**
+  String rawQualitySampleCount(int count);
+
+  /// No description provided for @rawQualityTakeAnotherSample.
+  ///
+  /// In en, this message translates to:
+  /// **'Take sample'**
+  String get rawQualityTakeAnotherSample;
+
+  /// No description provided for @rawQualityEditAnalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit analysis'**
+  String get rawQualityEditAnalysis;
+
+  /// No description provided for @rawAnalysisTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete sample analysis'**
+  String get rawAnalysisTitle;
+
+  /// No description provided for @rawAnalysisSampleNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample {number}'**
+  String rawAnalysisSampleNumber(String number);
+
+  /// No description provided for @rawAnalysisChemical.
+  ///
+  /// In en, this message translates to:
+  /// **'Chemical analyses'**
+  String get rawAnalysisChemical;
+
+  /// No description provided for @rawAnalysisPhysical.
+  ///
+  /// In en, this message translates to:
+  /// **'Physical analyses'**
+  String get rawAnalysisPhysical;
+
+  /// No description provided for @rawAnalysisValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Measured value'**
+  String get rawAnalysisValue;
+
+  /// No description provided for @rawAnalysisSop.
+  ///
+  /// In en, this message translates to:
+  /// **'SOP'**
+  String get rawAnalysisSop;
+
+  /// No description provided for @rawAnalysisSelectSop.
+  ///
+  /// In en, this message translates to:
+  /// **'Select SOP'**
+  String get rawAnalysisSelectSop;
+
+  /// No description provided for @rawAnalysisNormalRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal: {min} – {max}'**
+  String rawAnalysisNormalRange(String min, String max);
+
+  /// No description provided for @rawAnalysisReference.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference: {value}'**
+  String rawAnalysisReference(String value);
+
+  /// No description provided for @rawAnalysisRejectReference.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject when: {value}'**
+  String rawAnalysisRejectReference(String value);
+
+  /// No description provided for @rawAnalysisRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter at least one analysis result.'**
+  String get rawAnalysisRequired;
+
+  /// No description provided for @rawAnalysisInvalidValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid numeric result.'**
+  String get rawAnalysisInvalidValue;
+
+  /// No description provided for @rawAnalysisAtLeastOne.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter at least one result before saving.'**
+  String get rawAnalysisAtLeastOne;
+
+  /// No description provided for @rawAnalysisSopNotConfigured.
+  ///
+  /// In en, this message translates to:
+  /// **'SOP is not configured for this parameter'**
+  String get rawAnalysisSopNotConfigured;
+
+  /// No description provided for @rawAnalysisSaveAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Save analyses'**
+  String get rawAnalysisSaveAll;
+
+  /// No description provided for @rawAnalysisSaveSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'The sample analyses were saved.'**
+  String get rawAnalysisSaveSuccess;
+
+  /// No description provided for @rawAnalysisResultsSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} analysis results'**
+  String rawAnalysisResultsSummary(int count);
+
+  /// No description provided for @rawQualityDecisionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quality decision'**
+  String get rawQualityDecisionTitle;
+
+  /// No description provided for @rawQualityDecisionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional decision notes'**
+  String get rawQualityDecisionHint;
+
+  /// No description provided for @rawQualityAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept batch'**
+  String get rawQualityAccept;
+
+  /// No description provided for @rawQualityReject.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject batch'**
+  String get rawQualityReject;
+
+  /// No description provided for @rawQualityAcceptConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept this batch and send it to inventory for final weighing?'**
+  String get rawQualityAcceptConfirm;
+
+  /// No description provided for @rawQualityRejectConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject this batch? It will not be available for inventory entry.'**
+  String get rawQualityRejectConfirm;
+
+  /// No description provided for @rawQualityDecisionSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'The quality decision was saved.'**
+  String get rawQualityDecisionSuccess;
+
+  /// No description provided for @rawInventoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved raw material intake'**
+  String get rawInventoryTitle;
+
+  /// No description provided for @rawInventorySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Only quality-approved batches appear here. Enter the actual scale weight to close receiving.'**
+  String get rawInventorySubtitle;
+
+  /// No description provided for @rawInventoryQueueCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} approved batches awaiting final weight'**
+  String rawInventoryQueueCount(int count);
+
+  /// No description provided for @rawInventoryEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No approved batches are waiting for inventory entry.'**
+  String get rawInventoryEmpty;
+
+  /// No description provided for @rawInventoryEnterStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter into inventory'**
+  String get rawInventoryEnterStock;
+
+  /// No description provided for @rawInventoryActualWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Actual scale weight'**
+  String get rawInventoryActualWeight;
+
+  /// No description provided for @rawInventoryWeightRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter an actual weight greater than zero.'**
+  String get rawInventoryWeightRequired;
+
+  /// No description provided for @rawInventoryVariance.
+  ///
+  /// In en, this message translates to:
+  /// **'Difference from supplier: {value}'**
+  String rawInventoryVariance(String value);
+
+  /// No description provided for @rawInventoryConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm actual weight and add this batch to inventory?'**
+  String get rawInventoryConfirm;
+
+  /// No description provided for @rawInventorySuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'The batch was closed and added to inventory using the actual scale weight.'**
+  String get rawInventorySuccess;
+
+  /// No description provided for @rawInventoryCurrentTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Current stock'**
+  String get rawInventoryCurrentTab;
+
+  /// No description provided for @rawInventoryReceivingTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Raw receiving'**
+  String get rawInventoryReceivingTab;
+
+  /// No description provided for @rawInventoryFinishedProductTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Finished product'**
+  String get rawInventoryFinishedProductTab;
+
+  /// No description provided for @rawInventoryCurrentCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} raw material stock records'**
+  String rawInventoryCurrentCount(int count);
+
+  /// No description provided for @rawInventoryProductCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} finished product stock records'**
+  String rawInventoryProductCount(int count);
+
+  /// No description provided for @rawInventoryCurrentEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No raw material stock is available.'**
+  String get rawInventoryCurrentEmpty;
+
+  /// No description provided for @rawInventoryItemsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} items'**
+  String rawInventoryItemsCount(int count);
+
+  /// No description provided for @rawInventoryReserved.
+  ///
+  /// In en, this message translates to:
+  /// **'Reserved: {value}'**
+  String rawInventoryReserved(String value);
+
+  /// No description provided for @rawInventoryScaleImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Scale image (required)'**
+  String get rawInventoryScaleImage;
+
+  /// No description provided for @rawInventoryScaleImageHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a clear image of the measured weight'**
+  String get rawInventoryScaleImageHint;
+
+  /// No description provided for @rawInventoryImageRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'A scale image is required before inventory entry.'**
+  String get rawInventoryImageRequired;
+
+  /// No description provided for @rawInventoryTakePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a photo'**
+  String get rawInventoryTakePhoto;
+
+  /// No description provided for @rawInventoryChoosePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from gallery'**
+  String get rawInventoryChoosePhoto;
+
+  /// No description provided for @rawInventoryAddProductTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add finished product stock'**
+  String get rawInventoryAddProductTitle;
+
+  /// No description provided for @rawInventoryProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Finished product'**
+  String get rawInventoryProduct;
+
+  /// No description provided for @rawInventoryProductQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Quantity to add'**
+  String get rawInventoryProductQuantity;
+
+  /// No description provided for @rawInventoryAddProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to stock'**
+  String get rawInventoryAddProduct;
+
+  /// No description provided for @rawInventoryProductRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a product and warehouse, then enter a quantity greater than zero.'**
+  String get rawInventoryProductRequired;
+
+  /// No description provided for @rawInventoryAddProductConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm adding this finished product quantity to the selected warehouse?'**
+  String get rawInventoryAddProductConfirm;
+
+  /// No description provided for @rawInventoryProductSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Finished product stock was added.'**
+  String get rawInventoryProductSuccess;
+
+  /// No description provided for @rawInventoryProductEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No finished product stock is currently recorded.'**
+  String get rawInventoryProductEmpty;
+
+  /// No description provided for @commonConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get commonConfirm;
 }
 
 class _AppLocalizationsDelegate

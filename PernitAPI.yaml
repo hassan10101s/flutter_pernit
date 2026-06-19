@@ -70,8 +70,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Received Raw Material.
+          type: string
         required: true
       tags:
       - auth
@@ -92,8 +91,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Received Raw Material.
+          type: string
         required: true
       tags:
       - auth
@@ -125,8 +123,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Received Raw Material.
+          type: string
         required: true
       tags:
       - auth
@@ -158,8 +155,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Received Raw Material.
+          type: string
         required: true
       tags:
       - auth
@@ -1726,11 +1722,13 @@ paths:
           type: string
           nullable: true
           enum:
+          - manual_inventory
           - production_order
           - sales_order
         description: |-
           * `sales_order` - Sales Order
           * `production_order` - Production Order
+          * `manual_inventory` - Manual Inventory
       - name: search
         required: false
         in: query
@@ -2539,6 +2537,47 @@ paths:
       responses:
         '204':
           description: No response body
+  /v1/auth/erp/inventory-products/add-stock/:
+    post:
+      operationId: auth_erp_inventory_products_add_stock_create
+      description: |-
+        مخزون المنتجات.
+
+        Filters (query params):
+            ?product=5                                  — filter by product id
+            ?warehouse=2                                — filter by warehouse id
+            ?quantity_min=100                            — minimum quantity
+            ?quantity_max=5000                           — maximum quantity
+
+        Ordering (query params):
+            ?ordering=-quantity                         — by quantity descending
+            ?ordering=product__name                     — by product name
+            ?ordering=warehouse__name                   — by warehouse name
+            ?ordering=created_at                        — by creation date
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddProductStock'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AddProductStock'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AddProductStock'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InventoryProduct'
+          description: ''
   /v1/auth/erp/inventory-raw-materials/:
     get:
       operationId: auth_erp_inventory_raw_materials_list
@@ -4021,6 +4060,68 @@ paths:
       responses:
         '204':
           description: No response body
+  /v1/auth/erp/lab-samples-of-received-raw-materials/{id}/analysis-workspace/:
+    get:
+      operationId: auth_erp_lab_samples_of_received_raw_materials_analysis_workspace_retrieve
+      description: |-
+        Return every active chemical and physical parameter for the sample raw material.
+        POST saves only the supplied non-empty analysis results atomically.
+        The batch moves to QC pending only when every active sample is completed.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Lab Sample Raw Material.
+        required: true
+      tags:
+      - auth
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RawMaterialAnalysisWorkspace'
+          description: ''
+    post:
+      operationId: auth_erp_lab_samples_of_received_raw_materials_analysis_workspace_create
+      description: |-
+        Return every active chemical and physical parameter for the sample raw material.
+        POST saves only the supplied non-empty analysis results atomically.
+        The batch moves to QC pending only when every active sample is completed.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Lab Sample Raw Material.
+        required: true
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompleteRawMaterialAnalysis'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CompleteRawMaterialAnalysis'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CompleteRawMaterialAnalysis'
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RawMaterialAnalysisWorkspace'
+          description: ''
   /v1/auth/erp/notifications/:
     get:
       operationId: auth_erp_notifications_list
@@ -4109,8 +4210,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Notification.
+          type: string
         required: true
       tags:
       - auth
@@ -4139,8 +4239,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Notification.
+          type: string
         required: true
       tags:
       - auth
@@ -4181,8 +4280,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Notification.
+          type: string
         required: true
       tags:
       - auth
@@ -4222,8 +4320,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Notification.
+          type: string
         required: true
       tags:
       - auth
@@ -4241,8 +4338,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Notification.
+          type: string
         required: true
       tags:
       - auth
@@ -8194,13 +8290,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ReceivedRawMaterial'
+              $ref: '#/components/schemas/RecordAcceptedQuantity'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ReceivedRawMaterial'
+              $ref: '#/components/schemas/RecordAcceptedQuantity'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/ReceivedRawMaterial'
+              $ref: '#/components/schemas/RecordAcceptedQuantity'
         required: true
       security:
       - jwtAuth: []
@@ -10252,8 +10348,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Received Raw Material.
+          type: string
         required: true
       tags:
       - erp
@@ -10274,8 +10369,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Received Raw Material.
+          type: string
         required: true
       tags:
       - erp
@@ -10307,8 +10401,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Received Raw Material.
+          type: string
         required: true
       tags:
       - erp
@@ -10340,8 +10433,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Received Raw Material.
+          type: string
         required: true
       tags:
       - erp
@@ -11908,11 +12000,13 @@ paths:
           type: string
           nullable: true
           enum:
+          - manual_inventory
           - production_order
           - sales_order
         description: |-
           * `sales_order` - Sales Order
           * `production_order` - Production Order
+          * `manual_inventory` - Manual Inventory
       - name: search
         required: false
         in: query
@@ -12721,6 +12815,47 @@ paths:
       responses:
         '204':
           description: No response body
+  /v1/erp/inventory-products/add-stock/:
+    post:
+      operationId: erp_inventory_products_add_stock_create
+      description: |-
+        مخزون المنتجات.
+
+        Filters (query params):
+            ?product=5                                  — filter by product id
+            ?warehouse=2                                — filter by warehouse id
+            ?quantity_min=100                            — minimum quantity
+            ?quantity_max=5000                           — maximum quantity
+
+        Ordering (query params):
+            ?ordering=-quantity                         — by quantity descending
+            ?ordering=product__name                     — by product name
+            ?ordering=warehouse__name                   — by warehouse name
+            ?ordering=created_at                        — by creation date
+      tags:
+      - erp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddProductStock'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AddProductStock'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AddProductStock'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InventoryProduct'
+          description: ''
   /v1/erp/inventory-raw-materials/:
     get:
       operationId: erp_inventory_raw_materials_list
@@ -14203,6 +14338,68 @@ paths:
       responses:
         '204':
           description: No response body
+  /v1/erp/lab-samples-of-received-raw-materials/{id}/analysis-workspace/:
+    get:
+      operationId: erp_lab_samples_of_received_raw_materials_analysis_workspace_retrieve
+      description: |-
+        Return every active chemical and physical parameter for the sample raw material.
+        POST saves only the supplied non-empty analysis results atomically.
+        The batch moves to QC pending only when every active sample is completed.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Lab Sample Raw Material.
+        required: true
+      tags:
+      - erp
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RawMaterialAnalysisWorkspace'
+          description: ''
+    post:
+      operationId: erp_lab_samples_of_received_raw_materials_analysis_workspace_create
+      description: |-
+        Return every active chemical and physical parameter for the sample raw material.
+        POST saves only the supplied non-empty analysis results atomically.
+        The batch moves to QC pending only when every active sample is completed.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Lab Sample Raw Material.
+        required: true
+      tags:
+      - erp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompleteRawMaterialAnalysis'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CompleteRawMaterialAnalysis'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CompleteRawMaterialAnalysis'
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RawMaterialAnalysisWorkspace'
+          description: ''
   /v1/erp/notifications/:
     get:
       operationId: erp_notifications_list
@@ -14291,8 +14488,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Notification.
+          type: string
         required: true
       tags:
       - erp
@@ -14321,8 +14517,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Notification.
+          type: string
         required: true
       tags:
       - erp
@@ -14363,8 +14558,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Notification.
+          type: string
         required: true
       tags:
       - erp
@@ -14404,8 +14598,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Notification.
+          type: string
         required: true
       tags:
       - erp
@@ -14423,8 +14616,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
-        description: A unique integer value identifying this Notification.
+          type: string
         required: true
       tags:
       - erp
@@ -18376,13 +18568,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ReceivedRawMaterial'
+              $ref: '#/components/schemas/RecordAcceptedQuantity'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ReceivedRawMaterial'
+              $ref: '#/components/schemas/RecordAcceptedQuantity'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/ReceivedRawMaterial'
+              $ref: '#/components/schemas/RecordAcceptedQuantity'
         required: true
       security:
       - jwtAuth: []
@@ -20300,6 +20492,21 @@ paths:
           description: ''
 components:
   schemas:
+    AddProductStock:
+      type: object
+      properties:
+        product:
+          type: integer
+        warehouse:
+          type: integer
+        quantity:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,6})?$
+      required:
+      - product
+      - quantity
+      - warehouse
     AllDrivers:
       type: object
       properties:
@@ -20387,6 +20594,17 @@ components:
         parameter_name:
           type: string
           readOnly: true
+        sop:
+          type: integer
+          nullable: true
+        sop_name:
+          type: string
+          readOnly: true
+          nullable: true
+        sop_document_number:
+          type: string
+          readOnly: true
+          nullable: true
         normal_min:
           type: string
           format: decimal
@@ -20425,8 +20643,152 @@ components:
       - parameter_name
       - raw_material
       - raw_material_name
+      - sop_document_number
+      - sop_name
       - unit_name
       - updated_at
+    AnalysisWorkspaceBatch:
+      type: object
+      properties:
+        id:
+          type: integer
+        status:
+          type: string
+        raw_material_id:
+          type: integer
+        raw_material_name:
+          type: string
+        supplier_weight:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,6})?$
+        unit:
+          type: string
+          nullable: true
+        warehouse_name:
+          type: string
+          nullable: true
+      required:
+      - id
+      - raw_material_id
+      - raw_material_name
+      - status
+      - supplier_weight
+      - unit
+      - warehouse_name
+    AnalysisWorkspaceChemicalParameter:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        unit:
+          type: string
+          nullable: true
+        normal_min:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,6})?$
+          nullable: true
+        normal_max:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,6})?$
+          nullable: true
+        rejected_min:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,6})?$
+          nullable: true
+        rejected_max:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,6})?$
+          nullable: true
+        value:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,6})?$
+          nullable: true
+        sop:
+          type: integer
+          nullable: true
+        sop_name:
+          type: string
+          nullable: true
+        sop_document_number:
+          type: string
+          nullable: true
+        is_within_range:
+          type: boolean
+          nullable: true
+      required:
+      - id
+      - is_within_range
+      - name
+      - normal_max
+      - normal_min
+      - rejected_max
+      - rejected_min
+      - sop
+      - sop_document_number
+      - sop_name
+      - unit
+      - value
+    AnalysisWorkspacePhysicalParameter:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        reference:
+          type: string
+          nullable: true
+        rejected_reference:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+      required:
+      - id
+      - name
+      - reference
+      - rejected_reference
+      - value
+    AnalysisWorkspaceSample:
+      type: object
+      properties:
+        id:
+          type: integer
+        sample_no:
+          type: string
+          nullable: true
+        status:
+          type: string
+      required:
+      - id
+      - sample_no
+      - status
+    AnalysisWorkspaceSop:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        document_number:
+          type: string
+        reference_method:
+          type: string
+          nullable: true
+      required:
+      - document_number
+      - id
+      - reference_method
+      - title
     BlankEnum:
       enum:
       - ''
@@ -20460,6 +20822,29 @@ components:
       required:
       - id
       - name
+    ChemicalLabResultSubmission:
+      type: object
+      properties:
+        parameter:
+          type: integer
+        value:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,6})?$
+      required:
+      - parameter
+      - value
+    CompleteRawMaterialAnalysis:
+      type: object
+      properties:
+        chemical_results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChemicalLabResultSubmission'
+        physical_results:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhysicalLabResultSubmission'
     Customer:
       type: object
       properties:
@@ -20628,10 +21013,12 @@ components:
       enum:
       - sales_order
       - production_order
+      - manual_inventory
       type: string
       description: |-
         * `sales_order` - Sales Order
         * `production_order` - Production Order
+        * `manual_inventory` - Manual Inventory
     InventoryMovementRawMaterial:
       type: object
       properties:
@@ -20694,20 +21081,16 @@ components:
         id:
           type: integer
           readOnly: true
-        created_at:
+        product:
+          type: integer
+        product_name:
           type: string
-          format: date-time
           readOnly: true
-        updated_at:
+        warehouse:
+          type: integer
+        warehouse_name:
           type: string
-          format: date-time
           readOnly: true
-        is_deleted:
-          type: boolean
-        deleted_at:
-          type: string
-          format: date-time
-          nullable: true
         quantity:
           type: string
           format: decimal
@@ -20716,20 +21099,26 @@ components:
           type: string
           format: decimal
           pattern: ^-?\d{0,12}(?:\.\d{0,6})?$
-        metadata: {}
-        deleted_by:
-          type: integer
-          nullable: true
-        product:
-          type: integer
-        warehouse:
-          type: integer
+        unit_name:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
       required:
       - created_at
       - id
       - product
+      - product_name
+      - unit_name
       - updated_at
       - warehouse
+      - warehouse_name
     InventoryRawMaterial:
       type: object
       properties:
@@ -22176,6 +22565,17 @@ components:
         parameter_name:
           type: string
           readOnly: true
+        sop:
+          type: integer
+          nullable: true
+        sop_name:
+          type: string
+          readOnly: true
+          nullable: true
+        sop_document_number:
+          type: string
+          readOnly: true
+          nullable: true
         normal_min:
           type: string
           format: decimal
@@ -22413,20 +22813,16 @@ components:
         id:
           type: integer
           readOnly: true
-        created_at:
+        product:
+          type: integer
+        product_name:
           type: string
-          format: date-time
           readOnly: true
-        updated_at:
+        warehouse:
+          type: integer
+        warehouse_name:
           type: string
-          format: date-time
           readOnly: true
-        is_deleted:
-          type: boolean
-        deleted_at:
-          type: string
-          format: date-time
-          nullable: true
         quantity:
           type: string
           format: decimal
@@ -22435,14 +22831,17 @@ components:
           type: string
           format: decimal
           pattern: ^-?\d{0,12}(?:\.\d{0,6})?$
-        metadata: {}
-        deleted_by:
-          type: integer
-          nullable: true
-        product:
-          type: integer
-        warehouse:
-          type: integer
+        unit_name:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
     PatchedInventoryRawMaterial:
       type: object
       properties:
@@ -23653,6 +24052,17 @@ components:
       - sample_no
       - updated_at
       - value
+    PhysicalLabResultSubmission:
+      type: object
+      properties:
+        physical_parameter:
+          type: integer
+        value:
+          type: string
+          maxLength: 255
+      required:
+      - physical_parameter
+      - value
     PredictiveResult:
       type: object
       properties:
@@ -24179,6 +24589,34 @@ components:
       - id
       - name
       - short_code
+    RawMaterialAnalysisWorkspace:
+      type: object
+      properties:
+        sample:
+          $ref: '#/components/schemas/AnalysisWorkspaceSample'
+        batch:
+          $ref: '#/components/schemas/AnalysisWorkspaceBatch'
+        chemical_parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalysisWorkspaceChemicalParameter'
+        physical_parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalysisWorkspacePhysicalParameter'
+        sops:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalysisWorkspaceSop'
+        is_complete:
+          type: boolean
+      required:
+      - batch
+      - chemical_parameters
+      - is_complete
+      - physical_parameters
+      - sample
+      - sops
     ReceivedRawMaterial:
       type: object
       properties:
@@ -24343,6 +24781,19 @@ components:
         * `qc_pending` - QC Pending
         * `approved` - Approved
         * `rejected` - Rejected
+    RecordAcceptedQuantity:
+      type: object
+      properties:
+        measured_quantity:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,6})?$
+        measured_image:
+          type: string
+          format: uri
+      required:
+      - measured_image
+      - measured_quantity
     ReferenceMethod:
       type: object
       properties:

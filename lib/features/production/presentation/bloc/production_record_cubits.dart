@@ -4,12 +4,14 @@ import '../../../screen_records/data/repos/screen_record_repository_dependencies
 import '../../../screen_records/presentation/bloc/screen_records_cubit.dart';
 
 class ProductionOrdersRecordsRepository extends EndpointScreenRecordRepository {
-  ProductionOrdersRecordsRepository(List<PernitScreenRecord> records, [ScreenRecordRepositoryDependencies? dependencies])
-    : super(
-        endpoint: '/v1/auth/erp/production-orders/',
-        initialRecords: records,
-        dependencies: dependencies,
-      );
+  ProductionOrdersRecordsRepository(
+    List<PernitScreenRecord> records, [
+    ScreenRecordRepositoryDependencies? dependencies,
+  ]) : super(
+         endpoint: '/v1/auth/erp/production-orders/',
+         initialRecords: records,
+         dependencies: dependencies,
+       );
 }
 
 class ProductionOrdersRecordsCubit extends ScreenRecordsCubit {
@@ -20,12 +22,14 @@ class ProductionOrdersRecordsCubit extends ScreenRecordsCubit {
 
 class ProductionOrderDetailsRecordsRepository
     extends EndpointScreenRecordRepository {
-  ProductionOrderDetailsRecordsRepository(List<PernitScreenRecord> records, [ScreenRecordRepositoryDependencies? dependencies])
-    : super(
-        endpoint: '/v1/auth/erp/production-order-details/',
-        initialRecords: records,
-        dependencies: dependencies,
-      );
+  ProductionOrderDetailsRecordsRepository(
+    List<PernitScreenRecord> records, [
+    ScreenRecordRepositoryDependencies? dependencies,
+  ]) : super(
+         endpoint: '/v1/auth/erp/production-order-details/',
+         initialRecords: records,
+         dependencies: dependencies,
+       );
 }
 
 class ProductionOrderDetailsRecordsCubit extends ScreenRecordsCubit {
@@ -36,12 +40,14 @@ class ProductionOrderDetailsRecordsCubit extends ScreenRecordsCubit {
 
 class ProductionLabSamplesRecordsRepository
     extends EndpointScreenRecordRepository {
-  ProductionLabSamplesRecordsRepository(List<PernitScreenRecord> records, [ScreenRecordRepositoryDependencies? dependencies])
-    : super(
-        endpoint: '/v1/auth/erp/lab-samples-of-production/',
-        initialRecords: records,
-        dependencies: dependencies,
-      );
+  ProductionLabSamplesRecordsRepository(
+    List<PernitScreenRecord> records, [
+    ScreenRecordRepositoryDependencies? dependencies,
+  ]) : super(
+         endpoint: '/v1/auth/erp/lab-samples-of-production/',
+         initialRecords: records,
+         dependencies: dependencies,
+       );
 }
 
 class ProductionLabSamplesRecordsCubit extends ScreenRecordsCubit {
@@ -52,12 +58,14 @@ class ProductionLabSamplesRecordsCubit extends ScreenRecordsCubit {
 
 class ProductionLabResultsRecordsRepository
     extends EndpointScreenRecordRepository {
-  ProductionLabResultsRecordsRepository(List<PernitScreenRecord> records, [ScreenRecordRepositoryDependencies? dependencies])
-    : super(
-        endpoint: '/v1/auth/erp/lab-results-production/',
-        initialRecords: records,
-        dependencies: dependencies,
-      );
+  ProductionLabResultsRecordsRepository(
+    List<PernitScreenRecord> records, [
+    ScreenRecordRepositoryDependencies? dependencies,
+  ]) : super(
+         endpoint: '/v1/auth/erp/lab-results-production/',
+         initialRecords: records,
+         dependencies: dependencies,
+       );
 }
 
 class ProductionLabResultsRecordsCubit extends ScreenRecordsCubit {
@@ -68,12 +76,14 @@ class ProductionLabResultsRecordsCubit extends ScreenRecordsCubit {
 
 class ProductionReserveMaterialsRecordsRepository
     extends EndpointScreenRecordRepository {
-  ProductionReserveMaterialsRecordsRepository(List<PernitScreenRecord> records, [ScreenRecordRepositoryDependencies? dependencies])
-    : super(
-        endpoint: '/v1/auth/erp/production-orders/{id}/reserve_materials/',
-        initialRecords: records,
-        dependencies: dependencies,
-      );
+  ProductionReserveMaterialsRecordsRepository(
+    List<PernitScreenRecord> records, [
+    ScreenRecordRepositoryDependencies? dependencies,
+  ]) : super(
+         endpoint: '/v1/auth/erp/production-orders/{id}/reserve_materials/',
+         initialRecords: records,
+         dependencies: dependencies,
+       );
 }
 
 class ProductionReserveMaterialsRecordsCubit extends ScreenRecordsCubit {

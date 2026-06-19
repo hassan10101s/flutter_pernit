@@ -139,5 +139,211 @@
   "productionOrderDetails": "تفاصيل أوامر الإنتاج",
   "productionLabSamples": "عينات مختبر الإنتاج",
   "productionLabResults": "نتائج مختبر الإنتاج",
-  "productionReserveMaterials": "حجز المواد"
+  "productionReserveMaterials": "حجز المواد",
+  "rawWorkflowBatch": "دفعة #{id}",
+  "@rawWorkflowBatch": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "rawWorkflowSupplierWeight": "وزن المورد",
+  "rawWorkflowWarehouse": "المخزن",
+  "rawWorkflowLoadMore": "تحميل المزيد",
+  "rawWorkflowRefresh": "تحديث",
+  "rawQualityTitle": "جودة الخامات",
+  "rawQualitySubtitle": "تابع كل دفعة مستلمة من أخذ العينة حتى قرار الجودة النهائي.",
+  "rawQualityQueueCount": "{count} دفعة داخل مسار الجودة",
+  "@rawQualityQueueCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawQualityEmpty": "لا توجد دفعات تحتاج إجراء من الجودة حاليًا.",
+  "rawQualityTakeSample": "أخذ عينة",
+  "rawQualityEnterAnalysis": "إدخال التحاليل",
+  "rawQualityReviewAnalysis": "مراجعة التحاليل",
+  "rawQualityAwaitingInventory": "مقبولة — بانتظار المخزن",
+  "rawQualityRejected": "مرفوضة",
+  "rawQualityTakingSample": "جارٍ أخذ العينة…",
+  "rawQualitySampleSuccess": "تم إنشاء العينة بنجاح.",
+  "rawQualitySamplingTab": "أخذ العينات",
+  "rawQualityAnalysisTab": "إدخال التحاليل",
+  "rawQualityDecisionTab": "قرار الجودة",
+  "rawQualitySamplingCount": "{count} دفعة متاحة لأخذ العينات",
+  "@rawQualitySamplingCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawQualitySamplesCount": "{count} عينة",
+  "@rawQualitySamplesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawQualityDecisionCount": "{count} دفعة جاهزة للقرار",
+  "@rawQualityDecisionCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawQualitySamplingEmpty": "لا توجد دفعات مستلمة متاحة لأخذ العينات.",
+  "rawQualityAnalysisEmpty": "لا توجد عينات متاحة لإدخال التحاليل.",
+  "rawQualityDecisionEmpty": "لا توجد دفعات جاهزة لقرار الجودة.",
+  "rawQualitySampleCount": "تم أخذ {count} عينة",
+  "@rawQualitySampleCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawQualityTakeAnotherSample": "أخذ عينة",
+  "rawQualityEditAnalysis": "تعديل التحليل",
+  "rawAnalysisTitle": "استكمال تحاليل العينة",
+  "rawAnalysisSampleNumber": "العينة {number}",
+  "@rawAnalysisSampleNumber": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "rawAnalysisChemical": "التحاليل الكيميائية",
+  "rawAnalysisPhysical": "التحاليل الفيزيائية",
+  "rawAnalysisValue": "القيمة المقاسة",
+  "rawAnalysisSop": "إجراء التشغيل SOP",
+  "rawAnalysisSelectSop": "اختر SOP",
+  "rawAnalysisNormalRange": "الطبيعي: {min} – {max}",
+  "@rawAnalysisNormalRange": {
+    "placeholders": {
+      "min": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "rawAnalysisReference": "المرجع: {value}",
+  "@rawAnalysisReference": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "rawAnalysisRejectReference": "الرفض عند: {value}",
+  "@rawAnalysisRejectReference": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "rawAnalysisRequired": "أدخل نتيجة تحليل واحدة على الأقل.",
+  "rawAnalysisInvalidValue": "أدخل قيمة رقمية صحيحة.",
+  "rawAnalysisAtLeastOne": "أدخل نتيجة واحدة على الأقل قبل الحفظ.",
+  "rawAnalysisSopNotConfigured": "لم يتم تحديد SOP لهذا البرامتر",
+  "rawAnalysisSaveAll": "حفظ التحاليل",
+  "rawAnalysisSaveSuccess": "تم حفظ تحاليل العينة.",
+  "rawAnalysisResultsSummary": "{count} نتيجة تحليل",
+  "@rawAnalysisResultsSummary": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawQualityDecisionTitle": "قرار الجودة",
+  "rawQualityDecisionHint": "ملاحظات القرار — اختياري",
+  "rawQualityAccept": "قبول الدفعة",
+  "rawQualityReject": "رفض الدفعة",
+  "rawQualityAcceptConfirm": "قبول هذه الدفعة وإرسالها للمخزن لتسجيل الوزن النهائي؟",
+  "rawQualityRejectConfirm": "رفض هذه الدفعة؟ لن تظهر ضمن الدفعات المتاحة للإدخال بالمخزن.",
+  "rawQualityDecisionSuccess": "تم حفظ قرار الجودة.",
+  "rawInventoryTitle": "إدخال الخامات المقبولة",
+  "rawInventorySubtitle": "تظهر هنا الدفعات المعتمدة من الجودة فقط. أدخل وزن الميزان الفعلي لإغلاق الاستلام.",
+  "rawInventoryQueueCount": "{count} دفعة مقبولة بانتظار الوزن النهائي",
+  "@rawInventoryQueueCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawInventoryEmpty": "لا توجد دفعات مقبولة بانتظار الإدخال إلى المخزن.",
+  "rawInventoryEnterStock": "إدخال المخزن",
+  "rawInventoryActualWeight": "وزن الميزان الفعلي",
+  "rawInventoryWeightRequired": "أدخل وزنًا فعليًا أكبر من صفر.",
+  "rawInventoryVariance": "الفرق عن وزن المورد: {value}",
+  "@rawInventoryVariance": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "rawInventoryConfirm": "تأكيد الوزن الفعلي وإضافة هذه الدفعة إلى المخزون؟",
+  "rawInventorySuccess": "تم إغلاق الدفعة وإضافتها للمخزون باستخدام وزن الميزان الفعلي.",
+  "rawInventoryCurrentTab": "المخزون الحالي",
+  "rawInventoryReceivingTab": "استقبال الخام",
+  "rawInventoryFinishedProductTab": "منتج نهائي",
+  "rawInventoryCurrentCount": "{count} سجل مخزون خامات",
+  "@rawInventoryCurrentCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawInventoryProductCount": "{count} سجل مخزون منتج نهائي",
+  "@rawInventoryProductCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawInventoryCurrentEmpty": "لا يوجد مخزون خامات مسجل حاليًا.",
+  "rawInventoryItemsCount": "{count} صنف",
+  "@rawInventoryItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawInventoryReserved": "المحجوز: {value}",
+  "@rawInventoryReserved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "rawInventoryScaleImage": "صورة الميزان (إجباري)",
+  "rawInventoryScaleImageHint": "أضف صورة واضحة للوزن المقاس",
+  "rawInventoryImageRequired": "صورة الميزان مطلوبة قبل إدخال الخام إلى المخزن.",
+  "rawInventoryTakePhoto": "التقاط صورة",
+  "rawInventoryChoosePhoto": "اختيار من المعرض",
+  "rawInventoryAddProductTitle": "إضافة مخزون منتج نهائي",
+  "rawInventoryProduct": "المنتج النهائي",
+  "rawInventoryProductQuantity": "الكمية المضافة",
+  "rawInventoryAddProduct": "إضافة للمخزون",
+  "rawInventoryProductRequired": "اختر المنتج والمخزن ثم أدخل كمية أكبر من صفر.",
+  "rawInventoryAddProductConfirm": "تأكيد إضافة كمية المنتج النهائي إلى المخزن المحدد؟",
+  "rawInventoryProductSuccess": "تمت إضافة مخزون المنتج النهائي.",
+  "rawInventoryProductEmpty": "لا يوجد مخزون منتجات نهائية مسجل حاليًا.",
+  "commonConfirm": "تأكيد"
 }

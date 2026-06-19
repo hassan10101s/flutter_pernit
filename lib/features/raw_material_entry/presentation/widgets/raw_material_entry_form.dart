@@ -261,21 +261,13 @@ class _RawMaterialEntryFormState extends State<RawMaterialEntryForm> {
       _purchaseOrderDetail = option;
       _errorMessage = null;
 
-      final rawMaterialName = option.rawMaterialName;
-      if (rawMaterialName == null) {
+      final rawMaterialId = option.rawMaterialId;
+      if (rawMaterialId == null) {
         return;
       }
 
       final matchingRawMaterial = widget.lookups.rawMaterials
-          .where(
-            (candidate) =>
-                candidate.label.toLowerCase().contains(
-                  rawMaterialName.toLowerCase(),
-                ) ||
-                rawMaterialName.toLowerCase().contains(
-                  candidate.label.toLowerCase(),
-                ),
-          )
+          .where((candidate) => candidate.id == rawMaterialId)
           .firstOrNull;
       if (matchingRawMaterial != null) {
         _rawMaterial = matchingRawMaterial;
@@ -286,7 +278,11 @@ class _RawMaterialEntryFormState extends State<RawMaterialEntryForm> {
   void _submit() {
     final copy = RawMaterialEntryCopy.of(context);
     final quantity = double.tryParse(_quantityController.text.trim());
-    if (_rawMaterial == null || quantity == null || quantity <= 0) {
+    if (_rawMaterial == null ||
+        _purchaseOrderDetail == null ||
+        _warehouse == null ||
+        quantity == null ||
+        quantity <= 0) {
       setState(() => _errorMessage = copy.requiredFieldsMessage);
       return;
     }

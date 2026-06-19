@@ -10,6 +10,7 @@ import '../../../auth/domain/entities/auth_user.dart';
 import '../../../production/presentation/screens/production_screen.dart';
 import '../../../quality/presentation/screens/quality_screen.dart';
 import '../../../raw_material_entry/presentation/screens/raw_material_entry_screen.dart';
+import '../../../raw_material_entry/presentation/screens/raw_material_inventory_screen.dart';
 import '../../../settings/presentation/screens/settings_screen.dart';
 import '../../domain/entities/home_menu_section.dart';
 
@@ -36,6 +37,7 @@ class HomeSectionBody extends StatelessWidget {
             HomeMenuSection.settings => const SettingsScreen(),
             HomeMenuSection.quality => const QualityScreen(),
             HomeMenuSection.production => const ProductionScreen(),
+            HomeMenuSection.inventory => const RawMaterialInventoryScreen(),
             _ => _PlaceholderPanel(
               title: _moduleTitle(l10n, section),
               icon: _moduleIcon(section),

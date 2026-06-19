@@ -305,4 +305,308 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get productionReserveMaterials => 'Reserve materials';
+
+  @override
+  String rawWorkflowBatch(int id) {
+    return 'Batch #$id';
+  }
+
+  @override
+  String get rawWorkflowSupplierWeight => 'Supplier weight';
+
+  @override
+  String get rawWorkflowWarehouse => 'Warehouse';
+
+  @override
+  String get rawWorkflowLoadMore => 'Load more';
+
+  @override
+  String get rawWorkflowRefresh => 'Refresh';
+
+  @override
+  String get rawQualityTitle => 'Raw material quality';
+
+  @override
+  String get rawQualitySubtitle =>
+      'Follow each received batch from sampling through the final quality decision.';
+
+  @override
+  String rawQualityQueueCount(int count) {
+    return '$count batches in the quality workflow';
+  }
+
+  @override
+  String get rawQualityEmpty => 'No batches currently require quality work.';
+
+  @override
+  String get rawQualityTakeSample => 'Take sample';
+
+  @override
+  String get rawQualityEnterAnalysis => 'Enter analyses';
+
+  @override
+  String get rawQualityReviewAnalysis => 'Review analyses';
+
+  @override
+  String get rawQualityAwaitingInventory => 'Approved — awaiting inventory';
+
+  @override
+  String get rawQualityRejected => 'Rejected';
+
+  @override
+  String get rawQualityTakingSample => 'Taking sample…';
+
+  @override
+  String get rawQualitySampleSuccess => 'The sample was created successfully.';
+
+  @override
+  String get rawQualitySamplingTab => 'Sampling';
+
+  @override
+  String get rawQualityAnalysisTab => 'Analyses';
+
+  @override
+  String get rawQualityDecisionTab => 'Decision';
+
+  @override
+  String rawQualitySamplingCount(int count) {
+    return '$count batches available for sampling';
+  }
+
+  @override
+  String rawQualitySamplesCount(int count) {
+    return '$count samples';
+  }
+
+  @override
+  String rawQualityDecisionCount(int count) {
+    return '$count batches ready for a decision';
+  }
+
+  @override
+  String get rawQualitySamplingEmpty =>
+      'No received batches are available for sampling.';
+
+  @override
+  String get rawQualityAnalysisEmpty =>
+      'No samples are available for analysis.';
+
+  @override
+  String get rawQualityDecisionEmpty =>
+      'No batches are ready for a quality decision.';
+
+  @override
+  String rawQualitySampleCount(int count) {
+    return '$count samples taken';
+  }
+
+  @override
+  String get rawQualityTakeAnotherSample => 'Take sample';
+
+  @override
+  String get rawQualityEditAnalysis => 'Edit analysis';
+
+  @override
+  String get rawAnalysisTitle => 'Complete sample analysis';
+
+  @override
+  String rawAnalysisSampleNumber(String number) {
+    return 'Sample $number';
+  }
+
+  @override
+  String get rawAnalysisChemical => 'Chemical analyses';
+
+  @override
+  String get rawAnalysisPhysical => 'Physical analyses';
+
+  @override
+  String get rawAnalysisValue => 'Measured value';
+
+  @override
+  String get rawAnalysisSop => 'SOP';
+
+  @override
+  String get rawAnalysisSelectSop => 'Select SOP';
+
+  @override
+  String rawAnalysisNormalRange(String min, String max) {
+    return 'Normal: $min – $max';
+  }
+
+  @override
+  String rawAnalysisReference(String value) {
+    return 'Reference: $value';
+  }
+
+  @override
+  String rawAnalysisRejectReference(String value) {
+    return 'Reject when: $value';
+  }
+
+  @override
+  String get rawAnalysisRequired => 'Enter at least one analysis result.';
+
+  @override
+  String get rawAnalysisInvalidValue => 'Enter a valid numeric result.';
+
+  @override
+  String get rawAnalysisAtLeastOne =>
+      'Enter at least one result before saving.';
+
+  @override
+  String get rawAnalysisSopNotConfigured =>
+      'SOP is not configured for this parameter';
+
+  @override
+  String get rawAnalysisSaveAll => 'Save analyses';
+
+  @override
+  String get rawAnalysisSaveSuccess => 'The sample analyses were saved.';
+
+  @override
+  String rawAnalysisResultsSummary(int count) {
+    return '$count analysis results';
+  }
+
+  @override
+  String get rawQualityDecisionTitle => 'Quality decision';
+
+  @override
+  String get rawQualityDecisionHint => 'Optional decision notes';
+
+  @override
+  String get rawQualityAccept => 'Accept batch';
+
+  @override
+  String get rawQualityReject => 'Reject batch';
+
+  @override
+  String get rawQualityAcceptConfirm =>
+      'Accept this batch and send it to inventory for final weighing?';
+
+  @override
+  String get rawQualityRejectConfirm =>
+      'Reject this batch? It will not be available for inventory entry.';
+
+  @override
+  String get rawQualityDecisionSuccess => 'The quality decision was saved.';
+
+  @override
+  String get rawInventoryTitle => 'Approved raw material intake';
+
+  @override
+  String get rawInventorySubtitle =>
+      'Only quality-approved batches appear here. Enter the actual scale weight to close receiving.';
+
+  @override
+  String rawInventoryQueueCount(int count) {
+    return '$count approved batches awaiting final weight';
+  }
+
+  @override
+  String get rawInventoryEmpty =>
+      'No approved batches are waiting for inventory entry.';
+
+  @override
+  String get rawInventoryEnterStock => 'Enter into inventory';
+
+  @override
+  String get rawInventoryActualWeight => 'Actual scale weight';
+
+  @override
+  String get rawInventoryWeightRequired =>
+      'Enter an actual weight greater than zero.';
+
+  @override
+  String rawInventoryVariance(String value) {
+    return 'Difference from supplier: $value';
+  }
+
+  @override
+  String get rawInventoryConfirm =>
+      'Confirm actual weight and add this batch to inventory?';
+
+  @override
+  String get rawInventorySuccess =>
+      'The batch was closed and added to inventory using the actual scale weight.';
+
+  @override
+  String get rawInventoryCurrentTab => 'Current stock';
+
+  @override
+  String get rawInventoryReceivingTab => 'Raw receiving';
+
+  @override
+  String get rawInventoryFinishedProductTab => 'Finished product';
+
+  @override
+  String rawInventoryCurrentCount(int count) {
+    return '$count raw material stock records';
+  }
+
+  @override
+  String rawInventoryProductCount(int count) {
+    return '$count finished product stock records';
+  }
+
+  @override
+  String get rawInventoryCurrentEmpty => 'No raw material stock is available.';
+
+  @override
+  String rawInventoryItemsCount(int count) {
+    return '$count items';
+  }
+
+  @override
+  String rawInventoryReserved(String value) {
+    return 'Reserved: $value';
+  }
+
+  @override
+  String get rawInventoryScaleImage => 'Scale image (required)';
+
+  @override
+  String get rawInventoryScaleImageHint =>
+      'Add a clear image of the measured weight';
+
+  @override
+  String get rawInventoryImageRequired =>
+      'A scale image is required before inventory entry.';
+
+  @override
+  String get rawInventoryTakePhoto => 'Take a photo';
+
+  @override
+  String get rawInventoryChoosePhoto => 'Choose from gallery';
+
+  @override
+  String get rawInventoryAddProductTitle => 'Add finished product stock';
+
+  @override
+  String get rawInventoryProduct => 'Finished product';
+
+  @override
+  String get rawInventoryProductQuantity => 'Quantity to add';
+
+  @override
+  String get rawInventoryAddProduct => 'Add to stock';
+
+  @override
+  String get rawInventoryProductRequired =>
+      'Select a product and warehouse, then enter a quantity greater than zero.';
+
+  @override
+  String get rawInventoryAddProductConfirm =>
+      'Confirm adding this finished product quantity to the selected warehouse?';
+
+  @override
+  String get rawInventoryProductSuccess => 'Finished product stock was added.';
+
+  @override
+  String get rawInventoryProductEmpty =>
+      'No finished product stock is currently recorded.';
+
+  @override
+  String get commonConfirm => 'Confirm';
 }

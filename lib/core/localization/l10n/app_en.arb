@@ -139,5 +139,211 @@
   "productionOrderDetails": "Production order details",
   "productionLabSamples": "Production lab samples",
   "productionLabResults": "Production lab results",
-  "productionReserveMaterials": "Reserve materials"
+  "productionReserveMaterials": "Reserve materials",
+  "rawWorkflowBatch": "Batch #{id}",
+  "@rawWorkflowBatch": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "rawWorkflowSupplierWeight": "Supplier weight",
+  "rawWorkflowWarehouse": "Warehouse",
+  "rawWorkflowLoadMore": "Load more",
+  "rawWorkflowRefresh": "Refresh",
+  "rawQualityTitle": "Raw material quality",
+  "rawQualitySubtitle": "Follow each received batch from sampling through the final quality decision.",
+  "rawQualityQueueCount": "{count} batches in the quality workflow",
+  "@rawQualityQueueCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawQualityEmpty": "No batches currently require quality work.",
+  "rawQualityTakeSample": "Take sample",
+  "rawQualityEnterAnalysis": "Enter analyses",
+  "rawQualityReviewAnalysis": "Review analyses",
+  "rawQualityAwaitingInventory": "Approved — awaiting inventory",
+  "rawQualityRejected": "Rejected",
+  "rawQualityTakingSample": "Taking sample…",
+  "rawQualitySampleSuccess": "The sample was created successfully.",
+  "rawQualitySamplingTab": "Sampling",
+  "rawQualityAnalysisTab": "Analyses",
+  "rawQualityDecisionTab": "Decision",
+  "rawQualitySamplingCount": "{count} batches available for sampling",
+  "@rawQualitySamplingCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawQualitySamplesCount": "{count} samples",
+  "@rawQualitySamplesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawQualityDecisionCount": "{count} batches ready for a decision",
+  "@rawQualityDecisionCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawQualitySamplingEmpty": "No received batches are available for sampling.",
+  "rawQualityAnalysisEmpty": "No samples are available for analysis.",
+  "rawQualityDecisionEmpty": "No batches are ready for a quality decision.",
+  "rawQualitySampleCount": "{count} samples taken",
+  "@rawQualitySampleCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawQualityTakeAnotherSample": "Take sample",
+  "rawQualityEditAnalysis": "Edit analysis",
+  "rawAnalysisTitle": "Complete sample analysis",
+  "rawAnalysisSampleNumber": "Sample {number}",
+  "@rawAnalysisSampleNumber": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "rawAnalysisChemical": "Chemical analyses",
+  "rawAnalysisPhysical": "Physical analyses",
+  "rawAnalysisValue": "Measured value",
+  "rawAnalysisSop": "SOP",
+  "rawAnalysisSelectSop": "Select SOP",
+  "rawAnalysisNormalRange": "Normal: {min} – {max}",
+  "@rawAnalysisNormalRange": {
+    "placeholders": {
+      "min": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "rawAnalysisReference": "Reference: {value}",
+  "@rawAnalysisReference": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "rawAnalysisRejectReference": "Reject when: {value}",
+  "@rawAnalysisRejectReference": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "rawAnalysisRequired": "Enter at least one analysis result.",
+  "rawAnalysisInvalidValue": "Enter a valid numeric result.",
+  "rawAnalysisAtLeastOne": "Enter at least one result before saving.",
+  "rawAnalysisSopNotConfigured": "SOP is not configured for this parameter",
+  "rawAnalysisSaveAll": "Save analyses",
+  "rawAnalysisSaveSuccess": "The sample analyses were saved.",
+  "rawAnalysisResultsSummary": "{count} analysis results",
+  "@rawAnalysisResultsSummary": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawQualityDecisionTitle": "Quality decision",
+  "rawQualityDecisionHint": "Optional decision notes",
+  "rawQualityAccept": "Accept batch",
+  "rawQualityReject": "Reject batch",
+  "rawQualityAcceptConfirm": "Accept this batch and send it to inventory for final weighing?",
+  "rawQualityRejectConfirm": "Reject this batch? It will not be available for inventory entry.",
+  "rawQualityDecisionSuccess": "The quality decision was saved.",
+  "rawInventoryTitle": "Approved raw material intake",
+  "rawInventorySubtitle": "Only quality-approved batches appear here. Enter the actual scale weight to close receiving.",
+  "rawInventoryQueueCount": "{count} approved batches awaiting final weight",
+  "@rawInventoryQueueCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawInventoryEmpty": "No approved batches are waiting for inventory entry.",
+  "rawInventoryEnterStock": "Enter into inventory",
+  "rawInventoryActualWeight": "Actual scale weight",
+  "rawInventoryWeightRequired": "Enter an actual weight greater than zero.",
+  "rawInventoryVariance": "Difference from supplier: {value}",
+  "@rawInventoryVariance": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "rawInventoryConfirm": "Confirm actual weight and add this batch to inventory?",
+  "rawInventorySuccess": "The batch was closed and added to inventory using the actual scale weight.",
+  "rawInventoryCurrentTab": "Current stock",
+  "rawInventoryReceivingTab": "Raw receiving",
+  "rawInventoryFinishedProductTab": "Finished product",
+  "rawInventoryCurrentCount": "{count} raw material stock records",
+  "@rawInventoryCurrentCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawInventoryProductCount": "{count} finished product stock records",
+  "@rawInventoryProductCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawInventoryCurrentEmpty": "No raw material stock is available.",
+  "rawInventoryItemsCount": "{count} items",
+  "@rawInventoryItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rawInventoryReserved": "Reserved: {value}",
+  "@rawInventoryReserved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "rawInventoryScaleImage": "Scale image (required)",
+  "rawInventoryScaleImageHint": "Add a clear image of the measured weight",
+  "rawInventoryImageRequired": "A scale image is required before inventory entry.",
+  "rawInventoryTakePhoto": "Take a photo",
+  "rawInventoryChoosePhoto": "Choose from gallery",
+  "rawInventoryAddProductTitle": "Add finished product stock",
+  "rawInventoryProduct": "Finished product",
+  "rawInventoryProductQuantity": "Quantity to add",
+  "rawInventoryAddProduct": "Add to stock",
+  "rawInventoryProductRequired": "Select a product and warehouse, then enter a quantity greater than zero.",
+  "rawInventoryAddProductConfirm": "Confirm adding this finished product quantity to the selected warehouse?",
+  "rawInventoryProductSuccess": "Finished product stock was added.",
+  "rawInventoryProductEmpty": "No finished product stock is currently recorded.",
+  "commonConfirm": "Confirm"
 }

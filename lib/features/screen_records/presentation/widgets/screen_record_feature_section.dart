@@ -145,8 +145,6 @@ class _ScreenTile extends StatelessWidget {
   }
 }
 
-List<PernitScreenRecord> _recordsForState(
-  ScreenRecordsState state,
-) {
+List<PernitScreenRecord> _recordsForState(ScreenRecordsState state) {
   return state.records;
 }

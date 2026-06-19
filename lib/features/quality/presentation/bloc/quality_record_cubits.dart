@@ -5,12 +5,14 @@ import '../../../screen_records/presentation/bloc/screen_records_cubit.dart';
 
 class RawMaterialLabSamplesRecordsRepository
     extends EndpointScreenRecordRepository {
-  RawMaterialLabSamplesRecordsRepository(List<PernitScreenRecord> records, [ScreenRecordRepositoryDependencies? dependencies])
-    : super(
-        endpoint: '/v1/auth/erp/lab-samples-of-received-raw-materials/',
-        initialRecords: records,
-        dependencies: dependencies,
-      );
+  RawMaterialLabSamplesRecordsRepository(
+    List<PernitScreenRecord> records, [
+    ScreenRecordRepositoryDependencies? dependencies,
+  ]) : super(
+         endpoint: '/v1/auth/erp/lab-samples-of-received-raw-materials/',
+         initialRecords: records,
+         dependencies: dependencies,
+       );
 }
 
 class RawMaterialLabSamplesRecordsCubit extends ScreenRecordsCubit {
@@ -21,12 +23,14 @@ class RawMaterialLabSamplesRecordsCubit extends ScreenRecordsCubit {
 
 class RawMaterialLabResultsRecordsRepository
     extends EndpointScreenRecordRepository {
-  RawMaterialLabResultsRecordsRepository(List<PernitScreenRecord> records, [ScreenRecordRepositoryDependencies? dependencies])
-    : super(
-        endpoint: '/v1/auth/erp/lab-results-raw-materials/',
-        initialRecords: records,
-        dependencies: dependencies,
-      );
+  RawMaterialLabResultsRecordsRepository(
+    List<PernitScreenRecord> records, [
+    ScreenRecordRepositoryDependencies? dependencies,
+  ]) : super(
+         endpoint: '/v1/auth/erp/lab-results-raw-materials/',
+         initialRecords: records,
+         dependencies: dependencies,
+       );
 }
 
 class RawMaterialLabResultsRecordsCubit extends ScreenRecordsCubit {
@@ -38,15 +42,13 @@ class RawMaterialLabResultsRecordsCubit extends ScreenRecordsCubit {
 class RawMaterialPhysicalLabResultsRecordsRepository
     extends EndpointScreenRecordRepository {
   RawMaterialPhysicalLabResultsRecordsRepository(
-    List<PernitScreenRecord> records,
-    [
+    List<PernitScreenRecord> records, [
     ScreenRecordRepositoryDependencies? dependencies,
-  ]
-  ) : super(
-        endpoint: '/v1/auth/erp/physical-lab-results-raw-materials/',
-        initialRecords: records,
-        dependencies: dependencies,
-      );
+  ]) : super(
+         endpoint: '/v1/auth/erp/physical-lab-results-raw-materials/',
+         initialRecords: records,
+         dependencies: dependencies,
+       );
 }
 
 class RawMaterialPhysicalLabResultsRecordsCubit extends ScreenRecordsCubit {
@@ -57,12 +59,14 @@ class RawMaterialPhysicalLabResultsRecordsCubit extends ScreenRecordsCubit {
 
 class RawMaterialQualityChecksRecordsRepository
     extends EndpointScreenRecordRepository {
-  RawMaterialQualityChecksRecordsRepository(List<PernitScreenRecord> records, [ScreenRecordRepositoryDependencies? dependencies])
-    : super(
-        endpoint: '/v1/auth/erp/quality-checks-raw-materials/',
-        initialRecords: records,
-        dependencies: dependencies,
-      );
+  RawMaterialQualityChecksRecordsRepository(
+    List<PernitScreenRecord> records, [
+    ScreenRecordRepositoryDependencies? dependencies,
+  ]) : super(
+         endpoint: '/v1/auth/erp/quality-checks-raw-materials/',
+         initialRecords: records,
+         dependencies: dependencies,
+       );
 }
 
 class RawMaterialQualityChecksRecordsCubit extends ScreenRecordsCubit {
@@ -73,12 +77,14 @@ class RawMaterialQualityChecksRecordsCubit extends ScreenRecordsCubit {
 
 class ProductionQualityChecksRecordsRepository
     extends EndpointScreenRecordRepository {
-  ProductionQualityChecksRecordsRepository(List<PernitScreenRecord> records, [ScreenRecordRepositoryDependencies? dependencies])
-    : super(
-        endpoint: '/v1/auth/erp/quality-checks-production/',
-        initialRecords: records,
-        dependencies: dependencies,
-      );
+  ProductionQualityChecksRecordsRepository(
+    List<PernitScreenRecord> records, [
+    ScreenRecordRepositoryDependencies? dependencies,
+  ]) : super(
+         endpoint: '/v1/auth/erp/quality-checks-production/',
+         initialRecords: records,
+         dependencies: dependencies,
+       );
 }
 
 class ProductionQualityChecksRecordsCubit extends ScreenRecordsCubit {

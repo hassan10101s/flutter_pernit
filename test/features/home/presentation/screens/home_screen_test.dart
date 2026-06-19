@@ -15,9 +15,12 @@ import 'package:flutter_pernit/features/auth/domain/repos/auth_repository.dart';
 import 'package:flutter_pernit/features/auth/domain/usecases/logout_use_case.dart';
 import 'package:flutter_pernit/features/auth/presentation/bloc/logout_cubit.dart';
 import 'package:flutter_pernit/features/home/presentation/screens/home_screen.dart';
+import 'package:flutter_pernit/features/raw_material_entry/domain/entities/inventory_workflow.dart';
 import 'package:flutter_pernit/features/raw_material_entry/domain/entities/raw_material_entry.dart';
 import 'package:flutter_pernit/features/raw_material_entry/domain/entities/raw_material_entry_lookup.dart';
+import 'package:flutter_pernit/features/raw_material_entry/domain/entities/raw_material_workflow.dart';
 import 'package:flutter_pernit/features/raw_material_entry/domain/repos/raw_material_entry_repository.dart';
+import 'package:flutter_pernit/features/raw_material_entry/domain/usecases/raw_material_entry_use_cases.dart';
 import 'package:flutter_pernit/features/raw_material_entry/presentation/bloc/raw_material_entry_cubit.dart';
 
 void main() {
@@ -98,7 +101,11 @@ void main() {
       ]),
     );
     sl.registerFactory<RawMaterialEntryCubit>(
-      () => RawMaterialEntryCubit(repository),
+      () => RawMaterialEntryCubit(
+        LoadRawMaterialEntriesUseCase(repository),
+        LoadRawMaterialEntryLookupsUseCase(repository),
+        CreateRawMaterialEntryUseCase(repository),
+      ),
     );
 
     await tester.pumpHome(adminUser);
@@ -206,6 +213,83 @@ class _FakeRawMaterialEntryRepository implements RawMaterialEntryRepository {
 
   @override
   Future<ApiResult<List<LookupOption>>> fetchWarehouses({String? search}) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResult<RawMaterialAnalysisWorkspace>> fetchAnalysisWorkspace(
+    int sampleId,
+  ) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResult<RawMaterialEntryPage>> fetchWorkflowEntries({
+    RawMaterialEntryStatus? status,
+    bool? isInStock,
+    required int page,
+  }) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResult<bool>> recordActualWeight({
+    required int batchId,
+    required double measuredQuantity,
+    required String measuredImagePath,
+  }) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResult<RawMaterialAnalysisWorkspace>> submitAnalysis({
+    required int sampleId,
+    required RawMaterialAnalysisSubmission submission,
+  }) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResult<bool>> submitQualityDecision({
+    required int batchId,
+    required RawMaterialQualityDecision decision,
+    String? comments,
+  }) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResult<RawMaterialSample>> takeSample(int batchId) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResult<RawMaterialSamplePage>> fetchSamples({
+    int? batchId,
+    required int page,
+  }) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResult<List<LookupOption>>> fetchProducts({String? search}) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResult<RawMaterialStockPage>> fetchRawMaterialStock({
+    required int page,
+  }) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResult<List<ProductStockItem>>> fetchProductStock() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResult<ProductStockItem>> addProductStock(ProductStockDraft draft) {
     throw UnimplementedError();
   }
 }

@@ -26,6 +26,19 @@ class LookupOptionModel extends LookupOption {
     );
   }
 
+  factory LookupOptionModel.product(Map<String, dynamic> json) {
+    final name = _firstString(json, const ['name', 'product_name']);
+    final shortCode = _firstString(json, const ['short_code', 'code']);
+    final baseUnit = _firstString(json, const ['base_unit_name', 'unit_name']);
+
+    return LookupOptionModel(
+      id: _readInt(json['id']) ?? 0,
+      label: _joinLabel(shortCode, name ?? 'Product'),
+      subtitle: baseUnit,
+      metadata: _cleanMetadata({'shortCode': shortCode, 'unitName': baseUnit}),
+    );
+  }
+
   factory LookupOptionModel.warehouse(Map<String, dynamic> json) {
     return LookupOptionModel(
       id: _readInt(json['id']) ?? 0,

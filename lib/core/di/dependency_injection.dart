@@ -15,7 +15,11 @@ import '../../features/auth/presentation/bloc/logout_cubit.dart';
 import '../../features/raw_material_entry/data/datasources/raw_material_entry_remote_data_source.dart';
 import '../../features/raw_material_entry/data/repos/raw_material_entry_repository_impl.dart';
 import '../../features/raw_material_entry/domain/repos/raw_material_entry_repository.dart';
+import '../../features/raw_material_entry/domain/usecases/raw_material_entry_use_cases.dart';
+import '../../features/raw_material_entry/domain/usecases/raw_material_workflow_use_cases.dart';
 import '../../features/raw_material_entry/presentation/bloc/raw_material_entry_cubit.dart';
+import '../../features/raw_material_entry/presentation/bloc/raw_material_inventory_cubit.dart';
+import '../../features/raw_material_entry/presentation/bloc/raw_material_quality_cubit.dart';
 import '../../features/screen_records/data/datasources/screen_record_remote_data_source.dart';
 import '../../features/screen_records/data/repos/screen_record_repository_dependencies.dart';
 import '../auth/auth_interceptor.dart';
@@ -77,6 +81,48 @@ void configureDependencies() {
     ..registerLazySingleton<RawMaterialEntryRepository>(
       () => RawMaterialEntryRepositoryImpl(sl(), sl(), sl(), sl()),
     )
+    ..registerLazySingleton<LoadRawMaterialEntriesUseCase>(
+      () => LoadRawMaterialEntriesUseCase(sl()),
+    )
+    ..registerLazySingleton<LoadRawMaterialEntryLookupsUseCase>(
+      () => LoadRawMaterialEntryLookupsUseCase(sl()),
+    )
+    ..registerLazySingleton<CreateRawMaterialEntryUseCase>(
+      () => CreateRawMaterialEntryUseCase(sl()),
+    )
+    ..registerLazySingleton<LoadRawMaterialWorkflowUseCase>(
+      () => LoadRawMaterialWorkflowUseCase(sl()),
+    )
+    ..registerLazySingleton<TakeRawMaterialSampleUseCase>(
+      () => TakeRawMaterialSampleUseCase(sl()),
+    )
+    ..registerLazySingleton<LoadRawMaterialSamplesUseCase>(
+      () => LoadRawMaterialSamplesUseCase(sl()),
+    )
+    ..registerLazySingleton<LoadRawMaterialAnalysisUseCase>(
+      () => LoadRawMaterialAnalysisUseCase(sl()),
+    )
+    ..registerLazySingleton<SubmitRawMaterialAnalysisUseCase>(
+      () => SubmitRawMaterialAnalysisUseCase(sl()),
+    )
+    ..registerLazySingleton<SubmitRawMaterialQualityDecisionUseCase>(
+      () => SubmitRawMaterialQualityDecisionUseCase(sl()),
+    )
+    ..registerLazySingleton<RecordRawMaterialActualWeightUseCase>(
+      () => RecordRawMaterialActualWeightUseCase(sl()),
+    )
+    ..registerLazySingleton<LoadRawMaterialStockUseCase>(
+      () => LoadRawMaterialStockUseCase(sl()),
+    )
+    ..registerLazySingleton<LoadProductStockUseCase>(
+      () => LoadProductStockUseCase(sl()),
+    )
+    ..registerLazySingleton<LoadProductStockLookupsUseCase>(
+      () => LoadProductStockLookupsUseCase(sl()),
+    )
+    ..registerLazySingleton<AddProductStockUseCase>(
+      () => AddProductStockUseCase(sl()),
+    )
     ..registerLazySingleton<AuthRepository>(
       () => AuthRepositoryImpl(sl(), sl(), sl(), sl(), sl()),
     )
@@ -89,6 +135,14 @@ void configureDependencies() {
     ..registerFactory<AuthSessionCubit>(() => AuthSessionCubit(sl()))
     ..registerFactory<LoginCubit>(() => LoginCubit(sl()))
     ..registerFactory<LogoutCubit>(() => LogoutCubit(sl()))
-    ..registerFactory<RawMaterialEntryCubit>(() => RawMaterialEntryCubit(sl()))
+    ..registerFactory<RawMaterialEntryCubit>(
+      () => RawMaterialEntryCubit(sl(), sl(), sl()),
+    )
+    ..registerFactory<RawMaterialQualityCubit>(
+      () => RawMaterialQualityCubit(sl(), sl(), sl(), sl(), sl(), sl()),
+    )
+    ..registerFactory<RawMaterialInventoryCubit>(
+      () => RawMaterialInventoryCubit(sl(), sl(), sl(), sl(), sl(), sl()),
+    )
     ..registerLazySingleton<AppRouter>(() => AppRouter());
 }

@@ -32,7 +32,7 @@ class RawMaterialEntryCopy {
       isArabic ? 'تفصيل أمر الشراء' : 'Purchase order detail';
 
   String get purchaseOrderDetailHint =>
-      isArabic ? 'اختياري حسب أمر الشراء' : 'Optional purchase detail';
+      isArabic ? 'اختر بند أمر الشراء' : 'Choose a purchase order line';
 
   String get warehouse => isArabic ? 'المخزن' : 'Warehouse';
 
@@ -66,8 +66,8 @@ class RawMaterialEntryCopy {
       isArabic ? 'تحديث بيانات الاختيار' : 'Refresh lookup data';
 
   String get requiredFieldsMessage => isArabic
-      ? 'اختر الخامة وأدخل كمية صحيحة قبل التسجيل.'
-      : 'Choose a raw material and enter a valid quantity.';
+      ? 'اختر بند أمر الشراء والخامة والمخزن وأدخل وزن المورد.'
+      : 'Choose the purchase line, raw material, warehouse, and supplier weight.';
 
   String get invalidDateMessage => isArabic
       ? 'تاريخ الصلاحية يجب أن يكون بصيغة YYYY-MM-DD.'
