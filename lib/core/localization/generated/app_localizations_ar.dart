@@ -64,6 +64,13 @@ class AppLocalizationsAr extends AppLocalizations {
       'رابط واجهة البرمجة غير مضبوط لهذا الإصدار.';
 
   @override
+  String get failureNotFound => 'المورد المطلوب غير موجود.';
+
+  @override
+  String get failureConflict =>
+      'تتعارض هذه العملية مع الحالة الحالية. يرجى التحديث والمحاولة مرة أخرى.';
+
+  @override
   String get failureUnknown => 'حدث خطأ غير متوقع. حاول مرة أخرى.';
 
   @override
@@ -108,6 +115,32 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get menuSettings => 'الإعدادات';
+
+  @override
+  String get notificationTitle => 'الإشعارات';
+
+  @override
+  String get notificationMarkAllRead => 'تحديد الكل كمقروء';
+
+  @override
+  String get notificationEmpty => 'لا توجد إشعارات';
+
+  @override
+  String get notificationMarkRead => 'تحديد كمقروء';
+
+  @override
+  String get notificationJustNow => 'الآن';
+
+  @override
+  String notificationTimeAgo(int count) {
+    return 'قبل $count د';
+  }
+
+  @override
+  String get notificationReference => 'عرض التفاصيل';
+
+  @override
+  String get notificationRetry => 'إعادة المحاولة';
 
   @override
   String get overviewTitle => 'مساحة العمل';
@@ -601,4 +634,240 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get commonConfirm => 'تأكيد';
+
+  @override
+  String get entryTitle => 'دخول الخامات';
+
+  @override
+  String get entrySubtitle =>
+      'تسجيل الخامات الواردة وربط كل بيان بمصدره من النظام.';
+
+  @override
+  String get entryForm => 'بيانات الدخول';
+
+  @override
+  String get entryRawMaterial => 'الخامة';
+
+  @override
+  String get entryRawMaterialHint => 'اختر الخامة من البيانات';
+
+  @override
+  String get rawMaterialHint => 'اختر الخامة من البيانات';
+
+  @override
+  String get entryPurchaseOrderDetail => 'تفصيل أمر الشراء';
+
+  @override
+  String get entryPurchaseOrderDetailHint => 'اختر بند أمر الشراء';
+
+  @override
+  String get entryWarehouse => 'المخزن';
+
+  @override
+  String get entryWarehouseHint => 'اختر مخزن الاستلام';
+
+  @override
+  String get entryDriver => 'السائق';
+
+  @override
+  String get entryDriverHint => 'اختر أو اكتب اسم السائق';
+
+  @override
+  String get entryVehicleNo => 'رقم السيارة';
+
+  @override
+  String get entryVehicleNoHint => 'مثال: أ ب ج 123';
+
+  @override
+  String get entryQuantity => 'كمية المورد';
+
+  @override
+  String get entryQuantityHint => 'أدخل الكمية';
+
+  @override
+  String get entryLotNo => 'رقم اللوط';
+
+  @override
+  String get entryLotNoHint => 'اختياري';
+
+  @override
+  String get entryExpiryDate => 'تاريخ الصلاحية';
+
+  @override
+  String get entryExpiryDateHint => 'YYYY-MM-DD';
+
+  @override
+  String get entrySubmit => 'تسجيل دخول الخامة';
+
+  @override
+  String get entryRefreshLookups => 'تحديث بيانات الاختيار';
+
+  @override
+  String get entryRequiredFields =>
+      'اختر بند أمر الشراء والخامة والمخزن وأدخل وزن المورد.';
+
+  @override
+  String get entryInvalidDate => 'تاريخ الصلاحية يجب أن يكون بصيغة YYYY-MM-DD.';
+
+  @override
+  String get entryAllStatuses => 'الكل';
+
+  @override
+  String get entryPendingFilter => 'قيد الانتظار';
+
+  @override
+  String get entryApprovedFilter => 'معتمدة';
+
+  @override
+  String get entryRejectedFilter => 'مرفوضة';
+
+  @override
+  String get entryLast24Hours => 'آخر 24 ساعة';
+
+  @override
+  String get entryYesterday => 'أمس';
+
+  @override
+  String get entryCustomDate => 'تاريخ مخصص';
+
+  @override
+  String get entryIntake => 'الاستلام';
+
+  @override
+  String get entryProduction => 'الإنتاج';
+
+  @override
+  String get entryQuality => 'الجودة';
+
+  @override
+  String get entrySupplierWeight => 'وزن المورد';
+
+  @override
+  String get entryIdLabel => 'المعرف';
+
+  @override
+  String get entryDateLabel => 'التاريخ';
+
+  @override
+  String get entryEmptyTitle => 'لا توجد خامات واردة';
+
+  @override
+  String get entryEmptyMessage => 'لا توجد سجلات مطابقة للحالة الحالية.';
+
+  @override
+  String get entryErrorTitle => 'تعذر تحميل دخول الخامات';
+
+  @override
+  String get entryRetry => 'إعادة المحاولة';
+
+  @override
+  String get entrySubmitSuccess => 'تم تسجيل دخول الخامة.';
+
+  @override
+  String get entryTotalEntries => 'إجمالي السجلات';
+
+  @override
+  String get entryWaitingQuality => 'في الجودة';
+
+  @override
+  String get entryStocked => 'دخل المخزن';
+
+  @override
+  String get entryRejected => 'مرفوض';
+
+  @override
+  String get entrySupplier => 'المورد';
+
+  @override
+  String get entryNoSupplier => 'بدون مورد';
+
+  @override
+  String get entryNoWarehouse => 'بدون مخزن';
+
+  @override
+  String get entryAcceptedQuantity => 'مقبول';
+
+  @override
+  String get entryAvailableQuantity => 'متاح';
+
+  @override
+  String get entryMeasuredQuantity => 'مقاس';
+
+  @override
+  String get entrySampled => 'عينة';
+
+  @override
+  String get entryLabDone => 'مختبر';
+
+  @override
+  String get entryQcDone => 'جودة';
+
+  @override
+  String get entryStock => 'مخزن';
+
+  @override
+  String get entryMetaSeparator => ': ';
+
+  @override
+  String entryIdPrefix(String code) {
+    return '#$code';
+  }
+
+  @override
+  String entryDateFormat(String label, String separator, String date) {
+    return '$label$separator$date';
+  }
+
+  @override
+  String entryIdFormat(String label, String separator, String code) {
+    return '$label$separator#$code';
+  }
+
+  @override
+  String entryQuantityValue(String value, String unit) {
+    return '$value $unit';
+  }
+
+  @override
+  String get cardStepperArrived => 'وصلت';
+
+  @override
+  String get cardStepperSampled => 'تم أخذ عينة';
+
+  @override
+  String get cardStepperLab => 'مختبر';
+
+  @override
+  String get cardStepperQc => 'جودة';
+
+  @override
+  String get cardStepperDecision => 'القرار';
+
+  @override
+  String get cardStepperRejected => 'مرفوضة';
+
+  @override
+  String get cardStepperApproved => 'معتمدة';
+
+  @override
+  String get cardStepperPending => 'قيد الانتظار';
+
+  @override
+  String get cardStepperProcessing => 'قيد المعالجة';
+
+  @override
+  String cardStepperBy(String name) {
+    return 'بواسطة: $name';
+  }
+
+  @override
+  String cardStepperDetailArrived(String driver) {
+    return 'بواسطة: $driver';
+  }
+
+  @override
+  String get separatorDot => ' • ';
+
+  @override
+  String get logoutTitle => 'تسجيل الخروج';
 }

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helpers/spacing.dart';
+import '../../../../core/localization/generated/app_localizations.dart';
 import '../../../../design_system/tokens/pernit_colors.dart';
 import '../../../../design_system/tokens/pernit_font_weights.dart';
 import '../../domain/entities/raw_material_entry.dart';
-import 'raw_material_entry_copy.dart';
 
 class RawMaterialEntrySummaryStrip extends StatelessWidget {
   final List<RawMaterialEntry> entries;
@@ -14,7 +14,7 @@ class RawMaterialEntrySummaryStrip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final copy = RawMaterialEntryCopy.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final waitingQualityCount = entries
         .where(
           (entry) =>
@@ -34,22 +34,22 @@ class RawMaterialEntrySummaryStrip extends StatelessWidget {
         final children = [
           _SummaryMetric(
             icon: Icons.inventory_2_outlined,
-            label: copy.totalEntries,
+            label: l10n.entryTotalEntries,
             value: entries.length.toString(),
           ),
           _SummaryMetric(
             icon: Icons.science_outlined,
-            label: copy.waitingQuality,
+            label: l10n.entryWaitingQuality,
             value: waitingQualityCount.toString(),
           ),
           _SummaryMetric(
             icon: Icons.warehouse_outlined,
-            label: copy.stocked,
+            label: l10n.entryStocked,
             value: stockedCount.toString(),
           ),
           _SummaryMetric(
             icon: Icons.block_outlined,
-            label: copy.rejected,
+            label: l10n.entryRejected,
             value: rejectedCount.toString(),
           ),
         ];

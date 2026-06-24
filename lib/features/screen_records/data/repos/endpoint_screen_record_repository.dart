@@ -58,7 +58,8 @@ class EndpointScreenRecordRepository implements ScreenRecordRepository {
         endpoint,
         record.fields,
       );
-      _records.add(created.isEmpty ? record : _recordFromJson(created));
+      final parsed = created.isEmpty ? record : _recordFromJson(created);
+      _records.add(parsed);
       return ApiSuccess([..._records]);
     } on Object catch (error) {
       return ApiFailure(_apiErrorHandler!.handle(error));

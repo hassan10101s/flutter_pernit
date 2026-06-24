@@ -82,11 +82,11 @@ class ApiErrorHandler {
       ),
       404 => const Failure(
         code: FailureCode.notFound,
-        messageKey: 'failureUnknown',
+        messageKey: 'failureNotFound',
       ),
       409 => const Failure(
         code: FailureCode.conflict,
-        messageKey: 'failureUnknown',
+        messageKey: 'failureConflict',
       ),
       _ => const Failure(
         code: FailureCode.unknown,

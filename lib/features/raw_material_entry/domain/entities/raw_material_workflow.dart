@@ -19,6 +19,55 @@ class RawMaterialEntryPage extends Equatable {
   List<Object?> get props => [entries, totalCount, page, hasNextPage];
 }
 
+class SamplingRecord extends Equatable {
+  final int id;
+  final String takenBy;
+  final DateTime takenAt;
+  final String sampleNo;
+
+  const SamplingRecord({
+    required this.id,
+    required this.takenBy,
+    required this.takenAt,
+    required this.sampleNo,
+  });
+
+  @override
+  List<Object?> get props => [id, takenBy, takenAt, sampleNo];
+}
+
+class QcRecord extends Equatable {
+  final int qcId;
+  final String? comments;
+  final String qcStatus;
+  final DateTime timestamp;
+  final String checkedByName;
+
+  const QcRecord({
+    required this.qcId,
+    required this.checkedByName,
+    required this.qcStatus,
+    required this.timestamp,
+    this.comments,
+  });
+
+  @override
+  List<Object?> get props => [qcId, comments, qcStatus, timestamp, checkedByName];
+}
+
+class EntryMetadata extends Equatable {
+  final List<SamplingRecord> samplingHistory;
+  final List<QcRecord> qcHistory;
+
+  const EntryMetadata({
+    required this.samplingHistory,
+    required this.qcHistory,
+  });
+
+  @override
+  List<Object?> get props => [samplingHistory, qcHistory];
+}
+
 class RawMaterialSample extends Equatable {
   final int id;
   final int batchId;

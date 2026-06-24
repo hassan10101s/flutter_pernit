@@ -460,7 +460,7 @@ class _ActualWeightSheetState extends State<_ActualWeightSheet> {
                   ],
                 ),
                 Text(
-                  '${widget.entry.rawMaterialName} • '
+                  '${widget.entry.rawMaterialName}${l10n.separatorDot}'
                   '${l10n.rawWorkflowBatch(widget.entry.id)}',
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: PernitColors.textMuted,

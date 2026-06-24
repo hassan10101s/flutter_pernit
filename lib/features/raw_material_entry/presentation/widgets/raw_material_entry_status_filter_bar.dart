@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/localization/generated/app_localizations.dart';
 import '../../../../design_system/widgets/pernit_filter_chip_button.dart';
 import '../../domain/entities/raw_material_entry.dart';
-import 'raw_material_entry_copy.dart';
 
 class RawMaterialEntryStatusFilterBar extends StatelessWidget {
   final RawMaterialEntryStatus? selectedStatus;
@@ -16,7 +16,7 @@ class RawMaterialEntryStatusFilterBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final copy = RawMaterialEntryCopy.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return Container(
       height: 118,
@@ -32,7 +32,7 @@ class RawMaterialEntryStatusFilterBar extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10),
               children: [
                 PernitFilterChipButton(
-                  label: copy.allStatuses,
+                  label: l10n.entryAllStatuses,
                   selected: selectedStatus == null,
                   onPressed: () => onStatusSelected(null),
                   darkWhenSelected: true,
@@ -40,7 +40,7 @@ class RawMaterialEntryStatusFilterBar extends StatelessWidget {
                 ),
                 const SizedBox(width: 3),
                 PernitFilterChipButton(
-                  label: copy.pendingFilter,
+                  label: l10n.entryPendingFilter,
                   selected:
                       selectedStatus != null &&
                       selectedStatus != RawMaterialEntryStatus.approved &&
@@ -51,7 +51,7 @@ class RawMaterialEntryStatusFilterBar extends StatelessWidget {
                 ),
                 const SizedBox(width: 3),
                 PernitFilterChipButton(
-                  label: copy.approvedFilter,
+                  label: l10n.entryApprovedFilter,
                   selected: selectedStatus == RawMaterialEntryStatus.approved,
                   onPressed: () =>
                       onStatusSelected(RawMaterialEntryStatus.approved),
@@ -59,7 +59,7 @@ class RawMaterialEntryStatusFilterBar extends StatelessWidget {
                 ),
                 const SizedBox(width: 3),
                 PernitFilterChipButton(
-                  label: copy.rejectedFilter,
+                  label: l10n.entryRejectedFilter,
                   selected: selectedStatus == RawMaterialEntryStatus.rejected,
                   onPressed: () =>
                       onStatusSelected(RawMaterialEntryStatus.rejected),
@@ -75,7 +75,7 @@ class RawMaterialEntryStatusFilterBar extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(2, 6, 0, 6),
               children: [
                 PernitFilterChipButton(
-                  label: copy.last24Hours,
+                  label: l10n.entryLast24Hours,
                   selected: true,
                   onPressed: () {},
                   darkWhenSelected: true,
@@ -83,14 +83,14 @@ class RawMaterialEntryStatusFilterBar extends StatelessWidget {
                 ),
                 const SizedBox(width: 11),
                 PernitFilterChipButton(
-                  label: copy.yesterday,
+                  label: l10n.entryYesterday,
                   selected: false,
                   onPressed: () {},
                   minWidth: 116.59,
                 ),
                 const SizedBox(width: 11),
                 PernitFilterChipButton(
-                  label: copy.customDate,
+                  label: l10n.entryCustomDate,
                   selected: false,
                   onPressed: () {},
                   minWidth: 135,

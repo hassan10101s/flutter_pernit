@@ -1,3 +1,4 @@
+import '../../../../core/network/api_constants.dart';
 import '../../../../core/screen_records/pernit_screen_record.dart';
 import '../../../screen_records/data/repos/endpoint_screen_record_repository.dart';
 import '../../../screen_records/data/repos/screen_record_repository_dependencies.dart';
@@ -9,7 +10,7 @@ class RawMaterialLabSamplesRecordsRepository
     List<PernitScreenRecord> records, [
     ScreenRecordRepositoryDependencies? dependencies,
   ]) : super(
-         endpoint: '/v1/auth/erp/lab-samples-of-received-raw-materials/',
+         endpoint: ApiConstants.rawMaterialLabSamples,
          initialRecords: records,
          dependencies: dependencies,
        );
@@ -27,7 +28,7 @@ class RawMaterialLabResultsRecordsRepository
     List<PernitScreenRecord> records, [
     ScreenRecordRepositoryDependencies? dependencies,
   ]) : super(
-         endpoint: '/v1/auth/erp/lab-results-raw-materials/',
+         endpoint: ApiConstants.rawMaterialLabResults,
          initialRecords: records,
          dependencies: dependencies,
        );
@@ -45,7 +46,7 @@ class RawMaterialPhysicalLabResultsRecordsRepository
     List<PernitScreenRecord> records, [
     ScreenRecordRepositoryDependencies? dependencies,
   ]) : super(
-         endpoint: '/v1/auth/erp/physical-lab-results-raw-materials/',
+         endpoint: ApiConstants.rawMaterialPhysicalLabResults,
          initialRecords: records,
          dependencies: dependencies,
        );
@@ -63,7 +64,7 @@ class RawMaterialQualityChecksRecordsRepository
     List<PernitScreenRecord> records, [
     ScreenRecordRepositoryDependencies? dependencies,
   ]) : super(
-         endpoint: '/v1/auth/erp/quality-checks-raw-materials/',
+         endpoint: ApiConstants.rawMaterialQualityChecks,
          initialRecords: records,
          dependencies: dependencies,
        );
@@ -81,7 +82,7 @@ class ProductionQualityChecksRecordsRepository
     List<PernitScreenRecord> records, [
     ScreenRecordRepositoryDependencies? dependencies,
   ]) : super(
-         endpoint: '/v1/auth/erp/quality-checks-production/',
+         endpoint: ApiConstants.productionQualityChecks,
          initialRecords: records,
          dependencies: dependencies,
        );

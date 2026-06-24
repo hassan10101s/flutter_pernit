@@ -6,6 +6,7 @@ import '../../../../core/extensions/navigation_extensions.dart';
 import '../../../../core/localization/generated/app_localizations.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../design_system/tokens/pernit_colors.dart';
+import '../../../../features/notifications/presentation/widgets/notification_badge_widget.dart';
 import '../../../auth/domain/entities/auth_user.dart';
 import '../../../auth/presentation/bloc/logout_cubit.dart';
 import '../../../auth/presentation/bloc/logout_state.dart';
@@ -84,6 +85,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             HomeDesktopSectionHeader(
                               title: _labelForSection(l10n, selectedSection),
                               icon: _iconForSection(selectedSection),
+                              actions: [
+                                NotificationBadgeWidget(
+                                  onTap: () =>
+                                      context.pushNamed(Routes.notifications),
+                                ),
+                              ],
                             ),
                             Expanded(
                               child: HomeSectionBody(
@@ -100,11 +107,14 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             }
 
-            return Scaffold(
+              return Scaffold(
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 title: Text(_labelForSection(l10n, selectedSection)),
                 actions: [
+                  NotificationBadgeWidget(
+                    onTap: () => context.pushNamed(Routes.notifications),
+                  ),
                   IconButton(
                     tooltip: l10n.homeLogoutTooltip,
                     onPressed: isLoggingOut

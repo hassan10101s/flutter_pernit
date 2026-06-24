@@ -18,6 +18,8 @@
   "failureServer": "The server could not complete the request.",
   "failureTimeout": "The request took too long. Please try again.",
   "failureConfigurationMissing": "The API URL is not configured for this build.",
+  "failureNotFound": "The requested resource was not found.",
+  "failureConflict": "This operation conflicts with the current state. Please refresh and try again.",
   "failureUnknown": "Something went wrong. Please try again.",
   "homeTitle": "Home",
   "homeEmptyTitle": "Pernit ERP",
@@ -46,6 +48,21 @@
   "menuProduction": "Production",
   "menuCommercial": "Raw entry",
   "menuSettings": "Settings",
+  "notificationTitle": "Notifications",
+  "notificationMarkAllRead": "Mark all read",
+  "notificationEmpty": "No notifications",
+  "notificationMarkRead": "Mark as read",
+  "notificationJustNow": "Just now",
+  "notificationTimeAgo": "{count}m ago",
+  "@notificationTimeAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notificationReference": "View details",
+  "notificationRetry": "Retry",
   "overviewTitle": "Workspace",
   "overviewSubtitle": "Available sections are based on the user groups returned by login.",
   "modulePlaceholder": "{module} screen placeholder",
@@ -345,5 +362,114 @@
   "rawInventoryAddProductConfirm": "Confirm adding this finished product quantity to the selected warehouse?",
   "rawInventoryProductSuccess": "Finished product stock was added.",
   "rawInventoryProductEmpty": "No finished product stock is currently recorded.",
-  "commonConfirm": "Confirm"
+  "commonConfirm": "Confirm",
+  "entryTitle": "Raw material entry",
+  "entrySubtitle": "Register received raw materials with API-backed parameter data.",
+  "entryForm": "Entry details",
+  "entryRawMaterial": "Raw material",
+  "entryRawMaterialHint": "Choose a raw material",
+  "rawMaterialHint": "Choose a raw material",
+  "entryPurchaseOrderDetail": "Purchase order detail",
+  "entryPurchaseOrderDetailHint": "Choose a purchase order line",
+  "entryWarehouse": "Warehouse",
+  "entryWarehouseHint": "Choose receiving warehouse",
+  "entryDriver": "Driver",
+  "entryDriverHint": "Choose or type driver name",
+  "entryVehicleNo": "Vehicle no.",
+  "entryVehicleNoHint": "Truck plate",
+  "entryQuantity": "Supplier quantity",
+  "entryQuantityHint": "Enter quantity",
+  "entryLotNo": "Lot no.",
+  "entryLotNoHint": "Optional",
+  "entryExpiryDate": "Expiry date",
+  "entryExpiryDateHint": "YYYY-MM-DD",
+  "entrySubmit": "Create entry",
+  "entryRefreshLookups": "Refresh lookup data",
+  "entryRequiredFields": "Choose the purchase line, raw material, warehouse, and supplier weight.",
+  "entryInvalidDate": "Expiry date must use YYYY-MM-DD.",
+  "entryAllStatuses": "All",
+  "entryPendingFilter": "Pending",
+  "entryApprovedFilter": "Approved",
+  "entryRejectedFilter": "Rejected",
+  "entryLast24Hours": "Last 24 h",
+  "entryYesterday": "Yesterday",
+  "entryCustomDate": "Custom Date",
+  "entryIntake": "In-Take",
+  "entryProduction": "Production",
+  "entryQuality": "Quality",
+  "entrySupplierWeight": "Supplier Weight",
+  "entryIdLabel": "ID",
+  "entryDateLabel": "Date",
+  "entryEmptyTitle": "No received materials",
+  "entryEmptyMessage": "No entries match the selected status yet.",
+  "entryErrorTitle": "Could not load entries",
+  "entryRetry": "Retry",
+  "entrySubmitSuccess": "Raw material entry created.",
+  "entryTotalEntries": "Total entries",
+  "entryWaitingQuality": "In quality",
+  "entryStocked": "In stock",
+  "entryRejected": "Rejected",
+  "entrySupplier": "Supplier",
+  "entryNoSupplier": "No supplier",
+  "entryNoWarehouse": "No warehouse",
+  "entryAcceptedQuantity": "Accepted",
+  "entryAvailableQuantity": "Available",
+  "entryMeasuredQuantity": "Measured",
+  "entrySampled": "Sample",
+  "entryLabDone": "Lab",
+  "entryQcDone": "QC",
+  "entryStock": "Stock",
+  "entryMetaSeparator": ": ",
+  "entryIdPrefix": "#{code}",
+  "@entryIdPrefix": {
+    "placeholders": {
+      "code": { "type": "String" }
+    }
+  },
+  "entryDateFormat": "{label}{separator}{date}",
+  "@entryDateFormat": {
+    "placeholders": {
+      "label": { "type": "String" },
+      "separator": { "type": "String" },
+      "date": { "type": "String" }
+    }
+  },
+  "entryIdFormat": "{label}{separator}#{code}",
+  "@entryIdFormat": {
+    "placeholders": {
+      "label": { "type": "String" },
+      "separator": { "type": "String" },
+      "code": { "type": "String" }
+    }
+  },
+  "entryQuantityValue": "{value} {unit}",
+  "@entryQuantityValue": {
+    "placeholders": {
+      "value": { "type": "String" },
+      "unit": { "type": "String" }
+    }
+  },
+  "cardStepperArrived": "Arrived",
+  "cardStepperSampled": "Sampled",
+  "cardStepperLab": "Lab",
+  "cardStepperQc": "QC",
+  "cardStepperDecision": "Decision",
+  "cardStepperRejected": "Rejected",
+  "cardStepperApproved": "Approved",
+  "cardStepperPending": "Pending",
+  "cardStepperProcessing": "Processing",
+  "cardStepperBy": "By: {name}",
+  "@cardStepperBy": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "cardStepperDetailArrived": "By: {driver}",
+  "@cardStepperDetailArrived": {
+    "placeholders": {
+      "driver": { "type": "String" }
+    }
+  },
+  "separatorDot": " • ",
+  "logoutTitle": "Logging out"
 }

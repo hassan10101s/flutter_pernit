@@ -12,7 +12,6 @@ import '../../domain/entities/raw_material_entry_lookup.dart';
 import '../bloc/raw_material_entry_cubit.dart';
 import '../bloc/raw_material_entry_state.dart';
 import '../widgets/raw_material_entry_content.dart';
-import '../widgets/raw_material_entry_copy.dart';
 import '../widgets/raw_material_entry_form.dart';
 import '../widgets/raw_material_entry_status_filter_bar.dart';
 
@@ -33,14 +32,14 @@ class _RawMaterialEntryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final copy = RawMaterialEntryCopy.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return BlocConsumer<RawMaterialEntryCubit, RawMaterialEntryState>(
       listener: (context, state) {
         if (state is RawMaterialEntrySubmitSuccess) {
           ScaffoldMessenger.of(
             context,
-          ).showSnackBar(SnackBar(content: Text(copy.submitSuccess)));
+          ).showSnackBar(SnackBar(content: Text(l10n.entrySubmitSuccess)));
         } else if (state is RawMaterialEntrySubmitError) {
           final message = FailureMessageLocalizer.messageFor(
             AppLocalizations.of(context)!,
@@ -68,14 +67,14 @@ class _RawMaterialEntryView extends StatelessWidget {
                   children: [
                     PernitPanelHeader(
                       icon: Icons.move_to_inbox_outlined,
-                      title: copy.title,
-                      subtitle: copy.subtitle,
+                      title: l10n.entryTitle,
+                      subtitle: l10n.entrySubtitle,
                     ),
                     SizedBox(height: 14.h),
                     Align(
                       alignment: AlignmentDirectional.centerEnd,
                       child: PernitButton(
-                        label: copy.submit,
+                        label: l10n.entrySubmit,
                         icon: Icons.add_rounded,
                         fullWidth: false,
                         onPressed: () => _openEntrySheet(

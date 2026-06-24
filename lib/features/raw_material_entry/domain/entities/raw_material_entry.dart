@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+import 'raw_material_workflow.dart';
+
 enum RawMaterialEntryStatus {
   arrived('arrived'),
   sampleTaken('sample_taken'),
@@ -50,6 +52,8 @@ class RawMaterialEntry extends Equatable {
   final String? lotNo;
   final DateTime? expiryDate;
   final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final EntryMetadata? metadata;
 
   const RawMaterialEntry({
     required this.id,
@@ -75,7 +79,15 @@ class RawMaterialEntry extends Equatable {
     required this.lotNo,
     required this.expiryDate,
     required this.createdAt,
+    this.updatedAt,
+    this.metadata,
   });
+
+  String get entryCode {
+    final prefix = rawMaterialName.toUpperCase().contains('VITAMIN') ? 'PV' : 'SB';
+    final year = createdAt?.year.toString() ?? DateTime.now().year.toString();
+    return '$prefix-$year-${id.toString().padLeft(3, '0')}';
+  }
 
   @override
   List<Object?> get props => [
@@ -102,5 +114,7 @@ class RawMaterialEntry extends Equatable {
     lotNo,
     expiryDate,
     createdAt,
+    updatedAt,
+    metadata,
   ];
 }

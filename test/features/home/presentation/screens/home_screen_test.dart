@@ -6,6 +6,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_pernit/core/di/dependency_injection.dart';
 import 'package:flutter_pernit/core/errors/api_result.dart';
 import 'package:flutter_pernit/core/localization/generated/app_localizations.dart';
+import 'package:flutter_pernit/core/network/websocket/notification_web_socket_service.dart';
+import 'package:flutter_pernit/core/network/websocket/ws_connection_status.dart';
+import 'package:flutter_pernit/core/network/websocket/ws_notification_event.dart';
 import 'package:flutter_pernit/design_system/tokens/pernit_colors.dart';
 import 'package:flutter_pernit/design_system/tokens/pernit_text_theme.dart';
 import 'package:flutter_pernit/features/auth/domain/entities/auth_session.dart';
@@ -13,6 +16,8 @@ import 'package:flutter_pernit/features/auth/domain/entities/auth_user.dart';
 import 'package:flutter_pernit/features/auth/domain/entities/login_credentials.dart';
 import 'package:flutter_pernit/features/auth/domain/repos/auth_repository.dart';
 import 'package:flutter_pernit/features/auth/domain/usecases/logout_use_case.dart';
+import 'package:flutter_pernit/features/auth/domain/usecases/restore_session_use_case.dart';
+import 'package:flutter_pernit/features/auth/presentation/bloc/auth_session_cubit.dart';
 import 'package:flutter_pernit/features/auth/presentation/bloc/logout_cubit.dart';
 import 'package:flutter_pernit/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter_pernit/features/raw_material_entry/domain/entities/inventory_workflow.dart';
@@ -122,6 +127,9 @@ void main() {
 
 extension on WidgetTester {
   Future<void> pumpHome(AuthUser user) async {
+    sl.registerLazySingleton<NotificationWebSocketService>(
+      () => _FakeWsService(),
+    );
     await pumpWidget(
       ScreenUtilInit(
         designSize: const Size(375, 812),
@@ -143,7 +151,13 @@ extension on WidgetTester {
             supportedLocales: AppLocalizations.supportedLocales,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             home: BlocProvider(
-              create: (_) => LogoutCubit(LogoutUseCase(_FakeAuthRepository())),
+              create: (_) => LogoutCubit(
+                LogoutUseCase(_FakeAuthRepository()),
+              AuthSessionCubit(
+                RestoreSessionUseCase(_FakeAuthRepository()),
+                _FakeWsService(),
+              ),
+              ),
               child: HomeScreen(user: user),
             ),
           );
@@ -151,6 +165,41 @@ extension on WidgetTester {
       ),
     );
   }
+}
+
+class _FakeWsService implements NotificationWebSocketService {
+  @override
+  Future<void> connect() async {}
+
+  @override
+  void disconnect() {}
+
+  @override
+  void dispose() {}
+
+  @override
+  Stream<WsNotificationEvent> get events => const Stream.empty();
+
+  @override
+  Stream<WsConnectionStatus> get connectionStatus => const Stream.empty();
+
+  @override
+  WsConnectionStatus get currentStatus => WsConnectionStatus.disconnected;
+
+  @override
+  void manualReconnect() {}
+
+  @override
+  void markRead(int notificationId) {}
+
+  @override
+  void markAllRead() {}
+
+  @override
+  void getUnreadCount() {}
+
+  @override
+  void getNotifications({int limit = 20, int offset = 0}) {}
 }
 
 class _FakeAuthRepository implements AuthRepository {

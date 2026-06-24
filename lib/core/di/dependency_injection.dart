@@ -17,6 +17,7 @@ import '../../features/raw_material_entry/data/repos/raw_material_entry_reposito
 import '../../features/raw_material_entry/domain/repos/raw_material_entry_repository.dart';
 import '../../features/raw_material_entry/domain/usecases/raw_material_entry_use_cases.dart';
 import '../../features/raw_material_entry/domain/usecases/raw_material_workflow_use_cases.dart';
+import '../../features/notifications/presentation/bloc/notification_cubit.dart';
 import '../../features/raw_material_entry/presentation/bloc/raw_material_entry_cubit.dart';
 import '../../features/raw_material_entry/presentation/bloc/raw_material_inventory_cubit.dart';
 import '../../features/raw_material_entry/presentation/bloc/raw_material_quality_cubit.dart';
@@ -31,6 +32,9 @@ import '../errors/api_error_handler.dart';
 import '../network/connection_checker.dart';
 import '../network/public_dio_factory.dart';
 import '../network/secure_dio_factory.dart';
+import '../network/websocket/notification_web_socket_service.dart';
+import '../notifications/local_notification_service.dart';
+import '../notifications/notification_router.dart';
 import '../routing/app_router.dart';
 
 final sl = GetIt.instance;
@@ -62,7 +66,7 @@ void configureDependencies() {
     )
     ..registerLazySingleton<Dio>(() => sl<SecureDioFactory>().create())
     ..registerLazySingleton<ConnectionChecker>(
-      () => const RemoteConnectionChecker(),
+      () => RemoteConnectionChecker(sl()),
     )
     ..registerLazySingleton<ApiErrorHandler>(() => const ApiErrorHandler())
     ..registerLazySingleton<ScreenRecordRemoteDataSource>(
@@ -132,9 +136,12 @@ void configureDependencies() {
     ..registerLazySingleton<RestoreSessionUseCase>(
       () => RestoreSessionUseCase(sl()),
     )
-    ..registerFactory<AuthSessionCubit>(() => AuthSessionCubit(sl()))
-    ..registerFactory<LoginCubit>(() => LoginCubit(sl()))
-    ..registerFactory<LogoutCubit>(() => LogoutCubit(sl()))
+    ..registerLazySingleton<AuthSessionCubit>(
+      () => AuthSessionCubit(sl(), sl()),
+    )
+    ..registerFactory<LoginCubit>(() => LoginCubit(sl(), sl()))
+    ..registerFactory<LogoutCubit>(() => LogoutCubit(sl(), sl()))
+    ..registerFactory<NotificationCubit>(() => NotificationCubit(sl()))
     ..registerFactory<RawMaterialEntryCubit>(
       () => RawMaterialEntryCubit(sl(), sl(), sl()),
     )
@@ -144,5 +151,12 @@ void configureDependencies() {
     ..registerFactory<RawMaterialInventoryCubit>(
       () => RawMaterialInventoryCubit(sl(), sl(), sl(), sl(), sl(), sl()),
     )
-    ..registerLazySingleton<AppRouter>(() => AppRouter());
+    ..registerLazySingleton<NotificationWebSocketService>(
+      () => NotificationWebSocketService(sl(), sl()),
+    )
+    ..registerLazySingleton<LocalNotificationService>(
+      () => LocalNotificationService(),
+    )
+    ..registerLazySingleton<AppRouter>(() => AppRouter())
+    ..registerLazySingleton<NotificationRouter>(() => NotificationRouter());
 }

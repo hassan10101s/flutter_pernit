@@ -8,11 +8,13 @@ import '../../../../design_system/tokens/pernit_font_weights.dart';
 class HomeDesktopSectionHeader extends StatelessWidget {
   final String title;
   final IconData icon;
+  final List<Widget>? actions;
 
   const HomeDesktopSectionHeader({
     super.key,
     required this.title,
     required this.icon,
+    this.actions,
   });
 
   @override
@@ -40,6 +42,7 @@ class HomeDesktopSectionHeader extends StatelessWidget {
               ),
             ),
           ),
+          if (actions != null) ...actions!,
         ],
       ),
     );

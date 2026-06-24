@@ -11,6 +11,8 @@ class FailureMessageLocalizer {
       'failureValidation' => l10n.failureValidation,
       'failureServer' => l10n.failureServer,
       'failureTimeout' => l10n.failureTimeout,
+      'failureNotFound' => l10n.failureNotFound,
+      'failureConflict' => l10n.failureConflict,
       'failureConfigurationMissing' => l10n.failureConfigurationMissing,
       _ => l10n.failureUnknown,
     };

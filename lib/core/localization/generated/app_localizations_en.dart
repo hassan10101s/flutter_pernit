@@ -66,6 +66,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'The API URL is not configured for this build.';
 
   @override
+  String get failureNotFound => 'The requested resource was not found.';
+
+  @override
+  String get failureConflict =>
+      'This operation conflicts with the current state. Please refresh and try again.';
+
+  @override
   String get failureUnknown => 'Something went wrong. Please try again.';
 
   @override
@@ -110,6 +117,32 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get menuSettings => 'Settings';
+
+  @override
+  String get notificationTitle => 'Notifications';
+
+  @override
+  String get notificationMarkAllRead => 'Mark all read';
+
+  @override
+  String get notificationEmpty => 'No notifications';
+
+  @override
+  String get notificationMarkRead => 'Mark as read';
+
+  @override
+  String get notificationJustNow => 'Just now';
+
+  @override
+  String notificationTimeAgo(int count) {
+    return '${count}m ago';
+  }
+
+  @override
+  String get notificationReference => 'View details';
+
+  @override
+  String get notificationRetry => 'Retry';
 
   @override
   String get overviewTitle => 'Workspace';
@@ -609,4 +642,240 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get commonConfirm => 'Confirm';
+
+  @override
+  String get entryTitle => 'Raw material entry';
+
+  @override
+  String get entrySubtitle =>
+      'Register received raw materials with API-backed parameter data.';
+
+  @override
+  String get entryForm => 'Entry details';
+
+  @override
+  String get entryRawMaterial => 'Raw material';
+
+  @override
+  String get entryRawMaterialHint => 'Choose a raw material';
+
+  @override
+  String get rawMaterialHint => 'Choose a raw material';
+
+  @override
+  String get entryPurchaseOrderDetail => 'Purchase order detail';
+
+  @override
+  String get entryPurchaseOrderDetailHint => 'Choose a purchase order line';
+
+  @override
+  String get entryWarehouse => 'Warehouse';
+
+  @override
+  String get entryWarehouseHint => 'Choose receiving warehouse';
+
+  @override
+  String get entryDriver => 'Driver';
+
+  @override
+  String get entryDriverHint => 'Choose or type driver name';
+
+  @override
+  String get entryVehicleNo => 'Vehicle no.';
+
+  @override
+  String get entryVehicleNoHint => 'Truck plate';
+
+  @override
+  String get entryQuantity => 'Supplier quantity';
+
+  @override
+  String get entryQuantityHint => 'Enter quantity';
+
+  @override
+  String get entryLotNo => 'Lot no.';
+
+  @override
+  String get entryLotNoHint => 'Optional';
+
+  @override
+  String get entryExpiryDate => 'Expiry date';
+
+  @override
+  String get entryExpiryDateHint => 'YYYY-MM-DD';
+
+  @override
+  String get entrySubmit => 'Create entry';
+
+  @override
+  String get entryRefreshLookups => 'Refresh lookup data';
+
+  @override
+  String get entryRequiredFields =>
+      'Choose the purchase line, raw material, warehouse, and supplier weight.';
+
+  @override
+  String get entryInvalidDate => 'Expiry date must use YYYY-MM-DD.';
+
+  @override
+  String get entryAllStatuses => 'All';
+
+  @override
+  String get entryPendingFilter => 'Pending';
+
+  @override
+  String get entryApprovedFilter => 'Approved';
+
+  @override
+  String get entryRejectedFilter => 'Rejected';
+
+  @override
+  String get entryLast24Hours => 'Last 24 h';
+
+  @override
+  String get entryYesterday => 'Yesterday';
+
+  @override
+  String get entryCustomDate => 'Custom Date';
+
+  @override
+  String get entryIntake => 'In-Take';
+
+  @override
+  String get entryProduction => 'Production';
+
+  @override
+  String get entryQuality => 'Quality';
+
+  @override
+  String get entrySupplierWeight => 'Supplier Weight';
+
+  @override
+  String get entryIdLabel => 'ID';
+
+  @override
+  String get entryDateLabel => 'Date';
+
+  @override
+  String get entryEmptyTitle => 'No received materials';
+
+  @override
+  String get entryEmptyMessage => 'No entries match the selected status yet.';
+
+  @override
+  String get entryErrorTitle => 'Could not load entries';
+
+  @override
+  String get entryRetry => 'Retry';
+
+  @override
+  String get entrySubmitSuccess => 'Raw material entry created.';
+
+  @override
+  String get entryTotalEntries => 'Total entries';
+
+  @override
+  String get entryWaitingQuality => 'In quality';
+
+  @override
+  String get entryStocked => 'In stock';
+
+  @override
+  String get entryRejected => 'Rejected';
+
+  @override
+  String get entrySupplier => 'Supplier';
+
+  @override
+  String get entryNoSupplier => 'No supplier';
+
+  @override
+  String get entryNoWarehouse => 'No warehouse';
+
+  @override
+  String get entryAcceptedQuantity => 'Accepted';
+
+  @override
+  String get entryAvailableQuantity => 'Available';
+
+  @override
+  String get entryMeasuredQuantity => 'Measured';
+
+  @override
+  String get entrySampled => 'Sample';
+
+  @override
+  String get entryLabDone => 'Lab';
+
+  @override
+  String get entryQcDone => 'QC';
+
+  @override
+  String get entryStock => 'Stock';
+
+  @override
+  String get entryMetaSeparator => ': ';
+
+  @override
+  String entryIdPrefix(String code) {
+    return '#$code';
+  }
+
+  @override
+  String entryDateFormat(String label, String separator, String date) {
+    return '$label$separator$date';
+  }
+
+  @override
+  String entryIdFormat(String label, String separator, String code) {
+    return '$label$separator#$code';
+  }
+
+  @override
+  String entryQuantityValue(String value, String unit) {
+    return '$value $unit';
+  }
+
+  @override
+  String get cardStepperArrived => 'Arrived';
+
+  @override
+  String get cardStepperSampled => 'Sampled';
+
+  @override
+  String get cardStepperLab => 'Lab';
+
+  @override
+  String get cardStepperQc => 'QC';
+
+  @override
+  String get cardStepperDecision => 'Decision';
+
+  @override
+  String get cardStepperRejected => 'Rejected';
+
+  @override
+  String get cardStepperApproved => 'Approved';
+
+  @override
+  String get cardStepperPending => 'Pending';
+
+  @override
+  String get cardStepperProcessing => 'Processing';
+
+  @override
+  String cardStepperBy(String name) {
+    return 'By: $name';
+  }
+
+  @override
+  String cardStepperDetailArrived(String driver) {
+    return 'By: $driver';
+  }
+
+  @override
+  String get separatorDot => ' • ';
+
+  @override
+  String get logoutTitle => 'Logging out';
 }

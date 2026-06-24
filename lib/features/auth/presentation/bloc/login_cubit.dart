@@ -3,12 +3,15 @@ import '../../../../core/errors/api_result.dart';
 import '../../domain/entities/auth_session.dart';
 import '../../domain/entities/login_credentials.dart';
 import '../../domain/usecases/login_use_case.dart';
+import 'auth_session_cubit.dart';
 import 'login_state.dart';
 
 class LoginCubit extends SafeCubit<LoginState> {
   final LoginUseCase _loginUseCase;
+  final AuthSessionCubit _authSessionCubit;
 
-  LoginCubit(this._loginUseCase) : super(const LoginInitial());
+  LoginCubit(this._loginUseCase, this._authSessionCubit)
+    : super(const LoginInitial());
 
   Future<void> login({
     required String username,
@@ -26,6 +29,7 @@ class LoginCubit extends SafeCubit<LoginState> {
     switch (result) {
       case ApiSuccess<AuthSession>(data: final session):
         safeEmit(LoginSuccess(session));
+        _authSessionCubit.authenticate(session);
       case ApiFailure<AuthSession>(failure: final failure):
         safeEmit(LoginFailure(failure));
     }

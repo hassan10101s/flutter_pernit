@@ -8,7 +8,6 @@ import '../../../../design_system/widgets/pernit_button.dart';
 import '../../domain/entities/raw_material_entry.dart';
 import '../bloc/raw_material_entry_state.dart';
 import 'raw_material_entry_card.dart';
-import 'raw_material_entry_copy.dart';
 
 class RawMaterialEntryContent extends StatelessWidget {
   final RawMaterialEntryState state;
@@ -143,12 +142,12 @@ class _RawMaterialEntryEmptyView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final copy = RawMaterialEntryCopy.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return _StatePanel(
       icon: Icons.inbox_outlined,
-      title: copy.emptyTitle,
-      message: copy.emptyMessage,
+      title: l10n.entryEmptyTitle,
+      message: l10n.entryEmptyMessage,
     );
   }
 }
@@ -164,13 +163,13 @@ class _RawMaterialEntryErrorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final copy = RawMaterialEntryCopy.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return _StatePanel(
       icon: Icons.cloud_off_outlined,
-      title: copy.errorTitle,
+      title: l10n.entryErrorTitle,
       message: message,
-      actionLabel: copy.retry,
+      actionLabel: l10n.entryRetry,
       onAction: onRetry,
     );
   }

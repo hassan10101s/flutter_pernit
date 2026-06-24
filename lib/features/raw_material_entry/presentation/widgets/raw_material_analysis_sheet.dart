@@ -80,7 +80,8 @@ class _RawMaterialAnalysisSheetState extends State<RawMaterialAnalysisSheet> {
     final l10n = AppLocalizations.of(context)!;
     final workspace = widget.workspace;
     final sampleNumber =
-        workspace.sample.sampleNumber ?? '#${workspace.sample.id}';
+        workspace.sample.sampleNumber ??
+            l10n.entryIdPrefix(workspace.sample.id.toString());
 
     return SafeArea(
       top: false,
@@ -123,7 +124,7 @@ class _RawMaterialAnalysisSheetState extends State<RawMaterialAnalysisSheet> {
                                       ),
                                 ),
                                 Text(
-                                  '${workspace.rawMaterialName} • '
+                                  '${workspace.rawMaterialName}${l10n.separatorDot}'
                                   '${l10n.rawAnalysisSampleNumber(sampleNumber)}',
                                   style: Theme.of(context).textTheme.bodySmall
                                       ?.copyWith(color: PernitColors.textMuted),

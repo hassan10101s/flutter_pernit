@@ -5,12 +5,17 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_pernit/core/errors/api_result.dart';
 import 'package:flutter_pernit/core/localization/generated/app_localizations.dart';
+import 'package:flutter_pernit/core/network/websocket/notification_web_socket_service.dart';
+import 'package:flutter_pernit/core/network/websocket/ws_connection_status.dart';
+import 'package:flutter_pernit/core/network/websocket/ws_notification_event.dart';
 import 'package:flutter_pernit/features/auth/data/models/login_response_model.dart';
 import 'package:flutter_pernit/features/auth/domain/entities/auth_session.dart';
 import 'package:flutter_pernit/features/auth/domain/entities/login_credentials.dart';
 import 'package:flutter_pernit/features/auth/domain/repos/auth_repository.dart';
 import 'package:flutter_pernit/features/auth/domain/usecases/login_use_case.dart';
+import 'package:flutter_pernit/features/auth/domain/usecases/restore_session_use_case.dart';
 import 'package:flutter_pernit/features/auth/domain/validators/login_validator.dart';
+import 'package:flutter_pernit/features/auth/presentation/bloc/auth_session_cubit.dart';
 import 'package:flutter_pernit/features/auth/presentation/bloc/login_cubit.dart';
 import 'package:flutter_pernit/features/auth/presentation/screens/login_screen.dart';
 
@@ -27,6 +32,7 @@ void main() {
           home: BlocProvider(
             create: (_) => LoginCubit(
               LoginUseCase(_FakeAuthRepository(), const LoginValidator()),
+              AuthSessionCubit(_FakeRestoreSessionUseCase(), _FakeWsService()),
             ),
             child: const LoginScreen(),
           ),
@@ -63,6 +69,41 @@ void main() {
   });
 }
 
+class _FakeWsService implements NotificationWebSocketService {
+  @override
+  Future<void> connect() async {}
+
+  @override
+  void disconnect() {}
+
+  @override
+  void dispose() {}
+
+  @override
+  Stream<WsNotificationEvent> get events => const Stream.empty();
+
+  @override
+  Stream<WsConnectionStatus> get connectionStatus => const Stream.empty();
+
+  @override
+  WsConnectionStatus get currentStatus => WsConnectionStatus.disconnected;
+
+  @override
+  void manualReconnect() {}
+
+  @override
+  void markRead(int notificationId) {}
+
+  @override
+  void markAllRead() {}
+
+  @override
+  void getUnreadCount() {}
+
+  @override
+  void getNotifications({int limit = 20, int offset = 0}) {}
+}
+
 class _FakeAuthRepository implements AuthRepository {
   @override
   Future<ApiResult<AuthSession>> login(LoginCredentials credentials) {
@@ -76,4 +117,8 @@ class _FakeAuthRepository implements AuthRepository {
   Future<ApiResult<AuthSession>> restoreSession() {
     throw UnimplementedError();
   }
+}
+
+class _FakeRestoreSessionUseCase extends RestoreSessionUseCase {
+  _FakeRestoreSessionUseCase() : super(_FakeAuthRepository());
 }

@@ -206,6 +206,18 @@ abstract class AppLocalizations {
   /// **'The API URL is not configured for this build.'**
   String get failureConfigurationMissing;
 
+  /// No description provided for @failureNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'The requested resource was not found.'**
+  String get failureNotFound;
+
+  /// No description provided for @failureConflict.
+  ///
+  /// In en, this message translates to:
+  /// **'This operation conflicts with the current state. Please refresh and try again.'**
+  String get failureConflict;
+
   /// No description provided for @failureUnknown.
   ///
   /// In en, this message translates to:
@@ -289,6 +301,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Settings'**
   String get menuSettings;
+
+  /// No description provided for @notificationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationTitle;
+
+  /// No description provided for @notificationMarkAllRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark all read'**
+  String get notificationMarkAllRead;
+
+  /// No description provided for @notificationEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No notifications'**
+  String get notificationEmpty;
+
+  /// No description provided for @notificationMarkRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as read'**
+  String get notificationMarkRead;
+
+  /// No description provided for @notificationJustNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Just now'**
+  String get notificationJustNow;
+
+  /// No description provided for @notificationTimeAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{count}m ago'**
+  String notificationTimeAgo(int count);
+
+  /// No description provided for @notificationReference.
+  ///
+  /// In en, this message translates to:
+  /// **'View details'**
+  String get notificationReference;
+
+  /// No description provided for @notificationRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get notificationRetry;
 
   /// No description provided for @overviewTitle.
   ///
@@ -1147,6 +1207,450 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Confirm'**
   String get commonConfirm;
+
+  /// No description provided for @entryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Raw material entry'**
+  String get entryTitle;
+
+  /// No description provided for @entrySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Register received raw materials with API-backed parameter data.'**
+  String get entrySubtitle;
+
+  /// No description provided for @entryForm.
+  ///
+  /// In en, this message translates to:
+  /// **'Entry details'**
+  String get entryForm;
+
+  /// No description provided for @entryRawMaterial.
+  ///
+  /// In en, this message translates to:
+  /// **'Raw material'**
+  String get entryRawMaterial;
+
+  /// No description provided for @entryRawMaterialHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a raw material'**
+  String get entryRawMaterialHint;
+
+  /// No description provided for @rawMaterialHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a raw material'**
+  String get rawMaterialHint;
+
+  /// No description provided for @entryPurchaseOrderDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase order detail'**
+  String get entryPurchaseOrderDetail;
+
+  /// No description provided for @entryPurchaseOrderDetailHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a purchase order line'**
+  String get entryPurchaseOrderDetailHint;
+
+  /// No description provided for @entryWarehouse.
+  ///
+  /// In en, this message translates to:
+  /// **'Warehouse'**
+  String get entryWarehouse;
+
+  /// No description provided for @entryWarehouseHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose receiving warehouse'**
+  String get entryWarehouseHint;
+
+  /// No description provided for @entryDriver.
+  ///
+  /// In en, this message translates to:
+  /// **'Driver'**
+  String get entryDriver;
+
+  /// No description provided for @entryDriverHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose or type driver name'**
+  String get entryDriverHint;
+
+  /// No description provided for @entryVehicleNo.
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle no.'**
+  String get entryVehicleNo;
+
+  /// No description provided for @entryVehicleNoHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Truck plate'**
+  String get entryVehicleNoHint;
+
+  /// No description provided for @entryQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Supplier quantity'**
+  String get entryQuantity;
+
+  /// No description provided for @entryQuantityHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter quantity'**
+  String get entryQuantityHint;
+
+  /// No description provided for @entryLotNo.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot no.'**
+  String get entryLotNo;
+
+  /// No description provided for @entryLotNoHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional'**
+  String get entryLotNoHint;
+
+  /// No description provided for @entryExpiryDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry date'**
+  String get entryExpiryDate;
+
+  /// No description provided for @entryExpiryDateHint.
+  ///
+  /// In en, this message translates to:
+  /// **'YYYY-MM-DD'**
+  String get entryExpiryDateHint;
+
+  /// No description provided for @entrySubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Create entry'**
+  String get entrySubmit;
+
+  /// No description provided for @entryRefreshLookups.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh lookup data'**
+  String get entryRefreshLookups;
+
+  /// No description provided for @entryRequiredFields.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the purchase line, raw material, warehouse, and supplier weight.'**
+  String get entryRequiredFields;
+
+  /// No description provided for @entryInvalidDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry date must use YYYY-MM-DD.'**
+  String get entryInvalidDate;
+
+  /// No description provided for @entryAllStatuses.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get entryAllStatuses;
+
+  /// No description provided for @entryPendingFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get entryPendingFilter;
+
+  /// No description provided for @entryApprovedFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved'**
+  String get entryApprovedFilter;
+
+  /// No description provided for @entryRejectedFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get entryRejectedFilter;
+
+  /// No description provided for @entryLast24Hours.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 24 h'**
+  String get entryLast24Hours;
+
+  /// No description provided for @entryYesterday.
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get entryYesterday;
+
+  /// No description provided for @entryCustomDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Date'**
+  String get entryCustomDate;
+
+  /// No description provided for @entryIntake.
+  ///
+  /// In en, this message translates to:
+  /// **'In-Take'**
+  String get entryIntake;
+
+  /// No description provided for @entryProduction.
+  ///
+  /// In en, this message translates to:
+  /// **'Production'**
+  String get entryProduction;
+
+  /// No description provided for @entryQuality.
+  ///
+  /// In en, this message translates to:
+  /// **'Quality'**
+  String get entryQuality;
+
+  /// No description provided for @entrySupplierWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Supplier Weight'**
+  String get entrySupplierWeight;
+
+  /// No description provided for @entryIdLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'ID'**
+  String get entryIdLabel;
+
+  /// No description provided for @entryDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get entryDateLabel;
+
+  /// No description provided for @entryEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No received materials'**
+  String get entryEmptyTitle;
+
+  /// No description provided for @entryEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'No entries match the selected status yet.'**
+  String get entryEmptyMessage;
+
+  /// No description provided for @entryErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load entries'**
+  String get entryErrorTitle;
+
+  /// No description provided for @entryRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get entryRetry;
+
+  /// No description provided for @entrySubmitSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Raw material entry created.'**
+  String get entrySubmitSuccess;
+
+  /// No description provided for @entryTotalEntries.
+  ///
+  /// In en, this message translates to:
+  /// **'Total entries'**
+  String get entryTotalEntries;
+
+  /// No description provided for @entryWaitingQuality.
+  ///
+  /// In en, this message translates to:
+  /// **'In quality'**
+  String get entryWaitingQuality;
+
+  /// No description provided for @entryStocked.
+  ///
+  /// In en, this message translates to:
+  /// **'In stock'**
+  String get entryStocked;
+
+  /// No description provided for @entryRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get entryRejected;
+
+  /// No description provided for @entrySupplier.
+  ///
+  /// In en, this message translates to:
+  /// **'Supplier'**
+  String get entrySupplier;
+
+  /// No description provided for @entryNoSupplier.
+  ///
+  /// In en, this message translates to:
+  /// **'No supplier'**
+  String get entryNoSupplier;
+
+  /// No description provided for @entryNoWarehouse.
+  ///
+  /// In en, this message translates to:
+  /// **'No warehouse'**
+  String get entryNoWarehouse;
+
+  /// No description provided for @entryAcceptedQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Accepted'**
+  String get entryAcceptedQuantity;
+
+  /// No description provided for @entryAvailableQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get entryAvailableQuantity;
+
+  /// No description provided for @entryMeasuredQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Measured'**
+  String get entryMeasuredQuantity;
+
+  /// No description provided for @entrySampled.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample'**
+  String get entrySampled;
+
+  /// No description provided for @entryLabDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Lab'**
+  String get entryLabDone;
+
+  /// No description provided for @entryQcDone.
+  ///
+  /// In en, this message translates to:
+  /// **'QC'**
+  String get entryQcDone;
+
+  /// No description provided for @entryStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Stock'**
+  String get entryStock;
+
+  /// No description provided for @entryMetaSeparator.
+  ///
+  /// In en, this message translates to:
+  /// **': '**
+  String get entryMetaSeparator;
+
+  /// No description provided for @entryIdPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'#{code}'**
+  String entryIdPrefix(String code);
+
+  /// No description provided for @entryDateFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'{label}{separator}{date}'**
+  String entryDateFormat(String label, String separator, String date);
+
+  /// No description provided for @entryIdFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'{label}{separator}#{code}'**
+  String entryIdFormat(String label, String separator, String code);
+
+  /// No description provided for @entryQuantityValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{value} {unit}'**
+  String entryQuantityValue(String value, String unit);
+
+  /// No description provided for @cardStepperArrived.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrived'**
+  String get cardStepperArrived;
+
+  /// No description provided for @cardStepperSampled.
+  ///
+  /// In en, this message translates to:
+  /// **'Sampled'**
+  String get cardStepperSampled;
+
+  /// No description provided for @cardStepperLab.
+  ///
+  /// In en, this message translates to:
+  /// **'Lab'**
+  String get cardStepperLab;
+
+  /// No description provided for @cardStepperQc.
+  ///
+  /// In en, this message translates to:
+  /// **'QC'**
+  String get cardStepperQc;
+
+  /// No description provided for @cardStepperDecision.
+  ///
+  /// In en, this message translates to:
+  /// **'Decision'**
+  String get cardStepperDecision;
+
+  /// No description provided for @cardStepperRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get cardStepperRejected;
+
+  /// No description provided for @cardStepperApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved'**
+  String get cardStepperApproved;
+
+  /// No description provided for @cardStepperPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get cardStepperPending;
+
+  /// No description provided for @cardStepperProcessing.
+  ///
+  /// In en, this message translates to:
+  /// **'Processing'**
+  String get cardStepperProcessing;
+
+  /// No description provided for @cardStepperBy.
+  ///
+  /// In en, this message translates to:
+  /// **'By: {name}'**
+  String cardStepperBy(String name);
+
+  /// No description provided for @cardStepperDetailArrived.
+  ///
+  /// In en, this message translates to:
+  /// **'By: {driver}'**
+  String cardStepperDetailArrived(String driver);
+
+  /// No description provided for @separatorDot.
+  ///
+  /// In en, this message translates to:
+  /// **' • '**
+  String get separatorDot;
+
+  /// No description provided for @logoutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Logging out'**
+  String get logoutTitle;
 }
 
 class _AppLocalizationsDelegate

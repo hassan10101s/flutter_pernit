@@ -14,6 +14,7 @@ import '../../../raw_material_entry/presentation/bloc/raw_material_quality_cubit
 import '../../../raw_material_entry/presentation/bloc/raw_material_quality_state.dart';
 import '../../../raw_material_entry/presentation/widgets/raw_material_analysis_sheet.dart';
 import '../../../raw_material_entry/presentation/widgets/raw_material_workflow_card.dart';
+import '../widgets/quality_analysis_samples_card.dart';
 
 class QualityScreen extends StatelessWidget {
   const QualityScreen({super.key});
@@ -276,26 +277,27 @@ class _AnalysisTab extends StatelessWidget {
 
     return Column(
       children: [
-        for (final sample in samples) ...[
-          _SampleCard(
-            sample: sample,
-            isWorking:
-                state is RawMaterialQualityWorking &&
-                state.activeSampleId == sample.id,
-            onPressed: () => _openAnalysis(context, sample),
-          ),
-          SizedBox(height: 8.h),
-        ],
+        QualityAnalysisSamplesCard(
+          samples: samples,
+          workingSampleId: state is RawMaterialQualityWorking
+              ? state.activeSampleId
+              : null,
+          onSamplePressed: (sample) => _openAnalysis(context, sample),
+        ),
         if (state.samplesHaveNextPage)
-          PernitButton(
-            label: l10n.rawWorkflowLoadMore,
-            icon: Icons.expand_more_rounded,
-            fullWidth: false,
-            isLoading:
-                state is RawMaterialQualityLoadingMore && state.loadingSamples,
-            onPressed: state is RawMaterialQualityLoadingMore
-                ? null
-                : cubit.loadMoreSamples,
+          Padding(
+            padding: EdgeInsets.only(top: 10.h),
+            child: PernitButton(
+              label: l10n.rawWorkflowLoadMore,
+              icon: Icons.expand_more_rounded,
+              fullWidth: false,
+              isLoading:
+                  state is RawMaterialQualityLoadingMore &&
+                  state.loadingSamples,
+              onPressed: state is RawMaterialQualityLoadingMore
+                  ? null
+                  : cubit.loadMoreSamples,
+            ),
           ),
       ],
     );
@@ -434,86 +436,6 @@ class _DecisionTab extends StatelessWidget {
   }
 }
 
-class _SampleCard extends StatelessWidget {
-  final RawMaterialSample sample;
-  final bool isWorking;
-  final VoidCallback onPressed;
-
-  const _SampleCard({
-    required this.sample,
-    required this.isWorking,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final isComplete = sample.status == 'completed';
-    return Container(
-      padding: EdgeInsets.all(12.r),
-      decoration: BoxDecoration(
-        color: PernitColors.surface,
-        borderRadius: BorderRadius.circular(13.r),
-        border: Border.all(color: PernitColors.borderMuted),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 40.r,
-            height: 40.r,
-            decoration: BoxDecoration(
-              color: PernitColors.primary.withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(10.r),
-            ),
-            child: const Icon(
-              Icons.science_outlined,
-              color: PernitColors.primary,
-            ),
-          ),
-          SizedBox(width: 10.w),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  sample.sampleNumber ?? '#${sample.id}',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-                Text(
-                  '${sample.rawMaterialName} • '
-                  '${l10n.rawWorkflowBatch(sample.batchId)}',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: PernitColors.textMuted,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(width: 8.w),
-          FilledButton.tonalIcon(
-            onPressed: isWorking ? null : onPressed,
-            icon: isWorking
-                ? SizedBox(
-                    width: 16.r,
-                    height: 16.r,
-                    child: const CircularProgressIndicator(strokeWidth: 2),
-                  )
-                : Icon(
-                    isComplete ? Icons.edit_outlined : Icons.add_chart_outlined,
-                    size: 18.r,
-                  ),
-            label: Text(
-              isComplete
-                  ? l10n.rawQualityEditAnalysis
-                  : l10n.rawQualityEnterAnalysis,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class _QualityDecisionSheet extends StatefulWidget {
   final RawMaterialEntry entry;
 
@@ -558,7 +480,7 @@ class _QualityDecisionSheetState extends State<_QualityDecisionSheet> {
                       children: [
                         Expanded(
                           child: Text(
-                            '${l10n.rawQualityDecisionTitle} • '
+                            '${l10n.rawQualityDecisionTitle}${l10n.separatorDot}'
                             '${widget.entry.rawMaterialName}',
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
@@ -701,7 +623,8 @@ class _SampleResultsReview extends StatelessWidget {
         children: [
           Text(
             l10n.rawAnalysisSampleNumber(
-              workspace.sample.sampleNumber ?? '#${workspace.sample.id}',
+              workspace.sample.sampleNumber ??
+                  l10n.entryIdPrefix(workspace.sample.id.toString()),
             ),
             style: Theme.of(context).textTheme.titleSmall,
           ),

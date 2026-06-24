@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/localization/generated/app_localizations.dart';
 import '../../../../design_system/status_indicators/pernit_status_badge.dart';
 import '../../../../design_system/tokens/pernit_colors.dart';
 import '../../domain/entities/raw_material_entry.dart';
-import 'raw_material_entry_copy.dart';
 
 class RawMaterialEntryCard extends StatelessWidget {
   final RawMaterialEntry entry;
@@ -12,7 +12,7 @@ class RawMaterialEntryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final copy = RawMaterialEntryCopy.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return Container(
       constraints: const BoxConstraints(minHeight: 254),
@@ -60,15 +60,15 @@ class RawMaterialEntryCard extends StatelessWidget {
                       ),
                     ),
                     PernitStatusBadge(
-                      label: copy.designStatusLabel(entry.status),
+                      label: _designStatusLabel(l10n, entry.status),
                       tone: _statusBadgeTone(entry.status),
                     ),
                   ],
                 ),
                 const SizedBox(height: 2),
-                _CardMetaRow(entry: entry, copy: copy),
+                _CardMetaRow(entry: entry, l10n: l10n),
                 const SizedBox(height: 10),
-                _InfoGrid(entry: entry, copy: copy),
+                _InfoGrid(entry: entry, l10n: l10n),
               ],
             ),
           ),
@@ -76,7 +76,7 @@ class RawMaterialEntryCard extends StatelessWidget {
           Container(
             color: const Color(0x80F8FAFC),
             padding: const EdgeInsets.fromLTRB(0, 6, 0, 9),
-            child: _ProgressStepper(entry: entry),
+            child: _ProgressStepper(entry: entry, l10n: l10n),
           ),
         ],
       ),
@@ -86,9 +86,9 @@ class RawMaterialEntryCard extends StatelessWidget {
 
 class _CardMetaRow extends StatelessWidget {
   final RawMaterialEntry entry;
-  final RawMaterialEntryCopy copy;
+  final AppLocalizations l10n;
 
-  const _CardMetaRow({required this.entry, required this.copy});
+  const _CardMetaRow({required this.entry, required this.l10n});
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +96,11 @@ class _CardMetaRow extends StatelessWidget {
       children: [
         Expanded(
           child: Text(
-            '${copy.dateLabel} : ${_figmaDate(entry.createdAt)}',
+            l10n.entryDateFormat(
+              l10n.entryDateLabel,
+              l10n.entryMetaSeparator,
+              _figmaDate(entry.createdAt),
+            ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: _metaStyle,
@@ -105,7 +109,11 @@ class _CardMetaRow extends StatelessWidget {
         const SizedBox(width: 8),
         Expanded(
           child: Text(
-            '${copy.idLabel}: #${_entryCode(entry)}',
+            l10n.entryIdFormat(
+              l10n.entryIdLabel,
+              l10n.entryMetaSeparator,
+              entry.entryCode,
+            ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: _metaStyle,
@@ -118,9 +126,9 @@ class _CardMetaRow extends StatelessWidget {
 
 class _InfoGrid extends StatelessWidget {
   final RawMaterialEntry entry;
-  final RawMaterialEntryCopy copy;
+  final AppLocalizations l10n;
 
-  const _InfoGrid({required this.entry, required this.copy});
+  const _InfoGrid({required this.entry, required this.l10n});
 
   @override
   Widget build(BuildContext context) {
@@ -131,8 +139,8 @@ class _InfoGrid extends StatelessWidget {
         children: [
           Expanded(
             child: _InfoColumn(
-              label: copy.supplier,
-              value: entry.supplierName ?? copy.noSupplier,
+              label: l10n.entrySupplier,
+              value: entry.supplierName ?? l10n.entryNoSupplier,
               withLeadingBorder: true,
             ),
           ),
@@ -141,10 +149,10 @@ class _InfoGrid extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _InfoTinyLabel(label: copy.vehicleNo),
+                _InfoTinyLabel(label: l10n.entryVehicleNo),
                 _InfoTinyValue(value: entry.vehicleNo ?? '-'),
                 const SizedBox(height: 4),
-                _InfoTinyLabel(label: copy.driver),
+                _InfoTinyLabel(label: l10n.entryDriver),
                 _InfoTinyValue(value: entry.driverName ?? '-'),
               ],
             ),
@@ -153,11 +161,8 @@ class _InfoGrid extends StatelessWidget {
           SizedBox(
             width: 94,
             child: _InfoColumn(
-              label: copy.supplierWeight,
-              value: copy.quantityValue(
-                entry.quantityFromSupplier,
-                unitName: entry.unitName,
-              ),
+              label: l10n.entrySupplierWeight,
+              value: _quantityValue(l10n, entry.quantityFromSupplier, entry.unitName),
               withLeadingBorder: true,
             ),
           ),
@@ -256,47 +261,61 @@ class _InfoTinyValue extends StatelessWidget {
 
 class _ProgressStepper extends StatelessWidget {
   final RawMaterialEntry entry;
+  final AppLocalizations l10n;
 
-  const _ProgressStepper({required this.entry});
+  const _ProgressStepper({required this.entry, required this.l10n});
 
   @override
   Widget build(BuildContext context) {
     final activeIndex = _activeStepIndex(entry);
     final isRejected = entry.status == RawMaterialEntryStatus.rejected;
+    final metadata = entry.metadata;
+    final firstSample = metadata?.samplingHistory.firstOrNull;
+    final lastQc = metadata?.qcHistory.lastOrNull;
+    final sampleCount = metadata?.samplingHistory.length ?? 0;
+
     final steps = [
       _StepInfo(
-        label: 'Arrived',
+        label: l10n.cardStepperArrived,
         icon: Icons.local_shipping_outlined,
-        detail: _arrivedDetail(entry),
+        detail: _arrivedDetail(l10n, entry),
         time: _figmaTime(entry.createdAt),
       ),
       _StepInfo(
-        label: 'Sampled',
+        label: l10n.cardStepperSampled,
         icon: Icons.science_outlined,
-        detail: entry.isSampled ? 'M. Smith' : 'Processing',
-        time: entry.isSampled ? '9:24 pm' : '',
+        detail: firstSample != null
+            ? '${l10n.cardStepperBy(firstSample.takenBy)} • $sampleCount ${l10n.rawQualitySamplesCount(sampleCount)}'
+            : l10n.cardStepperPending,
+        time: firstSample != null ? _figmaTime(firstSample.takenAt) : '',
       ),
       _StepInfo(
-        label: 'Lab',
+        label: l10n.cardStepperLab,
         icon: Icons.biotech_outlined,
-        detail: entry.isLabDone ? 'Mohamed. Smith' : 'Pending',
-        time: entry.isLabDone ? '9:32 pm' : '',
+        detail: entry.isLabDone ? l10n.cardStepperProcessing : l10n.cardStepperPending,
+        time: entry.isLabDone && entry.updatedAt != null
+            ? _figmaTime(entry.updatedAt!)
+            : '',
       ),
       _StepInfo(
-        label: 'QC',
+        label: l10n.cardStepperQc,
         icon: Icons.verified_user_outlined,
-        detail: entry.isQcDone ? 'Dr. Hasan' : 'Pending',
-        time: entry.isQcDone ? '10:10 pm' : '',
+        detail: lastQc != null
+            ? l10n.cardStepperBy(lastQc.checkedByName)
+            : l10n.cardStepperPending,
+        time: lastQc != null ? _figmaTime(lastQc.timestamp) : '',
       ),
       _StepInfo(
-        label: 'Decision',
+        label: l10n.cardStepperDecision,
         icon: Icons.gavel_outlined,
         detail: isRejected
-            ? 'Rejected'
+            ? l10n.cardStepperRejected
             : entry.status == RawMaterialEntryStatus.approved
-            ? 'Approved'
-            : 'Pending',
-        time: entry.status.isClosed ? '10:19 pm' : '',
+            ? l10n.cardStepperApproved
+            : l10n.cardStepperPending,
+        time: entry.status.isClosed && entry.updatedAt != null
+            ? _figmaTime(entry.updatedAt!)
+            : '',
       ),
     ];
 
@@ -497,20 +516,13 @@ int _activeStepIndex(RawMaterialEntry entry) {
   };
 }
 
-String _arrivedDetail(RawMaterialEntry entry) {
+String _arrivedDetail(AppLocalizations l10n, RawMaterialEntry entry) {
   final name = entry.driverName ?? entry.supplierName;
   if (name == null || name.trim().isEmpty) {
-    return 'By: -';
+    return l10n.cardStepperBy('-');
   }
   final firstName = name.trim().split(RegExp(r'\s+')).first;
-  return 'By: $firstName';
-}
-
-String _entryCode(RawMaterialEntry entry) {
-  final prefix = entry.rawMaterialName.toUpperCase().contains('VITAMIN')
-      ? 'PV'
-      : 'SB';
-  return '$prefix-2026-${entry.id.toString().padLeft(3, '0')}';
+  return l10n.cardStepperBy(firstName);
 }
 
 String _figmaDate(DateTime? date) {
@@ -534,6 +546,25 @@ String _figmaTime(DateTime? date) {
   final minute = date.minute.toString().padLeft(2, '0');
   final suffix = date.hour >= 12 ? 'pm' : 'am';
   return '$hour:$minute $suffix';
+}
+
+String _quantityValue(AppLocalizations l10n, double? value, String? unitName) {
+  if (value == null) return '-';
+  final normalized = value == value.roundToDouble()
+      ? value.toStringAsFixed(0)
+      : value.toStringAsFixed(2);
+  return l10n.entryQuantityValue(
+    normalized,
+    unitName?.trim().isNotEmpty == true ? unitName! : '',
+  );
+}
+
+String _designStatusLabel(AppLocalizations l10n, RawMaterialEntryStatus status) {
+  return switch (status) {
+    RawMaterialEntryStatus.approved => l10n.entryApprovedFilter,
+    RawMaterialEntryStatus.rejected => l10n.entryRejectedFilter,
+    _ => l10n.entryPendingFilter,
+  };
 }
 
 const _metaStyle = TextStyle(

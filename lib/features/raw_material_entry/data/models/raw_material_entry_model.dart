@@ -1,4 +1,5 @@
 import '../../domain/entities/raw_material_entry.dart';
+import '../../domain/entities/raw_material_workflow.dart';
 
 class RawMaterialEntryModel extends RawMaterialEntry {
   const RawMaterialEntryModel({
@@ -25,6 +26,8 @@ class RawMaterialEntryModel extends RawMaterialEntry {
     required super.lotNo,
     required super.expiryDate,
     required super.createdAt,
+    super.updatedAt,
+    super.metadata,
   });
 
   factory RawMaterialEntryModel.fromJson(Map<String, dynamic> json) {
@@ -59,6 +62,8 @@ class RawMaterialEntryModel extends RawMaterialEntry {
       lotNo: _readString(json['lot_no']),
       expiryDate: _readDate(json['expiry_date']),
       createdAt: _readDate(json['created_at']),
+      updatedAt: _readDate(json['updated_at']),
+      metadata: _parseMetadata(_readMap(json['metadata'])),
     );
   }
 
@@ -87,8 +92,68 @@ class RawMaterialEntryModel extends RawMaterialEntry {
       lotNo: lotNo,
       expiryDate: expiryDate,
       createdAt: createdAt,
+      updatedAt: updatedAt,
+      metadata: metadata,
     );
   }
+}
+
+EntryMetadata? _parseMetadata(Map<String, dynamic>? json) {
+  if (json == null || json.isEmpty) return null;
+
+  final samplingHistory = <SamplingRecord>[];
+  final samplingJson = _readList(json['sampling_history']);
+  for (final item in samplingJson) {
+    if (item is Map<String, dynamic>) {
+      final takenAt = DateTime.tryParse(
+        _readString(item['taken_at']) ?? '',
+      );
+      if (takenAt == null) continue;
+      samplingHistory.add(
+        SamplingRecord(
+          id: _readInt(item['id']) ?? 0,
+          takenBy: _readString(item['taken_by']) ?? '-',
+          takenAt: takenAt,
+          sampleNo: _readString(item['sample_no']) ?? '-',
+        ),
+      );
+    }
+  }
+
+  final qcHistory = <QcRecord>[];
+  final qcJson = _readList(json['qc_history']);
+  for (final item in qcJson) {
+    if (item is Map<String, dynamic>) {
+      final timestamp = DateTime.tryParse(
+        _readString(item['timestamp']) ?? '',
+      );
+      if (timestamp == null) continue;
+      qcHistory.add(
+        QcRecord(
+          qcId: _readInt(item['qc_id']) ?? 0,
+          checkedByName: _readString(item['checked_by_name']) ?? '-',
+          qcStatus: _readString(item['qc_status']) ?? '-',
+          timestamp: timestamp,
+          comments: _readString(item['comments']),
+        ),
+      );
+    }
+  }
+
+  if (samplingHistory.isEmpty && qcHistory.isEmpty) return null;
+
+  return EntryMetadata(
+    samplingHistory: samplingHistory,
+    qcHistory: qcHistory,
+  );
+}
+
+Map<String, dynamic> _readMap(Object? value) {
+  return value is Map<String, dynamic> ? value : const {};
+}
+
+List<dynamic> _readList(Object? value) {
+  return value is List<dynamic> ? value : const [];
 }
 
 int? _readInt(Object? value) {

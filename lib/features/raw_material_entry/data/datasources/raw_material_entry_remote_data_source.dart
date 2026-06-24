@@ -169,7 +169,11 @@ class DioRawMaterialEntryRemoteDataSource
       return RawMaterialEntryModel.fromJson(payload);
     }
 
-    return RawMaterialEntryModel.fromJson(_draftToJson(draft));
+    throw DioException(
+      requestOptions: response.requestOptions,
+      response: response,
+      message: 'Unexpected response format for createEntry',
+    );
   }
 
   @override

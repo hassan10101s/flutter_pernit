@@ -18,6 +18,8 @@
   "failureServer": "تعذر على الخادم إكمال الطلب.",
   "failureTimeout": "استغرق الطلب وقتًا طويلًا. حاول مرة أخرى.",
   "failureConfigurationMissing": "رابط واجهة البرمجة غير مضبوط لهذا الإصدار.",
+  "failureNotFound": "المورد المطلوب غير موجود.",
+  "failureConflict": "تتعارض هذه العملية مع الحالة الحالية. يرجى التحديث والمحاولة مرة أخرى.",
   "failureUnknown": "حدث خطأ غير متوقع. حاول مرة أخرى.",
   "homeTitle": "الرئيسية",
   "homeEmptyTitle": "بيرنت ERP",
@@ -46,6 +48,21 @@
   "menuProduction": "الإنتاج",
   "menuCommercial": "دخول الخامات",
   "menuSettings": "الإعدادات",
+  "notificationTitle": "الإشعارات",
+  "notificationMarkAllRead": "تحديد الكل كمقروء",
+  "notificationEmpty": "لا توجد إشعارات",
+  "notificationMarkRead": "تحديد كمقروء",
+  "notificationJustNow": "الآن",
+  "notificationTimeAgo": "قبل {count} د",
+  "@notificationTimeAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notificationReference": "عرض التفاصيل",
+  "notificationRetry": "إعادة المحاولة",
   "overviewTitle": "مساحة العمل",
   "overviewSubtitle": "الأقسام المتاحة تعتمد على المجموعات الراجعة من تسجيل الدخول.",
   "modulePlaceholder": "واجهة {module} التجريبية",
@@ -345,5 +362,114 @@
   "rawInventoryAddProductConfirm": "تأكيد إضافة كمية المنتج النهائي إلى المخزن المحدد؟",
   "rawInventoryProductSuccess": "تمت إضافة مخزون المنتج النهائي.",
   "rawInventoryProductEmpty": "لا يوجد مخزون منتجات نهائية مسجل حاليًا.",
-  "commonConfirm": "تأكيد"
+  "commonConfirm": "تأكيد",
+  "entryTitle": "دخول الخامات",
+  "entrySubtitle": "تسجيل الخامات الواردة وربط كل بيان بمصدره من النظام.",
+  "entryForm": "بيانات الدخول",
+  "entryRawMaterial": "الخامة",
+  "entryRawMaterialHint": "اختر الخامة من البيانات",
+  "rawMaterialHint": "اختر الخامة من البيانات",
+  "entryPurchaseOrderDetail": "تفصيل أمر الشراء",
+  "entryPurchaseOrderDetailHint": "اختر بند أمر الشراء",
+  "entryWarehouse": "المخزن",
+  "entryWarehouseHint": "اختر مخزن الاستلام",
+  "entryDriver": "السائق",
+  "entryDriverHint": "اختر أو اكتب اسم السائق",
+  "entryVehicleNo": "رقم السيارة",
+  "entryVehicleNoHint": "مثال: أ ب ج 123",
+  "entryQuantity": "كمية المورد",
+  "entryQuantityHint": "أدخل الكمية",
+  "entryLotNo": "رقم اللوط",
+  "entryLotNoHint": "اختياري",
+  "entryExpiryDate": "تاريخ الصلاحية",
+  "entryExpiryDateHint": "YYYY-MM-DD",
+  "entrySubmit": "تسجيل دخول الخامة",
+  "entryRefreshLookups": "تحديث بيانات الاختيار",
+  "entryRequiredFields": "اختر بند أمر الشراء والخامة والمخزن وأدخل وزن المورد.",
+  "entryInvalidDate": "تاريخ الصلاحية يجب أن يكون بصيغة YYYY-MM-DD.",
+  "entryAllStatuses": "الكل",
+  "entryPendingFilter": "قيد الانتظار",
+  "entryApprovedFilter": "معتمدة",
+  "entryRejectedFilter": "مرفوضة",
+  "entryLast24Hours": "آخر 24 ساعة",
+  "entryYesterday": "أمس",
+  "entryCustomDate": "تاريخ مخصص",
+  "entryIntake": "الاستلام",
+  "entryProduction": "الإنتاج",
+  "entryQuality": "الجودة",
+  "entrySupplierWeight": "وزن المورد",
+  "entryIdLabel": "المعرف",
+  "entryDateLabel": "التاريخ",
+  "entryEmptyTitle": "لا توجد خامات واردة",
+  "entryEmptyMessage": "لا توجد سجلات مطابقة للحالة الحالية.",
+  "entryErrorTitle": "تعذر تحميل دخول الخامات",
+  "entryRetry": "إعادة المحاولة",
+  "entrySubmitSuccess": "تم تسجيل دخول الخامة.",
+  "entryTotalEntries": "إجمالي السجلات",
+  "entryWaitingQuality": "في الجودة",
+  "entryStocked": "دخل المخزن",
+  "entryRejected": "مرفوض",
+  "entrySupplier": "المورد",
+  "entryNoSupplier": "بدون مورد",
+  "entryNoWarehouse": "بدون مخزن",
+  "entryAcceptedQuantity": "مقبول",
+  "entryAvailableQuantity": "متاح",
+  "entryMeasuredQuantity": "مقاس",
+  "entrySampled": "عينة",
+  "entryLabDone": "مختبر",
+  "entryQcDone": "جودة",
+  "entryStock": "مخزن",
+  "entryMetaSeparator": ": ",
+  "entryIdPrefix": "#{code}",
+  "@entryIdPrefix": {
+    "placeholders": {
+      "code": { "type": "String" }
+    }
+  },
+  "entryDateFormat": "{label}{separator}{date}",
+  "@entryDateFormat": {
+    "placeholders": {
+      "label": { "type": "String" },
+      "separator": { "type": "String" },
+      "date": { "type": "String" }
+    }
+  },
+  "entryIdFormat": "{label}{separator}#{code}",
+  "@entryIdFormat": {
+    "placeholders": {
+      "label": { "type": "String" },
+      "separator": { "type": "String" },
+      "code": { "type": "String" }
+    }
+  },
+  "entryQuantityValue": "{value} {unit}",
+  "@entryQuantityValue": {
+    "placeholders": {
+      "value": { "type": "String" },
+      "unit": { "type": "String" }
+    }
+  },
+  "cardStepperArrived": "وصلت",
+  "cardStepperSampled": "تم أخذ عينة",
+  "cardStepperLab": "مختبر",
+  "cardStepperQc": "جودة",
+  "cardStepperDecision": "القرار",
+  "cardStepperRejected": "مرفوضة",
+  "cardStepperApproved": "معتمدة",
+  "cardStepperPending": "قيد الانتظار",
+  "cardStepperProcessing": "قيد المعالجة",
+  "cardStepperBy": "بواسطة: {name}",
+  "@cardStepperBy": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "cardStepperDetailArrived": "بواسطة: {driver}",
+  "@cardStepperDetailArrived": {
+    "placeholders": {
+      "driver": { "type": "String" }
+    }
+  },
+  "separatorDot": " • ",
+  "logoutTitle": "تسجيل الخروج"
 }

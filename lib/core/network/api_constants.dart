@@ -18,14 +18,17 @@ class ApiConstants {
       '/v1/auth/erp/lab-samples-of-received-raw-materials/';
   static const rawMaterialQualityChecks =
       '/v1/auth/erp/quality-checks-raw-materials/';
+  static const rawMaterialLabResults =
+      '/v1/auth/erp/lab-results-raw-materials/';
+  static const rawMaterialPhysicalLabResults =
+      '/v1/auth/erp/physical-lab-results-raw-materials/';
+  static const productionQualityChecks =
+      '/v1/auth/erp/quality-checks-production/';
 
   static String rawMaterialAnalysisWorkspace(int sampleId) {
-    return '$rawMaterialLabSamples$sampleId/analysis-workspace/';
-  }
+    return '$rawMaterialLabSamples$sampleId/analysis-workspace/';}
 
   static String recordAcceptedRawMaterialQuantity(int batchId) {
-    return '$receivedRawMaterials$batchId/record-accepted-quantity/';
-  }
+    return '$receivedRawMaterials$batchId/record-accepted-quantity/';}
 
-  static const addProductStock = '/v1/auth/erp/inventory-products/add-stock/';
-}
+  static const addProductStock = '/v1/auth/erp/inventory-products/add-stock/';}

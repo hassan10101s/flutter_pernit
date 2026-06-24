@@ -3,12 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helpers/spacing.dart';
+import '../../../../core/localization/generated/app_localizations.dart';
 import '../../../../design_system/tokens/pernit_colors.dart';
 import '../../../../design_system/tokens/pernit_font_weights.dart';
 import '../../../../design_system/widgets/pernit_button.dart';
 import '../../../../design_system/widgets/pernit_icon_button.dart';
 import '../../domain/entities/raw_material_entry_lookup.dart';
-import 'raw_material_entry_copy.dart';
 
 class RawMaterialEntryForm extends StatefulWidget {
   final RawMaterialEntryLookups lookups;
@@ -53,7 +53,7 @@ class _RawMaterialEntryFormState extends State<RawMaterialEntryForm> {
 
   @override
   Widget build(BuildContext context) {
-    final copy = RawMaterialEntryCopy.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return Container(
       padding: EdgeInsets.all(16.r),
@@ -69,7 +69,7 @@ class _RawMaterialEntryFormState extends State<RawMaterialEntryForm> {
             children: [
               Expanded(
                 child: Text(
-                  copy.entryForm,
+                  l10n.entryForm,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     color: PernitColors.textStrong,
                     fontWeight: PernitFontWeights.bold,
@@ -78,7 +78,7 @@ class _RawMaterialEntryFormState extends State<RawMaterialEntryForm> {
               ),
               PernitIconButton(
                 icon: Icons.sync_rounded,
-                tooltip: copy.refreshLookups,
+                tooltip: l10n.entryRefreshLookups,
                 onPressed: widget.isRefreshingLookups
                     ? null
                     : widget.onRefreshLookups,
@@ -117,8 +117,8 @@ class _RawMaterialEntryFormState extends State<RawMaterialEntryForm> {
                   _fieldBox(
                     width,
                     _LookupAutocompleteField(
-                      label: copy.rawMaterial,
-                      hint: copy.rawMaterialHint,
+                      label: l10n.entryRawMaterial,
+                      hint: l10n.rawMaterialHint,
                       icon: Icons.category_outlined,
                       options: widget.lookups.rawMaterials,
                       onSelected: (option) {
@@ -132,8 +132,8 @@ class _RawMaterialEntryFormState extends State<RawMaterialEntryForm> {
                   _fieldBox(
                     width,
                     _LookupAutocompleteField(
-                      label: copy.purchaseOrderDetail,
-                      hint: copy.purchaseOrderDetailHint,
+                      label: l10n.entryPurchaseOrderDetail,
+                      hint: l10n.entryPurchaseOrderDetailHint,
                       icon: Icons.receipt_long_outlined,
                       options: widget.lookups.purchaseOrderDetails,
                       onSelected: _selectPurchaseOrderDetail,
@@ -142,8 +142,8 @@ class _RawMaterialEntryFormState extends State<RawMaterialEntryForm> {
                   _fieldBox(
                     width,
                     _LookupAutocompleteField(
-                      label: copy.warehouse,
-                      hint: copy.warehouseHint,
+                      label: l10n.entryWarehouse,
+                      hint: l10n.entryWarehouseHint,
                       icon: Icons.warehouse_outlined,
                       options: widget.lookups.warehouses,
                       onSelected: (option) {
@@ -156,8 +156,8 @@ class _RawMaterialEntryFormState extends State<RawMaterialEntryForm> {
                   _fieldBox(
                     width,
                     _LookupAutocompleteField(
-                      label: copy.driver,
-                      hint: copy.driverHint,
+                      label: l10n.entryDriver,
+                      hint: l10n.entryDriverHint,
                       icon: Icons.person_outline,
                       options: widget.lookups.drivers,
                       onTextChanged: (value) => _driverName = value,
@@ -181,8 +181,8 @@ class _RawMaterialEntryFormState extends State<RawMaterialEntryForm> {
                         ),
                       ],
                       decoration: InputDecoration(
-                        labelText: copy.quantity,
-                        hintText: copy.quantityHint,
+                        labelText: l10n.entryQuantity,
+                        hintText: l10n.entryQuantityHint,
                         prefixIcon: const Icon(Icons.scale_outlined),
                       ),
                     ),
@@ -192,8 +192,8 @@ class _RawMaterialEntryFormState extends State<RawMaterialEntryForm> {
                     TextFormField(
                       controller: _vehicleController,
                       decoration: InputDecoration(
-                        labelText: copy.vehicleNo,
-                        hintText: copy.vehicleNoHint,
+                        labelText: l10n.entryVehicleNo,
+                        hintText: l10n.entryVehicleNoHint,
                         prefixIcon: const Icon(Icons.local_shipping_outlined),
                       ),
                     ),
@@ -203,8 +203,8 @@ class _RawMaterialEntryFormState extends State<RawMaterialEntryForm> {
                     TextFormField(
                       controller: _lotController,
                       decoration: InputDecoration(
-                        labelText: copy.lotNo,
-                        hintText: copy.lotNoHint,
+                        labelText: l10n.entryLotNo,
+                        hintText: l10n.entryLotNoHint,
                         prefixIcon: const Icon(Icons.numbers_outlined),
                       ),
                     ),
@@ -215,8 +215,8 @@ class _RawMaterialEntryFormState extends State<RawMaterialEntryForm> {
                       controller: _expiryController,
                       keyboardType: TextInputType.datetime,
                       decoration: InputDecoration(
-                        labelText: copy.expiryDate,
-                        hintText: copy.expiryDateHint,
+                        labelText: l10n.entryExpiryDate,
+                        hintText: l10n.entryExpiryDateHint,
                         prefixIcon: const Icon(Icons.event_outlined),
                       ),
                     ),
@@ -240,7 +240,7 @@ class _RawMaterialEntryFormState extends State<RawMaterialEntryForm> {
             child: ConstrainedBox(
               constraints: BoxConstraints(maxWidth: 260.w),
               child: PernitButton(
-                label: copy.submit,
+                label: l10n.entrySubmit,
                 icon: Icons.add_task_outlined,
                 isLoading: widget.isSubmitting,
                 onPressed: widget.isSubmitting ? null : _submit,
@@ -276,14 +276,14 @@ class _RawMaterialEntryFormState extends State<RawMaterialEntryForm> {
   }
 
   void _submit() {
-    final copy = RawMaterialEntryCopy.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final quantity = double.tryParse(_quantityController.text.trim());
     if (_rawMaterial == null ||
         _purchaseOrderDetail == null ||
         _warehouse == null ||
         quantity == null ||
         quantity <= 0) {
-      setState(() => _errorMessage = copy.requiredFieldsMessage);
+      setState(() => _errorMessage = l10n.entryRequiredFields);
       return;
     }
 
@@ -292,7 +292,7 @@ class _RawMaterialEntryFormState extends State<RawMaterialEntryForm> {
         ? null
         : DateTime.tryParse(expiryText);
     if (expiryText.isNotEmpty && expiryDate == null) {
-      setState(() => _errorMessage = copy.invalidDateMessage);
+      setState(() => _errorMessage = l10n.entryInvalidDate);
       return;
     }
 
