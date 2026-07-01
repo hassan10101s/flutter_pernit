@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             }
 
-              return Scaffold(
+            return Scaffold(
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 title: Text(_labelForSection(l10n, selectedSection)),

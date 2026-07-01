@@ -24,11 +24,35 @@ class ApiConstants {
       '/v1/auth/erp/physical-lab-results-raw-materials/';
   static const productionQualityChecks =
       '/v1/auth/erp/quality-checks-production/';
+  static const productionLabSamples = '/v1/auth/erp/lab-samples-of-production/';
+  static const productionLabResults = '/v1/auth/erp/lab-results-production/';
+  static const productionAnalysisParameters =
+      '/v1/auth/erp/analysis-parameters-production/';
+  static const productionOrders = '/v1/auth/erp/production-orders/';
 
   static String rawMaterialAnalysisWorkspace(int sampleId) {
-    return '$rawMaterialLabSamples$sampleId/analysis-workspace/';}
+    return '$rawMaterialLabSamples$sampleId/analysis-workspace/';
+  }
 
   static String recordAcceptedRawMaterialQuantity(int batchId) {
-    return '$receivedRawMaterials$batchId/record-accepted-quantity/';}
+    return '$receivedRawMaterials$batchId/record-accepted-quantity/';
+  }
 
-  static const addProductStock = '/v1/auth/erp/inventory-products/add-stock/';}
+  static const addProductStock = '/v1/auth/erp/inventory-products/add-stock/';
+
+  // Notifications
+  static const notifications = '/v1/auth/erp/notifications/';
+  static const notificationsUnreadCount =
+      '/v1/auth/erp/notifications/unread_count/';
+  static const notificationsMarkAllRead =
+      '/v1/auth/erp/notifications/mark_all_read/';
+
+  // Push device registration
+  static const notificationDevices = '/v1/auth/erp/notification-devices/';
+  static const notificationDevicesUnregister =
+      '/v1/auth/erp/notification-devices/unregister/';
+
+  static String notificationMarkRead(int id) {
+    return '$notifications$id/mark_read/';
+  }
+}

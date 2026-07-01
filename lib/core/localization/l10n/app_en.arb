@@ -53,16 +53,33 @@
   "notificationEmpty": "No notifications",
   "notificationMarkRead": "Mark as read",
   "notificationJustNow": "Just now",
-  "notificationTimeAgo": "{count}m ago",
-  "@notificationTimeAgo": {
+  "notificationReference": "View details",
+  "notificationRetry": "Retry",
+  "notificationButton": "Notifications",
+  "notificationMinutesAgo": "{count}m ago",
+  "@notificationMinutesAgo": {
     "placeholders": {
       "count": {
         "type": "int"
       }
     }
   },
-  "notificationReference": "View details",
-  "notificationRetry": "Retry",
+  "notificationHoursAgo": "{count}h ago",
+  "@notificationHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notificationDaysAgo": "{count}d ago",
+  "@notificationDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "overviewTitle": "Workspace",
   "overviewSubtitle": "Available sections are based on the user groups returned by login.",
   "modulePlaceholder": "{module} screen placeholder",
@@ -151,6 +168,53 @@
   "qualityPhysicalLabResultsRawMaterials": "Raw material physical lab results",
   "qualityChecksRawMaterials": "Raw material quality checks",
   "qualityChecksProduction": "Production quality checks",
+  "qualityHubSubtitle": "Choose the quality workflow type to manage.",
+  "qualityRawMaterialsTitle": "Raw material quality",
+  "qualityRawMaterialsSubtitle": "Inspect received raw materials from sampling through quality decisions.",
+  "qualityProductionTitle": "Production quality",
+  "qualityProductionSubtitle": "Manage production samples, lab results, and quality decisions.",
+  "prodQualitySamplesTab": "Samples",
+  "prodQualityResultsTab": "Results",
+  "prodQualityChecksTab": "Decisions",
+  "prodQualityCreateSample": "Create sample",
+  "prodQualityCreateResult": "Create result",
+  "prodQualitySamplesEmpty": "No production samples available.",
+  "prodQualityResultsEmpty": "No production lab results available.",
+  "prodQualityChecksEmpty": "No production quality decisions available.",
+  "prodQualityCreateSampleAction": "Create sample",
+  "prodQualityMeasuredValue": "Measured value",
+  "prodQualityMeasuredValueHint": "Enter measured value",
+  "prodQualityCreateResultAction": "Create result",
+  "prodQualitySampleLabel": "Sample #{id}",
+  "@prodQualitySampleLabel": {
+    "placeholders": {
+      "id": { "type": "int" }
+    }
+  },
+  "prodQualityCheckLabel": "Decision #{id}",
+  "@prodQualityCheckLabel": {
+    "placeholders": {
+      "id": { "type": "int" }
+    }
+  },
+  "prodQualityProductionOrder": "Production order",
+  "prodQualityProductionOrderHint": "Search by order number",
+  "prodQualityQuantityTaken": "Quantity taken",
+  "prodQualityQuantityTakenHint": "Optional sample quantity",
+  "prodQualityNoOrders": "No production orders found",
+  "prodQualitySampleLabelSelect": "Select sample",
+  "prodQualitySampleSearchHint": "Search by order code",
+  "prodQualityNoSamples": "No samples available",
+  "prodQualityParameter": "Analysis parameter",
+  "prodQualityParameterHint": "Search by parameter name",
+  "prodQualityNoParameters": "No analysis parameters found",
+  "prodQualityStatusPending": "Pending",
+  "prodQualityStatusCompleted": "Completed",
+  "prodQualityStatusInvalid": "Invalid",
+  "prodQualityStatusAccepted": "Accepted",
+  "prodQualityStatusRejected": "Rejected",
+  "prodQualityStatusRelease": "Release",
+  "prodQualityStatusQuarantine": "Quarantine",
   "productionScreensSubtitle": "Production screens are separated so orders, details, and lab follow-up stay clear.",
   "productionOrders": "Production orders",
   "productionOrderDetails": "Production order details",
@@ -470,6 +534,32 @@
       "driver": { "type": "String" }
     }
   },
+  "inventoryLastLoaded": "Last loaded",
+  "inventoryDownloadPdf": "Download PDF",
+  "inventoryTotal": "Total",
+  "inventoryAvailable": "Available",
+  "inventoryReserved": "Reserved",
+  "inventoryPdfItem": "Item",
+  "inventoryPdfWarehouse": "Warehouse",
+  "inventoryPdfTotal": "Total",
+  "inventoryPdfAvailable": "Available",
+  "inventoryPdfReserved": "Reserved",
+  "inventoryPdfUnit": "Unit",
+  "inventoryPdfLastLoaded": "Last loaded",
+  "inventoryPdfItems": "Items",
   "separatorDot": " • ",
-  "logoutTitle": "Logging out"
+  "logoutTitle": "Logging out",
+  "inventoryTruncatedWarning": "Showing first {count} items due to maximum limit",
+  "@inventoryTruncatedWarning": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "inventoryPdfTruncatedNote": "Note: report may be incomplete (limited to {count} items)",
+  "@inventoryPdfTruncatedNote": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "inventoryPdfExportError": "Failed to export PDF. Please try again."
 }

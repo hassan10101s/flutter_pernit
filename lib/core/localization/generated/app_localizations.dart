@@ -332,12 +332,6 @@ abstract class AppLocalizations {
   /// **'Just now'**
   String get notificationJustNow;
 
-  /// No description provided for @notificationTimeAgo.
-  ///
-  /// In en, this message translates to:
-  /// **'{count}m ago'**
-  String notificationTimeAgo(int count);
-
   /// No description provided for @notificationReference.
   ///
   /// In en, this message translates to:
@@ -349,6 +343,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Retry'**
   String get notificationRetry;
+
+  /// No description provided for @notificationButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationButton;
+
+  /// No description provided for @notificationMinutesAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{count}m ago'**
+  String notificationMinutesAgo(int count);
+
+  /// No description provided for @notificationHoursAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{count}h ago'**
+  String notificationHoursAgo(int count);
+
+  /// No description provided for @notificationDaysAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{count}d ago'**
+  String notificationDaysAgo(int count);
 
   /// No description provided for @overviewTitle.
   ///
@@ -667,6 +685,228 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Production quality checks'**
   String get qualityChecksProduction;
+
+  /// No description provided for @qualityHubSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the quality workflow type to manage.'**
+  String get qualityHubSubtitle;
+
+  /// No description provided for @qualityRawMaterialsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Raw material quality'**
+  String get qualityRawMaterialsTitle;
+
+  /// No description provided for @qualityRawMaterialsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Inspect received raw materials from sampling through quality decisions.'**
+  String get qualityRawMaterialsSubtitle;
+
+  /// No description provided for @qualityProductionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Production quality'**
+  String get qualityProductionTitle;
+
+  /// No description provided for @qualityProductionSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage production samples, lab results, and quality decisions.'**
+  String get qualityProductionSubtitle;
+
+  /// No description provided for @prodQualitySamplesTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Samples'**
+  String get prodQualitySamplesTab;
+
+  /// No description provided for @prodQualityResultsTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Results'**
+  String get prodQualityResultsTab;
+
+  /// No description provided for @prodQualityChecksTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Decisions'**
+  String get prodQualityChecksTab;
+
+  /// No description provided for @prodQualityCreateSample.
+  ///
+  /// In en, this message translates to:
+  /// **'Create sample'**
+  String get prodQualityCreateSample;
+
+  /// No description provided for @prodQualityCreateResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Create result'**
+  String get prodQualityCreateResult;
+
+  /// No description provided for @prodQualitySamplesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No production samples available.'**
+  String get prodQualitySamplesEmpty;
+
+  /// No description provided for @prodQualityResultsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No production lab results available.'**
+  String get prodQualityResultsEmpty;
+
+  /// No description provided for @prodQualityChecksEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No production quality decisions available.'**
+  String get prodQualityChecksEmpty;
+
+  /// No description provided for @prodQualityCreateSampleAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Create sample'**
+  String get prodQualityCreateSampleAction;
+
+  /// No description provided for @prodQualityMeasuredValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Measured value'**
+  String get prodQualityMeasuredValue;
+
+  /// No description provided for @prodQualityMeasuredValueHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter measured value'**
+  String get prodQualityMeasuredValueHint;
+
+  /// No description provided for @prodQualityCreateResultAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Create result'**
+  String get prodQualityCreateResultAction;
+
+  /// No description provided for @prodQualitySampleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample #{id}'**
+  String prodQualitySampleLabel(int id);
+
+  /// No description provided for @prodQualityCheckLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Decision #{id}'**
+  String prodQualityCheckLabel(int id);
+
+  /// No description provided for @prodQualityProductionOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Production order'**
+  String get prodQualityProductionOrder;
+
+  /// No description provided for @prodQualityProductionOrderHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by order number'**
+  String get prodQualityProductionOrderHint;
+
+  /// No description provided for @prodQualityQuantityTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'Quantity taken'**
+  String get prodQualityQuantityTaken;
+
+  /// No description provided for @prodQualityQuantityTakenHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional sample quantity'**
+  String get prodQualityQuantityTakenHint;
+
+  /// No description provided for @prodQualityNoOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'No production orders found'**
+  String get prodQualityNoOrders;
+
+  /// No description provided for @prodQualitySampleLabelSelect.
+  ///
+  /// In en, this message translates to:
+  /// **'Select sample'**
+  String get prodQualitySampleLabelSelect;
+
+  /// No description provided for @prodQualitySampleSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by order code'**
+  String get prodQualitySampleSearchHint;
+
+  /// No description provided for @prodQualityNoSamples.
+  ///
+  /// In en, this message translates to:
+  /// **'No samples available'**
+  String get prodQualityNoSamples;
+
+  /// No description provided for @prodQualityParameter.
+  ///
+  /// In en, this message translates to:
+  /// **'Analysis parameter'**
+  String get prodQualityParameter;
+
+  /// No description provided for @prodQualityParameterHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by parameter name'**
+  String get prodQualityParameterHint;
+
+  /// No description provided for @prodQualityNoParameters.
+  ///
+  /// In en, this message translates to:
+  /// **'No analysis parameters found'**
+  String get prodQualityNoParameters;
+
+  /// No description provided for @prodQualityStatusPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get prodQualityStatusPending;
+
+  /// No description provided for @prodQualityStatusCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get prodQualityStatusCompleted;
+
+  /// No description provided for @prodQualityStatusInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid'**
+  String get prodQualityStatusInvalid;
+
+  /// No description provided for @prodQualityStatusAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Accepted'**
+  String get prodQualityStatusAccepted;
+
+  /// No description provided for @prodQualityStatusRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get prodQualityStatusRejected;
+
+  /// No description provided for @prodQualityStatusRelease.
+  ///
+  /// In en, this message translates to:
+  /// **'Release'**
+  String get prodQualityStatusRelease;
+
+  /// No description provided for @prodQualityStatusQuarantine.
+  ///
+  /// In en, this message translates to:
+  /// **'Quarantine'**
+  String get prodQualityStatusQuarantine;
 
   /// No description provided for @productionScreensSubtitle.
   ///
@@ -1640,6 +1880,84 @@ abstract class AppLocalizations {
   /// **'By: {driver}'**
   String cardStepperDetailArrived(String driver);
 
+  /// No description provided for @inventoryLastLoaded.
+  ///
+  /// In en, this message translates to:
+  /// **'Last loaded'**
+  String get inventoryLastLoaded;
+
+  /// No description provided for @inventoryDownloadPdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Download PDF'**
+  String get inventoryDownloadPdf;
+
+  /// No description provided for @inventoryTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get inventoryTotal;
+
+  /// No description provided for @inventoryAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get inventoryAvailable;
+
+  /// No description provided for @inventoryReserved.
+  ///
+  /// In en, this message translates to:
+  /// **'Reserved'**
+  String get inventoryReserved;
+
+  /// No description provided for @inventoryPdfItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Item'**
+  String get inventoryPdfItem;
+
+  /// No description provided for @inventoryPdfWarehouse.
+  ///
+  /// In en, this message translates to:
+  /// **'Warehouse'**
+  String get inventoryPdfWarehouse;
+
+  /// No description provided for @inventoryPdfTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get inventoryPdfTotal;
+
+  /// No description provided for @inventoryPdfAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get inventoryPdfAvailable;
+
+  /// No description provided for @inventoryPdfReserved.
+  ///
+  /// In en, this message translates to:
+  /// **'Reserved'**
+  String get inventoryPdfReserved;
+
+  /// No description provided for @inventoryPdfUnit.
+  ///
+  /// In en, this message translates to:
+  /// **'Unit'**
+  String get inventoryPdfUnit;
+
+  /// No description provided for @inventoryPdfLastLoaded.
+  ///
+  /// In en, this message translates to:
+  /// **'Last loaded'**
+  String get inventoryPdfLastLoaded;
+
+  /// No description provided for @inventoryPdfItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
+  String get inventoryPdfItems;
+
   /// No description provided for @separatorDot.
   ///
   /// In en, this message translates to:
@@ -1651,6 +1969,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Logging out'**
   String get logoutTitle;
+
+  /// No description provided for @inventoryTruncatedWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Showing first {count} items due to maximum limit'**
+  String inventoryTruncatedWarning(Object count);
+
+  /// No description provided for @inventoryPdfTruncatedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Note: report may be incomplete (limited to {count} items)'**
+  String inventoryPdfTruncatedNote(Object count);
+
+  /// No description provided for @inventoryPdfExportError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to export PDF. Please try again.'**
+  String get inventoryPdfExportError;
 }
 
 class _AppLocalizationsDelegate

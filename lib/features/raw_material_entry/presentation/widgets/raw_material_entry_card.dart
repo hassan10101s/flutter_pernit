@@ -162,7 +162,11 @@ class _InfoGrid extends StatelessWidget {
             width: 94,
             child: _InfoColumn(
               label: l10n.entrySupplierWeight,
-              value: _quantityValue(l10n, entry.quantityFromSupplier, entry.unitName),
+              value: _quantityValue(
+                l10n,
+                entry.quantityFromSupplier,
+                entry.unitName,
+              ),
               withLeadingBorder: true,
             ),
           ),
@@ -292,7 +296,9 @@ class _ProgressStepper extends StatelessWidget {
       _StepInfo(
         label: l10n.cardStepperLab,
         icon: Icons.biotech_outlined,
-        detail: entry.isLabDone ? l10n.cardStepperProcessing : l10n.cardStepperPending,
+        detail: entry.isLabDone
+            ? l10n.cardStepperProcessing
+            : l10n.cardStepperPending,
         time: entry.isLabDone && entry.updatedAt != null
             ? _figmaTime(entry.updatedAt!)
             : '',
@@ -559,7 +565,10 @@ String _quantityValue(AppLocalizations l10n, double? value, String? unitName) {
   );
 }
 
-String _designStatusLabel(AppLocalizations l10n, RawMaterialEntryStatus status) {
+String _designStatusLabel(
+  AppLocalizations l10n,
+  RawMaterialEntryStatus status,
+) {
   return switch (status) {
     RawMaterialEntryStatus.approved => l10n.entryApprovedFilter,
     RawMaterialEntryStatus.rejected => l10n.entryRejectedFilter,

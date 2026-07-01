@@ -84,7 +84,9 @@ class RawMaterialEntry extends Equatable {
   });
 
   String get entryCode {
-    final prefix = rawMaterialName.toUpperCase().contains('VITAMIN') ? 'PV' : 'SB';
+    final prefix = rawMaterialName.toUpperCase().contains('VITAMIN')
+        ? 'PV'
+        : 'SB';
     final year = createdAt?.year.toString() ?? DateTime.now().year.toString();
     return '$prefix-$year-${id.toString().padLeft(3, '0')}';
   }

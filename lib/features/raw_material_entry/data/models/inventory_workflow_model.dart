@@ -27,6 +27,7 @@ class RawMaterialStockPageModel extends RawMaterialStockPage {
                   _readString(value['warehouse_name']) ?? 'Warehouse',
               quantity: _readDouble(value['quantity']) ?? 0,
               reservedQuantity: _readDouble(value['reserved_quantity']) ?? 0,
+              available: _readDouble(value['available']),
               unitName: _readString(value['parameter_name']),
             ),
       ],
@@ -50,6 +51,7 @@ class ProductStockItemModel extends ProductStockItem {
     required super.warehouseName,
     required super.quantity,
     required super.reservedQuantity,
+    super.available,
     required super.unitName,
   });
 
@@ -62,7 +64,35 @@ class ProductStockItemModel extends ProductStockItem {
       warehouseName: _readString(json['warehouse_name']) ?? 'Warehouse',
       quantity: _readDouble(json['quantity']) ?? 0,
       reservedQuantity: _readDouble(json['reserved_quantity']) ?? 0,
+      available: _readDouble(json['available']),
       unitName: _readString(json['unit_name']),
+    );
+  }
+}
+
+class ProductStockPageModel extends ProductStockPage {
+  const ProductStockPageModel({
+    required super.items,
+    required super.totalCount,
+    required super.page,
+    required super.hasNextPage,
+  });
+
+  factory ProductStockPageModel.fromJson(Object? payload, {required int page}) {
+    final values = _listFromPayload(payload);
+    return ProductStockPageModel(
+      items: [
+        for (final value in values)
+          if (value is Map<String, dynamic>)
+            ProductStockItemModel.fromJson(value),
+      ],
+      totalCount: payload is Map<String, dynamic>
+          ? _readInt(payload['count']) ?? values.length
+          : values.length,
+      page: page,
+      hasNextPage:
+          payload is Map<String, dynamic> &&
+          _readString(payload['next']) != null,
     );
   }
 }

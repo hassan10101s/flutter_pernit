@@ -8,6 +8,7 @@ class RawMaterialStockItem extends Equatable {
   final String warehouseName;
   final double quantity;
   final double reservedQuantity;
+  final double? available;
   final String? unitName;
 
   const RawMaterialStockItem({
@@ -18,10 +19,11 @@ class RawMaterialStockItem extends Equatable {
     required this.warehouseName,
     required this.quantity,
     required this.reservedQuantity,
+    this.available,
     required this.unitName,
   });
 
-  double get availableQuantity => quantity - reservedQuantity;
+  double get availableQuantity => available ?? quantity - reservedQuantity;
 
   @override
   List<Object?> get props => [
@@ -32,6 +34,7 @@ class RawMaterialStockItem extends Equatable {
     warehouseName,
     quantity,
     reservedQuantity,
+    available,
     unitName,
   ];
 }
@@ -61,6 +64,7 @@ class ProductStockItem extends Equatable {
   final String warehouseName;
   final double quantity;
   final double reservedQuantity;
+  final double? available;
   final String? unitName;
 
   const ProductStockItem({
@@ -71,10 +75,11 @@ class ProductStockItem extends Equatable {
     required this.warehouseName,
     required this.quantity,
     required this.reservedQuantity,
+    this.available,
     required this.unitName,
   });
 
-  double get availableQuantity => quantity - reservedQuantity;
+  double get availableQuantity => available ?? quantity - reservedQuantity;
 
   @override
   List<Object?> get props => [
@@ -85,8 +90,26 @@ class ProductStockItem extends Equatable {
     warehouseName,
     quantity,
     reservedQuantity,
+    available,
     unitName,
   ];
+}
+
+class ProductStockPage extends Equatable {
+  final List<ProductStockItem> items;
+  final int totalCount;
+  final int page;
+  final bool hasNextPage;
+
+  const ProductStockPage({
+    required this.items,
+    required this.totalCount,
+    required this.page,
+    required this.hasNextPage,
+  });
+
+  @override
+  List<Object?> get props => [items, totalCount, page, hasNextPage];
 }
 
 class ProductStockDraft extends Equatable {

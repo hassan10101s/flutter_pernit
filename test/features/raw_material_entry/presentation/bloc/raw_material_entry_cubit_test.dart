@@ -265,7 +265,7 @@ class _FakeRawMaterialEntryRepository implements RawMaterialEntryRepository {
   }
 
   @override
-  Future<ApiResult<List<ProductStockItem>>> fetchProductStock() {
+  Future<ApiResult<ProductStockPage>> fetchProductStock({required int page}) {
     throw UnimplementedError();
   }
 

@@ -92,9 +92,6 @@ void main() {
       LoadRawMaterialWorkflowUseCase(repository),
       RecordRawMaterialActualWeightUseCase(repository),
       LoadRawMaterialStockUseCase(repository),
-      LoadProductStockUseCase(repository),
-      LoadProductStockLookupsUseCase(repository),
-      AddProductStockUseCase(repository),
     );
     await cubit.load();
 
@@ -240,8 +237,17 @@ class _WorkflowRepository implements RawMaterialEntryRepository {
   }
 
   @override
-  Future<ApiResult<List<ProductStockItem>>> fetchProductStock() async {
-    return const ApiSuccess([]);
+  Future<ApiResult<ProductStockPage>> fetchProductStock({
+    required int page,
+  }) async {
+    return ApiSuccess(
+      ProductStockPage(
+        items: [],
+        totalCount: 0,
+        page: page,
+        hasNextPage: false,
+      ),
+    );
   }
 
   @override

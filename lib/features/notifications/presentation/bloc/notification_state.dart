@@ -47,11 +47,11 @@ final class NotificationLoaded extends NotificationState {
 
   @override
   List<Object?> get props => [
-        notifications,
-        unreadCount,
-        totalCount,
-        isLoadingMore,
-      ];
+    notifications,
+    unreadCount,
+    totalCount,
+    isLoadingMore,
+  ];
 }
 
 final class NotificationError extends NotificationState {

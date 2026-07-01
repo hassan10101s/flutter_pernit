@@ -6,36 +6,39 @@ import '../../firebase_options.dart';
 
 @pragma('vm:entry-point')
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  final data = message.data;
+  // If the message has a notification payload, FCM handles display — skip.
+  if (message.notification == null && message.data.isNotEmpty) {
+    final data = message.data;
+    final id =
+        int.tryParse(data['id'] ?? '') ?? DateTime.now().millisecondsSinceEpoch;
 
-  final plugin = FlutterLocalNotificationsPlugin();
-  await plugin.initialize(const InitializationSettings(
-    android: AndroidInitializationSettings('@mipmap/ic_launcher'),
-  ));
-
-  final id = data['id']?.toString().hashCode ?? DateTime.now().millisecondsSinceEpoch;
-  final title = data['title'] ?? '';
-  final body = data['message'] ?? '';
-
-  await plugin.show(
-    id,
-    title,
-    body,
-    const NotificationDetails(
-      android: AndroidNotificationDetails(
-        'pernit_notifications',
-        'Pernit Notifications',
-        channelDescription: 'Notifications from Pernit ERP system',
-        importance: Importance.high,
-        priority: Priority.high,
-        playSound: true,
-        enableVibration: true,
-        icon: '@mipmap/ic_launcher',
+    final plugin = FlutterLocalNotificationsPlugin();
+    await plugin.initialize(
+      const InitializationSettings(
+        android: AndroidInitializationSettings(
+          '@drawable/ic_stat_notification',
+        ),
       ),
-    ),
-  );
+    );
+
+    await plugin.show(
+      id,
+      data['title'] ?? '',
+      data['message'] ?? '',
+      const NotificationDetails(
+        android: AndroidNotificationDetails(
+          'pernit_notifications',
+          'Pernit Notifications',
+          channelDescription: 'Notifications from Pernit ERP system',
+          importance: Importance.high,
+          priority: Priority.high,
+          playSound: true,
+          enableVibration: true,
+          icon: '@drawable/ic_stat_notification',
+        ),
+      ),
+    );
+  }
 }

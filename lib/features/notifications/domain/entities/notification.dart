@@ -22,7 +22,10 @@ enum NotificationReferenceType {
   productionOrder,
   salesOrder,
   labSample,
-  inventoryMovement;
+  inventoryMovement,
+  finishedGoodsBatch,
+  loadingReceipt,
+  loadingDiscrepancy;
 
   static NotificationReferenceType? fromJson(String? value) {
     if (value == null || value.isEmpty) return null;
@@ -33,6 +36,9 @@ enum NotificationReferenceType {
       'sales_order' => NotificationReferenceType.salesOrder,
       'lab_sample' => NotificationReferenceType.labSample,
       'inventory_movement' => NotificationReferenceType.inventoryMovement,
+      'finished_goods_batch' => NotificationReferenceType.finishedGoodsBatch,
+      'loading_receipt' => NotificationReferenceType.loadingReceipt,
+      'loading_discrepancy' => NotificationReferenceType.loadingDiscrepancy,
       _ => null,
     };
   }
@@ -63,33 +69,7 @@ class Notification extends Equatable {
     this.metadata,
   });
 
-  factory Notification.fromJson(Map<String, dynamic> json) {
-    final typeValue = json['notification_type'] as String?
-        ?? json['type'] as String?
-        ?? 'info';
-
-    return Notification(
-      id: json['id'] as int,
-      title: json['title'] as String,
-      message: json['message'] as String,
-      notificationType: NotificationType.fromJson(typeValue),
-      referenceType: NotificationReferenceType.fromJson(
-        json['reference_type'] as String?,
-      ),
-      referenceId: json['reference_id']?.toString(),
-      isRead: json['is_read'] as bool? ?? false,
-      readAt: json['read_at'] != null
-          ? DateTime.tryParse(json['read_at'] as String)
-          : null,
-      createdAt: DateTime.parse(json['created_at'] as String),
-      metadata: json['metadata'] as Map<String, dynamic>?,
-    );
-  }
-
-  Notification copyWith({
-    bool? isRead,
-    DateTime? readAt,
-  }) {
+  Notification copyWith({bool? isRead, DateTime? readAt}) {
     return Notification(
       id: id,
       title: title,
@@ -106,15 +86,15 @@ class Notification extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        title,
-        message,
-        notificationType,
-        referenceType,
-        referenceId,
-        isRead,
-        readAt,
-        createdAt,
-        metadata,
-      ];
+    id,
+    title,
+    message,
+    notificationType,
+    referenceType,
+    referenceId,
+    isRead,
+    readAt,
+    createdAt,
+    metadata,
+  ];
 }

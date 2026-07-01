@@ -11,7 +11,9 @@ import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/notifications/presentation/bloc/notification_cubit.dart';
 import '../../features/notifications/presentation/screens/notification_screen.dart';
 import '../../features/production/presentation/screens/production_screen.dart';
+import '../../features/quality/presentation/screens/production_quality_screen.dart';
 import '../../features/quality/presentation/screens/quality_screen.dart';
+import '../../features/quality/presentation/screens/raw_material_quality_screen.dart';
 import '../../features/raw_material_entry/presentation/screens/raw_material_entry_screen.dart';
 import '../../features/raw_material_entry/presentation/screens/raw_material_inventory_screen.dart';
 import '../../features/settings/presentation/screens/settings_screen.dart';
@@ -42,8 +44,8 @@ class AppRouter {
     return switch (settings.name) {
       Routes.startup => MaterialPageRoute<void>(
         settings: settings,
-        builder: (_) => BlocProvider(
-          create: (_) => sl<AuthSessionCubit>(),
+        builder: (_) => BlocProvider.value(
+          value: sl<AuthSessionCubit>(),
           child: const StartupScreen(),
         ),
       ),
@@ -51,8 +53,8 @@ class AppRouter {
         settings: settings,
         builder: (_) {
           if (arguments is! AuthUser) {
-            return BlocProvider(
-              create: (_) => sl<AuthSessionCubit>(),
+            return BlocProvider.value(
+              value: sl<AuthSessionCubit>(),
               child: const StartupScreen(),
             );
           }
@@ -81,6 +83,14 @@ class AppRouter {
       Routes.quality => MaterialPageRoute<void>(
         settings: settings,
         builder: (_) => const QualityScreen(),
+      ),
+      Routes.rawMaterialQuality => MaterialPageRoute<void>(
+        settings: settings,
+        builder: (_) => const RawMaterialQualityScreen(),
+      ),
+      Routes.productionQuality => MaterialPageRoute<void>(
+        settings: settings,
+        builder: (_) => const ProductionQualityScreen(),
       ),
       Routes.production => MaterialPageRoute<void>(
         settings: settings,

@@ -105,9 +105,7 @@ EntryMetadata? _parseMetadata(Map<String, dynamic>? json) {
   final samplingJson = _readList(json['sampling_history']);
   for (final item in samplingJson) {
     if (item is Map<String, dynamic>) {
-      final takenAt = DateTime.tryParse(
-        _readString(item['taken_at']) ?? '',
-      );
+      final takenAt = DateTime.tryParse(_readString(item['taken_at']) ?? '');
       if (takenAt == null) continue;
       samplingHistory.add(
         SamplingRecord(
@@ -124,9 +122,7 @@ EntryMetadata? _parseMetadata(Map<String, dynamic>? json) {
   final qcJson = _readList(json['qc_history']);
   for (final item in qcJson) {
     if (item is Map<String, dynamic>) {
-      final timestamp = DateTime.tryParse(
-        _readString(item['timestamp']) ?? '',
-      );
+      final timestamp = DateTime.tryParse(_readString(item['timestamp']) ?? '');
       if (timestamp == null) continue;
       qcHistory.add(
         QcRecord(
@@ -142,10 +138,7 @@ EntryMetadata? _parseMetadata(Map<String, dynamic>? json) {
 
   if (samplingHistory.isEmpty && qcHistory.isEmpty) return null;
 
-  return EntryMetadata(
-    samplingHistory: samplingHistory,
-    qcHistory: qcHistory,
-  );
+  return EntryMetadata(samplingHistory: samplingHistory, qcHistory: qcHistory);
 }
 
 Map<String, dynamic> _readMap(Object? value) {

@@ -4,19 +4,14 @@ class PendingRouteIntent {
   final String routeName;
   final Map<String, String>? arguments;
 
-  const PendingRouteIntent({
-    required this.routeName,
-    this.arguments,
-  });
+  const PendingRouteIntent({required this.routeName, this.arguments});
 }
 
 class NotificationRouter {
   PendingRouteIntent? _pendingIntent;
 
   void handleNotificationTap(Map<String, String> data) {
-    _pendingIntent = const PendingRouteIntent(
-      routeName: Routes.notifications,
-    );
+    _pendingIntent = const PendingRouteIntent(routeName: Routes.notifications);
   }
 
   PendingRouteIntent? consumePendingIntent() {
@@ -26,4 +21,8 @@ class NotificationRouter {
   }
 
   bool get hasPendingIntent => _pendingIntent != null;
+
+  void clearPendingIntent() {
+    _pendingIntent = null;
+  }
 }

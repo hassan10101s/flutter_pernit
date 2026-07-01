@@ -53,16 +53,33 @@
   "notificationEmpty": "لا توجد إشعارات",
   "notificationMarkRead": "تحديد كمقروء",
   "notificationJustNow": "الآن",
-  "notificationTimeAgo": "قبل {count} د",
-  "@notificationTimeAgo": {
+  "notificationReference": "عرض التفاصيل",
+  "notificationRetry": "إعادة المحاولة",
+  "notificationButton": "الإشعارات",
+  "notificationMinutesAgo": "قبل {count} د",
+  "@notificationMinutesAgo": {
     "placeholders": {
       "count": {
         "type": "int"
       }
     }
   },
-  "notificationReference": "عرض التفاصيل",
-  "notificationRetry": "إعادة المحاولة",
+  "notificationHoursAgo": "قبل {count} س",
+  "@notificationHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notificationDaysAgo": "قبل {count} ي",
+  "@notificationDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "overviewTitle": "مساحة العمل",
   "overviewSubtitle": "الأقسام المتاحة تعتمد على المجموعات الراجعة من تسجيل الدخول.",
   "modulePlaceholder": "واجهة {module} التجريبية",
@@ -151,6 +168,53 @@
   "qualityPhysicalLabResultsRawMaterials": "نتائج المختبر الفيزيائي للمواد الخام",
   "qualityChecksRawMaterials": "قرارات جودة المواد الخام",
   "qualityChecksProduction": "قرارات جودة الإنتاج",
+  "qualityHubSubtitle": "اختر مسار الجودة الذي تريد إدارته.",
+  "qualityRawMaterialsTitle": "جودة الخامات",
+  "qualityRawMaterialsSubtitle": "افحص الخامات الواردة من أخذ العينة حتى قرار الجودة.",
+  "qualityProductionTitle": "جودة الإنتاج",
+  "qualityProductionSubtitle": "إدارة عينات الإنتاج ونتائج المختبر وقرارات الجودة.",
+  "prodQualitySamplesTab": "العينات",
+  "prodQualityResultsTab": "النتائج",
+  "prodQualityChecksTab": "القرارات",
+  "prodQualityCreateSample": "إنشاء عينة",
+  "prodQualityCreateResult": "إنشاء نتيجة",
+  "prodQualitySamplesEmpty": "لا توجد عينات إنتاج متاحة.",
+  "prodQualityResultsEmpty": "لا توجد نتائج مختبر إنتاج متاحة.",
+  "prodQualityChecksEmpty": "لا توجد قرارات جودة إنتاج متاحة.",
+  "prodQualityCreateSampleAction": "إنشاء عينة",
+  "prodQualityMeasuredValue": "القيمة المقاسة",
+  "prodQualityMeasuredValueHint": "أدخل القيمة المقاسة",
+  "prodQualityCreateResultAction": "إنشاء نتيجة",
+  "prodQualitySampleLabel": "عينة #{id}",
+  "@prodQualitySampleLabel": {
+    "placeholders": {
+      "id": { "type": "int" }
+    }
+  },
+  "prodQualityCheckLabel": "قرار #{id}",
+  "@prodQualityCheckLabel": {
+    "placeholders": {
+      "id": { "type": "int" }
+    }
+  },
+  "prodQualityProductionOrder": "أمر إنتاج",
+  "prodQualityProductionOrderHint": "ابحث برقم الأمر",
+  "prodQualityQuantityTaken": "الكمية المأخوذة",
+  "prodQualityQuantityTakenHint": "كمية العينة اختياري",
+  "prodQualityNoOrders": "لا توجد أوامر إنتاج",
+  "prodQualitySampleLabelSelect": "اختر عينة",
+  "prodQualitySampleSearchHint": "ابحث بكود الأمر",
+  "prodQualityNoSamples": "لا توجد عينات متاحة",
+  "prodQualityParameter": "برامتر التحليل",
+  "prodQualityParameterHint": "ابحث باسم البرامتر",
+  "prodQualityNoParameters": "لا توجد برامترات تحليل",
+  "prodQualityStatusPending": "قيد الانتظار",
+  "prodQualityStatusCompleted": "مكتمل",
+  "prodQualityStatusInvalid": "غير صالح",
+  "prodQualityStatusAccepted": "مقبول",
+  "prodQualityStatusRejected": "مرفوض",
+  "prodQualityStatusRelease": "صرف",
+  "prodQualityStatusQuarantine": "حجر",
   "productionScreensSubtitle": "شاشات الإنتاج مفصولة لبقاء الأوامر والتفاصيل ومتابعة المختبر واضحة.",
   "productionOrders": "أوامر الإنتاج",
   "productionOrderDetails": "تفاصيل أوامر الإنتاج",
@@ -470,6 +534,32 @@
       "driver": { "type": "String" }
     }
   },
+  "inventoryLastLoaded": "آخر تحميل",
+  "inventoryDownloadPdf": "تنزيل PDF",
+  "inventoryTotal": "الإجمالي",
+  "inventoryAvailable": "المتاح",
+  "inventoryReserved": "المحجوز",
+  "inventoryPdfItem": "الصنف",
+  "inventoryPdfWarehouse": "المخزن",
+  "inventoryPdfTotal": "الإجمالي",
+  "inventoryPdfAvailable": "المتاح",
+  "inventoryPdfReserved": "المحجوز",
+  "inventoryPdfUnit": "الوحدة",
+  "inventoryPdfLastLoaded": "آخر تحميل",
+  "inventoryPdfItems": "العناصر",
   "separatorDot": " • ",
-  "logoutTitle": "تسجيل الخروج"
+  "logoutTitle": "تسجيل الخروج",
+  "inventoryTruncatedWarning": "تم عرض أول {count} عنصر بسبب الحد الأقصى",
+  "@inventoryTruncatedWarning": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "inventoryPdfTruncatedNote": "ملاحظة: التقرير قد لا يكون كاملاً (محدود بـ {count} عنصر)",
+  "@inventoryPdfTruncatedNote": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "inventoryPdfExportError": "فشل تصدير PDF. حاول مرة أخرى."
 }

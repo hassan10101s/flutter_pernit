@@ -50,10 +50,7 @@ class AllReadConfirmed extends WsNotificationEvent {
   final int count;
   final int unreadCount;
 
-  const AllReadConfirmed({
-    required this.count,
-    required this.unreadCount,
-  });
+  const AllReadConfirmed({required this.count, required this.unreadCount});
 
   @override
   List<Object?> get props => [count, unreadCount];

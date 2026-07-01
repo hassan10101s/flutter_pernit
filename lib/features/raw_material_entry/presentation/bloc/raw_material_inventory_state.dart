@@ -3,9 +3,8 @@ import 'package:equatable/equatable.dart';
 import '../../../../core/errors/failure.dart';
 import '../../domain/entities/inventory_workflow.dart';
 import '../../domain/entities/raw_material_entry.dart';
-import '../../domain/entities/raw_material_entry_lookup.dart';
 
-enum RawMaterialInventoryAction { recordingWeight, addingProductStock }
+enum RawMaterialInventoryAction { recordingWeight }
 
 sealed class RawMaterialInventoryState extends Equatable {
   final List<RawMaterialEntry> entries;
@@ -16,10 +15,9 @@ sealed class RawMaterialInventoryState extends Equatable {
   final int stockTotalCount;
   final int stockPage;
   final bool stockHasNextPage;
-  final List<ProductStockItem> productStock;
-  final List<LookupOption> products;
-  final List<LookupOption> warehouses;
+  final bool stockWasTruncated;
   final int? activeBatchId;
+  final DateTime? lastLoadedAt;
 
   const RawMaterialInventoryState({
     this.entries = const [],
@@ -30,10 +28,9 @@ sealed class RawMaterialInventoryState extends Equatable {
     this.stockTotalCount = 0,
     this.stockPage = 1,
     this.stockHasNextPage = false,
-    this.productStock = const [],
-    this.products = const [],
-    this.warehouses = const [],
+    this.stockWasTruncated = false,
     this.activeBatchId,
+    this.lastLoadedAt,
   });
 
   RawMaterialInventoryAction? get action => null;
@@ -50,10 +47,9 @@ sealed class RawMaterialInventoryState extends Equatable {
     stockTotalCount,
     stockPage,
     stockHasNextPage,
-    productStock,
-    products,
-    warehouses,
+    stockWasTruncated,
     activeBatchId,
+    lastLoadedAt,
   ];
 }
 
@@ -65,9 +61,7 @@ final class RawMaterialInventoryLoading extends RawMaterialInventoryState {
   const RawMaterialInventoryLoading({
     super.entries,
     super.stockItems,
-    super.productStock,
-    super.products,
-    super.warehouses,
+    super.lastLoadedAt,
   });
 }
 
@@ -81,18 +75,13 @@ final class RawMaterialInventoryLoaded extends RawMaterialInventoryState {
     required super.stockTotalCount,
     required super.stockPage,
     required super.stockHasNextPage,
-    required super.productStock,
-    required super.products,
-    required super.warehouses,
+    required super.stockWasTruncated,
+    required super.lastLoadedAt,
   });
 }
 
 final class RawMaterialInventoryLoadingMore extends RawMaterialInventoryState {
-  @override
-  final bool loadingStock;
-
   const RawMaterialInventoryLoadingMore({
-    required this.loadingStock,
     required super.entries,
     required super.totalCount,
     required super.page,
@@ -101,13 +90,9 @@ final class RawMaterialInventoryLoadingMore extends RawMaterialInventoryState {
     required super.stockTotalCount,
     required super.stockPage,
     required super.stockHasNextPage,
-    required super.productStock,
-    required super.products,
-    required super.warehouses,
+    required super.stockWasTruncated,
+    super.lastLoadedAt,
   });
-
-  @override
-  List<Object?> get props => [...super.props, loadingStock];
 }
 
 final class RawMaterialInventoryWorking extends RawMaterialInventoryState {
@@ -124,10 +109,9 @@ final class RawMaterialInventoryWorking extends RawMaterialInventoryState {
     required super.stockTotalCount,
     required super.stockPage,
     required super.stockHasNextPage,
-    required super.productStock,
-    required super.products,
-    required super.warehouses,
+    required super.stockWasTruncated,
     super.activeBatchId,
+    super.lastLoadedAt,
   });
 
   @override
@@ -147,10 +131,9 @@ final class RawMaterialInventoryError extends RawMaterialInventoryState {
     required super.stockTotalCount,
     required super.stockPage,
     required super.stockHasNextPage,
-    required super.productStock,
-    required super.products,
-    required super.warehouses,
+    required super.stockWasTruncated,
     super.activeBatchId,
+    super.lastLoadedAt,
   });
 
   @override

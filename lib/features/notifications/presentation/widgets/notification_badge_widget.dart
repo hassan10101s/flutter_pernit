@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../../../../core/di/dependency_injection.dart';
+import '../../../../core/localization/generated/app_localizations.dart';
 import '../../../../core/network/websocket/notification_web_socket_service.dart';
 import '../../../../core/network/websocket/ws_notification_event.dart';
 import '../../../../design_system/tokens/pernit_colors.dart';
@@ -63,7 +64,7 @@ class _NotificationBadgeWidgetState extends State<NotificationBadgeWidget> {
       children: [
         IconButton(
           icon: const Icon(Icons.notifications_outlined),
-          tooltip: 'Notifications',
+          tooltip: AppLocalizations.of(context)!.notificationButton,
           onPressed: widget.onTap,
         ),
         if (_unreadCount > 0)
@@ -76,10 +77,7 @@ class _NotificationBadgeWidgetState extends State<NotificationBadgeWidget> {
                 color: PernitColors.danger,
                 shape: BoxShape.circle,
               ),
-              constraints: const BoxConstraints(
-                minWidth: 18,
-                minHeight: 18,
-              ),
+              constraints: const BoxConstraints(minWidth: 18, minHeight: 18),
               child: Text(
                 _unreadCount > 99 ? '99+' : '$_unreadCount',
                 style: const TextStyle(

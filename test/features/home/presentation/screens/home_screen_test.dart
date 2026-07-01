@@ -1,16 +1,27 @@
+import 'dart:async';
+
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:flutter_pernit/core/config/env_config.dart';
 import 'package:flutter_pernit/core/di/dependency_injection.dart';
 import 'package:flutter_pernit/core/errors/api_result.dart';
 import 'package:flutter_pernit/core/localization/generated/app_localizations.dart';
 import 'package:flutter_pernit/core/network/websocket/notification_web_socket_service.dart';
 import 'package:flutter_pernit/core/network/websocket/ws_connection_status.dart';
 import 'package:flutter_pernit/core/network/websocket/ws_notification_event.dart';
+import 'package:flutter_pernit/core/notifications/notification_lifecycle_coordinator.dart';
+import 'package:flutter_pernit/core/notifications/notification_router.dart';
+import 'package:flutter_pernit/core/notifications/push_notification_service.dart';
 import 'package:flutter_pernit/design_system/tokens/pernit_colors.dart';
 import 'package:flutter_pernit/design_system/tokens/pernit_text_theme.dart';
+import 'package:flutter_pernit/features/notifications/domain/entities/notification_page.dart';
+import 'package:flutter_pernit/features/notifications/domain/repos/notifications_repository.dart';
+import 'package:flutter_pernit/features/notifications/domain/usecases/register_push_device_use_case.dart';
+import 'package:flutter_pernit/features/notifications/domain/usecases/unregister_push_device_use_case.dart';
 import 'package:flutter_pernit/features/auth/domain/entities/auth_session.dart';
 import 'package:flutter_pernit/features/auth/domain/entities/auth_user.dart';
 import 'package:flutter_pernit/features/auth/domain/entities/login_credentials.dart';
@@ -153,10 +164,8 @@ extension on WidgetTester {
             home: BlocProvider(
               create: (_) => LogoutCubit(
                 LogoutUseCase(_FakeAuthRepository()),
-              AuthSessionCubit(
-                RestoreSessionUseCase(_FakeAuthRepository()),
-                _FakeWsService(),
-              ),
+                AuthSessionCubit(RestoreSessionUseCase(_FakeAuthRepository())),
+                _FakeNotificationLifecycleCoordinator(),
               ),
               child: HomeScreen(user: user),
             ),
@@ -333,12 +342,114 @@ class _FakeRawMaterialEntryRepository implements RawMaterialEntryRepository {
   }
 
   @override
-  Future<ApiResult<List<ProductStockItem>>> fetchProductStock() {
+  Future<ApiResult<ProductStockPage>> fetchProductStock({required int page}) {
     throw UnimplementedError();
   }
 
   @override
   Future<ApiResult<ProductStockItem>> addProductStock(ProductStockDraft draft) {
     throw UnimplementedError();
+  }
+}
+
+class _FakeNotificationLifecycleCoordinator
+    extends NotificationLifecycleCoordinator {
+  _FakeNotificationLifecycleCoordinator()
+    : super(
+        _FakePushNotificationService(),
+        _FakeRegisterPushDeviceUseCase(),
+        _FakeUnregisterPushDeviceUseCase(),
+        _FakeWsService(),
+        NotificationRouter(),
+        EnvConfig.instance,
+      );
+}
+
+class _FakePushNotificationService implements PushNotificationService {
+  @override
+  Future<NotificationSettings> requestPermission() async {
+    return const NotificationSettings(
+      alert: AppleNotificationSetting.notSupported,
+      announcement: AppleNotificationSetting.notSupported,
+      authorizationStatus: AuthorizationStatus.notDetermined,
+      badge: AppleNotificationSetting.notSupported,
+      carPlay: AppleNotificationSetting.notSupported,
+      criticalAlert: AppleNotificationSetting.notSupported,
+      lockScreen: AppleNotificationSetting.notSupported,
+      notificationCenter: AppleNotificationSetting.notSupported,
+      providesAppNotificationSettings: AppleNotificationSetting.notSupported,
+      showPreviews: AppleShowPreviewSetting.notSupported,
+      sound: AppleNotificationSetting.notSupported,
+      timeSensitive: AppleNotificationSetting.notSupported,
+    );
+  }
+
+  @override
+  Future<String?> getToken() async => null;
+
+  @override
+  Future<void> deleteToken() async {}
+
+  @override
+  Stream<String> get onTokenRefresh => const Stream.empty();
+
+  @override
+  Stream<RemoteMessage> get onMessage => const Stream.empty();
+
+  @override
+  Stream<RemoteMessage> get onMessageOpenedApp => const Stream.empty();
+
+  @override
+  Future<RemoteMessage?> getInitialMessage() async => null;
+}
+
+class _FakeRegisterPushDeviceUseCase extends RegisterPushDeviceUseCase {
+  _FakeRegisterPushDeviceUseCase() : super(_FakeNotificationsRepository());
+}
+
+class _FakeUnregisterPushDeviceUseCase extends UnregisterPushDeviceUseCase {
+  _FakeUnregisterPushDeviceUseCase() : super(_FakeNotificationsRepository());
+}
+
+class _FakeNotificationsRepository implements NotificationsRepository {
+  @override
+  Future<ApiResult<NotificationPage>> getNotifications({
+    int page = 1,
+    int pageSize = 20,
+  }) async {
+    return const ApiSuccess(
+      NotificationPage(items: [], totalCount: 0, hasMore: false),
+    );
+  }
+
+  @override
+  Future<ApiResult<int>> getUnreadCount() async {
+    return const ApiSuccess(0);
+  }
+
+  @override
+  Future<ApiResult<void>> markRead(int notificationId) async {
+    return const ApiSuccess(null);
+  }
+
+  @override
+  Future<ApiResult<void>> markAllRead() async {
+    return const ApiSuccess(null);
+  }
+
+  @override
+  Future<ApiResult<void>> registerPushDevice({
+    required String token,
+    required String platform,
+    required String environment,
+    required String locale,
+    required String timezone,
+  }) async {
+    return const ApiSuccess(null);
+  }
+
+  @override
+  Future<ApiResult<void>> unregisterPushDevice(String token) async {
+    return const ApiSuccess(null);
   }
 }

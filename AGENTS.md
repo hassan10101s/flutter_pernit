@@ -78,7 +78,34 @@ feature/
     widgets/
 ```
 
-Existing features: `auth`, `home`, `notifications`, `orders`, `production`, `quality`, `raw_material_entry`, `screen_records`, `settings`.
+Existing features: `auth`, `home`, `notifications`, `orders`, `production`, `quality` (hub: raw‑material + production sub‑features), `raw_material_entry`, `screen_records`, `settings`.
+
+### Sub‑feature: Quality hub
+
+`/quality` shows a hub with two cards. Each card navigates to a separate sub‑feature:
+
+- **Raw‑material quality** (`/quality/raw-materials`, renamed `RawMaterialQualityScreen`) — 3‑tab screen: sampling, analysis, quality decision. Uses `RawMaterialQualityCubit`. No changes from original `QualityScreen`.
+- **Production quality** (`/quality/production`, `ProductionQualityScreen`) — full Clean‑Architecture feature:
+  - 3 tabs: Samples (list + create), Results (list + create), Quality Decisions (read‑only list only).
+  - Domain entities exactly match `PernitAPI.yaml`: `ProductionLabSample` (no `sampleNumber`/`notes`; has `productionOrderCode`, `quantityTaken`), `ProductionLabResult` (field is `value` not `measuredValue`, no `notes`; has `sampleNo` read‑only), `ProductionQualityCheck` (field is `comments` not `notes`; has `receivedProductId`, `productionOrderCode`).
+  - Create payloads follow API exactly: `createSample` sends only `production_order` + optional `quantity_taken`; `createResult` sends only `sample`, `parameter`, `value`.
+  - **No manual ID inputs** — create sample selects production orders via searchable `PernitLookupAutocompleteField<int>`; create result selects samples from loaded list and analysis parameters via searchable dropdown.
+  - Status values are localized through 7 ARB keys (`prodQualityStatusPending/Completed/Invalid/Accepted/Rejected/Release/Quarantine`).
+  - 5 use cases: `LoadProductionLabSamples`, `CreateProductionLabSample`, `LoadProductionLabResults`, `CreateProductionLabResult`, `LoadProductionQualityChecks`.
+  - Data source: `DioProductionQualityRemoteDataSource` with cancel tokens, paginated parsing, `fetchAnalysisParameters` and `fetchProductionOrders`.
+  - Cubit: `ProductionQualityCubit` + `ProductionQualityState` (sealed with loading/loaded/creating/error sub‑states, holds all 3 tab lists + pagination). Accepts `quantityTaken` for create sample, `value` for create result.
+
+### Design‑system: PernitLookupAutocompleteField
+
+`lib/design_system/forms/pernit_lookup_autocomplete_field.dart` — generic `<T>` search‑as‑you‑type field with 400ms debounce, results list (label + subtitle), loading spinner, error + retry, and empty state. Used by production‑quality create bottom sheets.
+
+### WebSocket: idempotent connect
+
+`NotificationWebSocketService.connect()` is now idempotent (no‑op if `connecting`/`connected`). Stores `StreamSubscription` and cancels it in `disconnect()`/`dispose()`. Forces `wss://` in production. No token leaks in logs.
+
+### PDF: Arabic font validation
+
+`InventoryPdfExporter.generateReport` detects Arabic Unicode range (0x0600–0x06FF) in labels/rows. If Arabic content found and `fontData == null`, throws `Exception('Arabic PDF export requires a font...')` instead of producing garbled output. The font‑less Arabic PDF test asserts this exception and prints no Helvetica warnings.
 
 Shared UI primitives live in `lib/design_system/` (tokens, widgets, forms, feedback, dialogs, status indicators) — prefer these over feature-specific colors/widgets.
 
@@ -93,7 +120,7 @@ Shared UI primitives live in `lib/design_system/` (tokens, widgets, forms, feedb
 
 - Entry: `lib/main.dart` -> `Firebase.initializeApp()` -> `configureDependencies()` -> init `LocalNotificationService` -> `NotificationEventListener` (WS→system) -> `FirebaseMessaging.onBackgroundMessage` + `onMessageOpenedApp` -> `runApp(PernitApp())`.
 - `lib/app/app.dart`: `ScreenUtilInit` design size **375x812**, `minTextAdapt: false`, `splitScreenMode: true`. Text scaling is forced off app-wide (`TextScaler.noScaling`). Font family is **Cairo** (only 700 weight loaded — see `pubspec.yaml`). Uses `navigatorKey` (`lib/core/routing/navigator_key.dart`) for context-free FCM tap navigation.
-- Routes in `lib/core/routing/routes.dart`: `startup`, `login`, `home`, `raw-material-entry`, `inventory`, `quality`, `production`, `settings`, `notifications`. `AppRouter` (`LazySingleton`) generates routes via `onGenerateRoute`.
+- Routes in `lib/core/routing/routes.dart`: `startup`, `login`, `home`, `raw-material-entry`, `inventory`, `quality` (with sub‑routes `/quality/raw-materials`, `/quality/production`), `production`, `settings`, `notifications`. `AppRouter` (`LazySingleton`) generates routes via `onGenerateRoute`.
 - Backend contract reference: `PernitAPI.yaml` (OpenAPI 3.0.3, ~25k lines) at repo root — consult it for endpoint/shape questions instead of guessing.
 
 ### Notification delivery

@@ -135,8 +135,8 @@ class LoadProductStockUseCase {
 
   const LoadProductStockUseCase(this._repository);
 
-  Future<ApiResult<List<ProductStockItem>>> call() {
-    return _repository.fetchProductStock();
+  Future<ApiResult<ProductStockPage>> call({required int page}) {
+    return _repository.fetchProductStock(page: page);
   }
 }
 

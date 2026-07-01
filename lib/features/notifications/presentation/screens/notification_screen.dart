@@ -65,12 +65,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
         listener: (context, state) {},
         builder: (context, state) {
           return switch (state) {
-            NotificationInitial() || NotificationLoading() =>
-              const Center(child: CircularProgressIndicator()),
-            NotificationLoaded s =>
-              _buildLoaded(l10n, s),
-            NotificationError s =>
-              _buildError(l10n, s),
+            NotificationInitial() || NotificationLoading() => const Center(
+              child: CircularProgressIndicator(),
+            ),
+            NotificationLoaded s => _buildLoaded(l10n, s),
+            NotificationError s => _buildError(l10n, s),
           };
         },
       ),
@@ -91,10 +90,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
             verticalSpace(16),
             Text(
               l10n.notificationEmpty,
-              style: TextStyle(
-                color: PernitColors.textMuted,
-                fontSize: 16.sp,
-              ),
+              style: TextStyle(color: PernitColors.textMuted, fontSize: 16.sp),
             ),
           ],
         ),
@@ -149,12 +145,12 @@ class _NotificationScreenState extends State<NotificationScreen> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 32.w),
             child: Text(
-              FailureMessageLocalizer.messageFor(l10n, state.failure.messageKey),
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: PernitColors.textMuted,
-                fontSize: 16.sp,
+              FailureMessageLocalizer.messageFor(
+                l10n,
+                state.failure.messageKey,
               ),
+              textAlign: TextAlign.center,
+              style: TextStyle(color: PernitColors.textMuted, fontSize: 16.sp),
             ),
           ),
           verticalSpace(16),
@@ -173,10 +169,7 @@ class _NotificationItem extends StatelessWidget {
   final Notification notification;
   final VoidCallback onTap;
 
-  const _NotificationItem({
-    required this.notification,
-    required this.onTap,
-  });
+  const _NotificationItem({required this.notification, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -243,9 +236,18 @@ class _NotificationItem extends StatelessWidget {
   }
 
   Widget _typeIcon() {
-    final (Color color, IconData icon) = switch (notification.notificationType) {
-      NotificationType.success => (PernitColors.success, Icons.check_circle_outline),
-      NotificationType.warning => (PernitColors.warning, Icons.warning_amber_outlined),
+    final (
+      Color color,
+      IconData icon,
+    ) = switch (notification.notificationType) {
+      NotificationType.success => (
+        PernitColors.success,
+        Icons.check_circle_outline,
+      ),
+      NotificationType.warning => (
+        PernitColors.warning,
+        Icons.warning_amber_outlined,
+      ),
       NotificationType.error => (PernitColors.danger, Icons.error_outline),
       NotificationType.info => (PernitColors.primary, Icons.info_outline),
     };
@@ -263,11 +265,9 @@ class _NotificationItem extends StatelessWidget {
   String _formatTime(AppLocalizations l10n, DateTime dt) {
     final diff = DateTime.now().difference(dt);
     if (diff.inMinutes < 1) return l10n.notificationJustNow;
-    if (diff.inMinutes < 60) {
-      return l10n.notificationTimeAgo(diff.inMinutes);
-    }
-    if (diff.inHours < 24) return '${diff.inHours}h ago';
-    if (diff.inDays < 7) return '${diff.inDays}d ago';
+    if (diff.inMinutes < 60) return l10n.notificationMinutesAgo(diff.inMinutes);
+    if (diff.inHours < 24) return l10n.notificationHoursAgo(diff.inHours);
+    if (diff.inDays < 7) return l10n.notificationDaysAgo(diff.inDays);
     return '${dt.month}/${dt.day}';
   }
 }

@@ -132,15 +132,28 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notificationJustNow => 'الآن';
 
   @override
-  String notificationTimeAgo(int count) {
-    return 'قبل $count د';
-  }
-
-  @override
   String get notificationReference => 'عرض التفاصيل';
 
   @override
   String get notificationRetry => 'إعادة المحاولة';
+
+  @override
+  String get notificationButton => 'الإشعارات';
+
+  @override
+  String notificationMinutesAgo(int count) {
+    return 'قبل $count د';
+  }
+
+  @override
+  String notificationHoursAgo(int count) {
+    return 'قبل $count س';
+  }
+
+  @override
+  String notificationDaysAgo(int count) {
+    return 'قبل $count ي';
+  }
 
   @override
   String get overviewTitle => 'مساحة العمل';
@@ -317,6 +330,123 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get qualityChecksProduction => 'قرارات جودة الإنتاج';
+
+  @override
+  String get qualityHubSubtitle => 'اختر مسار الجودة الذي تريد إدارته.';
+
+  @override
+  String get qualityRawMaterialsTitle => 'جودة الخامات';
+
+  @override
+  String get qualityRawMaterialsSubtitle =>
+      'افحص الخامات الواردة من أخذ العينة حتى قرار الجودة.';
+
+  @override
+  String get qualityProductionTitle => 'جودة الإنتاج';
+
+  @override
+  String get qualityProductionSubtitle =>
+      'إدارة عينات الإنتاج ونتائج المختبر وقرارات الجودة.';
+
+  @override
+  String get prodQualitySamplesTab => 'العينات';
+
+  @override
+  String get prodQualityResultsTab => 'النتائج';
+
+  @override
+  String get prodQualityChecksTab => 'القرارات';
+
+  @override
+  String get prodQualityCreateSample => 'إنشاء عينة';
+
+  @override
+  String get prodQualityCreateResult => 'إنشاء نتيجة';
+
+  @override
+  String get prodQualitySamplesEmpty => 'لا توجد عينات إنتاج متاحة.';
+
+  @override
+  String get prodQualityResultsEmpty => 'لا توجد نتائج مختبر إنتاج متاحة.';
+
+  @override
+  String get prodQualityChecksEmpty => 'لا توجد قرارات جودة إنتاج متاحة.';
+
+  @override
+  String get prodQualityCreateSampleAction => 'إنشاء عينة';
+
+  @override
+  String get prodQualityMeasuredValue => 'القيمة المقاسة';
+
+  @override
+  String get prodQualityMeasuredValueHint => 'أدخل القيمة المقاسة';
+
+  @override
+  String get prodQualityCreateResultAction => 'إنشاء نتيجة';
+
+  @override
+  String prodQualitySampleLabel(int id) {
+    return 'عينة #$id';
+  }
+
+  @override
+  String prodQualityCheckLabel(int id) {
+    return 'قرار #$id';
+  }
+
+  @override
+  String get prodQualityProductionOrder => 'أمر إنتاج';
+
+  @override
+  String get prodQualityProductionOrderHint => 'ابحث برقم الأمر';
+
+  @override
+  String get prodQualityQuantityTaken => 'الكمية المأخوذة';
+
+  @override
+  String get prodQualityQuantityTakenHint => 'كمية العينة اختياري';
+
+  @override
+  String get prodQualityNoOrders => 'لا توجد أوامر إنتاج';
+
+  @override
+  String get prodQualitySampleLabelSelect => 'اختر عينة';
+
+  @override
+  String get prodQualitySampleSearchHint => 'ابحث بكود الأمر';
+
+  @override
+  String get prodQualityNoSamples => 'لا توجد عينات متاحة';
+
+  @override
+  String get prodQualityParameter => 'برامتر التحليل';
+
+  @override
+  String get prodQualityParameterHint => 'ابحث باسم البرامتر';
+
+  @override
+  String get prodQualityNoParameters => 'لا توجد برامترات تحليل';
+
+  @override
+  String get prodQualityStatusPending => 'قيد الانتظار';
+
+  @override
+  String get prodQualityStatusCompleted => 'مكتمل';
+
+  @override
+  String get prodQualityStatusInvalid => 'غير صالح';
+
+  @override
+  String get prodQualityStatusAccepted => 'مقبول';
+
+  @override
+  String get prodQualityStatusRejected => 'مرفوض';
+
+  @override
+  String get prodQualityStatusRelease => 'صرف';
+
+  @override
+  String get prodQualityStatusQuarantine => 'حجر';
 
   @override
   String get productionScreensSubtitle =>
@@ -866,8 +996,60 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get inventoryLastLoaded => 'آخر تحميل';
+
+  @override
+  String get inventoryDownloadPdf => 'تنزيل PDF';
+
+  @override
+  String get inventoryTotal => 'الإجمالي';
+
+  @override
+  String get inventoryAvailable => 'المتاح';
+
+  @override
+  String get inventoryReserved => 'المحجوز';
+
+  @override
+  String get inventoryPdfItem => 'الصنف';
+
+  @override
+  String get inventoryPdfWarehouse => 'المخزن';
+
+  @override
+  String get inventoryPdfTotal => 'الإجمالي';
+
+  @override
+  String get inventoryPdfAvailable => 'المتاح';
+
+  @override
+  String get inventoryPdfReserved => 'المحجوز';
+
+  @override
+  String get inventoryPdfUnit => 'الوحدة';
+
+  @override
+  String get inventoryPdfLastLoaded => 'آخر تحميل';
+
+  @override
+  String get inventoryPdfItems => 'العناصر';
+
+  @override
   String get separatorDot => ' • ';
 
   @override
   String get logoutTitle => 'تسجيل الخروج';
+
+  @override
+  String inventoryTruncatedWarning(Object count) {
+    return 'تم عرض أول $count عنصر بسبب الحد الأقصى';
+  }
+
+  @override
+  String inventoryPdfTruncatedNote(Object count) {
+    return 'ملاحظة: التقرير قد لا يكون كاملاً (محدود بـ $count عنصر)';
+  }
+
+  @override
+  String get inventoryPdfExportError => 'فشل تصدير PDF. حاول مرة أخرى.';
 }

@@ -1,20 +1,26 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../core/di/dependency_injection.dart';
+import '../../../../core/export/inventory_pdf_exporter.dart';
 import '../../../../core/localization/failure_message_localizer.dart';
 import '../../../../core/localization/generated/app_localizations.dart';
 import '../../../../design_system/status_indicators/pernit_status_badge.dart';
 import '../../../../design_system/tokens/pernit_colors.dart';
+import '../../../../design_system/widgets/pernit_bottom_segmented_bar.dart';
 import '../../../../design_system/widgets/pernit_button.dart';
 import '../../domain/entities/inventory_workflow.dart';
 import '../../domain/entities/raw_material_entry.dart';
 import '../bloc/raw_material_inventory_cubit.dart';
 import '../bloc/raw_material_inventory_state.dart';
 import '../widgets/raw_material_workflow_card.dart';
+import 'product_inventory_screen.dart';
 
 class RawMaterialInventoryScreen extends StatelessWidget {
   const RawMaterialInventoryScreen({super.key});
@@ -23,20 +29,20 @@ class RawMaterialInventoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => sl<RawMaterialInventoryCubit>()..load(),
-      child: const _RawMaterialInventoryView(),
+      child: const _RawMaterialContentView(),
     );
   }
 }
 
-class _RawMaterialInventoryView extends StatefulWidget {
-  const _RawMaterialInventoryView();
+class _RawMaterialContentView extends StatefulWidget {
+  const _RawMaterialContentView();
 
   @override
-  State<_RawMaterialInventoryView> createState() =>
-      _RawMaterialInventoryViewState();
+  State<_RawMaterialContentView> createState() =>
+      _RawMaterialContentViewState();
 }
 
-class _RawMaterialInventoryViewState extends State<_RawMaterialInventoryView> {
+class _RawMaterialContentViewState extends State<_RawMaterialContentView> {
   var _selectedTab = 0;
 
   @override
@@ -59,137 +65,217 @@ class _RawMaterialInventoryViewState extends State<_RawMaterialInventoryView> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _InventoryTabs(
-              selectedIndex: _selectedTab,
-              onSelected: (index) => setState(() => _selectedTab = index),
+            _InventoryHeader(
+              state: state,
+              onRefresh: cubit.load,
+              onPdf: () => _exportRawPdf(context, state, l10n),
             ),
-            SizedBox(height: 12.h),
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    _countLabel(l10n, state),
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: PernitColors.textMuted,
-                    ),
-                  ),
-                ),
-                IconButton.filledTonal(
-                  tooltip: l10n.rawWorkflowRefresh,
-                  onPressed: state is RawMaterialInventoryLoading
-                      ? null
-                      : cubit.load,
-                  icon: const Icon(Icons.refresh_rounded),
-                ),
-              ],
-            ),
-            SizedBox(height: 10.h),
-            if (state is RawMaterialInventoryLoading &&
-                state.entries.isEmpty &&
-                state.stockItems.isEmpty &&
-                state.productStock.isEmpty)
-              const Center(child: CircularProgressIndicator())
-            else
-              switch (_selectedTab) {
-                0 => _CurrentStockTab(state: state, cubit: cubit),
-                1 => _RawMaterialReceivingTab(state: state, cubit: cubit),
-                _ => _FinishedProductStockTab(state: state, cubit: cubit),
+            Expanded(
+              child: switch (state) {
+                RawMaterialInventoryLoading(:final entries, :final stockItems)
+                    when entries.isEmpty && stockItems.isEmpty =>
+                  const Center(child: CircularProgressIndicator()),
+                _ =>
+                  _selectedTab == 0
+                      ? _CurrentStockTab(state: state)
+                      : _RawMaterialReceivingTab(state: state, cubit: cubit),
               },
+            ),
+            _RawBottomBar(
+              selectedIndex: _selectedTab,
+              onSelected: (index) async {
+                if (index == 2) {
+                  final result = await Navigator.of(context)
+                      .push<ProductReturnArgs>(
+                        MaterialPageRoute(
+                          builder: (_) => const ProductInventoryScreen(),
+                        ),
+                      );
+                  if (result != null && mounted && result.tabIndex < 2) {
+                    setState(() => _selectedTab = result.tabIndex);
+                  }
+                } else {
+                  setState(() => _selectedTab = index);
+                }
+              },
+            ),
           ],
         );
       },
     );
   }
 
-  String _countLabel(AppLocalizations l10n, RawMaterialInventoryState state) {
-    return switch (_selectedTab) {
-      0 => l10n.rawInventoryCurrentCount(state.stockTotalCount),
-      1 => l10n.rawInventoryQueueCount(state.totalCount),
-      _ => l10n.rawInventoryProductCount(state.productStock.length),
-    };
+  Future<void> _exportRawPdf(
+    BuildContext context,
+    RawMaterialInventoryState state,
+    AppLocalizations l10n,
+  ) async {
+    final items = state.stockItems
+        .map(
+          (item) => PdfInventoryRow(
+            name: item.rawMaterialName,
+            warehouse: item.warehouseName,
+            quantity: item.quantity.toStringAsFixed(3),
+            available: item.availableQuantity.toStringAsFixed(3),
+            reserved: item.reservedQuantity.toStringAsFixed(3),
+            unit: item.unitName ?? '',
+          ),
+        )
+        .toList();
+    try {
+      ByteData? fontData;
+      try {
+        fontData = await DefaultAssetBundle.of(
+          context,
+        ).load('assets/fonts/Cairo-Bold.ttf');
+      } catch (_) {
+        fontData = null;
+      }
+      final bytes = await InventoryPdfExporter.generateReport(
+        labels: PdfLabels(
+          title: l10n.menuInventory,
+          item: l10n.inventoryPdfItem,
+          warehouse: l10n.inventoryPdfWarehouse,
+          total: l10n.inventoryPdfTotal,
+          available: l10n.inventoryPdfAvailable,
+          reserved: l10n.inventoryPdfReserved,
+          unit: l10n.inventoryPdfUnit,
+          lastLoaded: l10n.inventoryPdfLastLoaded,
+          items: l10n.inventoryPdfItems,
+          truncatedNote: state.stockWasTruncated
+              ? l10n.inventoryPdfTruncatedNote(state.stockTotalCount)
+              : null,
+        ),
+        lastLoadedAt: state.lastLoadedAt,
+        itemCount: items.length,
+        rows: items,
+        fontData: fontData,
+        isRtl: true,
+      );
+      if (context.mounted) {
+        await InventoryPdfExporter.sharePdf(
+          bytes,
+          filename: 'raw_material_inventory.pdf',
+        );
+      }
+    } catch (_) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.inventoryPdfExportError)));
+      }
+    }
   }
 }
 
-class _InventoryTabs extends StatelessWidget {
+class _RawBottomBar extends StatelessWidget {
   final int selectedIndex;
   final ValueChanged<int> onSelected;
 
-  const _InventoryTabs({required this.selectedIndex, required this.onSelected});
+  const _RawBottomBar({required this.selectedIndex, required this.onSelected});
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final items = [
-      (Icons.inventory_2_outlined, l10n.rawInventoryCurrentTab),
-      (Icons.scale_outlined, l10n.rawInventoryReceivingTab),
-      (Icons.add_box_outlined, l10n.rawInventoryFinishedProductTab),
-    ];
+    return PernitBottomSegmentedBar(
+      selectedIndex: selectedIndex,
+      onSelected: onSelected,
+      items: [
+        PernitBottomSegmentedBarItem(
+          icon: Icons.inventory_2_outlined,
+          label: l10n.rawInventoryCurrentTab,
+        ),
+        PernitBottomSegmentedBarItem(
+          icon: Icons.scale_outlined,
+          label: l10n.rawInventoryReceivingTab,
+        ),
+        PernitBottomSegmentedBarItem(
+          icon: Icons.add_box_outlined,
+          label: l10n.rawInventoryFinishedProductTab,
+        ),
+      ],
+    );
+  }
+}
 
-    return Container(
-      padding: EdgeInsets.all(4.r),
-      decoration: BoxDecoration(
-        color: PernitColors.background,
-        borderRadius: BorderRadius.circular(12.r),
-        border: Border.all(color: PernitColors.borderMuted),
-      ),
-      child: Row(
-        children: [
-          for (var index = 0; index < items.length; index++) ...[
-            Expanded(
-              child: InkWell(
-                borderRadius: BorderRadius.circular(9.r),
-                onTap: () => onSelected(index),
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 180),
-                  padding: EdgeInsets.symmetric(
-                    vertical: 10.h,
-                    horizontal: 3.w,
-                  ),
-                  decoration: BoxDecoration(
-                    color: selectedIndex == index
-                        ? PernitColors.primary
-                        : Colors.transparent,
-                    borderRadius: BorderRadius.circular(9.r),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        items[index].$1,
-                        size: 19.r,
-                        color: selectedIndex == index
-                            ? Colors.white
-                            : PernitColors.textMuted,
-                      ),
-                      SizedBox(height: 3.h),
-                      Text(
-                        items[index].$2,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: selectedIndex == index
-                              ? Colors.white
-                              : PernitColors.textStrong,
-                        ),
-                      ),
-                    ],
+class _InventoryHeader extends StatelessWidget {
+  final RawMaterialInventoryState state;
+  final VoidCallback onRefresh;
+  final VoidCallback onPdf;
+
+  const _InventoryHeader({
+    required this.state,
+    required this.onRefresh,
+    required this.onPdf,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final count = state.stockTotalCount;
+    final loadedStr = state.lastLoadedAt != null
+        ? DateFormat('HH:mm').format(state.lastLoadedAt!)
+        : null;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (state.stockWasTruncated)
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: Text(
+              l10n.inventoryTruncatedWarning(state.stockTotalCount),
+              style: Theme.of(
+                context,
+              ).textTheme.labelSmall?.copyWith(color: PernitColors.warning),
+            ),
+          ),
+        Padding(
+          padding: EdgeInsets.only(bottom: 8.h),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  l10n.rawInventoryCurrentCount(count),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: PernitColors.textMuted,
                   ),
                 ),
               ),
-            ),
-            if (index < items.length - 1) SizedBox(width: 4.w),
-          ],
-        ],
-      ),
+              if (loadedStr != null)
+                Padding(
+                  padding: EdgeInsets.only(right: 8.w),
+                  child: Text(
+                    '${l10n.inventoryLastLoaded}: $loadedStr',
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: PernitColors.textSubtle,
+                    ),
+                  ),
+                ),
+              IconButton(
+                tooltip: l10n.inventoryDownloadPdf,
+                icon: const Icon(Icons.picture_as_pdf_outlined, size: 20),
+                onPressed: state is RawMaterialInventoryLoading ? null : onPdf,
+              ),
+              IconButton.filledTonal(
+                tooltip: l10n.rawWorkflowRefresh,
+                onPressed: state is RawMaterialInventoryLoading
+                    ? null
+                    : onRefresh,
+                icon: const Icon(Icons.refresh_rounded),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
 
 class _CurrentStockTab extends StatelessWidget {
   final RawMaterialInventoryState state;
-  final RawMaterialInventoryCubit cubit;
 
-  const _CurrentStockTab({required this.state, required this.cubit});
+  const _CurrentStockTab({required this.state});
 
   @override
   Widget build(BuildContext context) {
@@ -203,8 +289,7 @@ class _CurrentStockTab extends StatelessWidget {
       byWarehouse.putIfAbsent(item.warehouseName, () => []).add(item);
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+    return ListView(
       children: [
         for (final warehouse in byWarehouse.entries) ...[
           _WarehouseStockCard(
@@ -213,17 +298,6 @@ class _CurrentStockTab extends StatelessWidget {
           ),
           SizedBox(height: 10.h),
         ],
-        if (state.stockHasNextPage)
-          PernitButton(
-            label: l10n.rawWorkflowLoadMore,
-            icon: Icons.expand_more_rounded,
-            fullWidth: false,
-            isLoading:
-                state is RawMaterialInventoryLoadingMore && state.loadingStock,
-            onPressed: state is RawMaterialInventoryLoadingMore
-                ? null
-                : cubit.loadMoreStock,
-          ),
       ],
     );
   }
@@ -300,27 +374,72 @@ class _StockRow extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(item.rawMaterialName),
+                SizedBox(height: 2.h),
+                Row(
+                  children: [
+                    _DetailChip(
+                      label:
+                          '${l10n.inventoryTotal}: ${item.quantity.toStringAsFixed(3)}',
+                    ),
+                    SizedBox(width: 6.w),
+                    _DetailChip(
+                      label:
+                          '${l10n.inventoryAvailable}: ${item.availableQuantity.toStringAsFixed(3)}',
+                      color: PernitColors.success,
+                    ),
+                    SizedBox(width: 6.w),
+                    _DetailChip(
+                      label:
+                          '${l10n.inventoryReserved}: ${item.reservedQuantity.toStringAsFixed(3)}',
+                      color: PernitColors.warning,
+                    ),
+                  ],
+                ),
+                SizedBox(height: 2.h),
                 Text(
-                  l10n.rawInventoryReserved(
-                    '${item.reservedQuantity} ${item.unitName ?? ''}',
-                  ),
+                  item.unitName ?? '',
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: PernitColors.textMuted,
+                    color: PernitColors.textSubtle,
                   ),
                 ),
               ],
             ),
           ),
           Directionality(
-            textDirection: TextDirection.ltr,
+            textDirection: ui.TextDirection.ltr,
             child: Text(
-              '${item.availableQuantity} ${item.unitName ?? ''}',
+              '${item.availableQuantity.toStringAsFixed(3)} ${item.unitName ?? ''}',
               style: Theme.of(
                 context,
               ).textTheme.bodyMedium?.copyWith(color: PernitColors.success),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _DetailChip extends StatelessWidget {
+  final String label;
+  final Color? color;
+
+  const _DetailChip({required this.label, this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
+      decoration: BoxDecoration(
+        color: (color ?? PernitColors.textSubtle).withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(4.r),
+      ),
+      child: Text(
+        label,
+        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+          fontSize: 9.sp,
+          color: color ?? PernitColors.textSubtle,
+        ),
       ),
     );
   }
@@ -339,7 +458,7 @@ class _RawMaterialReceivingTab extends StatelessWidget {
       return _InventoryEmptyState(message: l10n.rawInventoryEmpty);
     }
 
-    return Column(
+    return ListView(
       children: [
         for (final entry in state.entries) ...[
           RawMaterialWorkflowCard(
@@ -357,15 +476,16 @@ class _RawMaterialReceivingTab extends StatelessWidget {
           SizedBox(height: 10.h),
         ],
         if (state.hasNextPage)
-          PernitButton(
-            label: l10n.rawWorkflowLoadMore,
-            icon: Icons.expand_more_rounded,
-            fullWidth: false,
-            isLoading:
-                state is RawMaterialInventoryLoadingMore && !state.loadingStock,
-            onPressed: state is RawMaterialInventoryLoadingMore
-                ? null
-                : cubit.loadMoreQueue,
+          Center(
+            child: PernitButton(
+              label: l10n.rawWorkflowLoadMore,
+              icon: Icons.expand_more_rounded,
+              fullWidth: false,
+              isLoading: state is RawMaterialInventoryLoadingMore,
+              onPressed: state is RawMaterialInventoryLoadingMore
+                  ? null
+                  : cubit.loadMoreQueue,
+            ),
           ),
       ],
     );
@@ -645,7 +765,7 @@ class _SupplierWeightTile extends StatelessWidget {
         children: [
           Expanded(child: Text(l10n.rawWorkflowSupplierWeight)),
           Directionality(
-            textDirection: TextDirection.ltr,
+            textDirection: ui.TextDirection.ltr,
             child: Text(
               '${entry.quantityFromSupplier} ${entry.unitName ?? ''}',
             ),
@@ -726,246 +846,6 @@ class _ScaleImagePicker extends StatelessWidget {
             const Icon(Icons.chevron_right_rounded),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _FinishedProductStockTab extends StatefulWidget {
-  final RawMaterialInventoryState state;
-  final RawMaterialInventoryCubit cubit;
-
-  const _FinishedProductStockTab({required this.state, required this.cubit});
-
-  @override
-  State<_FinishedProductStockTab> createState() =>
-      _FinishedProductStockTabState();
-}
-
-class _FinishedProductStockTabState extends State<_FinishedProductStockTab> {
-  final _quantityController = TextEditingController();
-  int? _productId;
-  int? _warehouseId;
-  String? _error;
-
-  @override
-  void dispose() {
-    _quantityController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final state = widget.state;
-    final isSubmitting =
-        state is RawMaterialInventoryWorking &&
-        state.action == RawMaterialInventoryAction.addingProductStock;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Container(
-          padding: EdgeInsets.all(12.r),
-          decoration: BoxDecoration(
-            color: PernitColors.surface,
-            borderRadius: BorderRadius.circular(14.r),
-            border: Border.all(color: PernitColors.borderMuted),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                l10n.rawInventoryAddProductTitle,
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-              SizedBox(height: 10.h),
-              DropdownButtonFormField<int>(
-                initialValue: _productId,
-                items: [
-                  for (final product in state.products)
-                    DropdownMenuItem(
-                      value: product.id,
-                      child: Text(
-                        product.label,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                ],
-                onChanged: isSubmitting
-                    ? null
-                    : (value) => setState(() {
-                        _productId = value;
-                        _error = null;
-                      }),
-                decoration: InputDecoration(
-                  labelText: l10n.rawInventoryProduct,
-                  prefixIcon: const Icon(Icons.category_outlined),
-                ),
-              ),
-              SizedBox(height: 8.h),
-              DropdownButtonFormField<int>(
-                initialValue: _warehouseId,
-                items: [
-                  for (final warehouse in state.warehouses)
-                    DropdownMenuItem(
-                      value: warehouse.id,
-                      child: Text(
-                        warehouse.label,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                ],
-                onChanged: isSubmitting
-                    ? null
-                    : (value) => setState(() {
-                        _warehouseId = value;
-                        _error = null;
-                      }),
-                decoration: InputDecoration(
-                  labelText: l10n.rawWorkflowWarehouse,
-                  prefixIcon: const Icon(Icons.warehouse_outlined),
-                ),
-              ),
-              SizedBox(height: 8.h),
-              TextField(
-                controller: _quantityController,
-                enabled: !isSubmitting,
-                keyboardType: const TextInputType.numberWithOptions(
-                  decimal: true,
-                ),
-                inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d{0,6}')),
-                ],
-                decoration: InputDecoration(
-                  labelText: l10n.rawInventoryProductQuantity,
-                  prefixIcon: const Icon(Icons.numbers_outlined),
-                ),
-              ),
-              if (_error != null) ...[
-                SizedBox(height: 6.h),
-                Text(
-                  _error!,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodySmall?.copyWith(color: PernitColors.danger),
-                ),
-              ],
-              SizedBox(height: 10.h),
-              PernitButton(
-                label: l10n.rawInventoryAddProduct,
-                icon: Icons.add_box_outlined,
-                isLoading: isSubmitting,
-                onPressed: isSubmitting ? null : _submit,
-              ),
-            ],
-          ),
-        ),
-        SizedBox(height: 12.h),
-        if (state.productStock.isEmpty)
-          _InventoryEmptyState(message: l10n.rawInventoryProductEmpty)
-        else
-          for (final item in state.productStock) ...[
-            _ProductStockCard(item: item),
-            SizedBox(height: 7.h),
-          ],
-      ],
-    );
-  }
-
-  Future<void> _submit() async {
-    final l10n = AppLocalizations.of(context)!;
-    final quantity = double.tryParse(_quantityController.text.trim());
-    if (_productId == null ||
-        _warehouseId == null ||
-        quantity == null ||
-        quantity <= 0) {
-      setState(() => _error = l10n.rawInventoryProductRequired);
-      return;
-    }
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (dialogContext) => AlertDialog(
-        title: Text(l10n.rawInventoryAddProductTitle),
-        content: Text(l10n.rawInventoryAddProductConfirm),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(dialogContext).pop(false),
-            child: Text(l10n.screenCancelAction),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.of(dialogContext).pop(true),
-            child: Text(l10n.commonConfirm),
-          ),
-        ],
-      ),
-    );
-    if (confirmed != true || !mounted) {
-      return;
-    }
-    final succeeded = await widget.cubit.addFinishedProductStock(
-      ProductStockDraft(
-        productId: _productId!,
-        warehouseId: _warehouseId!,
-        quantity: quantity,
-      ),
-    );
-    if (succeeded && mounted) {
-      _quantityController.clear();
-      setState(() {
-        _productId = null;
-        _warehouseId = null;
-        _error = null;
-      });
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(l10n.rawInventoryProductSuccess)));
-    }
-  }
-}
-
-class _ProductStockCard extends StatelessWidget {
-  final ProductStockItem item;
-
-  const _ProductStockCard({required this.item});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(11.r),
-      decoration: BoxDecoration(
-        color: PernitColors.surface,
-        borderRadius: BorderRadius.circular(11.r),
-        border: Border.all(color: PernitColors.borderMuted),
-      ),
-      child: Row(
-        children: [
-          const Icon(Icons.inventory_outlined, color: PernitColors.primary),
-          SizedBox(width: 9.w),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(item.productName),
-                Text(
-                  item.warehouseName,
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: PernitColors.textMuted,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Directionality(
-            textDirection: TextDirection.ltr,
-            child: Text(
-              '${item.availableQuantity} ${item.unitName ?? ''}',
-              style: Theme.of(
-                context,
-              ).textTheme.bodyMedium?.copyWith(color: PernitColors.success),
-            ),
-          ),
-        ],
       ),
     );
   }

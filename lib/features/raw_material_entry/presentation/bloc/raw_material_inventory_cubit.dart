@@ -3,27 +3,23 @@ import '../../../../core/errors/api_result.dart';
 import '../../../../core/errors/failure.dart';
 import '../../domain/entities/inventory_workflow.dart';
 import '../../domain/entities/raw_material_entry.dart';
-import '../../domain/entities/raw_material_entry_lookup.dart';
 import '../../domain/entities/raw_material_workflow.dart';
 import '../../domain/usecases/raw_material_workflow_use_cases.dart';
 import 'raw_material_inventory_state.dart';
 
 class RawMaterialInventoryCubit extends SafeCubit<RawMaterialInventoryState> {
+  static const int maxInventoryPages = 50;
+  static const int maxInventoryItems = 5000;
+
   final LoadRawMaterialWorkflowUseCase _loadWorkflow;
   final RecordRawMaterialActualWeightUseCase _recordActualWeight;
   final LoadRawMaterialStockUseCase _loadStock;
-  final LoadProductStockUseCase _loadProductStock;
-  final LoadProductStockLookupsUseCase _loadLookups;
-  final AddProductStockUseCase _addProductStock;
   var _loadRequestId = 0;
 
   RawMaterialInventoryCubit(
     this._loadWorkflow,
     this._recordActualWeight,
     this._loadStock,
-    this._loadProductStock,
-    this._loadLookups,
-    this._addProductStock,
   ) : super(const RawMaterialInventoryInitial());
 
   Future<void> load({bool keepCurrentData = true}) async {
@@ -32,9 +28,7 @@ class RawMaterialInventoryCubit extends SafeCubit<RawMaterialInventoryState> {
       RawMaterialInventoryLoading(
         entries: keepCurrentData ? state.entries : const [],
         stockItems: keepCurrentData ? state.stockItems : const [],
-        productStock: keepCurrentData ? state.productStock : const [],
-        products: keepCurrentData ? state.products : const [],
-        warehouses: keepCurrentData ? state.warehouses : const [],
+        lastLoadedAt: state.lastLoadedAt,
       ),
     );
 
@@ -53,61 +47,75 @@ class RawMaterialInventoryCubit extends SafeCubit<RawMaterialInventoryState> {
       return;
     }
 
-    final stockResult = await _loadStock(page: 1);
-    if (requestId != _loadRequestId) {
+    final allStock = await _loadAllStockPages(requestId);
+    if (allStock == null) {
       return;
     }
-    if (stockResult case ApiFailure<RawMaterialStockPage>(
-      failure: final failure,
-    )) {
-      _emitError(failure);
-      return;
-    }
-
-    final productStockResult = await _loadProductStock();
-    final productsResult = await _loadLookups.products();
-    final warehousesResult = await _loadLookups.warehouses();
     if (requestId != _loadRequestId) {
       return;
     }
 
-    switch ((productStockResult, productsResult, warehousesResult)) {
-      case (
-        ApiSuccess<List<ProductStockItem>>(data: final productStock),
-        ApiSuccess<List<LookupOption>>(data: final products),
-        ApiSuccess<List<LookupOption>>(data: final warehouses),
-      ):
-        final queue = (queueResult as ApiSuccess<RawMaterialEntryPage>).data;
-        final stock = (stockResult as ApiSuccess<RawMaterialStockPage>).data;
-        safeEmit(
-          RawMaterialInventoryLoaded(
-            entries: queue.entries,
-            totalCount: queue.totalCount,
-            page: queue.page,
-            hasNextPage: queue.hasNextPage,
-            stockItems: stock.items,
-            stockTotalCount: stock.totalCount,
-            stockPage: stock.page,
-            stockHasNextPage: stock.hasNextPage,
-            productStock: productStock,
-            products: products,
-            warehouses: warehouses,
-          ),
-        );
-      case (ApiFailure<List<ProductStockItem>>(failure: final failure), _, _):
-        _emitError(failure);
-      case (_, ApiFailure<List<LookupOption>>(failure: final failure), _):
-        _emitError(failure);
-      case (_, _, ApiFailure<List<LookupOption>>(failure: final failure)):
-        _emitError(failure);
+    final wasTruncated = _wasStockTruncated(allStock);
+    final queue = (queueResult as ApiSuccess<RawMaterialEntryPage>).data;
+
+    safeEmit(
+      RawMaterialInventoryLoaded(
+        entries: queue.entries,
+        totalCount: queue.totalCount,
+        page: queue.page,
+        hasNextPage: queue.hasNextPage,
+        stockItems: allStock,
+        stockTotalCount: allStock.length,
+        stockPage: 1,
+        stockHasNextPage: false,
+        stockWasTruncated: wasTruncated,
+        lastLoadedAt: DateTime.now(),
+      ),
+    );
+  }
+
+  int _stockPagesLoaded = 0;
+
+  bool _wasStockTruncated(List<RawMaterialStockItem> items) {
+    return items.length >= maxInventoryItems ||
+        _stockPagesLoaded >= maxInventoryPages;
+  }
+
+  Future<List<RawMaterialStockItem>?> _loadAllStockPages(int requestId) async {
+    var allItems = <RawMaterialStockItem>[];
+    var page = 1;
+    var hasNextPage = true;
+
+    while (hasNextPage && page <= maxInventoryPages) {
+      final result = await _loadStock(page: page);
+      if (requestId != _loadRequestId) {
+        return null;
+      }
+      switch (result) {
+        case ApiFailure<RawMaterialStockPage>(failure: final failure):
+          _emitError(failure);
+          return null;
+        case ApiSuccess<RawMaterialStockPage>(data: final stock):
+          allItems.addAll(stock.items);
+          if (allItems.length >= maxInventoryItems) {
+            hasNextPage = false;
+          } else {
+            hasNextPage = stock.hasNextPage;
+          }
+          page++;
+      }
     }
+
+    _stockPagesLoaded = page - 1;
+    allItems.sort((a, b) => b.availableQuantity.compareTo(a.availableQuantity));
+    return allItems;
   }
 
   Future<void> loadMoreQueue() async {
     if (!state.hasNextPage || state is RawMaterialInventoryLoadingMore) {
       return;
     }
-    safeEmit(_loadingMore(loadingStock: false));
+    safeEmit(_loadingMore());
     final result = await _loadWorkflow(
       status: RawMaterialEntryStatus.approved,
       isInStock: false,
@@ -122,25 +130,6 @@ class RawMaterialInventoryCubit extends SafeCubit<RawMaterialInventoryState> {
           hasNextPage: page.hasNextPage,
         );
       case ApiFailure<RawMaterialEntryPage>(failure: final failure):
-        _emitError(failure);
-    }
-  }
-
-  Future<void> loadMoreStock() async {
-    if (!state.stockHasNextPage || state is RawMaterialInventoryLoadingMore) {
-      return;
-    }
-    safeEmit(_loadingMore(loadingStock: true));
-    final result = await _loadStock(page: state.stockPage + 1);
-    switch (result) {
-      case ApiSuccess<RawMaterialStockPage>(data: final page):
-        _emitLoaded(
-          stockItems: _mergeStock(state.stockItems, page.items),
-          stockTotalCount: page.totalCount,
-          stockPage: page.page,
-          stockHasNextPage: page.hasNextPage,
-        );
-      case ApiFailure<RawMaterialStockPage>(failure: final failure):
         _emitError(failure);
     }
   }
@@ -169,22 +158,8 @@ class RawMaterialInventoryCubit extends SafeCubit<RawMaterialInventoryState> {
     }
   }
 
-  Future<bool> addFinishedProductStock(ProductStockDraft draft) async {
-    _emitWorking(RawMaterialInventoryAction.addingProductStock);
-    final result = await _addProductStock(draft);
-    switch (result) {
-      case ApiSuccess<ProductStockItem>():
-        await load();
-        return true;
-      case ApiFailure<ProductStockItem>(failure: final failure):
-        _emitError(failure);
-        return false;
-    }
-  }
-
-  RawMaterialInventoryLoadingMore _loadingMore({required bool loadingStock}) {
+  RawMaterialInventoryLoadingMore _loadingMore() {
     return RawMaterialInventoryLoadingMore(
-      loadingStock: loadingStock,
       entries: state.entries,
       totalCount: state.totalCount,
       page: state.page,
@@ -193,9 +168,8 @@ class RawMaterialInventoryCubit extends SafeCubit<RawMaterialInventoryState> {
       stockTotalCount: state.stockTotalCount,
       stockPage: state.stockPage,
       stockHasNextPage: state.stockHasNextPage,
-      productStock: state.productStock,
-      products: state.products,
-      warehouses: state.warehouses,
+      stockWasTruncated: state.stockWasTruncated,
+      lastLoadedAt: state.lastLoadedAt,
     );
   }
 
@@ -219,9 +193,8 @@ class RawMaterialInventoryCubit extends SafeCubit<RawMaterialInventoryState> {
         stockTotalCount: stockTotalCount ?? state.stockTotalCount,
         stockPage: stockPage ?? state.stockPage,
         stockHasNextPage: stockHasNextPage ?? state.stockHasNextPage,
-        productStock: state.productStock,
-        products: state.products,
-        warehouses: state.warehouses,
+        stockWasTruncated: state.stockWasTruncated,
+        lastLoadedAt: state.lastLoadedAt ?? DateTime.now(),
       ),
     );
   }
@@ -238,10 +211,9 @@ class RawMaterialInventoryCubit extends SafeCubit<RawMaterialInventoryState> {
         stockTotalCount: state.stockTotalCount,
         stockPage: state.stockPage,
         stockHasNextPage: state.stockHasNextPage,
-        productStock: state.productStock,
-        products: state.products,
-        warehouses: state.warehouses,
+        stockWasTruncated: state.stockWasTruncated,
         activeBatchId: activeBatchId,
+        lastLoadedAt: state.lastLoadedAt,
       ),
     );
   }
@@ -258,10 +230,9 @@ class RawMaterialInventoryCubit extends SafeCubit<RawMaterialInventoryState> {
         stockTotalCount: state.stockTotalCount,
         stockPage: state.stockPage,
         stockHasNextPage: state.stockHasNextPage,
-        productStock: state.productStock,
-        products: state.products,
-        warehouses: state.warehouses,
+        stockWasTruncated: state.stockWasTruncated,
         activeBatchId: activeBatchId,
+        lastLoadedAt: state.lastLoadedAt,
       ),
     );
   }
@@ -273,17 +244,6 @@ class RawMaterialInventoryCubit extends SafeCubit<RawMaterialInventoryState> {
     final byId = {for (final entry in current) entry.id: entry};
     for (final entry in incoming) {
       byId[entry.id] = entry;
-    }
-    return byId.values.toList(growable: false);
-  }
-
-  List<RawMaterialStockItem> _mergeStock(
-    List<RawMaterialStockItem> current,
-    List<RawMaterialStockItem> incoming,
-  ) {
-    final byId = {for (final item in current) item.id: item};
-    for (final item in incoming) {
-      byId[item.id] = item;
     }
     return byId.values.toList(growable: false);
   }

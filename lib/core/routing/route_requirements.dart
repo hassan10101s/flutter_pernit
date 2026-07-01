@@ -33,6 +33,14 @@ const routeRequirements = <String, RouteRequirement>{
     routeName: Routes.quality,
     requiresLogin: true,
   ),
+  Routes.rawMaterialQuality: RouteRequirement(
+    routeName: Routes.rawMaterialQuality,
+    requiresLogin: true,
+  ),
+  Routes.productionQuality: RouteRequirement(
+    routeName: Routes.productionQuality,
+    requiresLogin: true,
+  ),
   Routes.production: RouteRequirement(
     routeName: Routes.production,
     requiresLogin: true,

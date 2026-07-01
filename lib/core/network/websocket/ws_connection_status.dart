@@ -1,6 +1,1 @@
-enum WsConnectionStatus {
-  connected,
-  disconnected,
-  connecting,
-  degraded,
-}
+enum WsConnectionStatus { connected, disconnected, connecting, degraded }

@@ -52,17 +52,20 @@ class QcRecord extends Equatable {
   });
 
   @override
-  List<Object?> get props => [qcId, comments, qcStatus, timestamp, checkedByName];
+  List<Object?> get props => [
+    qcId,
+    comments,
+    qcStatus,
+    timestamp,
+    checkedByName,
+  ];
 }
 
 class EntryMetadata extends Equatable {
   final List<SamplingRecord> samplingHistory;
   final List<QcRecord> qcHistory;
 
-  const EntryMetadata({
-    required this.samplingHistory,
-    required this.qcHistory,
-  });
+  const EntryMetadata({required this.samplingHistory, required this.qcHistory});
 
   @override
   List<Object?> get props => [samplingHistory, qcHistory];

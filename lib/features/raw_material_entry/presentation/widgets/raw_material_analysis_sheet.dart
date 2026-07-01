@@ -81,7 +81,7 @@ class _RawMaterialAnalysisSheetState extends State<RawMaterialAnalysisSheet> {
     final workspace = widget.workspace;
     final sampleNumber =
         workspace.sample.sampleNumber ??
-            l10n.entryIdPrefix(workspace.sample.id.toString());
+        l10n.entryIdPrefix(workspace.sample.id.toString());
 
     return SafeArea(
       top: false,

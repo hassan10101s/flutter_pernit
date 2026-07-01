@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:web_socket_channel/web_socket_channel.dart';
 
+import '../../../features/notifications/data/models/notification_model.dart';
 import '../../../features/notifications/domain/entities/notification.dart';
 import '../../auth/token_manager.dart';
 import '../../config/env_config.dart';
@@ -17,6 +18,7 @@ class NotificationWebSocketService {
   NotificationWebSocketService(this._envConfig, this._tokenManager);
 
   WebSocketChannel? _channel;
+  StreamSubscription<dynamic>? _socketSubscription;
   Timer? _reconnectTimer;
   Timer? _healthCheckTimer;
   int _reconnectAttempt = 0;
@@ -34,6 +36,10 @@ class NotificationWebSocketService {
 
   Future<void> connect() async {
     if (_disposed) return;
+    if (_connectionStatus == WsConnectionStatus.connecting ||
+        _connectionStatus == WsConnectionStatus.connected) {
+      return;
+    }
     _setStatus(WsConnectionStatus.connecting);
 
     try {
@@ -51,15 +57,22 @@ class NotificationWebSocketService {
             .replaceFirst('http://', 'ws://');
       }
       if (!baseUrl.startsWith('ws://') && !baseUrl.startsWith('wss://')) {
-        baseUrl = 'ws://$baseUrl';
+        baseUrl = 'wss://$baseUrl';
       }
-      final uri = Uri.parse('$baseUrl/ws/notifications/').replace(
-        queryParameters: {'token': token},
-      );
+      if (!baseUrl.startsWith('wss://')) {
+        if (baseUrl.startsWith('ws://')) {
+          baseUrl = baseUrl.replaceFirst('ws://', 'wss://');
+        } else {
+          baseUrl = 'wss://$baseUrl';
+        }
+      }
+      final uri = Uri.parse(
+        '$baseUrl/ws/notifications/',
+      ).replace(queryParameters: {'token': token});
 
       _channel = WebSocketChannel.connect(uri);
 
-      _channel!.stream.listen(
+      _socketSubscription = _channel!.stream.listen(
         _onData,
         onError: _onError,
         onDone: _onDone,
@@ -78,6 +91,8 @@ class NotificationWebSocketService {
   void disconnect() {
     _cancelTimers();
     _drainHealthCheck();
+    _socketSubscription?.cancel();
+    _socketSubscription = null;
     _channel?.sink.close();
     _channel = null;
     _pendingQueue.clear();
@@ -91,10 +106,7 @@ class NotificationWebSocketService {
   }
 
   void markRead(int notificationId) {
-    _sendAction({
-      'action': 'mark_read',
-      'notification_id': notificationId,
-    });
+    _sendAction({'action': 'mark_read', 'notification_id': notificationId});
   }
 
   void markAllRead() {
@@ -117,6 +129,8 @@ class NotificationWebSocketService {
     _disposed = true;
     _cancelTimers();
     _drainHealthCheck();
+    _socketSubscription?.cancel();
+    _socketSubscription = null;
     _channel?.sink.close();
     _channel = null;
     _pendingQueue.clear();
@@ -150,7 +164,9 @@ class NotificationWebSocketService {
         if (notificationData != null) {
           _eventController.add(
             NewNotificationEvent(
-              notification: Notification.fromJson(notificationData),
+              notification: NotificationModel.fromJson(
+                notificationData,
+              ).toEntity(),
             ),
           );
         }
@@ -164,7 +180,7 @@ class NotificationWebSocketService {
             notificationId: notificationId,
             success: success,
             notification: notificationData != null
-                ? Notification.fromJson(notificationData)
+                ? NotificationModel.fromJson(notificationData).toEntity()
                 : null,
           ),
         );
@@ -193,16 +209,20 @@ class NotificationWebSocketService {
     if (data is! List) return [];
     return data
         .whereType<Map<String, dynamic>>()
-        .map(Notification.fromJson)
+        .map((json) => NotificationModel.fromJson(json).toEntity())
         .toList();
   }
 
   void _onError(Object error) {
+    _socketSubscription?.cancel();
+    _socketSubscription = null;
     _channel = null;
     _scheduleReconnect();
   }
 
   void _onDone() {
+    _socketSubscription?.cancel();
+    _socketSubscription = null;
     _channel = null;
     _scheduleReconnect();
   }
@@ -251,14 +271,11 @@ class NotificationWebSocketService {
 
   void _startHealthCheck() {
     _drainHealthCheck();
-    _healthCheckTimer = Timer.periodic(
-      const Duration(seconds: 30),
-      (_) {
-        if (_connectionStatus == WsConnectionStatus.connected) {
-          _sendAction({'action': 'ping'});
-        }
-      },
-    );
+    _healthCheckTimer = Timer.periodic(const Duration(seconds: 30), (_) {
+      if (_connectionStatus == WsConnectionStatus.connected) {
+        _sendAction({'action': 'ping'});
+      }
+    });
   }
 
   void _drainHealthCheck() {

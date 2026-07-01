@@ -63,7 +63,7 @@ abstract class RawMaterialEntryRemoteDataSource {
 
   Future<RawMaterialStockPageModel> fetchRawMaterialStock({required int page});
 
-  Future<List<ProductStockItemModel>> fetchProductStock();
+  Future<ProductStockPageModel> fetchProductStock({required int page});
 
   Future<ProductStockItemModel> addProductStock(ProductStockDraft draft);
 }
@@ -313,18 +313,18 @@ class DioRawMaterialEntryRemoteDataSource
   }
 
   @override
-  Future<List<ProductStockItemModel>> fetchProductStock() async {
+  Future<ProductStockPageModel> fetchProductStock({required int page}) async {
     _productStockCancelToken?.cancel();
     _productStockCancelToken = CancelToken();
     final response = await _dio.get<dynamic>(
       ApiConstants.productInventory,
       queryParameters: {
         'ordering': 'warehouse__name,product__name',
-        'page_size': 100,
+        'page': page,
       },
       cancelToken: _productStockCancelToken,
     );
-    return _modelsFromPayload(response.data, ProductStockItemModel.fromJson);
+    return ProductStockPageModel.fromJson(response.data, page: page);
   }
 
   @override

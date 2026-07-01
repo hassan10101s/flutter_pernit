@@ -134,15 +134,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notificationJustNow => 'Just now';
 
   @override
-  String notificationTimeAgo(int count) {
-    return '${count}m ago';
-  }
-
-  @override
   String get notificationReference => 'View details';
 
   @override
   String get notificationRetry => 'Retry';
+
+  @override
+  String get notificationButton => 'Notifications';
+
+  @override
+  String notificationMinutesAgo(int count) {
+    return '${count}m ago';
+  }
+
+  @override
+  String notificationHoursAgo(int count) {
+    return '${count}h ago';
+  }
+
+  @override
+  String notificationDaysAgo(int count) {
+    return '${count}d ago';
+  }
 
   @override
   String get overviewTitle => 'Workspace';
@@ -319,6 +332,125 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get qualityChecksProduction => 'Production quality checks';
+
+  @override
+  String get qualityHubSubtitle =>
+      'Choose the quality workflow type to manage.';
+
+  @override
+  String get qualityRawMaterialsTitle => 'Raw material quality';
+
+  @override
+  String get qualityRawMaterialsSubtitle =>
+      'Inspect received raw materials from sampling through quality decisions.';
+
+  @override
+  String get qualityProductionTitle => 'Production quality';
+
+  @override
+  String get qualityProductionSubtitle =>
+      'Manage production samples, lab results, and quality decisions.';
+
+  @override
+  String get prodQualitySamplesTab => 'Samples';
+
+  @override
+  String get prodQualityResultsTab => 'Results';
+
+  @override
+  String get prodQualityChecksTab => 'Decisions';
+
+  @override
+  String get prodQualityCreateSample => 'Create sample';
+
+  @override
+  String get prodQualityCreateResult => 'Create result';
+
+  @override
+  String get prodQualitySamplesEmpty => 'No production samples available.';
+
+  @override
+  String get prodQualityResultsEmpty => 'No production lab results available.';
+
+  @override
+  String get prodQualityChecksEmpty =>
+      'No production quality decisions available.';
+
+  @override
+  String get prodQualityCreateSampleAction => 'Create sample';
+
+  @override
+  String get prodQualityMeasuredValue => 'Measured value';
+
+  @override
+  String get prodQualityMeasuredValueHint => 'Enter measured value';
+
+  @override
+  String get prodQualityCreateResultAction => 'Create result';
+
+  @override
+  String prodQualitySampleLabel(int id) {
+    return 'Sample #$id';
+  }
+
+  @override
+  String prodQualityCheckLabel(int id) {
+    return 'Decision #$id';
+  }
+
+  @override
+  String get prodQualityProductionOrder => 'Production order';
+
+  @override
+  String get prodQualityProductionOrderHint => 'Search by order number';
+
+  @override
+  String get prodQualityQuantityTaken => 'Quantity taken';
+
+  @override
+  String get prodQualityQuantityTakenHint => 'Optional sample quantity';
+
+  @override
+  String get prodQualityNoOrders => 'No production orders found';
+
+  @override
+  String get prodQualitySampleLabelSelect => 'Select sample';
+
+  @override
+  String get prodQualitySampleSearchHint => 'Search by order code';
+
+  @override
+  String get prodQualityNoSamples => 'No samples available';
+
+  @override
+  String get prodQualityParameter => 'Analysis parameter';
+
+  @override
+  String get prodQualityParameterHint => 'Search by parameter name';
+
+  @override
+  String get prodQualityNoParameters => 'No analysis parameters found';
+
+  @override
+  String get prodQualityStatusPending => 'Pending';
+
+  @override
+  String get prodQualityStatusCompleted => 'Completed';
+
+  @override
+  String get prodQualityStatusInvalid => 'Invalid';
+
+  @override
+  String get prodQualityStatusAccepted => 'Accepted';
+
+  @override
+  String get prodQualityStatusRejected => 'Rejected';
+
+  @override
+  String get prodQualityStatusRelease => 'Release';
+
+  @override
+  String get prodQualityStatusQuarantine => 'Quarantine';
 
   @override
   String get productionScreensSubtitle =>
@@ -874,8 +1006,61 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get inventoryLastLoaded => 'Last loaded';
+
+  @override
+  String get inventoryDownloadPdf => 'Download PDF';
+
+  @override
+  String get inventoryTotal => 'Total';
+
+  @override
+  String get inventoryAvailable => 'Available';
+
+  @override
+  String get inventoryReserved => 'Reserved';
+
+  @override
+  String get inventoryPdfItem => 'Item';
+
+  @override
+  String get inventoryPdfWarehouse => 'Warehouse';
+
+  @override
+  String get inventoryPdfTotal => 'Total';
+
+  @override
+  String get inventoryPdfAvailable => 'Available';
+
+  @override
+  String get inventoryPdfReserved => 'Reserved';
+
+  @override
+  String get inventoryPdfUnit => 'Unit';
+
+  @override
+  String get inventoryPdfLastLoaded => 'Last loaded';
+
+  @override
+  String get inventoryPdfItems => 'Items';
+
+  @override
   String get separatorDot => ' • ';
 
   @override
   String get logoutTitle => 'Logging out';
+
+  @override
+  String inventoryTruncatedWarning(Object count) {
+    return 'Showing first $count items due to maximum limit';
+  }
+
+  @override
+  String inventoryPdfTruncatedNote(Object count) {
+    return 'Note: report may be incomplete (limited to $count items)';
+  }
+
+  @override
+  String get inventoryPdfExportError =>
+      'Failed to export PDF. Please try again.';
 }

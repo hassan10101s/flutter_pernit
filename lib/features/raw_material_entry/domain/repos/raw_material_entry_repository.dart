@@ -63,7 +63,7 @@ abstract class RawMaterialEntryRepository {
     required int page,
   });
 
-  Future<ApiResult<List<ProductStockItem>>> fetchProductStock();
+  Future<ApiResult<ProductStockPage>> fetchProductStock({required int page});
 
   Future<ApiResult<ProductStockItem>> addProductStock(ProductStockDraft draft);
 }

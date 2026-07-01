@@ -28,6 +28,10 @@ class HomeSectionBody extends StatelessWidget {
       return const SafeArea(child: RawMaterialEntryScreen());
     }
 
+    if (section == HomeMenuSection.inventory) {
+      return const RawMaterialInventoryScreen();
+    }
+
     return SafeArea(
       child: Padding(
         padding: EdgeInsets.all(20.r),
@@ -37,7 +41,6 @@ class HomeSectionBody extends StatelessWidget {
             HomeMenuSection.settings => const SettingsScreen(),
             HomeMenuSection.quality => const QualityScreen(),
             HomeMenuSection.production => const ProductionScreen(),
-            HomeMenuSection.inventory => const RawMaterialInventoryScreen(),
             _ => _PlaceholderPanel(
               title: _moduleTitle(l10n, section),
               icon: _moduleIcon(section),

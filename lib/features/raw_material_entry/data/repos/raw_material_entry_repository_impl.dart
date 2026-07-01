@@ -304,14 +304,16 @@ class RawMaterialEntryRepositoryImpl implements RawMaterialEntryRepository {
   }
 
   @override
-  Future<ApiResult<List<ProductStockItem>>> fetchProductStock() async {
-    final guard = await _ensureReady<List<ProductStockItem>>();
+  Future<ApiResult<ProductStockPage>> fetchProductStock({
+    required int page,
+  }) async {
+    final guard = await _ensureReady<ProductStockPage>();
     if (guard != null) {
       return guard;
     }
 
     try {
-      return ApiSuccess(await _remoteDataSource.fetchProductStock());
+      return ApiSuccess(await _remoteDataSource.fetchProductStock(page: page));
     } on Object catch (error) {
       return ApiFailure(_apiErrorHandler.handle(error));
     }
